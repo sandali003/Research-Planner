@@ -1,0 +1,355 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AutoSense Dashboard</title>
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 24px;
+      font-family: Arial, sans-serif;
+      background: #f1f5f9;
+      color: #172033;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    h1 { margin: 0 0 6px; }
+    .muted { color: #64748b; font-size: 14px; }
+
+    .status {
+      background: #e2e8f0;
+      padding: 10px 14px;
+      border-radius: 20px;
+      font-size: 14px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 22px;
+    }
+
+    .card, .panel {
+      background: white;
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: 0 2px 8px #0000000a;
+    }
+
+    .card h3 {
+      margin: 0 0 16px;
+      font-size: 15px;
+      color: #64748b;
+    }
+
+    .value {
+      font-size: 28px;
+      font-weight: bold;
+      overflow-wrap: anywhere;
+    }
+
+    .unit {
+      font-size: 14px;
+      font-weight: normal;
+      color: #64748b;
+    }
+
+    .controls {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 16px 0;
+    }
+
+    button {
+      border: 0;
+      border-radius: 8px;
+      padding: 12px 22px;
+      color: white;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .start { background: #15803d; }
+    .stop { background: #b91c1c; }
+    .refresh { background: #334155; }
+
+    #message {
+      margin: 12px 0;
+      min-height: 20px;
+      font-size: 14px;
+    }
+
+    .table-wrap { overflow-x: auto; }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      min-width: 760px;
+      margin-top: 14px;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #e2e8f0;
+      font-size: 13px;
+    }
+
+    th { background: #f8fafc; }
+
+    @media (max-width: 600px) {
+      body { padding: 14px; }
+      .value { font-size: 24px; }
+    }
+  </style>
+</head>
+
+<body>
+<div class="container">
+
+  <header>
+    <div>
+      <h1>AutoSense</h1>
+      <div class="muted">IoT Vehicle Monitoring Dashboard</div>
+    </div>
+    <div id="apiStatus" class="status">Checking API...</div>
+  </header>
+
+  <section class="cards">
+    <div class="card">
+      <h3>Collection Status</h3>
+      <div id="collection" class="value">--</div>
+    </div>
+
+    <div class="card">
+      <h3>Temperature</h3>
+      <div id="temperature" class="value">--</div>
+      <span class="unit">°C</span>
+    </div>
+
+    <div class="card">
+      <h3>Acceleration X / Y / Z</h3>
+      <div id="acceleration" class="value" style="font-size:18px">--</div>
+      <span class="unit">Raw sensor values</span>
+    </div>
+
+    <div class="card">
+      <h3>Voltage Sensor ADC</h3>
+      <div id="voltageADC" class="value">--</div>
+      <span class="unit">ADC counts</span>
+    </div>
+
+    <div class="card">
+      <h3>ESP32 Pin Voltage</h3>
+      <div id="voltage" class="value">--</div>
+      <span class="unit">V</span>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>Device Control</h2>
+    <div class="muted">
+      Start or stop sensor data collection on the ESP32.
+    </div>
+
+    <div class="controls">
+      <button id="startBtn" class="start" onclick="controlDevice('start')">
+        START
+      </button>
+
+      <button id="stopBtn" class="stop" onclick="controlDevice('stop')">
+        STOP
+      </button>
+
+      <button class="refresh" onclick="refreshAll()">
+        Refresh Data
+      </button>
+    </div>
+
+    <div id="message"></div>
+  </section>
+
+  <section class="panel" style="margin-top:22px">
+    <h2>Latest Sensor Readings</h2>
+    <div class="muted">Automatically refreshes every 3 seconds.</div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Vehicle</th>
+            <th>Recorded At</th>
+            <th>Accel X</th>
+            <th>Accel Y</th>
+            <th>Accel Z</th>
+            <th>Temp °C</th>
+            <th>Voltage ADC</th>
+            <th>Pin V</th>
+          </tr>
+        </thead>
+        <tbody id="readingsTable">
+          <tr><td colspan="9">Loading readings...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+</div>
+
+<script>
+  // Dashboard is opened on the same laptop as the API.
+  const API = "http://127.0.0.1:8000";
+
+  async function requestJSON(path, options = {}) {
+    const response = await fetch(API + path, options);
+
+    if (!response.ok) {
+      throw new Error("HTTP " + response.status);
+    }
+
+    return response.json();
+  }
+
+  function displayNumber(value, decimals = 2) {
+    if (value === null || value === undefined) return "--";
+    const number = Number(value);
+    return Number.isFinite(number) ? number.toFixed(decimals) : "--";
+  }
+
+  async function checkStatus() {
+    try {
+      const data = await requestJSON("/control/status");
+
+      document.getElementById("apiStatus").textContent = "API Connected";
+      document.getElementById("collection").textContent =
+        data.enabled ? "RUNNING" : "STOPPED";
+
+      document.getElementById("startBtn").disabled = !!data.enabled;
+      document.getElementById("stopBtn").disabled = !data.enabled;
+    } catch (error) {
+      document.getElementById("apiStatus").textContent = "API Offline";
+      document.getElementById("collection").textContent = "UNKNOWN";
+      document.getElementById("startBtn").disabled = true;
+      document.getElementById("stopBtn").disabled = true;
+    }
+  }
+
+  async function controlDevice(action) {
+    const message = document.getElementById("message");
+    message.textContent = "Sending command...";
+
+    try {
+      const data = await requestJSON("/control/" + action, {
+        method: "POST"
+      });
+
+      message.textContent = data.message;
+      await refreshAll();
+    } catch (error) {
+      message.textContent =
+        "Command failed. Check that the API server is running.";
+    }
+  }
+
+  async function loadReadings() {
+    try {
+      const data = await requestJSON("/readings/latest?limit=10");
+
+      // Supports either a JSON array or {"readings": [...]}
+      const rows = Array.isArray(data)
+        ? data
+        : (data.readings || data.items || []);
+
+      const tbody = document.getElementById("readingsTable");
+      tbody.replaceChildren();
+
+      if (!rows.length) {
+        tbody.innerHTML =
+          '<tr><td colspan="9">No readings returned.</td></tr>';
+        return;
+      }
+
+      rows.forEach(row => {
+        const tr = document.createElement("tr");
+
+        const values = [
+          row.id,
+          row.vehicle_id,
+          row.recorded_at,
+          row.accel_x,
+          row.accel_y,
+          row.accel_z,
+          displayNumber(row.temperature_c),
+          row.voltage_adc,
+          displayNumber(row.pin_voltage_v, 3)
+        ];
+
+        values.forEach(value => {
+          const td = document.createElement("td");
+          td.textContent = value ?? "--";
+          tr.appendChild(td);
+        });
+
+        tbody.appendChild(tr);
+      });
+
+      // The API may return the newest row first or last.
+      const latest = rows.reduce((best, row) =>
+        !best || Number(row.id) > Number(best.id) ? row : best, null);
+
+      if (latest) {
+        document.getElementById("temperature").textContent =
+          displayNumber(latest.temperature_c);
+
+        document.getElementById("acceleration").textContent =
+          [latest.accel_x, latest.accel_y, latest.accel_z]
+            .map(value => value ?? "--").join(" / ");
+
+        document.getElementById("voltageADC").textContent =
+          latest.voltage_adc ?? "--";
+
+        document.getElementById("voltage").textContent =
+          displayNumber(latest.pin_voltage_v, 3);
+      }
+    } catch (error) {
+      document.getElementById("readingsTable").innerHTML =
+        '<tr><td colspan="9">Could not load readings. Check API endpoint.</td></tr>';
+    }
+  }
+
+  async function refreshAll() {
+    await Promise.all([checkStatus(), loadReadings()]);
+  }
+
+  refreshAll();
+  setInterval(refreshAll, 3000);
+</script>
+
+</body>
+</html>
