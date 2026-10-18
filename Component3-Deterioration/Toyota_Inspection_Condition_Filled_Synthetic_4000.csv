@@ -1,0 +1,4001 @@
+vehicle_id,inspection_date,component_condition,overall_condition,inspection_score,vehicle_model
+TOY_PREMIO_137,,Steering: Fair,Critical,27,Premio
+TOY_VITZ_164,,Exhaust System: Poor,Fair,73,Vitz
+TOY_ALLION_260,,Brakes: Fair,Fair,60,Allion
+TOY_AXIO_170,,Suspension: Poor,Poor,45,Axio
+TOY_YARIS_149,,Suspension: Fair,Good,85,Yaris
+TOY_PREMIO_143,,Exhaust System: Fair,Critical,38,Premio
+TOY_ALLION_246,,Suspension: Fair,Good,93,Allion
+TOY_PREMIO_208,,Suspension: Fair,Poor,44,Premio
+TOY_COROLLA_002,,Battery: Fair,Poor,56,Corolla
+TOY_COROLLA_129,,Suspension: Good,Fair,70,Corolla
+TOY_PREMIO_053,,Engine: Fair,Critical,36,Premio
+TOY_ALLION_130,,Transmission: Fair,Critical,23,Allion
+TOY_ALLION_160,,Suspension: Good,Good,90,Allion
+TOY_YARIS_266,,Cooling System: Poor,Fair,66,Yaris
+TOY_PREMIO_177,,Tyres: Good,Poor,51,Premio
+TOY_ALLION_299,,Tyres: Good,Fair,66,Allion
+TOY_VITZ_115,,Engine: Fair,Good,86,Vitz
+TOY_AXIO_118,,Engine: Fair,Critical,21,Axio
+TOY_COROLLA_256,,Exhaust System: Good,Poor,59,Corolla
+TOY_VITZ_008,,Steering: Fair,Critical,22,Vitz
+TOY_PREMIO_255,,Transmission: Fair,Good,95,Premio
+TOY_ALLION_022,,Tyres: Fair,Poor,56,Allion
+TOY_AXIO_101,,Cooling System: Poor,Fair,66,Axio
+TOY_PREMIO_167,,Suspension: Good,Good,83,Premio
+TOY_YARIS_257,,Battery: Fair,Poor,55,Yaris
+TOY_AXIO_154,,Transmission: Fair,Critical,28,Axio
+TOY_COROLLA_218,,Steering: Poor,Poor,46,Corolla
+TOY_YARIS_010,,Tyres: Good,Critical,26,Yaris
+TOY_COROLLA_079,,Brakes: Fair,Poor,44,Corolla
+TOY_AXIO_063,,Transmission: Fair,Poor,58,Axio
+TOY_COROLLA_185,,Suspension: Poor,Good,92,Corolla
+TOY_PREMIO_060,,Cooling System: Fair,Good,81,Premio
+TOY_ALLION_032,,Suspension: Good,Good,85,Allion
+TOY_VITZ_214,,Transmission: Critical,Critical,20,Vitz
+TOY_PREMIO_280,,Battery: Good,Good,80,Premio
+TOY_VITZ_294,,Tyres: Good,Fair,68,Vitz
+TOY_COROLLA_103,,Transmission: Fair,Good,99,Corolla
+TOY_ALLION_237,,Tyres: Fair,Critical,39,Allion
+TOY_COROLLA_095,,Engine: Poor,Fair,63,Corolla
+TOY_VITZ_087,,Transmission: Poor,Critical,28,Vitz
+TOY_VITZ_165,,Suspension: Fair,Poor,49,Vitz
+TOY_COROLLA_219,,Battery: Poor,Good,80,Corolla
+TOY_AXIO_242,,Suspension: Fair,Fair,75,Axio
+TOY_YARIS_269,,Engine: Fair,Critical,33,Yaris
+TOY_AXIO_103,,Cooling System: Fair,Good,88,Axio
+TOY_ALLION_075,,Engine: Good,Fair,69,Allion
+TOY_AXIO_083,,Brakes: Good,Poor,46,Axio
+TOY_PREMIO_109,,Suspension: Fair,Critical,27,Premio
+TOY_COROLLA_243,,Suspension: Good,Fair,75,Corolla
+TOY_PREMIO_117,,Brakes: Good,Fair,71,Premio
+TOY_COROLLA_040,,Engine: Poor,Critical,35,Corolla
+TOY_COROLLA_211,,Exhaust System: Poor,Poor,47,Corolla
+TOY_ALLION_261,,Engine: Good,Fair,63,Allion
+TOY_AXIO_165,,Brakes: Fair,Poor,45,Axio
+TOY_ALLION_121,,Cooling System: Fair,Fair,72,Allion
+TOY_PREMIO_129,,Cooling System: Fair,Fair,60,Premio
+TOY_YARIS_298,,Suspension: Fair,Poor,51,Yaris
+TOY_VITZ_184,,Cooling System: Fair,Good,93,Vitz
+TOY_ALLION_082,,Steering: Poor,Critical,39,Allion
+TOY_VITZ_039,,Suspension: Poor,Good,95,Vitz
+TOY_ALLION_161,,Steering: Fair,Poor,49,Allion
+TOY_VITZ_163,,Exhaust System: Good,Fair,67,Vitz
+TOY_ALLION_195,,Battery: Good,Good,82,Allion
+TOY_VITZ_040,,Steering: Fair,Poor,59,Vitz
+TOY_ALLION_274,,Brakes: Good,Critical,37,Allion
+TOY_VITZ_028,,Engine: Poor,Good,91,Vitz
+TOY_AXIO_229,,Steering: Good,Fair,68,Axio
+TOY_PREMIO_150,,Steering: Good,Good,98,Premio
+TOY_ALLION_208,,Steering: Poor,Good,95,Allion
+TOY_YARIS_010,,Tyres: Good,Critical,26,Yaris
+TOY_ALLION_131,,Battery: Fair,Poor,44,Allion
+TOY_ALLION_281,,Brakes: Critical,Poor,42,Allion
+TOY_VITZ_221,,Tyres: Poor,Poor,40,Vitz
+TOY_PREMIO_197,,Battery: Good,Fair,76,Premio
+TOY_VITZ_001,,Exhaust System: Fair,Critical,24,Vitz
+TOY_COROLLA_061,,Battery: Fair,Poor,56,Corolla
+TOY_ALLION_243,,Brakes: Good,Good,88,Allion
+TOY_VITZ_156,,Tyres: Good,Critical,30,Vitz
+TOY_AXIO_014,,Battery: Fair,Fair,67,Axio
+TOY_ALLION_085,,Engine: Fair,Fair,66,Allion
+TOY_AXIO_064,,Suspension: Good,Critical,25,Axio
+TOY_YARIS_036,,Tyres: Fair,Fair,64,Yaris
+TOY_COROLLA_030,,Cooling System: Good,Poor,58,Corolla
+TOY_ALLION_121,,Cooling System: Fair,Fair,72,Allion
+TOY_PREMIO_188,,Suspension: Good,Poor,58,Premio
+TOY_AXIO_227,,Engine: Poor,Poor,59,Axio
+TOY_COROLLA_128,,Battery: Fair,Good,89,Corolla
+TOY_YARIS_190,,Battery: Fair,Critical,38,Yaris
+TOY_AXIO_016,,Brakes: Fair,Poor,40,Axio
+TOY_PREMIO_080,,Engine: Poor,Poor,41,Premio
+TOY_VITZ_149,,Engine: Fair,Critical,23,Vitz
+TOY_YARIS_110,,Battery: Good,Good,82,Yaris
+TOY_ALLION_195,,Battery: Good,Good,82,Allion
+TOY_AXIO_174,,Battery: Good,Fair,74,Axio
+TOY_COROLLA_043,,Brakes: Fair,Good,89,Corolla
+TOY_YARIS_089,,Exhaust System: Fair,Fair,71,Yaris
+TOY_YARIS_148,,Brakes: Fair,Good,80,Yaris
+TOY_YARIS_218,,Cooling System: Fair,Critical,21,Yaris
+TOY_ALLION_093,,Cooling System: Good,Fair,75,Allion
+TOY_VITZ_255,,Tyres: Fair,Critical,28,Vitz
+TOY_COROLLA_286,,Transmission: Good,Good,96,Corolla
+TOY_ALLION_180,,Battery: Poor,Critical,31,Allion
+TOY_ALLION_063,,Exhaust System: Good,Fair,75,Allion
+TOY_AXIO_112,,Battery: Good,Good,83,Axio
+TOY_AXIO_045,,Transmission: Good,Poor,57,Axio
+TOY_PREMIO_149,,Cooling System: Poor,Good,95,Premio
+TOY_VITZ_169,,Tyres: Good,Poor,52,Vitz
+TOY_YARIS_077,,Exhaust System: Poor,Good,85,Yaris
+TOY_PREMIO_234,,Cooling System: Fair,Critical,22,Premio
+TOY_PREMIO_196,,Engine: Good,Good,90,Premio
+TOY_VITZ_280,,Exhaust System: Good,Fair,79,Vitz
+TOY_PREMIO_228,,Transmission: Fair,Good,89,Premio
+TOY_ALLION_265,,Brakes: Poor,Poor,52,Allion
+TOY_VITZ_300,,Engine: Fair,Poor,49,Vitz
+TOY_YARIS_203,,Cooling System: Fair,Poor,59,Yaris
+TOY_YARIS_110,,Battery: Good,Good,82,Yaris
+TOY_PREMIO_290,,Transmission: Poor,Good,92,Premio
+TOY_VITZ_011,,Exhaust System: Poor,Good,90,Vitz
+TOY_ALLION_230,,Engine: Poor,Critical,23,Allion
+TOY_COROLLA_046,,Exhaust System: Poor,Critical,35,Corolla
+TOY_ALLION_062,,Brakes: Good,Good,90,Allion
+TOY_PREMIO_160,,Transmission: Fair,Critical,33,Premio
+TOY_COROLLA_128,,Battery: Fair,Good,89,Corolla
+TOY_YARIS_109,,Tyres: Poor,Critical,20,Yaris
+TOY_AXIO_165,,Brakes: Fair,Poor,45,Axio
+TOY_VITZ_219,,Steering: Good,Fair,79,Vitz
+TOY_PREMIO_170,,Brakes: Fair,Critical,34,Premio
+TOY_AXIO_117,,Steering: Poor,Good,94,Axio
+TOY_ALLION_254,,Transmission: Fair,Fair,73,Allion
+TOY_AXIO_231,,Steering: Good,Critical,39,Axio
+TOY_AXIO_009,,Suspension: Poor,Good,91,Axio
+TOY_COROLLA_113,,Engine: Fair,Good,95,Corolla
+TOY_COROLLA_217,,Transmission: Good,Good,93,Corolla
+TOY_PREMIO_292,,Transmission: Good,Poor,50,Premio
+TOY_ALLION_084,,Suspension: Good,Poor,50,Allion
+TOY_AXIO_185,,Exhaust System: Fair,Critical,21,Axio
+TOY_AXIO_172,,Suspension: Fair,Poor,44,Axio
+TOY_ALLION_158,,Transmission: Fair,Critical,34,Allion
+TOY_YARIS_080,,Brakes: Fair,Critical,28,Yaris
+TOY_ALLION_109,,Transmission: Poor,Critical,32,Allion
+TOY_COROLLA_211,,Exhaust System: Poor,Poor,47,Corolla
+TOY_AXIO_175,,Engine: Fair,Good,94,Axio
+TOY_PREMIO_191,,Tyres: Good,Critical,30,Premio
+TOY_PREMIO_007,,Brakes: Good,Good,82,Premio
+TOY_PREMIO_098,,Transmission: Fair,Poor,48,Premio
+TOY_YARIS_097,,Cooling System: Fair,Poor,50,Yaris
+TOY_AXIO_221,,Tyres: Fair,Critical,36,Axio
+TOY_PREMIO_163,,Battery: Good,Poor,55,Premio
+TOY_AXIO_102,,Exhaust System: Fair,Fair,78,Axio
+TOY_COROLLA_153,,Brakes: Fair,Good,88,Corolla
+TOY_COROLLA_003,,Cooling System: Poor,Poor,56,Corolla
+TOY_YARIS_009,,Steering: Critical,Poor,55,Yaris
+TOY_YARIS_237,,Cooling System: Poor,Good,95,Yaris
+TOY_VITZ_188,,Battery: Good,Poor,58,Vitz
+TOY_ALLION_175,,Cooling System: Fair,Poor,47,Allion
+TOY_COROLLA_186,,Steering: Poor,Good,96,Corolla
+TOY_ALLION_007,,Transmission: Poor,Good,92,Allion
+TOY_COROLLA_036,,Brakes: Fair,Poor,50,Corolla
+TOY_COROLLA_175,,Cooling System: Poor,Poor,53,Corolla
+TOY_PREMIO_209,,Battery: Good,Critical,32,Premio
+TOY_YARIS_013,,Brakes: Fair,Fair,69,Yaris
+TOY_YARIS_266,,Cooling System: Poor,Fair,66,Yaris
+TOY_PREMIO_166,,Tyres: Poor,Poor,47,Premio
+TOY_PREMIO_164,,Battery: Good,Poor,48,Premio
+TOY_ALLION_187,,Cooling System: Fair,Fair,62,Allion
+TOY_PREMIO_146,,Suspension: Good,Good,82,Premio
+TOY_AXIO_022,,Cooling System: Poor,Poor,40,Axio
+TOY_ALLION_227,,Tyres: Poor,Poor,56,Allion
+TOY_VITZ_186,,Engine: Fair,Poor,57,Vitz
+TOY_PREMIO_209,,Battery: Good,Critical,32,Premio
+TOY_ALLION_118,,Cooling System: Fair,Poor,56,Allion
+TOY_COROLLA_023,,Cooling System: Fair,Poor,53,Corolla
+TOY_VITZ_132,,Steering: Fair,Critical,38,Vitz
+TOY_VITZ_269,,Tyres: Good,Critical,24,Vitz
+TOY_ALLION_049,,Suspension: Fair,Critical,28,Allion
+TOY_ALLION_183,,Brakes: Fair,Good,94,Allion
+TOY_YARIS_299,,Exhaust System: Good,Fair,60,Yaris
+TOY_COROLLA_203,,Cooling System: Fair,Fair,61,Corolla
+TOY_COROLLA_116,,Engine: Fair,Poor,59,Corolla
+TOY_AXIO_212,,Tyres: Critical,Fair,64,Axio
+TOY_VITZ_110,,Brakes: Fair,Poor,49,Vitz
+TOY_VITZ_274,,Engine: Poor,Poor,49,Vitz
+TOY_AXIO_057,,Steering: Good,Poor,44,Axio
+TOY_AXIO_258,,Engine: Good,Good,88,Axio
+TOY_AXIO_192,,Battery: Fair,Fair,77,Axio
+TOY_AXIO_166,,Brakes: Fair,Poor,43,Axio
+TOY_COROLLA_203,,Cooling System: Fair,Fair,61,Corolla
+TOY_YARIS_112,,Steering: Fair,Good,83,Yaris
+TOY_ALLION_192,,Engine: Good,Fair,65,Allion
+TOY_ALLION_042,,Brakes: Fair,Good,86,Allion
+TOY_AXIO_196,,Steering: Good,Critical,27,Axio
+TOY_AXIO_138,,Brakes: Good,Poor,55,Axio
+TOY_PREMIO_026,,Tyres: Good,Poor,56,Premio
+TOY_VITZ_239,,Tyres: Poor,Fair,70,Vitz
+TOY_ALLION_032,,Suspension: Good,Good,85,Allion
+TOY_YARIS_090,,Battery: Poor,Fair,71,Yaris
+TOY_VITZ_293,,Transmission: Poor,Good,90,Vitz
+TOY_VITZ_105,,Steering: Poor,Fair,73,Vitz
+TOY_COROLLA_053,,Steering: Poor,Good,81,Corolla
+TOY_ALLION_159,,Exhaust System: Good,Poor,45,Allion
+TOY_ALLION_034,,Tyres: Good,Good,90,Allion
+TOY_AXIO_051,,Brakes: Fair,Poor,46,Axio
+TOY_COROLLA_065,,Brakes: Fair,Critical,31,Corolla
+TOY_AXIO_284,,Suspension: Poor,Poor,56,Axio
+TOY_ALLION_168,,Cooling System: Fair,Poor,57,Allion
+TOY_PREMIO_285,,Transmission: Critical,Fair,65,Premio
+TOY_COROLLA_281,,Brakes: Critical,Good,88,Corolla
+TOY_AXIO_043,,Cooling System: Good,Good,85,Axio
+TOY_PREMIO_048,,Exhaust System: Fair,Critical,29,Premio
+TOY_YARIS_265,,Exhaust System: Fair,Poor,54,Yaris
+TOY_YARIS_104,,Brakes: Fair,Fair,64,Yaris
+TOY_PREMIO_118,,Battery: Fair,Poor,40,Premio
+TOY_AXIO_159,,Brakes: Good,Good,88,Axio
+TOY_VITZ_261,,Battery: Poor,Critical,38,Vitz
+TOY_COROLLA_250,,Steering: Critical,Fair,66,Corolla
+TOY_YARIS_071,,Battery: Good,Fair,69,Yaris
+TOY_ALLION_177,,Cooling System: Good,Good,93,Allion
+TOY_ALLION_045,,Steering: Fair,Good,86,Allion
+TOY_VITZ_190,,Steering: Fair,Poor,46,Vitz
+TOY_VITZ_244,,Engine: Fair,Poor,53,Vitz
+TOY_ALLION_138,,Suspension: Good,Good,100,Allion
+TOY_ALLION_004,,Tyres: Poor,Poor,57,Allion
+TOY_VITZ_283,,Battery: Fair,Fair,78,Vitz
+TOY_AXIO_143,,Suspension: Good,Good,95,Axio
+TOY_PREMIO_199,,Brakes: Fair,Good,94,Premio
+TOY_ALLION_280,,Transmission: Poor,Good,87,Allion
+TOY_COROLLA_093,,Brakes: Good,Good,87,Corolla
+TOY_AXIO_229,,Steering: Good,Fair,68,Axio
+TOY_YARIS_263,,Steering: Poor,Fair,60,Yaris
+TOY_PREMIO_011,,Brakes: Fair,Critical,35,Premio
+TOY_YARIS_286,,Exhaust System: Good,Critical,30,Yaris
+TOY_ALLION_267,,Battery: Fair,Poor,56,Allion
+TOY_PREMIO_068,,Transmission: Fair,Good,88,Premio
+TOY_AXIO_237,,Steering: Good,Fair,79,Axio
+TOY_ALLION_078,,Cooling System: Good,Critical,33,Allion
+TOY_COROLLA_266,,Suspension: Critical,Fair,70,Corolla
+TOY_AXIO_028,,Battery: Fair,Poor,50,Axio
+TOY_VITZ_065,,Suspension: Poor,Fair,65,Vitz
+TOY_PREMIO_284,,Transmission: Fair,Fair,61,Premio
+TOY_COROLLA_162,,Cooling System: Fair,Good,97,Corolla
+TOY_PREMIO_265,,Suspension: Fair,Fair,63,Premio
+TOY_ALLION_239,,Transmission: Good,Good,91,Allion
+TOY_AXIO_128,,Transmission: Fair,Critical,37,Axio
+TOY_ALLION_026,,Brakes: Good,Fair,62,Allion
+TOY_PREMIO_203,,Brakes: Fair,Critical,32,Premio
+TOY_COROLLA_201,,Battery: Fair,Fair,68,Corolla
+TOY_ALLION_144,,Suspension: Good,Fair,73,Allion
+TOY_ALLION_270,,Cooling System: Poor,Fair,74,Allion
+TOY_PREMIO_176,,Tyres: Fair,Poor,47,Premio
+TOY_VITZ_290,,Exhaust System: Poor,Good,84,Vitz
+TOY_VITZ_259,,Tyres: Good,Poor,59,Vitz
+TOY_PREMIO_055,,Battery: Good,Fair,74,Premio
+TOY_VITZ_144,,Engine: Good,Good,91,Vitz
+TOY_COROLLA_269,,Tyres: Good,Poor,40,Corolla
+TOY_COROLLA_080,,Exhaust System: Fair,Critical,26,Corolla
+TOY_VITZ_212,,Exhaust System: Fair,Critical,20,Vitz
+TOY_ALLION_145,,Transmission: Fair,Good,85,Allion
+TOY_VITZ_212,,Exhaust System: Fair,Critical,20,Vitz
+TOY_VITZ_253,,Exhaust System: Poor,Good,90,Vitz
+TOY_PREMIO_133,,Transmission: Fair,Fair,70,Premio
+TOY_AXIO_078,,Suspension: Good,Poor,43,Axio
+TOY_AXIO_043,,Cooling System: Good,Good,85,Axio
+TOY_AXIO_195,,Tyres: Fair,Critical,34,Axio
+TOY_COROLLA_224,,Transmission: Poor,Critical,23,Corolla
+TOY_YARIS_089,,Exhaust System: Fair,Fair,71,Yaris
+TOY_COROLLA_262,,Exhaust System: Fair,Critical,26,Corolla
+TOY_AXIO_177,,Brakes: Good,Fair,71,Axio
+TOY_ALLION_182,,Transmission: Fair,Poor,44,Allion
+TOY_AXIO_014,,Battery: Fair,Fair,67,Axio
+TOY_COROLLA_278,,Transmission: Good,Critical,29,Corolla
+TOY_PREMIO_013,,Brakes: Fair,Poor,58,Premio
+TOY_VITZ_151,,Battery: Fair,Poor,46,Vitz
+TOY_COROLLA_202,,Transmission: Poor,Good,89,Corolla
+TOY_COROLLA_060,,Suspension: Good,Critical,28,Corolla
+TOY_VITZ_250,,Brakes: Good,Critical,32,Vitz
+TOY_COROLLA_220,,Brakes: Fair,Poor,50,Corolla
+TOY_COROLLA_159,,Transmission: Critical,Poor,42,Corolla
+TOY_YARIS_176,,Cooling System: Good,Fair,71,Yaris
+TOY_ALLION_283,,Exhaust System: Fair,Good,89,Allion
+TOY_PREMIO_298,,Transmission: Poor,Good,87,Premio
+TOY_AXIO_296,,Suspension: Good,Fair,62,Axio
+TOY_ALLION_154,,Cooling System: Good,Poor,53,Allion
+TOY_ALLION_284,,Transmission: Good,Good,91,Allion
+TOY_AXIO_177,,Brakes: Good,Fair,71,Axio
+TOY_COROLLA_257,,Tyres: Poor,Good,84,Corolla
+TOY_ALLION_209,,Battery: Good,Good,82,Allion
+TOY_VITZ_287,,Transmission: Fair,Fair,65,Vitz
+TOY_AXIO_241,,Tyres: Fair,Fair,72,Axio
+TOY_PREMIO_184,,Engine: Fair,Critical,36,Premio
+TOY_COROLLA_283,,Cooling System: Fair,Critical,21,Corolla
+TOY_AXIO_105,,Battery: Fair,Poor,46,Axio
+TOY_PREMIO_111,,Exhaust System: Fair,Good,90,Premio
+TOY_VITZ_155,,Cooling System: Poor,Poor,55,Vitz
+TOY_YARIS_132,,Suspension: Good,Poor,52,Yaris
+TOY_VITZ_188,,Battery: Good,Poor,58,Vitz
+TOY_AXIO_052,,Transmission: Fair,Good,92,Axio
+TOY_AXIO_024,,Exhaust System: Fair,Poor,52,Axio
+TOY_ALLION_296,,Transmission: Critical,Critical,26,Allion
+TOY_COROLLA_142,,Transmission: Good,Critical,28,Corolla
+TOY_COROLLA_073,,Battery: Good,Poor,42,Corolla
+TOY_COROLLA_289,,Transmission: Poor,Fair,64,Corolla
+TOY_ALLION_232,,Cooling System: Poor,Fair,71,Allion
+TOY_YARIS_271,,Exhaust System: Fair,Critical,36,Yaris
+TOY_ALLION_055,,Brakes: Fair,Good,93,Allion
+TOY_AXIO_076,,Exhaust System: Fair,Fair,63,Axio
+TOY_COROLLA_015,,Transmission: Fair,Poor,58,Corolla
+TOY_COROLLA_253,,Tyres: Good,Critical,29,Corolla
+TOY_AXIO_053,,Tyres: Fair,Poor,44,Axio
+TOY_COROLLA_053,,Steering: Poor,Good,81,Corolla
+TOY_PREMIO_007,,Brakes: Good,Good,82,Premio
+TOY_AXIO_001,,Steering: Critical,Critical,28,Axio
+TOY_AXIO_209,,Transmission: Fair,Critical,39,Axio
+TOY_COROLLA_131,,Engine: Poor,Fair,78,Corolla
+TOY_YARIS_259,,Exhaust System: Fair,Critical,21,Yaris
+TOY_ALLION_073,,Cooling System: Fair,Poor,47,Allion
+TOY_ALLION_137,,Battery: Fair,Critical,36,Allion
+TOY_COROLLA_196,,Brakes: Good,Good,94,Corolla
+TOY_ALLION_234,,Cooling System: Fair,Poor,46,Allion
+TOY_YARIS_224,,Transmission: Good,Good,97,Yaris
+TOY_VITZ_054,,Tyres: Fair,Good,92,Vitz
+TOY_VITZ_228,,Exhaust System: Poor,Poor,48,Vitz
+TOY_YARIS_024,,Battery: Fair,Good,86,Yaris
+TOY_VITZ_236,,Battery: Fair,Poor,53,Vitz
+TOY_VITZ_267,,Engine: Fair,Fair,77,Vitz
+TOY_VITZ_198,,Engine: Critical,Poor,50,Vitz
+TOY_PREMIO_067,,Transmission: Fair,Fair,78,Premio
+TOY_PREMIO_285,,Transmission: Critical,Fair,65,Premio
+TOY_AXIO_172,,Suspension: Fair,Poor,44,Axio
+TOY_VITZ_228,,Exhaust System: Poor,Poor,48,Vitz
+TOY_COROLLA_116,,Engine: Fair,Poor,59,Corolla
+TOY_PREMIO_234,,Cooling System: Fair,Critical,22,Premio
+TOY_YARIS_091,,Cooling System: Fair,Critical,20,Yaris
+TOY_VITZ_092,,Transmission: Fair,Critical,32,Vitz
+TOY_VITZ_069,,Brakes: Good,Fair,70,Vitz
+TOY_VITZ_138,,Brakes: Fair,Critical,34,Vitz
+TOY_COROLLA_073,,Battery: Good,Poor,42,Corolla
+TOY_VITZ_163,,Exhaust System: Good,Fair,67,Vitz
+TOY_VITZ_030,,Battery: Good,Good,94,Vitz
+TOY_VITZ_120,,Transmission: Poor,Poor,57,Vitz
+TOY_YARIS_183,,Steering: Fair,Poor,55,Yaris
+TOY_COROLLA_062,,Battery: Critical,Poor,47,Corolla
+TOY_YARIS_055,,Engine: Fair,Good,91,Yaris
+TOY_AXIO_161,,Cooling System: Poor,Fair,65,Axio
+TOY_VITZ_175,,Suspension: Fair,Good,90,Vitz
+TOY_YARIS_025,,Brakes: Good,Critical,29,Yaris
+TOY_ALLION_067,,Battery: Fair,Good,92,Allion
+TOY_AXIO_135,,Battery: Fair,Critical,28,Axio
+TOY_COROLLA_205,,Battery: Poor,Critical,37,Corolla
+TOY_AXIO_134,,Battery: Poor,Fair,64,Axio
+TOY_VITZ_247,,Battery: Fair,Critical,32,Vitz
+TOY_PREMIO_277,,Steering: Good,Good,84,Premio
+TOY_AXIO_089,,Cooling System: Fair,Poor,59,Axio
+TOY_ALLION_215,,Steering: Fair,Critical,32,Allion
+TOY_PREMIO_117,,Brakes: Good,Fair,71,Premio
+TOY_YARIS_292,,Steering: Poor,Critical,26,Yaris
+TOY_YARIS_061,,Exhaust System: Good,Critical,28,Yaris
+TOY_YARIS_239,,Engine: Poor,Fair,78,Yaris
+TOY_VITZ_231,,Exhaust System: Good,Fair,67,Vitz
+TOY_COROLLA_186,,Steering: Poor,Good,96,Corolla
+TOY_YARIS_210,,Battery: Fair,Critical,24,Yaris
+TOY_PREMIO_039,,Exhaust System: Poor,Good,98,Premio
+TOY_PREMIO_298,,Transmission: Poor,Good,87,Premio
+TOY_AXIO_280,,Exhaust System: Good,Good,98,Axio
+TOY_YARIS_105,,Exhaust System: Fair,Fair,78,Yaris
+TOY_VITZ_193,,Tyres: Good,Critical,39,Vitz
+TOY_ALLION_032,,Suspension: Good,Good,85,Allion
+TOY_AXIO_231,,Steering: Good,Critical,39,Axio
+TOY_VITZ_206,,Cooling System: Fair,Poor,57,Vitz
+TOY_AXIO_237,,Steering: Good,Fair,79,Axio
+TOY_AXIO_115,,Engine: Fair,Good,95,Axio
+TOY_COROLLA_198,,Tyres: Fair,Critical,23,Corolla
+TOY_COROLLA_171,,Brakes: Poor,Fair,75,Corolla
+TOY_COROLLA_046,,Exhaust System: Poor,Critical,35,Corolla
+TOY_YARIS_196,,Cooling System: Fair,Fair,67,Yaris
+TOY_AXIO_046,,Engine: Poor,Fair,75,Axio
+TOY_ALLION_154,,Cooling System: Good,Poor,53,Allion
+TOY_AXIO_126,,Steering: Good,Poor,40,Axio
+TOY_COROLLA_262,,Exhaust System: Fair,Critical,26,Corolla
+TOY_YARIS_185,,Engine: Fair,Critical,27,Yaris
+TOY_VITZ_020,,Battery: Fair,Fair,75,Vitz
+TOY_VITZ_173,,Exhaust System: Good,Poor,43,Vitz
+TOY_YARIS_132,,Suspension: Good,Poor,52,Yaris
+TOY_AXIO_064,,Suspension: Good,Critical,25,Axio
+TOY_PREMIO_034,,Steering: Good,Fair,64,Premio
+TOY_YARIS_126,,Cooling System: Poor,Critical,25,Yaris
+TOY_ALLION_112,,Tyres: Fair,Critical,20,Allion
+TOY_ALLION_210,,Battery: Fair,Critical,38,Allion
+TOY_PREMIO_227,,Battery: Fair,Critical,27,Premio
+TOY_ALLION_193,,Transmission: Critical,Fair,64,Allion
+TOY_VITZ_158,,Transmission: Fair,Good,88,Vitz
+TOY_ALLION_202,,Transmission: Good,Fair,70,Allion
+TOY_ALLION_082,,Steering: Poor,Critical,39,Allion
+TOY_AXIO_229,,Steering: Good,Fair,68,Axio
+TOY_ALLION_091,,Brakes: Fair,Poor,43,Allion
+TOY_ALLION_192,,Engine: Good,Fair,65,Allion
+TOY_AXIO_234,,Brakes: Fair,Fair,61,Axio
+TOY_VITZ_030,,Battery: Good,Good,94,Vitz
+TOY_YARIS_132,,Suspension: Good,Poor,52,Yaris
+TOY_PREMIO_029,,Steering: Good,Critical,34,Premio
+TOY_PREMIO_042,,Suspension: Fair,Critical,27,Premio
+TOY_VITZ_163,,Exhaust System: Good,Fair,67,Vitz
+TOY_COROLLA_194,,Tyres: Poor,Poor,59,Corolla
+TOY_PREMIO_285,,Transmission: Critical,Fair,65,Premio
+TOY_COROLLA_154,,Cooling System: Good,Critical,26,Corolla
+TOY_YARIS_180,,Cooling System: Good,Good,96,Yaris
+TOY_ALLION_060,,Engine: Fair,Good,88,Allion
+TOY_ALLION_043,,Tyres: Good,Fair,72,Allion
+TOY_YARIS_217,,Engine: Fair,Poor,55,Yaris
+TOY_ALLION_282,,Transmission: Fair,Good,84,Allion
+TOY_PREMIO_014,,Engine: Fair,Good,94,Premio
+TOY_YARIS_092,,Suspension: Fair,Good,91,Yaris
+TOY_COROLLA_161,,Battery: Good,Fair,63,Corolla
+TOY_AXIO_020,,Brakes: Good,Poor,51,Axio
+TOY_VITZ_008,,Steering: Fair,Critical,22,Vitz
+TOY_VITZ_085,,Transmission: Poor,Poor,56,Vitz
+TOY_PREMIO_143,,Exhaust System: Fair,Critical,38,Premio
+TOY_COROLLA_043,,Brakes: Fair,Good,89,Corolla
+TOY_AXIO_252,,Transmission: Fair,Critical,38,Axio
+TOY_AXIO_196,,Steering: Good,Critical,27,Axio
+TOY_PREMIO_025,,Brakes: Fair,Fair,73,Premio
+TOY_COROLLA_262,,Exhaust System: Fair,Critical,26,Corolla
+TOY_VITZ_171,,Transmission: Good,Fair,79,Vitz
+TOY_VITZ_269,,Tyres: Good,Critical,24,Vitz
+TOY_PREMIO_171,,Exhaust System: Poor,Poor,43,Premio
+TOY_PREMIO_068,,Transmission: Fair,Good,88,Premio
+TOY_PREMIO_102,,Transmission: Good,Poor,57,Premio
+TOY_YARIS_073,,Tyres: Fair,Critical,24,Yaris
+TOY_YARIS_189,,Steering: Poor,Poor,54,Yaris
+TOY_PREMIO_096,,Suspension: Poor,Critical,36,Premio
+TOY_YARIS_296,,Engine: Fair,Fair,78,Yaris
+TOY_VITZ_162,,Transmission: Good,Good,86,Vitz
+TOY_VITZ_012,,Steering: Good,Critical,37,Vitz
+TOY_COROLLA_249,,Engine: Good,Critical,20,Corolla
+TOY_COROLLA_115,,Cooling System: Fair,Critical,35,Corolla
+TOY_COROLLA_198,,Tyres: Fair,Critical,23,Corolla
+TOY_AXIO_239,,Tyres: Fair,Fair,75,Axio
+TOY_AXIO_150,,Transmission: Good,Good,90,Axio
+TOY_VITZ_138,,Brakes: Fair,Critical,34,Vitz
+TOY_VITZ_093,,Tyres: Fair,Critical,37,Vitz
+TOY_YARIS_074,,Brakes: Poor,Poor,51,Yaris
+TOY_YARIS_181,,Steering: Good,Poor,58,Yaris
+TOY_AXIO_299,,Brakes: Good,Poor,54,Axio
+TOY_VITZ_252,,Engine: Good,Fair,65,Vitz
+TOY_YARIS_290,,Cooling System: Good,Poor,48,Yaris
+TOY_YARIS_163,,Suspension: Good,Fair,68,Yaris
+TOY_AXIO_234,,Brakes: Fair,Fair,61,Axio
+TOY_COROLLA_058,,Tyres: Fair,Good,96,Corolla
+TOY_ALLION_125,,Battery: Fair,Good,98,Allion
+TOY_VITZ_182,,Tyres: Good,Critical,21,Vitz
+TOY_PREMIO_097,,Brakes: Fair,Good,85,Premio
+TOY_COROLLA_059,,Battery: Fair,Critical,27,Corolla
+TOY_VITZ_276,,Suspension: Good,Poor,55,Vitz
+TOY_ALLION_129,,Engine: Fair,Good,96,Allion
+TOY_COROLLA_295,,Steering: Fair,Fair,66,Corolla
+TOY_COROLLA_041,,Cooling System: Fair,Critical,32,Corolla
+TOY_YARIS_093,,Steering: Fair,Poor,48,Yaris
+TOY_PREMIO_275,,Transmission: Poor,Critical,29,Premio
+TOY_AXIO_076,,Exhaust System: Fair,Fair,63,Axio
+TOY_PREMIO_136,,Engine: Good,Fair,72,Premio
+TOY_ALLION_150,,Steering: Poor,Critical,27,Allion
+TOY_PREMIO_076,,Cooling System: Good,Good,88,Premio
+TOY_COROLLA_157,,Battery: Fair,Poor,40,Corolla
+TOY_YARIS_188,,Transmission: Fair,Fair,69,Yaris
+TOY_AXIO_264,,Battery: Fair,Fair,66,Axio
+TOY_YARIS_072,,Cooling System: Fair,Poor,48,Yaris
+TOY_YARIS_198,,Transmission: Fair,Poor,46,Yaris
+TOY_COROLLA_095,,Engine: Poor,Fair,63,Corolla
+TOY_COROLLA_194,,Tyres: Poor,Poor,59,Corolla
+TOY_VITZ_094,,Transmission: Fair,Critical,39,Vitz
+TOY_PREMIO_075,,Tyres: Poor,Critical,21,Premio
+TOY_VITZ_264,,Exhaust System: Poor,Fair,76,Vitz
+TOY_ALLION_255,,Exhaust System: Poor,Good,83,Allion
+TOY_AXIO_095,,Transmission: Poor,Fair,76,Axio
+TOY_VITZ_286,,Suspension: Fair,Critical,27,Vitz
+TOY_ALLION_088,,Engine: Good,Poor,42,Allion
+TOY_VITZ_126,,Brakes: Poor,Poor,52,Vitz
+TOY_VITZ_167,,Tyres: Fair,Fair,72,Vitz
+TOY_ALLION_134,,Brakes: Fair,Good,90,Allion
+TOY_COROLLA_053,,Steering: Poor,Good,81,Corolla
+TOY_ALLION_058,,Steering: Fair,Poor,52,Allion
+TOY_PREMIO_197,,Battery: Good,Fair,76,Premio
+TOY_YARIS_236,,Engine: Good,Poor,41,Yaris
+TOY_AXIO_117,,Steering: Poor,Good,94,Axio
+TOY_AXIO_166,,Brakes: Fair,Poor,43,Axio
+TOY_YARIS_020,,Engine: Fair,Critical,34,Yaris
+TOY_COROLLA_136,,Tyres: Poor,Fair,60,Corolla
+TOY_VITZ_165,,Suspension: Fair,Poor,49,Vitz
+TOY_VITZ_079,,Brakes: Fair,Good,93,Vitz
+TOY_ALLION_188,,Exhaust System: Fair,Good,80,Allion
+TOY_ALLION_047,,Steering: Poor,Good,94,Allion
+TOY_YARIS_004,,Battery: Fair,Fair,78,Yaris
+TOY_YARIS_073,,Tyres: Fair,Critical,24,Yaris
+TOY_AXIO_280,,Exhaust System: Good,Good,98,Axio
+TOY_VITZ_046,,Tyres: Fair,Critical,29,Vitz
+TOY_ALLION_241,,Engine: Good,Good,93,Allion
+TOY_PREMIO_024,,Brakes: Poor,Fair,77,Premio
+TOY_AXIO_175,,Engine: Fair,Good,94,Axio
+TOY_AXIO_227,,Engine: Poor,Poor,59,Axio
+TOY_AXIO_224,,Tyres: Good,Poor,58,Axio
+TOY_VITZ_253,,Exhaust System: Poor,Good,90,Vitz
+TOY_VITZ_143,,Cooling System: Poor,Fair,71,Vitz
+TOY_ALLION_053,,Transmission: Fair,Poor,53,Allion
+TOY_AXIO_139,,Brakes: Fair,Fair,70,Axio
+TOY_VITZ_234,,Engine: Fair,Good,87,Vitz
+TOY_PREMIO_150,,Steering: Good,Good,98,Premio
+TOY_COROLLA_195,,Engine: Fair,Critical,25,Corolla
+TOY_PREMIO_091,,Exhaust System: Good,Poor,50,Premio
+TOY_COROLLA_294,,Tyres: Good,Good,88,Corolla
+TOY_COROLLA_014,,Exhaust System: Poor,Poor,48,Corolla
+TOY_AXIO_199,,Tyres: Fair,Fair,66,Axio
+TOY_AXIO_198,,Suspension: Fair,Critical,31,Axio
+TOY_PREMIO_228,,Transmission: Fair,Good,89,Premio
+TOY_PREMIO_284,,Transmission: Fair,Fair,61,Premio
+TOY_AXIO_296,,Suspension: Good,Fair,62,Axio
+TOY_COROLLA_193,,Tyres: Good,Critical,21,Corolla
+TOY_VITZ_155,,Cooling System: Poor,Poor,55,Vitz
+TOY_YARIS_020,,Engine: Fair,Critical,34,Yaris
+TOY_AXIO_297,,Steering: Good,Poor,58,Axio
+TOY_YARIS_026,,Transmission: Poor,Fair,74,Yaris
+TOY_PREMIO_181,,Tyres: Poor,Critical,21,Premio
+TOY_YARIS_043,,Battery: Good,Critical,26,Yaris
+TOY_ALLION_253,,Engine: Good,Fair,74,Allion
+TOY_PREMIO_051,,Tyres: Fair,Good,99,Premio
+TOY_VITZ_219,,Steering: Good,Fair,79,Vitz
+TOY_YARIS_290,,Cooling System: Good,Poor,48,Yaris
+TOY_COROLLA_232,,Brakes: Fair,Critical,32,Corolla
+TOY_ALLION_265,,Brakes: Poor,Poor,52,Allion
+TOY_COROLLA_096,,Cooling System: Poor,Critical,21,Corolla
+TOY_VITZ_125,,Steering: Poor,Critical,24,Vitz
+TOY_PREMIO_141,,Transmission: Fair,Good,94,Premio
+TOY_VITZ_138,,Brakes: Fair,Critical,34,Vitz
+TOY_YARIS_261,,Engine: Poor,Poor,46,Yaris
+TOY_ALLION_195,,Battery: Good,Good,82,Allion
+TOY_AXIO_288,,Cooling System: Fair,Fair,77,Axio
+TOY_PREMIO_157,,Brakes: Poor,Poor,42,Premio
+TOY_COROLLA_066,,Transmission: Good,Fair,62,Corolla
+TOY_YARIS_033,,Exhaust System: Fair,Critical,36,Yaris
+TOY_VITZ_048,,Suspension: Fair,Good,85,Vitz
+TOY_YARIS_074,,Brakes: Poor,Poor,51,Yaris
+TOY_ALLION_179,,Suspension: Fair,Fair,65,Allion
+TOY_AXIO_184,,Brakes: Poor,Critical,23,Axio
+TOY_VITZ_099,,Steering: Good,Poor,46,Vitz
+TOY_VITZ_265,,Cooling System: Fair,Critical,37,Vitz
+TOY_PREMIO_006,,Steering: Poor,Good,80,Premio
+TOY_AXIO_051,,Brakes: Fair,Poor,46,Axio
+TOY_PREMIO_255,,Transmission: Fair,Good,95,Premio
+TOY_PREMIO_207,,Suspension: Fair,Fair,69,Premio
+TOY_YARIS_201,,Transmission: Poor,Critical,38,Yaris
+TOY_COROLLA_262,,Exhaust System: Fair,Critical,26,Corolla
+TOY_ALLION_239,,Transmission: Good,Good,91,Allion
+TOY_PREMIO_010,,Transmission: Good,Poor,40,Premio
+TOY_ALLION_289,,Cooling System: Fair,Fair,71,Allion
+TOY_COROLLA_096,,Cooling System: Poor,Critical,21,Corolla
+TOY_AXIO_030,,Brakes: Fair,Critical,27,Axio
+TOY_PREMIO_240,,Steering: Good,Critical,32,Premio
+TOY_ALLION_088,,Engine: Good,Poor,42,Allion
+TOY_VITZ_227,,Cooling System: Poor,Fair,67,Vitz
+TOY_AXIO_269,,Transmission: Good,Good,85,Axio
+TOY_ALLION_099,,Exhaust System: Fair,Fair,78,Allion
+TOY_COROLLA_153,,Brakes: Fair,Good,88,Corolla
+TOY_COROLLA_148,,Suspension: Good,Critical,30,Corolla
+TOY_VITZ_021,,Suspension: Fair,Critical,20,Vitz
+TOY_COROLLA_183,,Steering: Critical,Fair,75,Corolla
+TOY_ALLION_298,,Battery: Fair,Fair,65,Allion
+TOY_ALLION_296,,Transmission: Critical,Critical,26,Allion
+TOY_AXIO_015,,Engine: Fair,Critical,27,Axio
+TOY_AXIO_282,,Tyres: Good,Good,84,Axio
+TOY_PREMIO_236,,Tyres: Poor,Critical,22,Premio
+TOY_ALLION_240,,Cooling System: Poor,Poor,46,Allion
+TOY_AXIO_175,,Engine: Fair,Good,94,Axio
+TOY_COROLLA_018,,Exhaust System: Poor,Fair,72,Corolla
+TOY_YARIS_057,,Engine: Good,Poor,41,Yaris
+TOY_PREMIO_020,,Suspension: Good,Good,81,Premio
+TOY_ALLION_083,,Cooling System: Good,Critical,24,Allion
+TOY_COROLLA_242,,Tyres: Fair,Critical,24,Corolla
+TOY_COROLLA_040,,Engine: Poor,Critical,35,Corolla
+TOY_VITZ_192,,Battery: Fair,Critical,34,Vitz
+TOY_COROLLA_100,,Tyres: Fair,Fair,65,Corolla
+TOY_PREMIO_204,,Suspension: Good,Poor,40,Premio
+TOY_AXIO_062,,Brakes: Fair,Good,100,Axio
+TOY_PREMIO_067,,Transmission: Fair,Fair,78,Premio
+TOY_ALLION_193,,Transmission: Critical,Fair,64,Allion
+TOY_YARIS_104,,Brakes: Fair,Fair,64,Yaris
+TOY_ALLION_070,,Exhaust System: Fair,Critical,30,Allion
+TOY_PREMIO_113,,Transmission: Critical,Fair,66,Premio
+TOY_PREMIO_033,,Suspension: Good,Critical,24,Premio
+TOY_ALLION_220,,Engine: Fair,Critical,32,Allion
+TOY_PREMIO_294,,Tyres: Good,Good,98,Premio
+TOY_VITZ_130,,Transmission: Good,Poor,56,Vitz
+TOY_AXIO_051,,Brakes: Fair,Poor,46,Axio
+TOY_ALLION_242,,Tyres: Fair,Poor,52,Allion
+TOY_ALLION_062,,Brakes: Good,Good,90,Allion
+TOY_YARIS_077,,Exhaust System: Poor,Good,85,Yaris
+TOY_ALLION_254,,Transmission: Fair,Fair,73,Allion
+TOY_ALLION_031,,Exhaust System: Poor,Fair,72,Allion
+TOY_AXIO_122,,Engine: Good,Good,91,Axio
+TOY_YARIS_096,,Steering: Good,Poor,59,Yaris
+TOY_AXIO_013,,Brakes: Good,Fair,76,Axio
+TOY_ALLION_148,,Suspension: Fair,Poor,51,Allion
+TOY_PREMIO_037,,Battery: Fair,Poor,46,Premio
+TOY_COROLLA_111,,Transmission: Fair,Poor,47,Corolla
+TOY_YARIS_159,,Battery: Poor,Fair,63,Yaris
+TOY_ALLION_258,,Brakes: Fair,Fair,70,Allion
+TOY_COROLLA_050,,Steering: Good,Good,84,Corolla
+TOY_PREMIO_197,,Battery: Good,Fair,76,Premio
+TOY_PREMIO_057,,Exhaust System: Fair,Fair,67,Premio
+TOY_AXIO_261,,Steering: Fair,Fair,79,Axio
+TOY_ALLION_155,,Cooling System: Good,Good,80,Allion
+TOY_PREMIO_206,,Suspension: Poor,Good,86,Premio
+TOY_AXIO_124,,Engine: Fair,Critical,24,Axio
+TOY_PREMIO_125,,Engine: Fair,Fair,76,Premio
+TOY_COROLLA_151,,Battery: Fair,Fair,71,Corolla
+TOY_AXIO_125,,Brakes: Fair,Critical,24,Axio
+TOY_AXIO_169,,Transmission: Good,Good,99,Axio
+TOY_COROLLA_169,,Tyres: Poor,Critical,22,Corolla
+TOY_YARIS_087,,Cooling System: Poor,Poor,50,Yaris
+TOY_PREMIO_075,,Tyres: Poor,Critical,21,Premio
+TOY_AXIO_044,,Steering: Good,Good,88,Axio
+TOY_COROLLA_184,,Tyres: Fair,Poor,45,Corolla
+TOY_YARIS_214,,Suspension: Fair,Fair,77,Yaris
+TOY_PREMIO_135,,Tyres: Fair,Poor,57,Premio
+TOY_VITZ_294,,Tyres: Good,Fair,68,Vitz
+TOY_PREMIO_091,,Exhaust System: Good,Poor,50,Premio
+TOY_YARIS_223,,Suspension: Fair,Fair,72,Yaris
+TOY_ALLION_089,,Cooling System: Good,Critical,30,Allion
+TOY_ALLION_074,,Steering: Fair,Fair,67,Allion
+TOY_VITZ_043,,Brakes: Fair,Poor,45,Vitz
+TOY_YARIS_193,,Engine: Fair,Critical,26,Yaris
+TOY_PREMIO_300,,Brakes: Fair,Poor,44,Premio
+TOY_VITZ_270,,Tyres: Fair,Poor,55,Vitz
+TOY_COROLLA_203,,Cooling System: Fair,Fair,61,Corolla
+TOY_PREMIO_298,,Transmission: Poor,Good,87,Premio
+TOY_COROLLA_176,,Battery: Good,Critical,32,Corolla
+TOY_AXIO_268,,Suspension: Poor,Fair,75,Axio
+TOY_ALLION_078,,Cooling System: Good,Critical,33,Allion
+TOY_ALLION_066,,Exhaust System: Poor,Critical,31,Allion
+TOY_VITZ_043,,Brakes: Fair,Poor,45,Vitz
+TOY_PREMIO_084,,Brakes: Fair,Critical,23,Premio
+TOY_COROLLA_292,,Suspension: Fair,Good,84,Corolla
+TOY_YARIS_230,,Transmission: Fair,Poor,51,Yaris
+TOY_VITZ_086,,Cooling System: Fair,Poor,41,Vitz
+TOY_AXIO_041,,Tyres: Good,Critical,24,Axio
+TOY_COROLLA_225,,Cooling System: Fair,Poor,51,Corolla
+TOY_ALLION_239,,Transmission: Good,Good,91,Allion
+TOY_PREMIO_106,,Brakes: Poor,Critical,39,Premio
+TOY_VITZ_210,,Transmission: Good,Fair,66,Vitz
+TOY_COROLLA_298,,Transmission: Fair,Poor,49,Corolla
+TOY_COROLLA_028,,Tyres: Fair,Good,91,Corolla
+TOY_VITZ_090,,Brakes: Good,Critical,21,Vitz
+TOY_YARIS_180,,Cooling System: Good,Good,96,Yaris
+TOY_COROLLA_012,,Brakes: Fair,Fair,72,Corolla
+TOY_VITZ_007,,Tyres: Poor,Critical,34,Vitz
+TOY_YARIS_143,,Transmission: Good,Fair,60,Yaris
+TOY_COROLLA_226,,Exhaust System: Poor,Poor,44,Corolla
+TOY_AXIO_045,,Transmission: Good,Poor,57,Axio
+TOY_YARIS_153,,Tyres: Good,Fair,76,Yaris
+TOY_ALLION_164,,Engine: Poor,Good,95,Allion
+TOY_AXIO_163,,Transmission: Good,Fair,62,Axio
+TOY_PREMIO_186,,Battery: Fair,Critical,33,Premio
+TOY_AXIO_053,,Tyres: Fair,Poor,44,Axio
+TOY_VITZ_200,,Transmission: Poor,Fair,72,Vitz
+TOY_YARIS_063,,Tyres: Poor,Good,82,Yaris
+TOY_ALLION_183,,Brakes: Fair,Good,94,Allion
+TOY_PREMIO_248,,Suspension: Good,Fair,76,Premio
+TOY_AXIO_165,,Brakes: Fair,Poor,45,Axio
+TOY_AXIO_042,,Suspension: Fair,Poor,55,Axio
+TOY_YARIS_097,,Cooling System: Fair,Poor,50,Yaris
+TOY_AXIO_138,,Brakes: Good,Poor,55,Axio
+TOY_YARIS_009,,Steering: Critical,Poor,55,Yaris
+TOY_PREMIO_012,,Suspension: Poor,Good,96,Premio
+TOY_AXIO_101,,Cooling System: Poor,Fair,66,Axio
+TOY_AXIO_131,,Engine: Good,Poor,44,Axio
+TOY_YARIS_105,,Exhaust System: Fair,Fair,78,Yaris
+TOY_VITZ_048,,Suspension: Fair,Good,85,Vitz
+TOY_COROLLA_203,,Cooling System: Fair,Fair,61,Corolla
+TOY_AXIO_025,,Brakes: Poor,Good,91,Axio
+TOY_VITZ_073,,Cooling System: Fair,Critical,24,Vitz
+TOY_YARIS_059,,Cooling System: Fair,Poor,50,Yaris
+TOY_ALLION_193,,Transmission: Critical,Fair,64,Allion
+TOY_YARIS_126,,Cooling System: Poor,Critical,25,Yaris
+TOY_COROLLA_086,,Tyres: Fair,Poor,53,Corolla
+TOY_COROLLA_212,,Brakes: Fair,Critical,38,Corolla
+TOY_AXIO_005,,Suspension: Fair,Good,89,Axio
+TOY_ALLION_028,,Cooling System: Fair,Poor,46,Allion
+TOY_PREMIO_202,,Tyres: Fair,Good,96,Premio
+TOY_COROLLA_018,,Exhaust System: Poor,Fair,72,Corolla
+TOY_ALLION_042,,Brakes: Fair,Good,86,Allion
+TOY_YARIS_061,,Exhaust System: Good,Critical,28,Yaris
+TOY_PREMIO_082,,Cooling System: Poor,Good,87,Premio
+TOY_PREMIO_230,,Engine: Good,Good,94,Premio
+TOY_PREMIO_117,,Brakes: Good,Fair,71,Premio
+TOY_YARIS_241,,Tyres: Good,Critical,30,Yaris
+TOY_ALLION_277,,Transmission: Fair,Critical,27,Allion
+TOY_VITZ_214,,Transmission: Critical,Critical,20,Vitz
+TOY_VITZ_073,,Cooling System: Fair,Critical,24,Vitz
+TOY_ALLION_261,,Engine: Good,Fair,63,Allion
+TOY_PREMIO_188,,Suspension: Good,Poor,58,Premio
+TOY_YARIS_134,,Steering: Fair,Critical,30,Yaris
+TOY_COROLLA_090,,Transmission: Fair,Critical,22,Corolla
+TOY_PREMIO_216,,Steering: Fair,Fair,60,Premio
+TOY_YARIS_162,,Brakes: Good,Fair,79,Yaris
+TOY_YARIS_095,,Exhaust System: Fair,Poor,46,Yaris
+TOY_PREMIO_171,,Exhaust System: Poor,Poor,43,Premio
+TOY_PREMIO_291,,Cooling System: Good,Critical,20,Premio
+TOY_COROLLA_275,,Cooling System: Good,Poor,56,Corolla
+TOY_VITZ_218,,Battery: Fair,Fair,79,Vitz
+TOY_YARIS_041,,Exhaust System: Good,Fair,60,Yaris
+TOY_COROLLA_149,,Cooling System: Good,Fair,66,Corolla
+TOY_YARIS_084,,Transmission: Good,Poor,44,Yaris
+TOY_COROLLA_205,,Battery: Poor,Critical,37,Corolla
+TOY_YARIS_138,,Suspension: Fair,Good,97,Yaris
+TOY_PREMIO_099,,Exhaust System: Fair,Poor,54,Premio
+TOY_AXIO_294,,Steering: Poor,Poor,55,Axio
+TOY_YARIS_204,,Battery: Fair,Fair,77,Yaris
+TOY_PREMIO_293,,Steering: Poor,Good,96,Premio
+TOY_VITZ_030,,Battery: Good,Good,94,Vitz
+TOY_COROLLA_023,,Cooling System: Fair,Poor,53,Corolla
+TOY_AXIO_092,,Steering: Fair,Poor,56,Axio
+TOY_COROLLA_096,,Cooling System: Poor,Critical,21,Corolla
+TOY_PREMIO_197,,Battery: Good,Fair,76,Premio
+TOY_ALLION_037,,Engine: Fair,Poor,56,Allion
+TOY_YARIS_166,,Tyres: Good,Critical,35,Yaris
+TOY_ALLION_022,,Tyres: Fair,Poor,56,Allion
+TOY_ALLION_143,,Steering: Poor,Critical,31,Allion
+TOY_COROLLA_188,,Battery: Fair,Fair,70,Corolla
+TOY_COROLLA_182,,Brakes: Critical,Fair,76,Corolla
+TOY_PREMIO_133,,Transmission: Fair,Fair,70,Premio
+TOY_VITZ_241,,Transmission: Fair,Fair,62,Vitz
+TOY_AXIO_075,,Battery: Fair,Critical,27,Axio
+TOY_VITZ_079,,Brakes: Fair,Good,93,Vitz
+TOY_VITZ_127,,Exhaust System: Fair,Poor,44,Vitz
+TOY_YARIS_251,,Transmission: Poor,Good,85,Yaris
+TOY_AXIO_241,,Tyres: Fair,Fair,72,Axio
+TOY_VITZ_167,,Tyres: Fair,Fair,72,Vitz
+TOY_PREMIO_296,,Exhaust System: Poor,Good,84,Premio
+TOY_AXIO_004,,Transmission: Good,Fair,63,Axio
+TOY_ALLION_129,,Engine: Fair,Good,96,Allion
+TOY_AXIO_105,,Battery: Fair,Poor,46,Axio
+TOY_YARIS_233,,Battery: Critical,Critical,28,Yaris
+TOY_COROLLA_278,,Transmission: Good,Critical,29,Corolla
+TOY_AXIO_241,,Tyres: Fair,Fair,72,Axio
+TOY_COROLLA_194,,Tyres: Poor,Poor,59,Corolla
+TOY_AXIO_294,,Steering: Poor,Poor,55,Axio
+TOY_ALLION_038,,Tyres: Poor,Poor,40,Allion
+TOY_COROLLA_016,,Steering: Poor,Poor,55,Corolla
+TOY_VITZ_177,,Battery: Fair,Fair,71,Vitz
+TOY_PREMIO_220,,Steering: Good,Poor,41,Premio
+TOY_AXIO_132,,Cooling System: Fair,Poor,49,Axio
+TOY_VITZ_173,,Exhaust System: Good,Poor,43,Vitz
+TOY_VITZ_187,,Engine: Fair,Poor,56,Vitz
+TOY_PREMIO_132,,Engine: Fair,Good,100,Premio
+TOY_COROLLA_109,,Transmission: Fair,Good,90,Corolla
+TOY_ALLION_266,,Brakes: Fair,Critical,32,Allion
+TOY_ALLION_164,,Engine: Poor,Good,95,Allion
+TOY_COROLLA_202,,Transmission: Poor,Good,89,Corolla
+TOY_VITZ_009,,Transmission: Fair,Critical,27,Vitz
+TOY_PREMIO_283,,Battery: Poor,Good,99,Premio
+TOY_VITZ_165,,Suspension: Fair,Poor,49,Vitz
+TOY_COROLLA_205,,Battery: Poor,Critical,37,Corolla
+TOY_VITZ_204,,Exhaust System: Poor,Fair,76,Vitz
+TOY_PREMIO_102,,Transmission: Good,Poor,57,Premio
+TOY_AXIO_083,,Brakes: Good,Poor,46,Axio
+TOY_ALLION_231,,Engine: Fair,Poor,58,Allion
+TOY_YARIS_207,,Exhaust System: Fair,Fair,65,Yaris
+TOY_VITZ_120,,Transmission: Poor,Poor,57,Vitz
+TOY_ALLION_027,,Tyres: Poor,Fair,70,Allion
+TOY_AXIO_288,,Cooling System: Fair,Fair,77,Axio
+TOY_COROLLA_069,,Brakes: Poor,Good,99,Corolla
+TOY_AXIO_178,,Exhaust System: Good,Critical,28,Axio
+TOY_ALLION_231,,Engine: Fair,Poor,58,Allion
+TOY_PREMIO_195,,Suspension: Fair,Critical,34,Premio
+TOY_AXIO_198,,Suspension: Fair,Critical,31,Axio
+TOY_COROLLA_068,,Steering: Good,Poor,44,Corolla
+TOY_VITZ_284,,Cooling System: Fair,Fair,70,Vitz
+TOY_VITZ_042,,Transmission: Fair,Poor,58,Vitz
+TOY_YARIS_145,,Tyres: Good,Fair,73,Yaris
+TOY_ALLION_289,,Cooling System: Fair,Fair,71,Allion
+TOY_VITZ_055,,Suspension: Poor,Poor,55,Vitz
+TOY_AXIO_288,,Cooling System: Fair,Fair,77,Axio
+TOY_COROLLA_088,,Exhaust System: Fair,Fair,78,Corolla
+TOY_ALLION_276,,Brakes: Fair,Critical,24,Allion
+TOY_COROLLA_106,,Exhaust System: Critical,Fair,78,Corolla
+TOY_ALLION_242,,Tyres: Fair,Poor,52,Allion
+TOY_ALLION_277,,Transmission: Fair,Critical,27,Allion
+TOY_VITZ_228,,Exhaust System: Poor,Poor,48,Vitz
+TOY_VITZ_167,,Tyres: Fair,Fair,72,Vitz
+TOY_AXIO_045,,Transmission: Good,Poor,57,Axio
+TOY_COROLLA_018,,Exhaust System: Poor,Fair,72,Corolla
+TOY_COROLLA_139,,Steering: Fair,Fair,76,Corolla
+TOY_YARIS_157,,Transmission: Good,Critical,34,Yaris
+TOY_PREMIO_254,,Exhaust System: Fair,Critical,26,Premio
+TOY_PREMIO_219,,Cooling System: Good,Good,98,Premio
+TOY_AXIO_135,,Battery: Fair,Critical,28,Axio
+TOY_ALLION_060,,Engine: Fair,Good,88,Allion
+TOY_COROLLA_279,,Suspension: Good,Fair,75,Corolla
+TOY_PREMIO_039,,Exhaust System: Poor,Good,98,Premio
+TOY_COROLLA_258,,Suspension: Fair,Good,80,Corolla
+TOY_VITZ_264,,Exhaust System: Poor,Fair,76,Vitz
+TOY_AXIO_243,,Steering: Poor,Critical,26,Axio
+TOY_VITZ_140,,Transmission: Good,Critical,25,Vitz
+TOY_PREMIO_048,,Exhaust System: Fair,Critical,29,Premio
+TOY_VITZ_074,,Exhaust System: Poor,Poor,51,Vitz
+TOY_PREMIO_174,,Cooling System: Fair,Good,88,Premio
+TOY_YARIS_134,,Steering: Fair,Critical,30,Yaris
+TOY_VITZ_019,,Transmission: Good,Good,83,Vitz
+TOY_PREMIO_077,,Battery: Good,Critical,23,Premio
+TOY_ALLION_190,,Transmission: Fair,Critical,31,Allion
+TOY_PREMIO_129,,Cooling System: Fair,Fair,60,Premio
+TOY_YARIS_194,,Steering: Fair,Fair,77,Yaris
+TOY_ALLION_166,,Battery: Poor,Fair,64,Allion
+TOY_COROLLA_212,,Brakes: Fair,Critical,38,Corolla
+TOY_VITZ_102,,Suspension: Good,Critical,36,Vitz
+TOY_ALLION_086,,Cooling System: Fair,Critical,33,Allion
+TOY_AXIO_192,,Battery: Fair,Fair,77,Axio
+TOY_YARIS_196,,Cooling System: Fair,Fair,67,Yaris
+TOY_ALLION_137,,Battery: Fair,Critical,36,Allion
+TOY_ALLION_027,,Tyres: Poor,Fair,70,Allion
+TOY_COROLLA_223,,Engine: Critical,Fair,77,Corolla
+TOY_ALLION_200,,Steering: Fair,Fair,69,Allion
+TOY_COROLLA_288,,Tyres: Fair,Good,96,Corolla
+TOY_COROLLA_041,,Cooling System: Fair,Critical,32,Corolla
+TOY_PREMIO_134,,Suspension: Good,Good,85,Premio
+TOY_PREMIO_215,,Suspension: Poor,Poor,46,Premio
+TOY_COROLLA_300,,Battery: Poor,Good,99,Corolla
+TOY_ALLION_069,,Exhaust System: Good,Fair,79,Allion
+TOY_COROLLA_007,,Transmission: Poor,Fair,77,Corolla
+TOY_YARIS_132,,Suspension: Good,Poor,52,Yaris
+TOY_VITZ_137,,Tyres: Good,Poor,59,Vitz
+TOY_YARIS_146,,Tyres: Good,Good,98,Yaris
+TOY_COROLLA_165,,Exhaust System: Good,Fair,79,Corolla
+TOY_COROLLA_229,,Tyres: Fair,Poor,57,Corolla
+TOY_AXIO_104,,Brakes: Fair,Good,84,Axio
+TOY_ALLION_159,,Exhaust System: Good,Poor,45,Allion
+TOY_ALLION_059,,Steering: Fair,Fair,68,Allion
+TOY_YARIS_154,,Battery: Poor,Poor,55,Yaris
+TOY_ALLION_217,,Cooling System: Good,Critical,24,Allion
+TOY_PREMIO_058,,Engine: Poor,Poor,56,Premio
+TOY_AXIO_229,,Steering: Good,Fair,68,Axio
+TOY_ALLION_009,,Tyres: Fair,Fair,62,Allion
+TOY_COROLLA_230,,Cooling System: Critical,Fair,64,Corolla
+TOY_AXIO_269,,Transmission: Good,Good,85,Axio
+TOY_YARIS_096,,Steering: Good,Poor,59,Yaris
+TOY_ALLION_129,,Engine: Fair,Good,96,Allion
+TOY_PREMIO_231,,Suspension: Fair,Critical,27,Premio
+TOY_PREMIO_031,,Brakes: Fair,Fair,62,Premio
+TOY_PREMIO_081,,Brakes: Good,Good,100,Premio
+TOY_ALLION_020,,Brakes: Good,Fair,69,Allion
+TOY_VITZ_056,,Battery: Fair,Poor,43,Vitz
+TOY_VITZ_023,,Transmission: Fair,Critical,35,Vitz
+TOY_VITZ_298,,Cooling System: Good,Critical,23,Vitz
+TOY_AXIO_196,,Steering: Good,Critical,27,Axio
+TOY_AXIO_163,,Transmission: Good,Fair,62,Axio
+TOY_PREMIO_121,,Tyres: Fair,Poor,55,Premio
+TOY_VITZ_192,,Battery: Fair,Critical,34,Vitz
+TOY_VITZ_257,,Suspension: Fair,Good,96,Vitz
+TOY_PREMIO_177,,Tyres: Good,Poor,51,Premio
+TOY_PREMIO_225,,Cooling System: Fair,Fair,69,Premio
+TOY_AXIO_208,,Cooling System: Fair,Fair,65,Axio
+TOY_ALLION_039,,Exhaust System: Fair,Critical,21,Allion
+TOY_COROLLA_089,,Suspension: Fair,Poor,59,Corolla
+TOY_AXIO_244,,Cooling System: Poor,Fair,67,Axio
+TOY_PREMIO_152,,Engine: Poor,Poor,48,Premio
+TOY_ALLION_286,,Engine: Good,Fair,63,Allion
+TOY_PREMIO_291,,Cooling System: Good,Critical,20,Premio
+TOY_YARIS_263,,Steering: Poor,Fair,60,Yaris
+TOY_ALLION_235,,Suspension: Good,Critical,28,Allion
+TOY_PREMIO_041,,Engine: Poor,Critical,27,Premio
+TOY_VITZ_001,,Exhaust System: Fair,Critical,24,Vitz
+TOY_COROLLA_001,,Exhaust System: Fair,Good,90,Corolla
+TOY_PREMIO_273,,Steering: Fair,Poor,48,Premio
+TOY_AXIO_060,,Brakes: Fair,Fair,73,Axio
+TOY_VITZ_010,,Exhaust System: Poor,Critical,21,Vitz
+TOY_AXIO_226,,Suspension: Fair,Fair,73,Axio
+TOY_AXIO_159,,Brakes: Good,Good,88,Axio
+TOY_PREMIO_175,,Cooling System: Good,Poor,49,Premio
+TOY_VITZ_114,,Tyres: Fair,Fair,76,Vitz
+TOY_AXIO_222,,Exhaust System: Fair,Fair,74,Axio
+TOY_YARIS_253,,Exhaust System: Fair,Good,100,Yaris
+TOY_COROLLA_134,,Brakes: Fair,Poor,57,Corolla
+TOY_PREMIO_041,,Engine: Poor,Critical,27,Premio
+TOY_VITZ_048,,Suspension: Fair,Good,85,Vitz
+TOY_VITZ_046,,Tyres: Fair,Critical,29,Vitz
+TOY_VITZ_094,,Transmission: Fair,Critical,39,Vitz
+TOY_AXIO_038,,Steering: Poor,Critical,30,Axio
+TOY_ALLION_133,,Suspension: Poor,Poor,43,Allion
+TOY_COROLLA_124,,Tyres: Good,Poor,54,Corolla
+TOY_ALLION_033,,Cooling System: Good,Critical,37,Allion
+TOY_PREMIO_130,,Brakes: Fair,Fair,67,Premio
+TOY_AXIO_247,,Steering: Good,Fair,68,Axio
+TOY_PREMIO_043,,Brakes: Fair,Good,91,Premio
+TOY_VITZ_100,,Brakes: Fair,Poor,57,Vitz
+TOY_YARIS_128,,Engine: Good,Critical,35,Yaris
+TOY_VITZ_261,,Battery: Poor,Critical,38,Vitz
+TOY_PREMIO_135,,Tyres: Fair,Poor,57,Premio
+TOY_AXIO_140,,Engine: Critical,Poor,41,Axio
+TOY_PREMIO_124,,Engine: Fair,Good,87,Premio
+TOY_ALLION_049,,Suspension: Fair,Critical,28,Allion
+TOY_AXIO_255,,Steering: Fair,Fair,61,Axio
+TOY_YARIS_167,,Cooling System: Good,Critical,24,Yaris
+TOY_VITZ_284,,Cooling System: Fair,Fair,70,Vitz
+TOY_VITZ_193,,Tyres: Good,Critical,39,Vitz
+TOY_COROLLA_006,,Exhaust System: Poor,Poor,49,Corolla
+TOY_ALLION_175,,Cooling System: Fair,Poor,47,Allion
+TOY_VITZ_285,,Battery: Fair,Good,84,Vitz
+TOY_VITZ_245,,Brakes: Fair,Critical,37,Vitz
+TOY_PREMIO_279,,Brakes: Good,Critical,31,Premio
+TOY_COROLLA_077,,Steering: Fair,Poor,56,Corolla
+TOY_VITZ_092,,Transmission: Fair,Critical,32,Vitz
+TOY_VITZ_260,,Suspension: Fair,Fair,76,Vitz
+TOY_ALLION_289,,Cooling System: Fair,Fair,71,Allion
+TOY_COROLLA_168,,Suspension: Fair,Good,87,Corolla
+TOY_PREMIO_280,,Battery: Good,Good,80,Premio
+TOY_COROLLA_254,,Engine: Fair,Poor,57,Corolla
+TOY_COROLLA_031,,Tyres: Good,Good,96,Corolla
+TOY_PREMIO_048,,Exhaust System: Fair,Critical,29,Premio
+TOY_COROLLA_202,,Transmission: Poor,Good,89,Corolla
+TOY_COROLLA_276,,Battery: Poor,Poor,48,Corolla
+TOY_PREMIO_281,,Suspension: Fair,Critical,24,Premio
+TOY_YARIS_063,,Tyres: Poor,Good,82,Yaris
+TOY_YARIS_010,,Tyres: Good,Critical,26,Yaris
+TOY_ALLION_219,,Exhaust System: Fair,Good,97,Allion
+TOY_YARIS_154,,Battery: Poor,Poor,55,Yaris
+TOY_COROLLA_061,,Battery: Fair,Poor,56,Corolla
+TOY_COROLLA_026,,Brakes: Fair,Critical,28,Corolla
+TOY_PREMIO_132,,Engine: Fair,Good,100,Premio
+TOY_YARIS_093,,Steering: Fair,Poor,48,Yaris
+TOY_ALLION_222,,Cooling System: Fair,Critical,38,Allion
+TOY_YARIS_102,,Brakes: Fair,Fair,66,Yaris
+TOY_PREMIO_115,,Exhaust System: Fair,Good,81,Premio
+TOY_YARIS_169,,Suspension: Poor,Fair,76,Yaris
+TOY_VITZ_254,,Steering: Good,Poor,43,Vitz
+TOY_VITZ_197,,Brakes: Fair,Fair,74,Vitz
+TOY_PREMIO_211,,Cooling System: Fair,Poor,43,Premio
+TOY_COROLLA_002,,Battery: Fair,Poor,56,Corolla
+TOY_COROLLA_133,,Transmission: Fair,Critical,21,Corolla
+TOY_AXIO_012,,Transmission: Critical,Fair,69,Axio
+TOY_AXIO_256,,Tyres: Poor,Fair,74,Axio
+TOY_VITZ_266,,Tyres: Good,Good,95,Vitz
+TOY_ALLION_237,,Tyres: Fair,Critical,39,Allion
+TOY_COROLLA_289,,Transmission: Poor,Fair,64,Corolla
+TOY_VITZ_066,,Engine: Good,Fair,76,Vitz
+TOY_ALLION_091,,Brakes: Fair,Poor,43,Allion
+TOY_YARIS_182,,Brakes: Poor,Fair,63,Yaris
+TOY_VITZ_145,,Engine: Good,Good,95,Vitz
+TOY_ALLION_146,,Engine: Good,Fair,60,Allion
+TOY_VITZ_225,,Brakes: Fair,Fair,62,Vitz
+TOY_VITZ_118,,Steering: Poor,Poor,57,Vitz
+TOY_COROLLA_088,,Exhaust System: Fair,Fair,78,Corolla
+TOY_ALLION_024,,Transmission: Fair,Good,84,Allion
+TOY_AXIO_294,,Steering: Poor,Poor,55,Axio
+TOY_VITZ_071,,Tyres: Fair,Fair,63,Vitz
+TOY_COROLLA_214,,Suspension: Good,Poor,50,Corolla
+TOY_PREMIO_102,,Transmission: Good,Poor,57,Premio
+TOY_VITZ_295,,Tyres: Poor,Critical,30,Vitz
+TOY_YARIS_231,,Brakes: Good,Fair,68,Yaris
+TOY_COROLLA_295,,Steering: Fair,Fair,66,Corolla
+TOY_PREMIO_047,,Suspension: Good,Fair,61,Premio
+TOY_VITZ_234,,Engine: Fair,Good,87,Vitz
+TOY_VITZ_197,,Brakes: Fair,Fair,74,Vitz
+TOY_YARIS_274,,Tyres: Fair,Fair,75,Yaris
+TOY_COROLLA_127,,Battery: Poor,Poor,59,Corolla
+TOY_AXIO_063,,Transmission: Fair,Poor,58,Axio
+TOY_VITZ_179,,Exhaust System: Good,Poor,49,Vitz
+TOY_ALLION_087,,Steering: Fair,Good,95,Allion
+TOY_VITZ_282,,Steering: Poor,Critical,35,Vitz
+TOY_COROLLA_079,,Brakes: Fair,Poor,44,Corolla
+TOY_AXIO_239,,Tyres: Fair,Fair,75,Axio
+TOY_COROLLA_153,,Brakes: Fair,Good,88,Corolla
+TOY_PREMIO_258,,Exhaust System: Poor,Fair,68,Premio
+TOY_AXIO_102,,Exhaust System: Fair,Fair,78,Axio
+TOY_VITZ_124,,Tyres: Fair,Fair,78,Vitz
+TOY_AXIO_283,,Exhaust System: Good,Good,99,Axio
+TOY_ALLION_167,,Battery: Poor,Fair,65,Allion
+TOY_PREMIO_246,,Battery: Fair,Poor,42,Premio
+TOY_PREMIO_077,,Battery: Good,Critical,23,Premio
+TOY_PREMIO_038,,Engine: Poor,Fair,63,Premio
+TOY_YARIS_116,,Suspension: Good,Poor,57,Yaris
+TOY_COROLLA_076,,Transmission: Good,Poor,47,Corolla
+TOY_ALLION_157,,Tyres: Fair,Fair,60,Allion
+TOY_YARIS_208,,Cooling System: Good,Critical,24,Yaris
+TOY_ALLION_271,,Brakes: Good,Fair,71,Allion
+TOY_YARIS_130,,Battery: Critical,Fair,79,Yaris
+TOY_YARIS_088,,Tyres: Poor,Poor,42,Yaris
+TOY_PREMIO_065,,Steering: Fair,Critical,38,Premio
+TOY_PREMIO_128,,Brakes: Fair,Good,95,Premio
+TOY_PREMIO_226,,Tyres: Fair,Poor,41,Premio
+TOY_PREMIO_139,,Steering: Poor,Good,86,Premio
+TOY_AXIO_216,,Battery: Fair,Critical,39,Axio
+TOY_AXIO_293,,Tyres: Fair,Critical,25,Axio
+TOY_VITZ_009,,Transmission: Fair,Critical,27,Vitz
+TOY_COROLLA_052,,Tyres: Fair,Good,94,Corolla
+TOY_AXIO_240,,Brakes: Fair,Fair,76,Axio
+TOY_YARIS_007,,Exhaust System: Fair,Fair,61,Yaris
+TOY_YARIS_154,,Battery: Poor,Poor,55,Yaris
+TOY_YARIS_204,,Battery: Fair,Fair,77,Yaris
+TOY_YARIS_150,,Transmission: Good,Good,82,Yaris
+TOY_AXIO_025,,Brakes: Poor,Good,91,Axio
+TOY_PREMIO_241,,Brakes: Good,Critical,31,Premio
+TOY_PREMIO_077,,Battery: Good,Critical,23,Premio
+TOY_COROLLA_059,,Battery: Fair,Critical,27,Corolla
+TOY_ALLION_286,,Engine: Good,Fair,63,Allion
+TOY_PREMIO_257,,Exhaust System: Good,Critical,23,Premio
+TOY_YARIS_054,,Battery: Fair,Poor,45,Yaris
+TOY_VITZ_145,,Engine: Good,Good,95,Vitz
+TOY_PREMIO_088,,Exhaust System: Fair,Critical,20,Premio
+TOY_AXIO_152,,Steering: Good,Critical,37,Axio
+TOY_COROLLA_030,,Cooling System: Good,Poor,58,Corolla
+TOY_COROLLA_077,,Steering: Fair,Poor,56,Corolla
+TOY_YARIS_176,,Cooling System: Good,Fair,71,Yaris
+TOY_PREMIO_127,,Brakes: Fair,Critical,23,Premio
+TOY_VITZ_229,,Exhaust System: Good,Good,87,Vitz
+TOY_COROLLA_090,,Transmission: Fair,Critical,22,Corolla
+TOY_COROLLA_197,,Brakes: Fair,Fair,78,Corolla
+TOY_ALLION_013,,Transmission: Poor,Critical,32,Allion
+TOY_AXIO_242,,Suspension: Fair,Fair,75,Axio
+TOY_YARIS_236,,Engine: Good,Poor,41,Yaris
+TOY_PREMIO_177,,Tyres: Good,Poor,51,Premio
+TOY_COROLLA_004,,Tyres: Fair,Fair,63,Corolla
+TOY_ALLION_068,,Steering: Poor,Poor,49,Allion
+TOY_YARIS_075,,Engine: Fair,Fair,74,Yaris
+TOY_YARIS_265,,Exhaust System: Fair,Poor,54,Yaris
+TOY_ALLION_209,,Battery: Good,Good,82,Allion
+TOY_YARIS_277,,Brakes: Fair,Good,95,Yaris
+TOY_VITZ_003,,Cooling System: Fair,Good,86,Vitz
+TOY_VITZ_034,,Steering: Good,Good,94,Vitz
+TOY_VITZ_043,,Brakes: Fair,Poor,45,Vitz
+TOY_AXIO_033,,Exhaust System: Fair,Critical,20,Axio
+TOY_YARIS_222,,Tyres: Fair,Critical,33,Yaris
+TOY_YARIS_040,,Steering: Poor,Good,85,Yaris
+TOY_PREMIO_242,,Brakes: Fair,Poor,46,Premio
+TOY_COROLLA_157,,Battery: Fair,Poor,40,Corolla
+TOY_PREMIO_188,,Suspension: Good,Poor,58,Premio
+TOY_ALLION_147,,Cooling System: Fair,Critical,33,Allion
+TOY_YARIS_088,,Tyres: Poor,Poor,42,Yaris
+TOY_YARIS_278,,Tyres: Fair,Poor,47,Yaris
+TOY_ALLION_222,,Cooling System: Fair,Critical,38,Allion
+TOY_PREMIO_230,,Engine: Good,Good,94,Premio
+TOY_YARIS_020,,Engine: Fair,Critical,34,Yaris
+TOY_YARIS_300,,Suspension: Poor,Critical,39,Yaris
+TOY_AXIO_188,,Steering: Fair,Fair,79,Axio
+TOY_VITZ_130,,Transmission: Good,Poor,56,Vitz
+TOY_YARIS_002,,Brakes: Fair,Good,92,Yaris
+TOY_ALLION_244,,Cooling System: Good,Good,90,Allion
+TOY_AXIO_250,,Tyres: Fair,Good,96,Axio
+TOY_PREMIO_182,,Cooling System: Fair,Poor,51,Premio
+TOY_VITZ_295,,Tyres: Poor,Critical,30,Vitz
+TOY_PREMIO_264,,Steering: Fair,Poor,58,Premio
+TOY_AXIO_142,,Battery: Good,Poor,40,Axio
+TOY_AXIO_154,,Transmission: Fair,Critical,28,Axio
+TOY_PREMIO_103,,Engine: Good,Good,94,Premio
+TOY_YARIS_278,,Tyres: Fair,Poor,47,Yaris
+TOY_AXIO_272,,Tyres: Fair,Fair,68,Axio
+TOY_YARIS_182,,Brakes: Poor,Fair,63,Yaris
+TOY_AXIO_285,,Tyres: Poor,Poor,48,Axio
+TOY_YARIS_120,,Brakes: Fair,Good,98,Yaris
+TOY_AXIO_123,,Engine: Good,Poor,56,Axio
+TOY_ALLION_195,,Battery: Good,Good,82,Allion
+TOY_AXIO_232,,Transmission: Poor,Fair,77,Axio
+TOY_ALLION_277,,Transmission: Fair,Critical,27,Allion
+TOY_PREMIO_265,,Suspension: Fair,Fair,63,Premio
+TOY_COROLLA_102,,Battery: Fair,Good,99,Corolla
+TOY_PREMIO_170,,Brakes: Fair,Critical,34,Premio
+TOY_AXIO_297,,Steering: Good,Poor,58,Axio
+TOY_VITZ_108,,Battery: Fair,Good,86,Vitz
+TOY_COROLLA_223,,Engine: Critical,Fair,77,Corolla
+TOY_ALLION_125,,Battery: Fair,Good,98,Allion
+TOY_YARIS_107,,Brakes: Poor,Fair,78,Yaris
+TOY_YARIS_274,,Tyres: Fair,Fair,75,Yaris
+TOY_PREMIO_155,,Tyres: Fair,Critical,22,Premio
+TOY_PREMIO_170,,Brakes: Fair,Critical,34,Premio
+TOY_AXIO_237,,Steering: Good,Fair,79,Axio
+TOY_VITZ_275,,Battery: Poor,Good,83,Vitz
+TOY_YARIS_115,,Transmission: Good,Good,81,Yaris
+TOY_ALLION_184,,Transmission: Good,Fair,65,Allion
+TOY_AXIO_205,,Engine: Fair,Good,81,Axio
+TOY_VITZ_212,,Exhaust System: Fair,Critical,20,Vitz
+TOY_ALLION_253,,Engine: Good,Fair,74,Allion
+TOY_YARIS_135,,Transmission: Fair,Good,99,Yaris
+TOY_PREMIO_211,,Cooling System: Fair,Poor,43,Premio
+TOY_COROLLA_121,,Steering: Good,Fair,74,Corolla
+TOY_AXIO_126,,Steering: Good,Poor,40,Axio
+TOY_VITZ_029,,Battery: Fair,Poor,53,Vitz
+TOY_PREMIO_288,,Tyres: Fair,Critical,29,Premio
+TOY_VITZ_199,,Transmission: Poor,Poor,42,Vitz
+TOY_PREMIO_049,,Tyres: Poor,Critical,23,Premio
+TOY_ALLION_047,,Steering: Poor,Good,94,Allion
+TOY_PREMIO_077,,Battery: Good,Critical,23,Premio
+TOY_PREMIO_163,,Battery: Good,Poor,55,Premio
+TOY_PREMIO_124,,Engine: Fair,Good,87,Premio
+TOY_PREMIO_217,,Exhaust System: Poor,Poor,43,Premio
+TOY_COROLLA_036,,Brakes: Fair,Poor,50,Corolla
+TOY_PREMIO_276,,Cooling System: Good,Good,81,Premio
+TOY_AXIO_078,,Suspension: Good,Poor,43,Axio
+TOY_VITZ_059,,Engine: Fair,Critical,29,Vitz
+TOY_COROLLA_073,,Battery: Good,Poor,42,Corolla
+TOY_YARIS_226,,Transmission: Fair,Critical,27,Yaris
+TOY_PREMIO_226,,Tyres: Fair,Poor,41,Premio
+TOY_AXIO_249,,Battery: Fair,Critical,27,Axio
+TOY_ALLION_244,,Cooling System: Good,Good,90,Allion
+TOY_AXIO_113,,Suspension: Fair,Poor,52,Axio
+TOY_VITZ_027,,Suspension: Good,Critical,22,Vitz
+TOY_YARIS_042,,Suspension: Fair,Poor,45,Yaris
+TOY_YARIS_032,,Tyres: Good,Good,91,Yaris
+TOY_PREMIO_115,,Exhaust System: Fair,Good,81,Premio
+TOY_ALLION_087,,Steering: Fair,Good,95,Allion
+TOY_VITZ_126,,Brakes: Poor,Poor,52,Vitz
+TOY_PREMIO_037,,Battery: Fair,Poor,46,Premio
+TOY_ALLION_151,,Exhaust System: Fair,Poor,54,Allion
+TOY_ALLION_227,,Tyres: Poor,Poor,56,Allion
+TOY_YARIS_033,,Exhaust System: Fair,Critical,36,Yaris
+TOY_AXIO_300,,Exhaust System: Good,Good,82,Axio
+TOY_PREMIO_041,,Engine: Poor,Critical,27,Premio
+TOY_COROLLA_166,,Cooling System: Fair,Critical,20,Corolla
+TOY_ALLION_158,,Transmission: Fair,Critical,34,Allion
+TOY_PREMIO_160,,Transmission: Fair,Critical,33,Premio
+TOY_AXIO_192,,Battery: Fair,Fair,77,Axio
+TOY_AXIO_269,,Transmission: Good,Good,85,Axio
+TOY_ALLION_161,,Steering: Fair,Poor,49,Allion
+TOY_ALLION_282,,Transmission: Fair,Good,84,Allion
+TOY_COROLLA_048,,Engine: Fair,Poor,52,Corolla
+TOY_PREMIO_163,,Battery: Good,Poor,55,Premio
+TOY_COROLLA_176,,Battery: Good,Critical,32,Corolla
+TOY_AXIO_178,,Exhaust System: Good,Critical,28,Axio
+TOY_VITZ_068,,Engine: Fair,Poor,56,Vitz
+TOY_AXIO_132,,Cooling System: Fair,Poor,49,Axio
+TOY_COROLLA_031,,Tyres: Good,Good,96,Corolla
+TOY_ALLION_076,,Brakes: Good,Good,87,Allion
+TOY_PREMIO_099,,Exhaust System: Fair,Poor,54,Premio
+TOY_YARIS_213,,Suspension: Fair,Critical,38,Yaris
+TOY_COROLLA_185,,Suspension: Poor,Good,92,Corolla
+TOY_VITZ_081,,Tyres: Good,Critical,30,Vitz
+TOY_AXIO_222,,Exhaust System: Fair,Fair,74,Axio
+TOY_COROLLA_112,,Tyres: Poor,Critical,37,Corolla
+TOY_VITZ_076,,Engine: Fair,Fair,73,Vitz
+TOY_ALLION_002,,Exhaust System: Poor,Good,89,Allion
+TOY_AXIO_112,,Battery: Good,Good,83,Axio
+TOY_AXIO_143,,Suspension: Good,Good,95,Axio
+TOY_ALLION_058,,Steering: Fair,Poor,52,Allion
+TOY_COROLLA_115,,Cooling System: Fair,Critical,35,Corolla
+TOY_AXIO_155,,Steering: Good,Fair,78,Axio
+TOY_COROLLA_007,,Transmission: Poor,Fair,77,Corolla
+TOY_AXIO_194,,Engine: Good,Fair,68,Axio
+TOY_COROLLA_042,,Transmission: Fair,Critical,30,Corolla
+TOY_VITZ_168,,Brakes: Fair,Good,82,Vitz
+TOY_YARIS_040,,Steering: Poor,Good,85,Yaris
+TOY_AXIO_291,,Engine: Fair,Good,93,Axio
+TOY_VITZ_022,,Cooling System: Poor,Critical,26,Vitz
+TOY_ALLION_284,,Transmission: Good,Good,91,Allion
+TOY_YARIS_125,,Transmission: Poor,Critical,25,Yaris
+TOY_AXIO_265,,Battery: Fair,Fair,65,Axio
+TOY_COROLLA_213,,Cooling System: Fair,Poor,51,Corolla
+TOY_COROLLA_113,,Engine: Fair,Good,95,Corolla
+TOY_ALLION_227,,Tyres: Poor,Poor,56,Allion
+TOY_AXIO_263,,Cooling System: Fair,Critical,21,Axio
+TOY_YARIS_037,,Steering: Good,Good,86,Yaris
+TOY_AXIO_053,,Tyres: Fair,Poor,44,Axio
+TOY_COROLLA_010,,Engine: Fair,Good,96,Corolla
+TOY_COROLLA_206,,Steering: Fair,Poor,45,Corolla
+TOY_COROLLA_286,,Transmission: Good,Good,96,Corolla
+TOY_YARIS_217,,Engine: Fair,Poor,55,Yaris
+TOY_PREMIO_009,,Steering: Fair,Critical,20,Premio
+TOY_PREMIO_195,,Suspension: Fair,Critical,34,Premio
+TOY_AXIO_263,,Cooling System: Fair,Critical,21,Axio
+TOY_VITZ_170,,Steering: Fair,Good,89,Vitz
+TOY_YARIS_241,,Tyres: Good,Critical,30,Yaris
+TOY_YARIS_085,,Cooling System: Fair,Fair,69,Yaris
+TOY_ALLION_165,,Tyres: Poor,Good,88,Allion
+TOY_AXIO_053,,Tyres: Fair,Poor,44,Axio
+TOY_YARIS_250,,Brakes: Fair,Good,80,Yaris
+TOY_AXIO_300,,Exhaust System: Good,Good,82,Axio
+TOY_VITZ_021,,Suspension: Fair,Critical,20,Vitz
+TOY_AXIO_064,,Suspension: Good,Critical,25,Axio
+TOY_ALLION_241,,Engine: Good,Good,93,Allion
+TOY_PREMIO_148,,Exhaust System: Good,Fair,62,Premio
+TOY_AXIO_218,,Transmission: Fair,Good,100,Axio
+TOY_VITZ_299,,Steering: Fair,Fair,61,Vitz
+TOY_AXIO_069,,Engine: Poor,Good,81,Axio
+TOY_AXIO_122,,Engine: Good,Good,91,Axio
+TOY_YARIS_146,,Tyres: Good,Good,98,Yaris
+TOY_COROLLA_031,,Tyres: Good,Good,96,Corolla
+TOY_COROLLA_211,,Exhaust System: Poor,Poor,47,Corolla
+TOY_AXIO_039,,Tyres: Poor,Good,82,Axio
+TOY_YARIS_130,,Battery: Critical,Fair,79,Yaris
+TOY_VITZ_206,,Cooling System: Fair,Poor,57,Vitz
+TOY_PREMIO_167,,Suspension: Good,Good,83,Premio
+TOY_ALLION_229,,Transmission: Fair,Fair,67,Allion
+TOY_YARIS_071,,Battery: Good,Fair,69,Yaris
+TOY_PREMIO_091,,Exhaust System: Good,Poor,50,Premio
+TOY_VITZ_223,,Tyres: Fair,Good,92,Vitz
+TOY_PREMIO_289,,Brakes: Fair,Critical,20,Premio
+TOY_COROLLA_228,,Exhaust System: Good,Good,96,Corolla
+TOY_VITZ_060,,Exhaust System: Fair,Good,96,Vitz
+TOY_AXIO_159,,Brakes: Good,Good,88,Axio
+TOY_VITZ_136,,Transmission: Poor,Poor,56,Vitz
+TOY_YARIS_027,,Cooling System: Fair,Critical,29,Yaris
+TOY_COROLLA_099,,Tyres: Good,Poor,47,Corolla
+TOY_ALLION_291,,Suspension: Good,Critical,20,Allion
+TOY_YARIS_050,,Tyres: Good,Poor,47,Yaris
+TOY_AXIO_268,,Suspension: Poor,Fair,75,Axio
+TOY_YARIS_262,,Suspension: Fair,Poor,50,Yaris
+TOY_ALLION_276,,Brakes: Fair,Critical,24,Allion
+TOY_YARIS_016,,Brakes: Fair,Critical,24,Yaris
+TOY_PREMIO_233,,Steering: Fair,Critical,22,Premio
+TOY_ALLION_116,,Steering: Fair,Poor,52,Allion
+TOY_ALLION_070,,Exhaust System: Fair,Critical,30,Allion
+TOY_AXIO_045,,Transmission: Good,Poor,57,Axio
+TOY_AXIO_188,,Steering: Fair,Fair,79,Axio
+TOY_AXIO_133,,Tyres: Fair,Good,91,Axio
+TOY_AXIO_015,,Engine: Fair,Critical,27,Axio
+TOY_AXIO_013,,Brakes: Good,Fair,76,Axio
+TOY_VITZ_211,,Cooling System: Critical,Critical,24,Vitz
+TOY_AXIO_282,,Tyres: Good,Good,84,Axio
+TOY_COROLLA_173,,Cooling System: Poor,Critical,27,Corolla
+TOY_ALLION_070,,Exhaust System: Fair,Critical,30,Allion
+TOY_VITZ_290,,Exhaust System: Poor,Good,84,Vitz
+TOY_AXIO_168,,Brakes: Poor,Critical,23,Axio
+TOY_YARIS_141,,Cooling System: Poor,Critical,34,Yaris
+TOY_VITZ_144,,Engine: Good,Good,91,Vitz
+TOY_PREMIO_150,,Steering: Good,Good,98,Premio
+TOY_VITZ_286,,Suspension: Fair,Critical,27,Vitz
+TOY_VITZ_245,,Brakes: Fair,Critical,37,Vitz
+TOY_PREMIO_136,,Engine: Good,Fair,72,Premio
+TOY_PREMIO_036,,Exhaust System: Good,Good,96,Premio
+TOY_YARIS_059,,Cooling System: Fair,Poor,50,Yaris
+TOY_YARIS_165,,Tyres: Good,Poor,46,Yaris
+TOY_ALLION_288,,Battery: Fair,Good,86,Allion
+TOY_VITZ_186,,Engine: Fair,Poor,57,Vitz
+TOY_VITZ_277,,Battery: Good,Good,90,Vitz
+TOY_VITZ_082,,Brakes: Poor,Critical,27,Vitz
+TOY_AXIO_288,,Cooling System: Fair,Fair,77,Axio
+TOY_PREMIO_140,,Cooling System: Fair,Good,100,Premio
+TOY_YARIS_198,,Transmission: Fair,Poor,46,Yaris
+TOY_VITZ_107,,Transmission: Poor,Critical,29,Vitz
+TOY_VITZ_046,,Tyres: Fair,Critical,29,Vitz
+TOY_ALLION_091,,Brakes: Fair,Poor,43,Allion
+TOY_AXIO_036,,Brakes: Fair,Fair,60,Axio
+TOY_PREMIO_089,,Exhaust System: Fair,Critical,34,Premio
+TOY_COROLLA_042,,Transmission: Fair,Critical,30,Corolla
+TOY_YARIS_131,,Battery: Fair,Poor,56,Yaris
+TOY_PREMIO_056,,Cooling System: Fair,Poor,51,Premio
+TOY_AXIO_002,,Engine: Fair,Good,90,Axio
+TOY_AXIO_148,,Transmission: Poor,Fair,62,Axio
+TOY_COROLLA_258,,Suspension: Fair,Good,80,Corolla
+TOY_PREMIO_043,,Brakes: Fair,Good,91,Premio
+TOY_YARIS_122,,Cooling System: Fair,Poor,48,Yaris
+TOY_VITZ_247,,Battery: Fair,Critical,32,Vitz
+TOY_YARIS_185,,Engine: Fair,Critical,27,Yaris
+TOY_YARIS_004,,Battery: Fair,Fair,78,Yaris
+TOY_AXIO_155,,Steering: Good,Fair,78,Axio
+TOY_VITZ_118,,Steering: Poor,Poor,57,Vitz
+TOY_VITZ_044,,Transmission: Fair,Poor,56,Vitz
+TOY_ALLION_005,,Steering: Good,Poor,51,Allion
+TOY_YARIS_206,,Exhaust System: Fair,Good,83,Yaris
+TOY_AXIO_055,,Brakes: Fair,Good,80,Axio
+TOY_ALLION_293,,Suspension: Poor,Fair,78,Allion
+TOY_AXIO_062,,Brakes: Fair,Good,100,Axio
+TOY_ALLION_278,,Cooling System: Poor,Critical,20,Allion
+TOY_ALLION_083,,Cooling System: Good,Critical,24,Allion
+TOY_PREMIO_292,,Transmission: Good,Poor,50,Premio
+TOY_YARIS_119,,Exhaust System: Poor,Good,92,Yaris
+TOY_COROLLA_047,,Steering: Fair,Critical,34,Corolla
+TOY_PREMIO_209,,Battery: Good,Critical,32,Premio
+TOY_ALLION_049,,Suspension: Fair,Critical,28,Allion
+TOY_AXIO_190,,Tyres: Good,Good,93,Axio
+TOY_COROLLA_025,,Cooling System: Good,Fair,68,Corolla
+TOY_VITZ_152,,Exhaust System: Fair,Critical,26,Vitz
+TOY_YARIS_019,,Battery: Fair,Good,97,Yaris
+TOY_AXIO_006,,Brakes: Fair,Poor,54,Axio
+TOY_YARIS_142,,Steering: Fair,Poor,41,Yaris
+TOY_ALLION_029,,Battery: Fair,Good,93,Allion
+TOY_ALLION_031,,Exhaust System: Poor,Fair,72,Allion
+TOY_ALLION_272,,Exhaust System: Poor,Fair,66,Allion
+TOY_COROLLA_250,,Steering: Critical,Fair,66,Corolla
+TOY_AXIO_032,,Steering: Fair,Poor,53,Axio
+TOY_VITZ_012,,Steering: Good,Critical,37,Vitz
+TOY_YARIS_180,,Cooling System: Good,Good,96,Yaris
+TOY_AXIO_186,,Brakes: Fair,Critical,34,Axio
+TOY_ALLION_158,,Transmission: Fair,Critical,34,Allion
+TOY_COROLLA_178,,Cooling System: Fair,Good,89,Corolla
+TOY_YARIS_206,,Exhaust System: Fair,Good,83,Yaris
+TOY_YARIS_204,,Battery: Fair,Fair,77,Yaris
+TOY_YARIS_046,,Suspension: Fair,Fair,75,Yaris
+TOY_VITZ_179,,Exhaust System: Good,Poor,49,Vitz
+TOY_PREMIO_122,,Tyres: Fair,Critical,37,Premio
+TOY_PREMIO_151,,Battery: Good,Poor,50,Premio
+TOY_YARIS_263,,Steering: Poor,Fair,60,Yaris
+TOY_ALLION_088,,Engine: Good,Poor,42,Allion
+TOY_VITZ_129,,Engine: Good,Fair,63,Vitz
+TOY_COROLLA_135,,Tyres: Fair,Good,89,Corolla
+TOY_YARIS_019,,Battery: Fair,Good,97,Yaris
+TOY_VITZ_009,,Transmission: Fair,Critical,27,Vitz
+TOY_YARIS_246,,Suspension: Good,Fair,71,Yaris
+TOY_COROLLA_234,,Cooling System: Good,Critical,28,Corolla
+TOY_YARIS_045,,Brakes: Fair,Critical,23,Yaris
+TOY_COROLLA_177,,Engine: Fair,Good,94,Corolla
+TOY_ALLION_180,,Battery: Poor,Critical,31,Allion
+TOY_YARIS_174,,Engine: Good,Good,82,Yaris
+TOY_ALLION_287,,Cooling System: Fair,Fair,77,Allion
+TOY_VITZ_297,,Tyres: Good,Critical,26,Vitz
+TOY_ALLION_260,,Brakes: Fair,Fair,60,Allion
+TOY_ALLION_234,,Cooling System: Fair,Poor,46,Allion
+TOY_VITZ_236,,Battery: Fair,Poor,53,Vitz
+TOY_COROLLA_184,,Tyres: Fair,Poor,45,Corolla
+TOY_PREMIO_051,,Tyres: Fair,Good,99,Premio
+TOY_ALLION_246,,Suspension: Fair,Good,93,Allion
+TOY_PREMIO_003,,Cooling System: Good,Good,81,Premio
+TOY_AXIO_212,,Tyres: Critical,Fair,64,Axio
+TOY_ALLION_288,,Battery: Fair,Good,86,Allion
+TOY_COROLLA_237,,Exhaust System: Good,Fair,65,Corolla
+TOY_COROLLA_152,,Brakes: Poor,Good,83,Corolla
+TOY_AXIO_055,,Brakes: Fair,Good,80,Axio
+TOY_PREMIO_282,,Cooling System: Fair,Poor,56,Premio
+TOY_PREMIO_268,,Suspension: Good,Fair,62,Premio
+TOY_COROLLA_183,,Steering: Critical,Fair,75,Corolla
+TOY_AXIO_248,,Cooling System: Good,Fair,65,Axio
+TOY_VITZ_184,,Cooling System: Fair,Good,93,Vitz
+TOY_YARIS_197,,Cooling System: Fair,Fair,77,Yaris
+TOY_AXIO_022,,Cooling System: Poor,Poor,40,Axio
+TOY_YARIS_162,,Brakes: Good,Fair,79,Yaris
+TOY_YARIS_267,,Suspension: Fair,Good,91,Yaris
+TOY_PREMIO_121,,Tyres: Fair,Poor,55,Premio
+TOY_AXIO_038,,Steering: Poor,Critical,30,Axio
+TOY_VITZ_231,,Exhaust System: Good,Fair,67,Vitz
+TOY_VITZ_086,,Cooling System: Fair,Poor,41,Vitz
+TOY_COROLLA_299,,Engine: Good,Fair,69,Corolla
+TOY_PREMIO_064,,Cooling System: Poor,Critical,22,Premio
+TOY_YARIS_173,,Exhaust System: Fair,Poor,49,Yaris
+TOY_COROLLA_159,,Transmission: Critical,Poor,42,Corolla
+TOY_ALLION_228,,Suspension: Fair,Poor,56,Allion
+TOY_COROLLA_292,,Suspension: Fair,Good,84,Corolla
+TOY_COROLLA_219,,Battery: Poor,Good,80,Corolla
+TOY_ALLION_070,,Exhaust System: Fair,Critical,30,Allion
+TOY_ALLION_266,,Brakes: Fair,Critical,32,Allion
+TOY_PREMIO_285,,Transmission: Critical,Fair,65,Premio
+TOY_YARIS_265,,Exhaust System: Fair,Poor,54,Yaris
+TOY_ALLION_158,,Transmission: Fair,Critical,34,Allion
+TOY_PREMIO_131,,Transmission: Good,Critical,29,Premio
+TOY_AXIO_225,,Transmission: Good,Fair,69,Axio
+TOY_AXIO_281,,Tyres: Poor,Fair,62,Axio
+TOY_VITZ_160,,Battery: Fair,Poor,53,Vitz
+TOY_YARIS_028,,Tyres: Good,Fair,70,Yaris
+TOY_AXIO_062,,Brakes: Fair,Good,100,Axio
+TOY_VITZ_196,,Exhaust System: Good,Good,80,Vitz
+TOY_PREMIO_297,,Tyres: Good,Critical,32,Premio
+TOY_COROLLA_157,,Battery: Fair,Poor,40,Corolla
+TOY_AXIO_171,,Cooling System: Good,Critical,37,Axio
+TOY_AXIO_239,,Tyres: Fair,Fair,75,Axio
+TOY_ALLION_235,,Suspension: Good,Critical,28,Allion
+TOY_YARIS_217,,Engine: Fair,Poor,55,Yaris
+TOY_VITZ_210,,Transmission: Good,Fair,66,Vitz
+TOY_ALLION_110,,Engine: Good,Critical,33,Allion
+TOY_VITZ_006,,Brakes: Poor,Fair,70,Vitz
+TOY_COROLLA_043,,Brakes: Fair,Good,89,Corolla
+TOY_AXIO_264,,Battery: Fair,Fair,66,Axio
+TOY_COROLLA_127,,Battery: Poor,Poor,59,Corolla
+TOY_COROLLA_002,,Battery: Fair,Poor,56,Corolla
+TOY_VITZ_209,,Engine: Fair,Critical,39,Vitz
+TOY_ALLION_295,,Engine: Fair,Good,81,Allion
+TOY_YARIS_126,,Cooling System: Poor,Critical,25,Yaris
+TOY_COROLLA_163,,Brakes: Poor,Critical,23,Corolla
+TOY_YARIS_052,,Suspension: Good,Critical,27,Yaris
+TOY_AXIO_022,,Cooling System: Poor,Poor,40,Axio
+TOY_COROLLA_287,,Cooling System: Poor,Fair,61,Corolla
+TOY_PREMIO_264,,Steering: Fair,Poor,58,Premio
+TOY_VITZ_242,,Brakes: Fair,Fair,61,Vitz
+TOY_YARIS_105,,Exhaust System: Fair,Fair,78,Yaris
+TOY_PREMIO_169,,Brakes: Poor,Fair,72,Premio
+TOY_VITZ_097,,Brakes: Fair,Critical,23,Vitz
+TOY_COROLLA_193,,Tyres: Good,Critical,21,Corolla
+TOY_YARIS_172,,Exhaust System: Fair,Fair,64,Yaris
+TOY_VITZ_024,,Engine: Poor,Fair,76,Vitz
+TOY_COROLLA_094,,Exhaust System: Poor,Good,87,Corolla
+TOY_ALLION_036,,Transmission: Fair,Critical,38,Allion
+TOY_YARIS_065,,Transmission: Fair,Good,96,Yaris
+TOY_ALLION_004,,Tyres: Poor,Poor,57,Allion
+TOY_VITZ_144,,Engine: Good,Good,91,Vitz
+TOY_ALLION_288,,Battery: Fair,Good,86,Allion
+TOY_YARIS_092,,Suspension: Fair,Good,91,Yaris
+TOY_COROLLA_030,,Cooling System: Good,Poor,58,Corolla
+TOY_VITZ_173,,Exhaust System: Good,Poor,43,Vitz
+TOY_AXIO_242,,Suspension: Fair,Fair,75,Axio
+TOY_COROLLA_190,,Engine: Critical,Critical,31,Corolla
+TOY_PREMIO_066,,Suspension: Fair,Good,89,Premio
+TOY_YARIS_197,,Cooling System: Fair,Fair,77,Yaris
+TOY_PREMIO_007,,Brakes: Good,Good,82,Premio
+TOY_PREMIO_071,,Tyres: Fair,Fair,64,Premio
+TOY_PREMIO_247,,Engine: Good,Poor,46,Premio
+TOY_YARIS_224,,Transmission: Good,Good,97,Yaris
+TOY_ALLION_193,,Transmission: Critical,Fair,64,Allion
+TOY_PREMIO_125,,Engine: Fair,Fair,76,Premio
+TOY_AXIO_047,,Cooling System: Good,Critical,22,Axio
+TOY_ALLION_110,,Engine: Good,Critical,33,Allion
+TOY_VITZ_278,,Cooling System: Fair,Good,94,Vitz
+TOY_VITZ_249,,Exhaust System: Fair,Poor,45,Vitz
+TOY_PREMIO_133,,Transmission: Fair,Fair,70,Premio
+TOY_YARIS_121,,Battery: Fair,Critical,20,Yaris
+TOY_VITZ_266,,Tyres: Good,Good,95,Vitz
+TOY_PREMIO_011,,Brakes: Fair,Critical,35,Premio
+TOY_AXIO_173,,Suspension: Fair,Fair,78,Axio
+TOY_ALLION_083,,Cooling System: Good,Critical,24,Allion
+TOY_ALLION_013,,Transmission: Poor,Critical,32,Allion
+TOY_VITZ_253,,Exhaust System: Poor,Good,90,Vitz
+TOY_VITZ_021,,Suspension: Fair,Critical,20,Vitz
+TOY_AXIO_264,,Battery: Fair,Fair,66,Axio
+TOY_ALLION_238,,Brakes: Good,Critical,34,Allion
+TOY_COROLLA_082,,Transmission: Good,Critical,24,Corolla
+TOY_AXIO_088,,Exhaust System: Fair,Poor,42,Axio
+TOY_PREMIO_104,,Engine: Good,Poor,54,Premio
+TOY_AXIO_284,,Suspension: Poor,Poor,56,Axio
+TOY_YARIS_281,,Transmission: Fair,Good,85,Yaris
+TOY_VITZ_197,,Brakes: Fair,Fair,74,Vitz
+TOY_PREMIO_036,,Exhaust System: Good,Good,96,Premio
+TOY_VITZ_110,,Brakes: Fair,Poor,49,Vitz
+TOY_PREMIO_016,,Cooling System: Good,Good,83,Premio
+TOY_AXIO_201,,Steering: Fair,Good,97,Axio
+TOY_PREMIO_205,,Engine: Fair,Fair,75,Premio
+TOY_YARIS_058,,Brakes: Fair,Fair,74,Yaris
+TOY_COROLLA_198,,Tyres: Fair,Critical,23,Corolla
+TOY_ALLION_220,,Engine: Fair,Critical,32,Allion
+TOY_COROLLA_267,,Cooling System: Fair,Poor,49,Corolla
+TOY_YARIS_211,,Cooling System: Fair,Critical,23,Yaris
+TOY_AXIO_127,,Engine: Fair,Critical,39,Axio
+TOY_PREMIO_136,,Engine: Good,Fair,72,Premio
+TOY_ALLION_240,,Cooling System: Poor,Poor,46,Allion
+TOY_AXIO_179,,Steering: Critical,Poor,52,Axio
+TOY_ALLION_044,,Exhaust System: Fair,Good,86,Allion
+TOY_YARIS_085,,Cooling System: Fair,Fair,69,Yaris
+TOY_VITZ_297,,Tyres: Good,Critical,26,Vitz
+TOY_ALLION_206,,Steering: Poor,Good,88,Allion
+TOY_ALLION_131,,Battery: Fair,Poor,44,Allion
+TOY_ALLION_019,,Exhaust System: Critical,Poor,46,Allion
+TOY_YARIS_116,,Suspension: Good,Poor,57,Yaris
+TOY_YARIS_241,,Tyres: Good,Critical,30,Yaris
+TOY_YARIS_260,,Brakes: Fair,Poor,51,Yaris
+TOY_COROLLA_047,,Steering: Fair,Critical,34,Corolla
+TOY_PREMIO_173,,Engine: Poor,Critical,27,Premio
+TOY_COROLLA_152,,Brakes: Poor,Good,83,Corolla
+TOY_AXIO_268,,Suspension: Poor,Fair,75,Axio
+TOY_COROLLA_230,,Cooling System: Critical,Fair,64,Corolla
+TOY_AXIO_183,,Suspension: Fair,Fair,68,Axio
+TOY_COROLLA_017,,Transmission: Fair,Fair,73,Corolla
+TOY_AXIO_294,,Steering: Poor,Poor,55,Axio
+TOY_VITZ_009,,Transmission: Fair,Critical,27,Vitz
+TOY_ALLION_232,,Cooling System: Poor,Fair,71,Allion
+TOY_COROLLA_108,,Tyres: Good,Good,90,Corolla
+TOY_PREMIO_216,,Steering: Fair,Fair,60,Premio
+TOY_AXIO_092,,Steering: Fair,Poor,56,Axio
+TOY_COROLLA_256,,Exhaust System: Good,Poor,59,Corolla
+TOY_AXIO_156,,Steering: Fair,Fair,70,Axio
+TOY_PREMIO_117,,Brakes: Good,Fair,71,Premio
+TOY_AXIO_114,,Suspension: Fair,Critical,32,Axio
+TOY_VITZ_152,,Exhaust System: Fair,Critical,26,Vitz
+TOY_AXIO_267,,Suspension: Fair,Critical,33,Axio
+TOY_AXIO_128,,Transmission: Fair,Critical,37,Axio
+TOY_AXIO_079,,Brakes: Poor,Critical,29,Axio
+TOY_VITZ_034,,Steering: Good,Good,94,Vitz
+TOY_COROLLA_016,,Steering: Poor,Poor,55,Corolla
+TOY_PREMIO_092,,Brakes: Poor,Poor,53,Premio
+TOY_ALLION_129,,Engine: Fair,Good,96,Allion
+TOY_PREMIO_054,,Transmission: Good,Good,82,Premio
+TOY_VITZ_056,,Battery: Fair,Poor,43,Vitz
+TOY_ALLION_167,,Battery: Poor,Fair,65,Allion
+TOY_PREMIO_075,,Tyres: Poor,Critical,21,Premio
+TOY_VITZ_003,,Cooling System: Fair,Good,86,Vitz
+TOY_ALLION_280,,Transmission: Poor,Good,87,Allion
+TOY_YARIS_277,,Brakes: Fair,Good,95,Yaris
+TOY_ALLION_218,,Brakes: Fair,Good,85,Allion
+TOY_PREMIO_289,,Brakes: Fair,Critical,20,Premio
+TOY_PREMIO_258,,Exhaust System: Poor,Fair,68,Premio
+TOY_PREMIO_283,,Battery: Poor,Good,99,Premio
+TOY_PREMIO_293,,Steering: Poor,Good,96,Premio
+TOY_VITZ_144,,Engine: Good,Good,91,Vitz
+TOY_ALLION_070,,Exhaust System: Fair,Critical,30,Allion
+TOY_ALLION_209,,Battery: Good,Good,82,Allion
+TOY_AXIO_131,,Engine: Good,Poor,44,Axio
+TOY_VITZ_262,,Steering: Good,Fair,63,Vitz
+TOY_ALLION_187,,Cooling System: Fair,Fair,62,Allion
+TOY_PREMIO_193,,Exhaust System: Fair,Critical,20,Premio
+TOY_ALLION_156,,Suspension: Poor,Good,93,Allion
+TOY_ALLION_191,,Battery: Poor,Critical,24,Allion
+TOY_ALLION_080,,Steering: Good,Fair,67,Allion
+TOY_YARIS_104,,Brakes: Fair,Fair,64,Yaris
+TOY_YARIS_217,,Engine: Fair,Poor,55,Yaris
+TOY_COROLLA_072,,Steering: Good,Poor,50,Corolla
+TOY_COROLLA_076,,Transmission: Good,Poor,47,Corolla
+TOY_AXIO_152,,Steering: Good,Critical,37,Axio
+TOY_VITZ_001,,Exhaust System: Fair,Critical,24,Vitz
+TOY_AXIO_007,,Suspension: Fair,Poor,54,Axio
+TOY_PREMIO_227,,Battery: Fair,Critical,27,Premio
+TOY_ALLION_196,,Battery: Fair,Fair,61,Allion
+TOY_PREMIO_118,,Battery: Fair,Poor,40,Premio
+TOY_PREMIO_073,,Engine: Fair,Critical,26,Premio
+TOY_VITZ_288,,Brakes: Fair,Poor,46,Vitz
+TOY_AXIO_205,,Engine: Fair,Good,81,Axio
+TOY_COROLLA_222,,Transmission: Fair,Fair,76,Corolla
+TOY_PREMIO_093,,Suspension: Critical,Critical,36,Premio
+TOY_YARIS_054,,Battery: Fair,Poor,45,Yaris
+TOY_COROLLA_049,,Suspension: Fair,Critical,31,Corolla
+TOY_ALLION_248,,Brakes: Fair,Good,97,Allion
+TOY_ALLION_124,,Tyres: Good,Good,93,Allion
+TOY_PREMIO_020,,Suspension: Good,Good,81,Premio
+TOY_ALLION_110,,Engine: Good,Critical,33,Allion
+TOY_ALLION_160,,Suspension: Good,Good,90,Allion
+TOY_ALLION_241,,Engine: Good,Good,93,Allion
+TOY_AXIO_030,,Brakes: Fair,Critical,27,Axio
+TOY_VITZ_237,,Engine: Fair,Critical,33,Vitz
+TOY_PREMIO_270,,Engine: Good,Good,94,Premio
+TOY_VITZ_074,,Exhaust System: Poor,Poor,51,Vitz
+TOY_PREMIO_196,,Engine: Good,Good,90,Premio
+TOY_ALLION_027,,Tyres: Poor,Fair,70,Allion
+TOY_ALLION_103,,Suspension: Good,Fair,61,Allion
+TOY_ALLION_063,,Exhaust System: Good,Fair,75,Allion
+TOY_AXIO_184,,Brakes: Poor,Critical,23,Axio
+TOY_ALLION_238,,Brakes: Good,Critical,34,Allion
+TOY_YARIS_137,,Brakes: Poor,Poor,50,Yaris
+TOY_VITZ_057,,Cooling System: Fair,Fair,76,Vitz
+TOY_VITZ_254,,Steering: Good,Poor,43,Vitz
+TOY_ALLION_257,,Cooling System: Poor,Good,84,Allion
+TOY_ALLION_154,,Cooling System: Good,Poor,53,Allion
+TOY_PREMIO_141,,Transmission: Fair,Good,94,Premio
+TOY_ALLION_025,,Battery: Poor,Fair,69,Allion
+TOY_PREMIO_028,,Cooling System: Fair,Critical,37,Premio
+TOY_AXIO_176,,Cooling System: Poor,Poor,48,Axio
+TOY_YARIS_183,,Steering: Fair,Poor,55,Yaris
+TOY_YARIS_286,,Exhaust System: Good,Critical,30,Yaris
+TOY_AXIO_218,,Transmission: Fair,Good,100,Axio
+TOY_PREMIO_183,,Battery: Fair,Fair,63,Premio
+TOY_YARIS_053,,Engine: Good,Fair,74,Yaris
+TOY_ALLION_026,,Brakes: Good,Fair,62,Allion
+TOY_ALLION_149,,Cooling System: Fair,Fair,77,Allion
+TOY_PREMIO_018,,Suspension: Fair,Poor,45,Premio
+TOY_PREMIO_249,,Steering: Fair,Critical,25,Premio
+TOY_AXIO_016,,Brakes: Fair,Poor,40,Axio
+TOY_PREMIO_161,,Engine: Poor,Fair,60,Premio
+TOY_ALLION_184,,Transmission: Good,Fair,65,Allion
+TOY_VITZ_277,,Battery: Good,Good,90,Vitz
+TOY_COROLLA_283,,Cooling System: Fair,Critical,21,Corolla
+TOY_VITZ_080,,Exhaust System: Good,Fair,75,Vitz
+TOY_YARIS_264,,Engine: Good,Poor,42,Yaris
+TOY_VITZ_133,,Engine: Good,Poor,47,Vitz
+TOY_VITZ_264,,Exhaust System: Poor,Fair,76,Vitz
+TOY_YARIS_063,,Tyres: Poor,Good,82,Yaris
+TOY_AXIO_082,,Cooling System: Fair,Good,89,Axio
+TOY_COROLLA_284,,Engine: Fair,Poor,47,Corolla
+TOY_COROLLA_250,,Steering: Critical,Fair,66,Corolla
+TOY_AXIO_111,,Battery: Fair,Fair,76,Axio
+TOY_PREMIO_004,,Engine: Fair,Good,100,Premio
+TOY_AXIO_064,,Suspension: Good,Critical,25,Axio
+TOY_AXIO_129,,Battery: Good,Good,100,Axio
+TOY_COROLLA_069,,Brakes: Poor,Good,99,Corolla
+TOY_COROLLA_138,,Transmission: Poor,Good,92,Corolla
+TOY_ALLION_164,,Engine: Poor,Good,95,Allion
+TOY_COROLLA_074,,Suspension: Fair,Fair,79,Corolla
+TOY_VITZ_011,,Exhaust System: Poor,Good,90,Vitz
+TOY_COROLLA_265,,Cooling System: Poor,Critical,26,Corolla
+TOY_VITZ_300,,Engine: Fair,Poor,49,Vitz
+TOY_ALLION_147,,Cooling System: Fair,Critical,33,Allion
+TOY_ALLION_013,,Transmission: Poor,Critical,32,Allion
+TOY_ALLION_168,,Cooling System: Fair,Poor,57,Allion
+TOY_YARIS_125,,Transmission: Poor,Critical,25,Yaris
+TOY_ALLION_044,,Exhaust System: Fair,Good,86,Allion
+TOY_PREMIO_234,,Cooling System: Fair,Critical,22,Premio
+TOY_AXIO_253,,Tyres: Good,Poor,56,Axio
+TOY_AXIO_194,,Engine: Good,Fair,68,Axio
+TOY_PREMIO_108,,Battery: Poor,Good,89,Premio
+TOY_ALLION_262,,Suspension: Good,Critical,25,Allion
+TOY_COROLLA_004,,Tyres: Fair,Fair,63,Corolla
+TOY_PREMIO_289,,Brakes: Fair,Critical,20,Premio
+TOY_VITZ_187,,Engine: Fair,Poor,56,Vitz
+TOY_YARIS_081,,Exhaust System: Fair,Critical,35,Yaris
+TOY_ALLION_053,,Transmission: Fair,Poor,53,Allion
+TOY_VITZ_118,,Steering: Poor,Poor,57,Vitz
+TOY_ALLION_123,,Battery: Good,Good,90,Allion
+TOY_ALLION_022,,Tyres: Fair,Poor,56,Allion
+TOY_VITZ_063,,Steering: Fair,Poor,40,Vitz
+TOY_ALLION_235,,Suspension: Good,Critical,28,Allion
+TOY_PREMIO_190,,Brakes: Fair,Poor,46,Premio
+TOY_ALLION_220,,Engine: Fair,Critical,32,Allion
+TOY_COROLLA_147,,Transmission: Good,Critical,26,Corolla
+TOY_VITZ_058,,Battery: Fair,Fair,63,Vitz
+TOY_COROLLA_170,,Exhaust System: Critical,Good,94,Corolla
+TOY_VITZ_186,,Engine: Fair,Poor,57,Vitz
+TOY_COROLLA_146,,Suspension: Fair,Critical,29,Corolla
+TOY_PREMIO_276,,Cooling System: Good,Good,81,Premio
+TOY_YARIS_189,,Steering: Poor,Poor,54,Yaris
+TOY_AXIO_044,,Steering: Good,Good,88,Axio
+TOY_VITZ_086,,Cooling System: Fair,Poor,41,Vitz
+TOY_AXIO_291,,Engine: Fair,Good,93,Axio
+TOY_AXIO_296,,Suspension: Good,Fair,62,Axio
+TOY_AXIO_083,,Brakes: Good,Poor,46,Axio
+TOY_PREMIO_138,,Battery: Poor,Poor,41,Premio
+TOY_YARIS_230,,Transmission: Fair,Poor,51,Yaris
+TOY_VITZ_086,,Cooling System: Fair,Poor,41,Vitz
+TOY_PREMIO_257,,Exhaust System: Good,Critical,23,Premio
+TOY_AXIO_042,,Suspension: Fair,Poor,55,Axio
+TOY_VITZ_135,,Battery: Fair,Fair,78,Vitz
+TOY_YARIS_136,,Steering: Poor,Poor,52,Yaris
+TOY_YARIS_157,,Transmission: Good,Critical,34,Yaris
+TOY_VITZ_283,,Battery: Fair,Fair,78,Vitz
+TOY_PREMIO_144,,Suspension: Poor,Poor,49,Premio
+TOY_AXIO_085,,Cooling System: Poor,Fair,71,Axio
+TOY_ALLION_101,,Suspension: Critical,Critical,20,Allion
+TOY_ALLION_055,,Brakes: Fair,Good,93,Allion
+TOY_COROLLA_041,,Cooling System: Fair,Critical,32,Corolla
+TOY_PREMIO_103,,Engine: Good,Good,94,Premio
+TOY_VITZ_282,,Steering: Poor,Critical,35,Vitz
+TOY_YARIS_065,,Transmission: Fair,Good,96,Yaris
+TOY_VITZ_254,,Steering: Good,Poor,43,Vitz
+TOY_YARIS_097,,Cooling System: Fair,Poor,50,Yaris
+TOY_VITZ_091,,Cooling System: Fair,Poor,49,Vitz
+TOY_YARIS_226,,Transmission: Fair,Critical,27,Yaris
+TOY_VITZ_296,,Exhaust System: Poor,Good,87,Vitz
+TOY_COROLLA_290,,Exhaust System: Good,Poor,50,Corolla
+TOY_ALLION_149,,Cooling System: Fair,Fair,77,Allion
+TOY_AXIO_036,,Brakes: Fair,Fair,60,Axio
+TOY_ALLION_157,,Tyres: Fair,Fair,60,Allion
+TOY_VITZ_069,,Brakes: Good,Fair,70,Vitz
+TOY_COROLLA_267,,Cooling System: Fair,Poor,49,Corolla
+TOY_AXIO_074,,Brakes: Poor,Good,85,Axio
+TOY_PREMIO_034,,Steering: Good,Fair,64,Premio
+TOY_PREMIO_294,,Tyres: Good,Good,98,Premio
+TOY_VITZ_083,,Battery: Poor,Poor,43,Vitz
+TOY_VITZ_104,,Cooling System: Fair,Poor,51,Vitz
+TOY_ALLION_281,,Brakes: Critical,Poor,42,Allion
+TOY_PREMIO_027,,Steering: Critical,Poor,50,Premio
+TOY_ALLION_109,,Transmission: Poor,Critical,32,Allion
+TOY_COROLLA_209,,Suspension: Fair,Fair,63,Corolla
+TOY_ALLION_299,,Tyres: Good,Fair,66,Allion
+TOY_ALLION_212,,Engine: Good,Critical,29,Allion
+TOY_COROLLA_295,,Steering: Fair,Fair,66,Corolla
+TOY_COROLLA_191,,Battery: Good,Good,97,Corolla
+TOY_AXIO_256,,Tyres: Poor,Fair,74,Axio
+TOY_COROLLA_044,,Battery: Fair,Poor,52,Corolla
+TOY_PREMIO_258,,Exhaust System: Poor,Fair,68,Premio
+TOY_AXIO_206,,Suspension: Poor,Good,98,Axio
+TOY_VITZ_238,,Steering: Good,Poor,46,Vitz
+TOY_VITZ_150,,Steering: Good,Critical,38,Vitz
+TOY_ALLION_188,,Exhaust System: Fair,Good,80,Allion
+TOY_YARIS_088,,Tyres: Poor,Poor,42,Yaris
+TOY_COROLLA_042,,Transmission: Fair,Critical,30,Corolla
+TOY_YARIS_232,,Transmission: Fair,Poor,46,Yaris
+TOY_AXIO_011,,Cooling System: Good,Poor,53,Axio
+TOY_VITZ_066,,Engine: Good,Fair,76,Vitz
+TOY_ALLION_064,,Suspension: Fair,Critical,37,Allion
+TOY_YARIS_201,,Transmission: Poor,Critical,38,Yaris
+TOY_ALLION_083,,Cooling System: Good,Critical,24,Allion
+TOY_COROLLA_147,,Transmission: Good,Critical,26,Corolla
+TOY_ALLION_190,,Transmission: Fair,Critical,31,Allion
+TOY_AXIO_020,,Brakes: Good,Poor,51,Axio
+TOY_COROLLA_197,,Brakes: Fair,Fair,78,Corolla
+TOY_COROLLA_047,,Steering: Fair,Critical,34,Corolla
+TOY_VITZ_054,,Tyres: Fair,Good,92,Vitz
+TOY_VITZ_249,,Exhaust System: Fair,Poor,45,Vitz
+TOY_AXIO_061,,Transmission: Fair,Poor,54,Axio
+TOY_ALLION_139,,Brakes: Poor,Good,89,Allion
+TOY_ALLION_010,,Steering: Fair,Good,84,Allion
+TOY_PREMIO_214,,Brakes: Good,Poor,56,Premio
+TOY_COROLLA_209,,Suspension: Fair,Fair,63,Corolla
+TOY_ALLION_285,,Exhaust System: Fair,Critical,27,Allion
+TOY_COROLLA_071,,Transmission: Fair,Fair,72,Corolla
+TOY_AXIO_250,,Tyres: Fair,Good,96,Axio
+TOY_COROLLA_260,,Tyres: Poor,Good,98,Corolla
+TOY_PREMIO_280,,Battery: Good,Good,80,Premio
+TOY_COROLLA_263,,Engine: Fair,Poor,49,Corolla
+TOY_VITZ_042,,Transmission: Fair,Poor,58,Vitz
+TOY_PREMIO_147,,Exhaust System: Fair,Good,81,Premio
+TOY_ALLION_278,,Cooling System: Poor,Critical,20,Allion
+TOY_YARIS_225,,Steering: Good,Good,83,Yaris
+TOY_COROLLA_064,,Tyres: Fair,Poor,48,Corolla
+TOY_COROLLA_083,,Cooling System: Fair,Poor,51,Corolla
+TOY_YARIS_063,,Tyres: Poor,Good,82,Yaris
+TOY_VITZ_133,,Engine: Good,Poor,47,Vitz
+TOY_ALLION_092,,Engine: Good,Poor,55,Allion
+TOY_VITZ_117,,Cooling System: Fair,Poor,44,Vitz
+TOY_VITZ_160,,Battery: Fair,Poor,53,Vitz
+TOY_COROLLA_089,,Suspension: Fair,Poor,59,Corolla
+TOY_PREMIO_213,,Cooling System: Fair,Critical,21,Premio
+TOY_PREMIO_244,,Transmission: Poor,Poor,50,Premio
+TOY_YARIS_157,,Transmission: Good,Critical,34,Yaris
+TOY_COROLLA_250,,Steering: Critical,Fair,66,Corolla
+TOY_AXIO_282,,Tyres: Good,Good,84,Axio
+TOY_PREMIO_082,,Cooling System: Poor,Good,87,Premio
+TOY_VITZ_185,,Exhaust System: Fair,Critical,31,Vitz
+TOY_YARIS_146,,Tyres: Good,Good,98,Yaris
+TOY_AXIO_082,,Cooling System: Fair,Good,89,Axio
+TOY_PREMIO_163,,Battery: Good,Poor,55,Premio
+TOY_PREMIO_166,,Tyres: Poor,Poor,47,Premio
+TOY_ALLION_195,,Battery: Good,Good,82,Allion
+TOY_YARIS_219,,Brakes: Fair,Good,88,Yaris
+TOY_PREMIO_167,,Suspension: Good,Good,83,Premio
+TOY_ALLION_071,,Suspension: Poor,Critical,28,Allion
+TOY_PREMIO_160,,Transmission: Fair,Critical,33,Premio
+TOY_ALLION_196,,Battery: Fair,Fair,61,Allion
+TOY_PREMIO_227,,Battery: Fair,Critical,27,Premio
+TOY_AXIO_285,,Tyres: Poor,Poor,48,Axio
+TOY_AXIO_171,,Cooling System: Good,Critical,37,Axio
+TOY_YARIS_269,,Engine: Fair,Critical,33,Yaris
+TOY_ALLION_080,,Steering: Good,Fair,67,Allion
+TOY_VITZ_296,,Exhaust System: Poor,Good,87,Vitz
+TOY_VITZ_161,,Suspension: Good,Critical,23,Vitz
+TOY_AXIO_028,,Battery: Fair,Poor,50,Axio
+TOY_AXIO_075,,Battery: Fair,Critical,27,Axio
+TOY_COROLLA_178,,Cooling System: Fair,Good,89,Corolla
+TOY_YARIS_100,,Transmission: Good,Fair,62,Yaris
+TOY_PREMIO_271,,Brakes: Fair,Critical,28,Premio
+TOY_VITZ_232,,Steering: Fair,Fair,75,Vitz
+TOY_YARIS_056,,Steering: Poor,Good,92,Yaris
+TOY_VITZ_096,,Exhaust System: Fair,Fair,63,Vitz
+TOY_PREMIO_188,,Suspension: Good,Poor,58,Premio
+TOY_VITZ_052,,Brakes: Fair,Critical,20,Vitz
+TOY_PREMIO_295,,Brakes: Good,Fair,62,Premio
+TOY_AXIO_269,,Transmission: Good,Good,85,Axio
+TOY_VITZ_240,,Suspension: Fair,Critical,27,Vitz
+TOY_YARIS_298,,Suspension: Fair,Poor,51,Yaris
+TOY_VITZ_292,,Engine: Poor,Poor,47,Vitz
+TOY_PREMIO_265,,Suspension: Fair,Fair,63,Premio
+TOY_ALLION_032,,Suspension: Good,Good,85,Allion
+TOY_YARIS_195,,Brakes: Fair,Critical,31,Yaris
+TOY_AXIO_030,,Brakes: Fair,Critical,27,Axio
+TOY_AXIO_291,,Engine: Fair,Good,93,Axio
+TOY_AXIO_213,,Suspension: Good,Good,96,Axio
+TOY_YARIS_097,,Cooling System: Fair,Poor,50,Yaris
+TOY_AXIO_221,,Tyres: Fair,Critical,36,Axio
+TOY_ALLION_136,,Steering: Fair,Poor,55,Allion
+TOY_YARIS_091,,Cooling System: Fair,Critical,20,Yaris
+TOY_YARIS_014,,Cooling System: Good,Fair,65,Yaris
+TOY_YARIS_196,,Cooling System: Fair,Fair,67,Yaris
+TOY_PREMIO_190,,Brakes: Fair,Poor,46,Premio
+TOY_COROLLA_089,,Suspension: Fair,Poor,59,Corolla
+TOY_COROLLA_014,,Exhaust System: Poor,Poor,48,Corolla
+TOY_PREMIO_136,,Engine: Good,Fair,72,Premio
+TOY_PREMIO_272,,Engine: Poor,Good,95,Premio
+TOY_COROLLA_059,,Battery: Fair,Critical,27,Corolla
+TOY_PREMIO_189,,Battery: Fair,Critical,21,Premio
+TOY_COROLLA_068,,Steering: Good,Poor,44,Corolla
+TOY_PREMIO_232,,Steering: Poor,Good,85,Premio
+TOY_ALLION_186,,Exhaust System: Fair,Good,98,Allion
+TOY_COROLLA_004,,Tyres: Fair,Fair,63,Corolla
+TOY_PREMIO_111,,Exhaust System: Fair,Good,90,Premio
+TOY_COROLLA_021,,Engine: Fair,Poor,54,Corolla
+TOY_PREMIO_244,,Transmission: Poor,Poor,50,Premio
+TOY_COROLLA_124,,Tyres: Good,Poor,54,Corolla
+TOY_COROLLA_201,,Battery: Fair,Fair,68,Corolla
+TOY_AXIO_028,,Battery: Fair,Poor,50,Axio
+TOY_ALLION_116,,Steering: Fair,Poor,52,Allion
+TOY_ALLION_049,,Suspension: Fair,Critical,28,Allion
+TOY_VITZ_251,,Steering: Good,Fair,69,Vitz
+TOY_PREMIO_298,,Transmission: Poor,Good,87,Premio
+TOY_ALLION_232,,Cooling System: Poor,Fair,71,Allion
+TOY_ALLION_278,,Cooling System: Poor,Critical,20,Allion
+TOY_ALLION_010,,Steering: Fair,Good,84,Allion
+TOY_VITZ_253,,Exhaust System: Poor,Good,90,Vitz
+TOY_VITZ_108,,Battery: Fair,Good,86,Vitz
+TOY_ALLION_068,,Steering: Poor,Poor,49,Allion
+TOY_COROLLA_280,,Exhaust System: Good,Critical,35,Corolla
+TOY_COROLLA_071,,Transmission: Fair,Fair,72,Corolla
+TOY_COROLLA_270,,Suspension: Poor,Fair,62,Corolla
+TOY_COROLLA_153,,Brakes: Fair,Good,88,Corolla
+TOY_VITZ_293,,Transmission: Poor,Good,90,Vitz
+TOY_AXIO_051,,Brakes: Fair,Poor,46,Axio
+TOY_YARIS_014,,Cooling System: Good,Fair,65,Yaris
+TOY_YARIS_293,,Engine: Fair,Good,86,Yaris
+TOY_ALLION_206,,Steering: Poor,Good,88,Allion
+TOY_AXIO_233,,Suspension: Good,Poor,53,Axio
+TOY_YARIS_240,,Brakes: Poor,Poor,55,Yaris
+TOY_VITZ_072,,Suspension: Good,Poor,40,Vitz
+TOY_YARIS_259,,Exhaust System: Fair,Critical,21,Yaris
+TOY_COROLLA_285,,Transmission: Good,Good,100,Corolla
+TOY_AXIO_180,,Transmission: Poor,Critical,25,Axio
+TOY_AXIO_094,,Engine: Fair,Poor,57,Axio
+TOY_VITZ_137,,Tyres: Good,Poor,59,Vitz
+TOY_PREMIO_260,,Tyres: Fair,Critical,30,Premio
+TOY_COROLLA_139,,Steering: Fair,Fair,76,Corolla
+TOY_ALLION_008,,Exhaust System: Good,Critical,36,Allion
+TOY_PREMIO_132,,Engine: Fair,Good,100,Premio
+TOY_ALLION_066,,Exhaust System: Poor,Critical,31,Allion
+TOY_ALLION_126,,Brakes: Fair,Fair,63,Allion
+TOY_COROLLA_179,,Transmission: Fair,Poor,50,Corolla
+TOY_COROLLA_122,,Tyres: Fair,Critical,37,Corolla
+TOY_YARIS_161,,Suspension: Fair,Fair,61,Yaris
+TOY_VITZ_192,,Battery: Fair,Critical,34,Vitz
+TOY_VITZ_168,,Brakes: Fair,Good,82,Vitz
+TOY_COROLLA_202,,Transmission: Poor,Good,89,Corolla
+TOY_VITZ_288,,Brakes: Fair,Poor,46,Vitz
+TOY_YARIS_079,,Engine: Good,Critical,32,Yaris
+TOY_COROLLA_004,,Tyres: Fair,Fair,63,Corolla
+TOY_PREMIO_110,,Brakes: Good,Critical,23,Premio
+TOY_ALLION_289,,Cooling System: Fair,Fair,71,Allion
+TOY_COROLLA_091,,Transmission: Good,Critical,36,Corolla
+TOY_PREMIO_041,,Engine: Poor,Critical,27,Premio
+TOY_ALLION_005,,Steering: Good,Poor,51,Allion
+TOY_ALLION_177,,Cooling System: Good,Good,93,Allion
+TOY_ALLION_278,,Cooling System: Poor,Critical,20,Allion
+TOY_ALLION_254,,Transmission: Fair,Fair,73,Allion
+TOY_PREMIO_135,,Tyres: Fair,Poor,57,Premio
+TOY_VITZ_109,,Exhaust System: Good,Poor,52,Vitz
+TOY_VITZ_020,,Battery: Fair,Fair,75,Vitz
+TOY_PREMIO_151,,Battery: Good,Poor,50,Premio
+TOY_PREMIO_208,,Suspension: Fair,Poor,44,Premio
+TOY_ALLION_236,,Cooling System: Fair,Good,84,Allion
+TOY_VITZ_178,,Brakes: Good,Critical,26,Vitz
+TOY_ALLION_169,,Transmission: Fair,Fair,64,Allion
+TOY_AXIO_052,,Transmission: Fair,Good,92,Axio
+TOY_YARIS_092,,Suspension: Fair,Good,91,Yaris
+TOY_COROLLA_272,,Exhaust System: Fair,Good,93,Corolla
+TOY_VITZ_150,,Steering: Good,Critical,38,Vitz
+TOY_PREMIO_005,,Tyres: Fair,Critical,24,Premio
+TOY_YARIS_110,,Battery: Good,Good,82,Yaris
+TOY_PREMIO_167,,Suspension: Good,Good,83,Premio
+TOY_VITZ_214,,Transmission: Critical,Critical,20,Vitz
+TOY_AXIO_073,,Engine: Fair,Critical,33,Axio
+TOY_ALLION_216,,Battery: Fair,Poor,45,Allion
+TOY_ALLION_289,,Cooling System: Fair,Fair,71,Allion
+TOY_YARIS_034,,Suspension: Fair,Critical,28,Yaris
+TOY_ALLION_192,,Engine: Good,Fair,65,Allion
+TOY_PREMIO_105,,Exhaust System: Fair,Critical,39,Premio
+TOY_COROLLA_238,,Brakes: Fair,Good,97,Corolla
+TOY_AXIO_089,,Cooling System: Fair,Poor,59,Axio
+TOY_YARIS_211,,Cooling System: Fair,Critical,23,Yaris
+TOY_ALLION_170,,Battery: Fair,Fair,74,Allion
+TOY_AXIO_155,,Steering: Good,Fair,78,Axio
+TOY_ALLION_293,,Suspension: Poor,Fair,78,Allion
+TOY_AXIO_084,,Engine: Poor,Good,99,Axio
+TOY_VITZ_175,,Suspension: Fair,Good,90,Vitz
+TOY_AXIO_238,,Battery: Fair,Poor,59,Axio
+TOY_YARIS_037,,Steering: Good,Good,86,Yaris
+TOY_PREMIO_106,,Brakes: Poor,Critical,39,Premio
+TOY_ALLION_117,,Brakes: Fair,Critical,23,Allion
+TOY_COROLLA_086,,Tyres: Fair,Poor,53,Corolla
+TOY_PREMIO_171,,Exhaust System: Poor,Poor,43,Premio
+TOY_VITZ_197,,Brakes: Fair,Fair,74,Vitz
+TOY_ALLION_045,,Steering: Fair,Good,86,Allion
+TOY_PREMIO_162,,Transmission: Good,Critical,30,Premio
+TOY_ALLION_189,,Brakes: Good,Good,82,Allion
+TOY_YARIS_085,,Cooling System: Fair,Fair,69,Yaris
+TOY_VITZ_151,,Battery: Fair,Poor,46,Vitz
+TOY_AXIO_215,,Suspension: Fair,Good,89,Axio
+TOY_AXIO_187,,Steering: Good,Critical,29,Axio
+TOY_VITZ_161,,Suspension: Good,Critical,23,Vitz
+TOY_PREMIO_249,,Steering: Fair,Critical,25,Premio
+TOY_YARIS_120,,Brakes: Fair,Good,98,Yaris
+TOY_ALLION_137,,Battery: Fair,Critical,36,Allion
+TOY_PREMIO_055,,Battery: Good,Fair,74,Premio
+TOY_PREMIO_075,,Tyres: Poor,Critical,21,Premio
+TOY_PREMIO_238,,Engine: Fair,Good,82,Premio
+TOY_YARIS_216,,Suspension: Good,Fair,71,Yaris
+TOY_YARIS_157,,Transmission: Good,Critical,34,Yaris
+TOY_AXIO_299,,Brakes: Good,Poor,54,Axio
+TOY_ALLION_290,,Suspension: Fair,Fair,62,Allion
+TOY_COROLLA_261,,Cooling System: Good,Fair,78,Corolla
+TOY_PREMIO_152,,Engine: Poor,Poor,48,Premio
+TOY_VITZ_144,,Engine: Good,Good,91,Vitz
+TOY_VITZ_120,,Transmission: Poor,Poor,57,Vitz
+TOY_COROLLA_101,,Tyres: Fair,Good,92,Corolla
+TOY_AXIO_249,,Battery: Fair,Critical,27,Axio
+TOY_AXIO_271,,Battery: Poor,Good,96,Axio
+TOY_YARIS_022,,Cooling System: Fair,Critical,30,Yaris
+TOY_COROLLA_027,,Steering: Good,Poor,52,Corolla
+TOY_PREMIO_104,,Engine: Good,Poor,54,Premio
+TOY_COROLLA_197,,Brakes: Fair,Fair,78,Corolla
+TOY_AXIO_201,,Steering: Fair,Good,97,Axio
+TOY_PREMIO_107,,Cooling System: Good,Poor,45,Premio
+TOY_PREMIO_188,,Suspension: Good,Poor,58,Premio
+TOY_ALLION_216,,Battery: Fair,Poor,45,Allion
+TOY_COROLLA_041,,Cooling System: Fair,Critical,32,Corolla
+TOY_VITZ_137,,Tyres: Good,Poor,59,Vitz
+TOY_YARIS_260,,Brakes: Fair,Poor,51,Yaris
+TOY_ALLION_008,,Exhaust System: Good,Critical,36,Allion
+TOY_PREMIO_021,,Battery: Good,Good,94,Premio
+TOY_COROLLA_221,,Suspension: Fair,Good,96,Corolla
+TOY_AXIO_060,,Brakes: Fair,Fair,73,Axio
+TOY_AXIO_225,,Transmission: Good,Fair,69,Axio
+TOY_VITZ_065,,Suspension: Poor,Fair,65,Vitz
+TOY_AXIO_010,,Suspension: Fair,Fair,65,Axio
+TOY_ALLION_107,,Steering: Poor,Poor,48,Allion
+TOY_COROLLA_078,,Suspension: Good,Critical,30,Corolla
+TOY_ALLION_093,,Cooling System: Good,Fair,75,Allion
+TOY_COROLLA_198,,Tyres: Fair,Critical,23,Corolla
+TOY_COROLLA_164,,Tyres: Good,Critical,37,Corolla
+TOY_YARIS_169,,Suspension: Poor,Fair,76,Yaris
+TOY_VITZ_140,,Transmission: Good,Critical,25,Vitz
+TOY_ALLION_271,,Brakes: Good,Fair,71,Allion
+TOY_YARIS_123,,Suspension: Poor,Good,91,Yaris
+TOY_VITZ_069,,Brakes: Good,Fair,70,Vitz
+TOY_AXIO_025,,Brakes: Poor,Good,91,Axio
+TOY_AXIO_081,,Tyres: Fair,Poor,51,Axio
+TOY_COROLLA_216,,Brakes: Good,Poor,46,Corolla
+TOY_PREMIO_197,,Battery: Good,Fair,76,Premio
+TOY_VITZ_257,,Suspension: Fair,Good,96,Vitz
+TOY_VITZ_168,,Brakes: Fair,Good,82,Vitz
+TOY_AXIO_296,,Suspension: Good,Fair,62,Axio
+TOY_AXIO_274,,Tyres: Fair,Good,88,Axio
+TOY_AXIO_133,,Tyres: Fair,Good,91,Axio
+TOY_ALLION_279,,Engine: Fair,Fair,79,Allion
+TOY_COROLLA_212,,Brakes: Fair,Critical,38,Corolla
+TOY_ALLION_232,,Cooling System: Poor,Fair,71,Allion
+TOY_VITZ_153,,Tyres: Good,Poor,58,Vitz
+TOY_COROLLA_286,,Transmission: Good,Good,96,Corolla
+TOY_AXIO_268,,Suspension: Poor,Fair,75,Axio
+TOY_VITZ_225,,Brakes: Fair,Fair,62,Vitz
+TOY_AXIO_077,,Battery: Poor,Good,100,Axio
+TOY_ALLION_077,,Suspension: Good,Good,98,Allion
+TOY_AXIO_084,,Engine: Poor,Good,99,Axio
+TOY_COROLLA_187,,Engine: Good,Poor,54,Corolla
+TOY_ALLION_138,,Suspension: Good,Good,100,Allion
+TOY_YARIS_298,,Suspension: Fair,Poor,51,Yaris
+TOY_AXIO_085,,Cooling System: Poor,Fair,71,Axio
+TOY_YARIS_202,,Cooling System: Fair,Fair,74,Yaris
+TOY_COROLLA_038,,Suspension: Fair,Good,96,Corolla
+TOY_YARIS_081,,Exhaust System: Fair,Critical,35,Yaris
+TOY_PREMIO_035,,Battery: Poor,Critical,20,Premio
+TOY_ALLION_088,,Engine: Good,Poor,42,Allion
+TOY_AXIO_065,,Cooling System: Fair,Good,81,Axio
+TOY_AXIO_026,,Tyres: Fair,Poor,41,Axio
+TOY_VITZ_211,,Cooling System: Critical,Critical,24,Vitz
+TOY_PREMIO_193,,Exhaust System: Fair,Critical,20,Premio
+TOY_AXIO_123,,Engine: Good,Poor,56,Axio
+TOY_AXIO_219,,Transmission: Fair,Poor,48,Axio
+TOY_COROLLA_272,,Exhaust System: Fair,Good,93,Corolla
+TOY_ALLION_271,,Brakes: Good,Fair,71,Allion
+TOY_ALLION_097,,Cooling System: Poor,Poor,42,Allion
+TOY_AXIO_202,,Tyres: Poor,Fair,73,Axio
+TOY_VITZ_120,,Transmission: Poor,Poor,57,Vitz
+TOY_COROLLA_071,,Transmission: Fair,Fair,72,Corolla
+TOY_PREMIO_182,,Cooling System: Fair,Poor,51,Premio
+TOY_ALLION_153,,Engine: Fair,Critical,23,Allion
+TOY_ALLION_283,,Exhaust System: Fair,Good,89,Allion
+TOY_PREMIO_053,,Engine: Fair,Critical,36,Premio
+TOY_AXIO_295,,Transmission: Poor,Critical,30,Axio
+TOY_VITZ_068,,Engine: Fair,Poor,56,Vitz
+TOY_AXIO_030,,Brakes: Fair,Critical,27,Axio
+TOY_ALLION_151,,Exhaust System: Fair,Poor,54,Allion
+TOY_COROLLA_296,,Cooling System: Fair,Poor,54,Corolla
+TOY_ALLION_067,,Battery: Fair,Good,92,Allion
+TOY_COROLLA_055,,Suspension: Fair,Fair,70,Corolla
+TOY_AXIO_234,,Brakes: Fair,Fair,61,Axio
+TOY_PREMIO_027,,Steering: Critical,Poor,50,Premio
+TOY_VITZ_118,,Steering: Poor,Poor,57,Vitz
+TOY_VITZ_229,,Exhaust System: Good,Good,87,Vitz
+TOY_PREMIO_045,,Exhaust System: Fair,Good,94,Premio
+TOY_VITZ_082,,Brakes: Poor,Critical,27,Vitz
+TOY_ALLION_227,,Tyres: Poor,Poor,56,Allion
+TOY_ALLION_210,,Battery: Fair,Critical,38,Allion
+TOY_YARIS_115,,Transmission: Good,Good,81,Yaris
+TOY_VITZ_063,,Steering: Fair,Poor,40,Vitz
+TOY_PREMIO_171,,Exhaust System: Poor,Poor,43,Premio
+TOY_YARIS_287,,Exhaust System: Good,Critical,30,Yaris
+TOY_PREMIO_281,,Suspension: Fair,Critical,24,Premio
+TOY_AXIO_042,,Suspension: Fair,Poor,55,Axio
+TOY_ALLION_224,,Tyres: Good,Fair,77,Allion
+TOY_YARIS_161,,Suspension: Fair,Fair,61,Yaris
+TOY_VITZ_274,,Engine: Poor,Poor,49,Vitz
+TOY_ALLION_064,,Suspension: Fair,Critical,37,Allion
+TOY_ALLION_181,,Battery: Critical,Good,97,Allion
+TOY_ALLION_287,,Cooling System: Fair,Fair,77,Allion
+TOY_COROLLA_221,,Suspension: Fair,Good,96,Corolla
+TOY_PREMIO_141,,Transmission: Fair,Good,94,Premio
+TOY_PREMIO_062,,Steering: Fair,Critical,27,Premio
+TOY_AXIO_073,,Engine: Fair,Critical,33,Axio
+TOY_AXIO_035,,Transmission: Good,Good,81,Axio
+TOY_VITZ_085,,Transmission: Poor,Poor,56,Vitz
+TOY_VITZ_007,,Tyres: Poor,Critical,34,Vitz
+TOY_COROLLA_176,,Battery: Good,Critical,32,Corolla
+TOY_COROLLA_006,,Exhaust System: Poor,Poor,49,Corolla
+TOY_AXIO_093,,Transmission: Poor,Fair,76,Axio
+TOY_YARIS_073,,Tyres: Fair,Critical,24,Yaris
+TOY_PREMIO_163,,Battery: Good,Poor,55,Premio
+TOY_YARIS_028,,Tyres: Good,Fair,70,Yaris
+TOY_ALLION_203,,Brakes: Fair,Poor,46,Allion
+TOY_YARIS_273,,Steering: Good,Fair,69,Yaris
+TOY_VITZ_138,,Brakes: Fair,Critical,34,Vitz
+TOY_COROLLA_036,,Brakes: Fair,Poor,50,Corolla
+TOY_VITZ_084,,Cooling System: Fair,Good,98,Vitz
+TOY_AXIO_212,,Tyres: Critical,Fair,64,Axio
+TOY_COROLLA_072,,Steering: Good,Poor,50,Corolla
+TOY_AXIO_236,,Cooling System: Fair,Poor,46,Axio
+TOY_ALLION_231,,Engine: Fair,Poor,58,Allion
+TOY_AXIO_131,,Engine: Good,Poor,44,Axio
+TOY_YARIS_082,,Engine: Good,Critical,33,Yaris
+TOY_PREMIO_238,,Engine: Fair,Good,82,Premio
+TOY_ALLION_007,,Transmission: Poor,Good,92,Allion
+TOY_ALLION_083,,Cooling System: Good,Critical,24,Allion
+TOY_YARIS_296,,Engine: Fair,Fair,78,Yaris
+TOY_COROLLA_089,,Suspension: Fair,Poor,59,Corolla
+TOY_COROLLA_028,,Tyres: Fair,Good,91,Corolla
+TOY_YARIS_279,,Steering: Poor,Critical,30,Yaris
+TOY_AXIO_014,,Battery: Fair,Fair,67,Axio
+TOY_AXIO_277,,Steering: Good,Poor,44,Axio
+TOY_ALLION_042,,Brakes: Fair,Good,86,Allion
+TOY_YARIS_274,,Tyres: Fair,Fair,75,Yaris
+TOY_YARIS_036,,Tyres: Fair,Fair,64,Yaris
+TOY_PREMIO_209,,Battery: Good,Critical,32,Premio
+TOY_PREMIO_012,,Suspension: Poor,Good,96,Premio
+TOY_AXIO_092,,Steering: Fair,Poor,56,Axio
+TOY_VITZ_232,,Steering: Fair,Fair,75,Vitz
+TOY_PREMIO_062,,Steering: Fair,Critical,27,Premio
+TOY_COROLLA_143,,Battery: Fair,Fair,73,Corolla
+TOY_ALLION_224,,Tyres: Good,Fair,77,Allion
+TOY_AXIO_041,,Tyres: Good,Critical,24,Axio
+TOY_AXIO_182,,Exhaust System: Fair,Good,89,Axio
+TOY_YARIS_181,,Steering: Good,Poor,58,Yaris
+TOY_COROLLA_259,,Transmission: Fair,Fair,66,Corolla
+TOY_ALLION_001,,Suspension: Fair,Fair,64,Allion
+TOY_COROLLA_300,,Battery: Poor,Good,99,Corolla
+TOY_COROLLA_033,,Steering: Fair,Fair,68,Corolla
+TOY_ALLION_202,,Transmission: Good,Fair,70,Allion
+TOY_YARIS_032,,Tyres: Good,Good,91,Yaris
+TOY_YARIS_044,,Transmission: Good,Critical,20,Yaris
+TOY_PREMIO_162,,Transmission: Good,Critical,30,Premio
+TOY_VITZ_163,,Exhaust System: Good,Fair,67,Vitz
+TOY_ALLION_055,,Brakes: Fair,Good,93,Allion
+TOY_VITZ_176,,Cooling System: Fair,Critical,30,Vitz
+TOY_COROLLA_123,,Transmission: Poor,Fair,66,Corolla
+TOY_VITZ_180,,Transmission: Good,Critical,20,Vitz
+TOY_YARIS_086,,Brakes: Good,Good,80,Yaris
+TOY_COROLLA_252,,Battery: Good,Poor,55,Corolla
+TOY_COROLLA_240,,Tyres: Good,Fair,71,Corolla
+TOY_ALLION_119,,Battery: Fair,Good,81,Allion
+TOY_COROLLA_262,,Exhaust System: Fair,Critical,26,Corolla
+TOY_YARIS_146,,Tyres: Good,Good,98,Yaris
+TOY_YARIS_084,,Transmission: Good,Poor,44,Yaris
+TOY_VITZ_158,,Transmission: Fair,Good,88,Vitz
+TOY_AXIO_088,,Exhaust System: Fair,Poor,42,Axio
+TOY_ALLION_116,,Steering: Fair,Poor,52,Allion
+TOY_ALLION_100,,Suspension: Fair,Good,86,Allion
+TOY_PREMIO_257,,Exhaust System: Good,Critical,23,Premio
+TOY_ALLION_289,,Cooling System: Fair,Fair,71,Allion
+TOY_YARIS_113,,Tyres: Poor,Fair,73,Yaris
+TOY_VITZ_094,,Transmission: Fair,Critical,39,Vitz
+TOY_COROLLA_288,,Tyres: Fair,Good,96,Corolla
+TOY_AXIO_156,,Steering: Fair,Fair,70,Axio
+TOY_COROLLA_028,,Tyres: Fair,Good,91,Corolla
+TOY_PREMIO_102,,Transmission: Good,Poor,57,Premio
+TOY_YARIS_224,,Transmission: Good,Good,97,Yaris
+TOY_PREMIO_032,,Engine: Fair,Fair,70,Premio
+TOY_AXIO_272,,Tyres: Fair,Fair,68,Axio
+TOY_PREMIO_023,,Cooling System: Good,Good,84,Premio
+TOY_COROLLA_200,,Engine: Fair,Critical,27,Corolla
+TOY_VITZ_244,,Engine: Fair,Poor,53,Vitz
+TOY_COROLLA_127,,Battery: Poor,Poor,59,Corolla
+TOY_YARIS_075,,Engine: Fair,Fair,74,Yaris
+TOY_ALLION_083,,Cooling System: Good,Critical,24,Allion
+TOY_YARIS_171,,Brakes: Fair,Poor,49,Yaris
+TOY_YARIS_077,,Exhaust System: Poor,Good,85,Yaris
+TOY_ALLION_227,,Tyres: Poor,Poor,56,Allion
+TOY_ALLION_049,,Suspension: Fair,Critical,28,Allion
+TOY_AXIO_279,,Transmission: Good,Critical,23,Axio
+TOY_YARIS_284,,Engine: Good,Good,92,Yaris
+TOY_AXIO_190,,Tyres: Good,Good,93,Axio
+TOY_PREMIO_075,,Tyres: Poor,Critical,21,Premio
+TOY_AXIO_058,,Suspension: Poor,Fair,69,Axio
+TOY_VITZ_181,,Suspension: Fair,Poor,55,Vitz
+TOY_AXIO_060,,Brakes: Fair,Fair,73,Axio
+TOY_PREMIO_079,,Cooling System: Poor,Poor,59,Premio
+TOY_PREMIO_147,,Exhaust System: Fair,Good,81,Premio
+TOY_PREMIO_159,,Engine: Good,Critical,28,Premio
+TOY_VITZ_270,,Tyres: Fair,Poor,55,Vitz
+TOY_COROLLA_199,,Tyres: Fair,Critical,31,Corolla
+TOY_VITZ_126,,Brakes: Poor,Poor,52,Vitz
+TOY_ALLION_088,,Engine: Good,Poor,42,Allion
+TOY_COROLLA_260,,Tyres: Poor,Good,98,Corolla
+TOY_YARIS_175,,Steering: Good,Fair,60,Yaris
+TOY_COROLLA_102,,Battery: Fair,Good,99,Corolla
+TOY_ALLION_269,,Brakes: Good,Poor,52,Allion
+TOY_PREMIO_097,,Brakes: Fair,Good,85,Premio
+TOY_YARIS_170,,Battery: Poor,Fair,73,Yaris
+TOY_VITZ_009,,Transmission: Fair,Critical,27,Vitz
+TOY_YARIS_008,,Transmission: Good,Fair,75,Yaris
+TOY_VITZ_148,,Transmission: Poor,Critical,38,Vitz
+TOY_COROLLA_165,,Exhaust System: Good,Fair,79,Corolla
+TOY_VITZ_014,,Engine: Critical,Critical,29,Vitz
+TOY_COROLLA_187,,Engine: Good,Poor,54,Corolla
+TOY_YARIS_258,,Transmission: Good,Poor,53,Yaris
+TOY_VITZ_047,,Suspension: Fair,Fair,71,Vitz
+TOY_PREMIO_095,,Transmission: Fair,Critical,34,Premio
+TOY_VITZ_172,,Transmission: Good,Critical,28,Vitz
+TOY_PREMIO_259,,Transmission: Fair,Good,80,Premio
+TOY_VITZ_123,,Transmission: Fair,Critical,21,Vitz
+TOY_PREMIO_095,,Transmission: Fair,Critical,34,Premio
+TOY_AXIO_270,,Battery: Poor,Fair,76,Axio
+TOY_YARIS_197,,Cooling System: Fair,Fair,77,Yaris
+TOY_PREMIO_018,,Suspension: Fair,Poor,45,Premio
+TOY_ALLION_238,,Brakes: Good,Critical,34,Allion
+TOY_YARIS_187,,Battery: Good,Poor,41,Yaris
+TOY_VITZ_015,,Steering: Fair,Poor,52,Vitz
+TOY_AXIO_221,,Tyres: Fair,Critical,36,Axio
+TOY_AXIO_192,,Battery: Fair,Fair,77,Axio
+TOY_COROLLA_068,,Steering: Good,Poor,44,Corolla
+TOY_COROLLA_142,,Transmission: Good,Critical,28,Corolla
+TOY_VITZ_182,,Tyres: Good,Critical,21,Vitz
+TOY_AXIO_293,,Tyres: Fair,Critical,25,Axio
+TOY_ALLION_200,,Steering: Fair,Fair,69,Allion
+TOY_VITZ_050,,Transmission: Fair,Good,85,Vitz
+TOY_YARIS_268,,Steering: Fair,Critical,36,Yaris
+TOY_PREMIO_006,,Steering: Poor,Good,80,Premio
+TOY_COROLLA_026,,Brakes: Fair,Critical,28,Corolla
+TOY_COROLLA_119,,Battery: Poor,Poor,52,Corolla
+TOY_YARIS_247,,Suspension: Poor,Critical,27,Yaris
+TOY_VITZ_289,,Engine: Good,Fair,78,Vitz
+TOY_VITZ_129,,Engine: Good,Fair,63,Vitz
+TOY_COROLLA_186,,Steering: Poor,Good,96,Corolla
+TOY_ALLION_013,,Transmission: Poor,Critical,32,Allion
+TOY_PREMIO_249,,Steering: Fair,Critical,25,Premio
+TOY_AXIO_295,,Transmission: Poor,Critical,30,Axio
+TOY_COROLLA_258,,Suspension: Fair,Good,80,Corolla
+TOY_PREMIO_252,,Engine: Good,Critical,28,Premio
+TOY_YARIS_215,,Suspension: Good,Fair,71,Yaris
+TOY_PREMIO_098,,Transmission: Fair,Poor,48,Premio
+TOY_ALLION_160,,Suspension: Good,Good,90,Allion
+TOY_PREMIO_189,,Battery: Fair,Critical,21,Premio
+TOY_AXIO_155,,Steering: Good,Fair,78,Axio
+TOY_ALLION_030,,Tyres: Good,Poor,47,Allion
+TOY_AXIO_239,,Tyres: Fair,Fair,75,Axio
+TOY_AXIO_287,,Suspension: Good,Good,86,Axio
+TOY_PREMIO_194,,Transmission: Poor,Critical,37,Premio
+TOY_VITZ_154,,Battery: Fair,Poor,54,Vitz
+TOY_AXIO_130,,Battery: Fair,Fair,64,Axio
+TOY_AXIO_018,,Tyres: Fair,Fair,77,Axio
+TOY_PREMIO_026,,Tyres: Good,Poor,56,Premio
+TOY_ALLION_251,,Transmission: Fair,Fair,74,Allion
+TOY_AXIO_004,,Transmission: Good,Fair,63,Axio
+TOY_PREMIO_057,,Exhaust System: Fair,Fair,67,Premio
+TOY_PREMIO_006,,Steering: Poor,Good,80,Premio
+TOY_COROLLA_158,,Battery: Fair,Fair,66,Corolla
+TOY_YARIS_249,,Cooling System: Poor,Critical,31,Yaris
+TOY_ALLION_072,,Suspension: Fair,Poor,45,Allion
+TOY_ALLION_052,,Engine: Good,Fair,65,Allion
+TOY_YARIS_200,,Engine: Fair,Poor,44,Yaris
+TOY_AXIO_276,,Tyres: Critical,Fair,74,Axio
+TOY_AXIO_187,,Steering: Good,Critical,29,Axio
+TOY_AXIO_175,,Engine: Fair,Good,94,Axio
+TOY_AXIO_213,,Suspension: Good,Good,96,Axio
+TOY_PREMIO_022,,Cooling System: Good,Poor,58,Premio
+TOY_VITZ_169,,Tyres: Good,Poor,52,Vitz
+TOY_PREMIO_063,,Battery: Fair,Critical,22,Premio
+TOY_AXIO_291,,Engine: Fair,Good,93,Axio
+TOY_VITZ_221,,Tyres: Poor,Poor,40,Vitz
+TOY_AXIO_117,,Steering: Poor,Good,94,Axio
+TOY_YARIS_087,,Cooling System: Poor,Poor,50,Yaris
+TOY_COROLLA_047,,Steering: Fair,Critical,34,Corolla
+TOY_AXIO_109,,Transmission: Poor,Good,83,Axio
+TOY_COROLLA_233,,Transmission: Fair,Critical,31,Corolla
+TOY_PREMIO_242,,Brakes: Fair,Poor,46,Premio
+TOY_PREMIO_206,,Suspension: Poor,Good,86,Premio
+TOY_ALLION_050,,Transmission: Fair,Fair,69,Allion
+TOY_VITZ_065,,Suspension: Poor,Fair,65,Vitz
+TOY_YARIS_074,,Brakes: Poor,Poor,51,Yaris
+TOY_AXIO_103,,Cooling System: Fair,Good,88,Axio
+TOY_COROLLA_093,,Brakes: Good,Good,87,Corolla
+TOY_COROLLA_085,,Transmission: Fair,Good,82,Corolla
+TOY_VITZ_111,,Steering: Fair,Poor,50,Vitz
+TOY_AXIO_113,,Suspension: Fair,Poor,52,Axio
+TOY_AXIO_028,,Battery: Fair,Poor,50,Axio
+TOY_COROLLA_195,,Engine: Fair,Critical,25,Corolla
+TOY_AXIO_271,,Battery: Poor,Good,96,Axio
+TOY_ALLION_230,,Engine: Poor,Critical,23,Allion
+TOY_ALLION_265,,Brakes: Poor,Poor,52,Allion
+TOY_AXIO_022,,Cooling System: Poor,Poor,40,Axio
+TOY_ALLION_035,,Suspension: Good,Poor,50,Allion
+TOY_VITZ_285,,Battery: Fair,Good,84,Vitz
+TOY_AXIO_148,,Transmission: Poor,Fair,62,Axio
+TOY_COROLLA_026,,Brakes: Fair,Critical,28,Corolla
+TOY_VITZ_261,,Battery: Poor,Critical,38,Vitz
+TOY_AXIO_096,,Engine: Good,Fair,79,Axio
+TOY_PREMIO_217,,Exhaust System: Poor,Poor,43,Premio
+TOY_VITZ_143,,Cooling System: Poor,Fair,71,Vitz
+TOY_COROLLA_187,,Engine: Good,Poor,54,Corolla
+TOY_ALLION_225,,Brakes: Fair,Good,93,Allion
+TOY_ALLION_162,,Cooling System: Good,Good,95,Allion
+TOY_PREMIO_101,,Cooling System: Fair,Critical,35,Premio
+TOY_COROLLA_065,,Brakes: Fair,Critical,31,Corolla
+TOY_AXIO_028,,Battery: Fair,Poor,50,Axio
+TOY_VITZ_136,,Transmission: Poor,Poor,56,Vitz
+TOY_COROLLA_187,,Engine: Good,Poor,54,Corolla
+TOY_AXIO_226,,Suspension: Fair,Fair,73,Axio
+TOY_COROLLA_072,,Steering: Good,Poor,50,Corolla
+TOY_COROLLA_103,,Transmission: Fair,Good,99,Corolla
+TOY_COROLLA_035,,Brakes: Good,Fair,64,Corolla
+TOY_COROLLA_219,,Battery: Poor,Good,80,Corolla
+TOY_ALLION_214,,Exhaust System: Fair,Fair,68,Allion
+TOY_VITZ_094,,Transmission: Fair,Critical,39,Vitz
+TOY_AXIO_091,,Suspension: Good,Poor,48,Axio
+TOY_YARIS_261,,Engine: Poor,Poor,46,Yaris
+TOY_AXIO_290,,Exhaust System: Fair,Poor,40,Axio
+TOY_VITZ_241,,Transmission: Fair,Fair,62,Vitz
+TOY_COROLLA_008,,Engine: Good,Good,94,Corolla
+TOY_VITZ_112,,Tyres: Poor,Fair,79,Vitz
+TOY_PREMIO_204,,Suspension: Good,Poor,40,Premio
+TOY_AXIO_066,,Engine: Fair,Good,91,Axio
+TOY_PREMIO_298,,Transmission: Poor,Good,87,Premio
+TOY_YARIS_035,,Suspension: Good,Poor,48,Yaris
+TOY_VITZ_102,,Suspension: Good,Critical,36,Vitz
+TOY_ALLION_150,,Steering: Poor,Critical,27,Allion
+TOY_AXIO_215,,Suspension: Fair,Good,89,Axio
+TOY_AXIO_073,,Engine: Fair,Critical,33,Axio
+TOY_VITZ_138,,Brakes: Fair,Critical,34,Vitz
+TOY_COROLLA_066,,Transmission: Good,Fair,62,Corolla
+TOY_AXIO_165,,Brakes: Fair,Poor,45,Axio
+TOY_ALLION_183,,Brakes: Fair,Good,94,Allion
+TOY_PREMIO_289,,Brakes: Fair,Critical,20,Premio
+TOY_AXIO_070,,Brakes: Poor,Fair,79,Axio
+TOY_VITZ_148,,Transmission: Poor,Critical,38,Vitz
+TOY_AXIO_054,,Steering: Good,Good,86,Axio
+TOY_VITZ_217,,Tyres: Fair,Poor,43,Vitz
+TOY_ALLION_134,,Brakes: Fair,Good,90,Allion
+TOY_COROLLA_187,,Engine: Good,Poor,54,Corolla
+TOY_VITZ_256,,Transmission: Fair,Poor,59,Vitz
+TOY_COROLLA_141,,Steering: Fair,Critical,29,Corolla
+TOY_VITZ_030,,Battery: Good,Good,94,Vitz
+TOY_COROLLA_252,,Battery: Good,Poor,55,Corolla
+TOY_ALLION_059,,Steering: Fair,Fair,68,Allion
+TOY_COROLLA_097,,Tyres: Good,Critical,21,Corolla
+TOY_VITZ_032,,Battery: Good,Fair,61,Vitz
+TOY_VITZ_232,,Steering: Fair,Fair,75,Vitz
+TOY_PREMIO_238,,Engine: Fair,Good,82,Premio
+TOY_ALLION_294,,Cooling System: Fair,Good,93,Allion
+TOY_YARIS_103,,Transmission: Poor,Critical,24,Yaris
+TOY_AXIO_281,,Tyres: Poor,Fair,62,Axio
+TOY_PREMIO_101,,Cooling System: Fair,Critical,35,Premio
+TOY_AXIO_104,,Brakes: Fair,Good,84,Axio
+TOY_VITZ_226,,Battery: Poor,Critical,31,Vitz
+TOY_VITZ_148,,Transmission: Poor,Critical,38,Vitz
+TOY_ALLION_116,,Steering: Fair,Poor,52,Allion
+TOY_YARIS_028,,Tyres: Good,Fair,70,Yaris
+TOY_ALLION_080,,Steering: Good,Fair,67,Allion
+TOY_VITZ_295,,Tyres: Poor,Critical,30,Vitz
+TOY_COROLLA_173,,Cooling System: Poor,Critical,27,Corolla
+TOY_COROLLA_230,,Cooling System: Critical,Fair,64,Corolla
+TOY_YARIS_131,,Battery: Fair,Poor,56,Yaris
+TOY_VITZ_106,,Tyres: Fair,Good,85,Vitz
+TOY_ALLION_252,,Tyres: Good,Critical,30,Allion
+TOY_COROLLA_054,,Steering: Fair,Fair,73,Corolla
+TOY_COROLLA_175,,Cooling System: Poor,Poor,53,Corolla
+TOY_PREMIO_179,,Brakes: Poor,Poor,59,Premio
+TOY_AXIO_178,,Exhaust System: Good,Critical,28,Axio
+TOY_YARIS_026,,Transmission: Poor,Fair,74,Yaris
+TOY_VITZ_038,,Brakes: Fair,Critical,35,Vitz
+TOY_YARIS_077,,Exhaust System: Poor,Good,85,Yaris
+TOY_YARIS_255,,Suspension: Fair,Good,91,Yaris
+TOY_COROLLA_182,,Brakes: Critical,Fair,76,Corolla
+TOY_AXIO_188,,Steering: Fair,Fair,79,Axio
+TOY_AXIO_107,,Suspension: Poor,Fair,76,Axio
+TOY_YARIS_296,,Engine: Fair,Fair,78,Yaris
+TOY_ALLION_194,,Brakes: Fair,Fair,63,Allion
+TOY_ALLION_117,,Brakes: Fair,Critical,23,Allion
+TOY_YARIS_129,,Exhaust System: Poor,Poor,59,Yaris
+TOY_VITZ_263,,Transmission: Poor,Poor,42,Vitz
+TOY_COROLLA_255,,Engine: Poor,Good,86,Corolla
+TOY_VITZ_083,,Battery: Poor,Poor,43,Vitz
+TOY_YARIS_226,,Transmission: Fair,Critical,27,Yaris
+TOY_PREMIO_022,,Cooling System: Good,Poor,58,Premio
+TOY_AXIO_182,,Exhaust System: Fair,Good,89,Axio
+TOY_AXIO_198,,Suspension: Fair,Critical,31,Axio
+TOY_VITZ_254,,Steering: Good,Poor,43,Vitz
+TOY_AXIO_215,,Suspension: Fair,Good,89,Axio
+TOY_COROLLA_289,,Transmission: Poor,Fair,64,Corolla
+TOY_COROLLA_231,,Engine: Fair,Good,95,Corolla
+TOY_YARIS_059,,Cooling System: Fair,Poor,50,Yaris
+TOY_COROLLA_134,,Brakes: Fair,Poor,57,Corolla
+TOY_AXIO_246,,Battery: Fair,Fair,79,Axio
+TOY_AXIO_235,,Suspension: Good,Poor,57,Axio
+TOY_COROLLA_152,,Brakes: Poor,Good,83,Corolla
+TOY_AXIO_047,,Cooling System: Good,Critical,22,Axio
+TOY_COROLLA_050,,Steering: Good,Good,84,Corolla
+TOY_PREMIO_096,,Suspension: Poor,Critical,36,Premio
+TOY_YARIS_190,,Battery: Fair,Critical,38,Yaris
+TOY_AXIO_199,,Tyres: Fair,Fair,66,Axio
+TOY_ALLION_079,,Steering: Good,Fair,63,Allion
+TOY_AXIO_208,,Cooling System: Fair,Fair,65,Axio
+TOY_AXIO_212,,Tyres: Critical,Fair,64,Axio
+TOY_YARIS_246,,Suspension: Good,Fair,71,Yaris
+TOY_ALLION_020,,Brakes: Good,Fair,69,Allion
+TOY_COROLLA_204,,Exhaust System: Fair,Poor,47,Corolla
+TOY_AXIO_162,,Cooling System: Good,Good,85,Axio
+TOY_PREMIO_177,,Tyres: Good,Poor,51,Premio
+TOY_ALLION_285,,Exhaust System: Fair,Critical,27,Allion
+TOY_AXIO_299,,Brakes: Good,Poor,54,Axio
+TOY_YARIS_145,,Tyres: Good,Fair,73,Yaris
+TOY_PREMIO_201,,Suspension: Fair,Critical,37,Premio
+TOY_AXIO_105,,Battery: Fair,Poor,46,Axio
+TOY_COROLLA_049,,Suspension: Fair,Critical,31,Corolla
+TOY_ALLION_263,,Battery: Good,Poor,50,Allion
+TOY_PREMIO_276,,Cooling System: Good,Good,81,Premio
+TOY_PREMIO_003,,Cooling System: Good,Good,81,Premio
+TOY_VITZ_113,,Engine: Fair,Poor,45,Vitz
+TOY_COROLLA_109,,Transmission: Fair,Good,90,Corolla
+TOY_ALLION_235,,Suspension: Good,Critical,28,Allion
+TOY_YARIS_014,,Cooling System: Good,Fair,65,Yaris
+TOY_ALLION_173,,Cooling System: Good,Critical,38,Allion
+TOY_VITZ_155,,Cooling System: Poor,Poor,55,Vitz
+TOY_VITZ_134,,Exhaust System: Poor,Critical,36,Vitz
+TOY_VITZ_262,,Steering: Good,Fair,63,Vitz
+TOY_ALLION_210,,Battery: Fair,Critical,38,Allion
+TOY_PREMIO_216,,Steering: Fair,Fair,60,Premio
+TOY_YARIS_148,,Brakes: Fair,Good,80,Yaris
+TOY_VITZ_285,,Battery: Fair,Good,84,Vitz
+TOY_AXIO_078,,Suspension: Good,Poor,43,Axio
+TOY_VITZ_254,,Steering: Good,Poor,43,Vitz
+TOY_COROLLA_279,,Suspension: Good,Fair,75,Corolla
+TOY_COROLLA_245,,Exhaust System: Poor,Critical,25,Corolla
+TOY_AXIO_063,,Transmission: Fair,Poor,58,Axio
+TOY_VITZ_254,,Steering: Good,Poor,43,Vitz
+TOY_ALLION_195,,Battery: Good,Good,82,Allion
+TOY_VITZ_249,,Exhaust System: Fair,Poor,45,Vitz
+TOY_YARIS_104,,Brakes: Fair,Fair,64,Yaris
+TOY_ALLION_290,,Suspension: Fair,Fair,62,Allion
+TOY_YARIS_024,,Battery: Fair,Good,86,Yaris
+TOY_AXIO_029,,Steering: Fair,Critical,38,Axio
+TOY_COROLLA_214,,Suspension: Good,Poor,50,Corolla
+TOY_AXIO_300,,Exhaust System: Good,Good,82,Axio
+TOY_COROLLA_178,,Cooling System: Fair,Good,89,Corolla
+TOY_ALLION_100,,Suspension: Fair,Good,86,Allion
+TOY_PREMIO_229,,Brakes: Good,Good,85,Premio
+TOY_ALLION_217,,Cooling System: Good,Critical,24,Allion
+TOY_PREMIO_110,,Brakes: Good,Critical,23,Premio
+TOY_YARIS_234,,Cooling System: Fair,Fair,75,Yaris
+TOY_ALLION_054,,Battery: Good,Fair,66,Allion
+TOY_VITZ_108,,Battery: Fair,Good,86,Vitz
+TOY_AXIO_053,,Tyres: Fair,Poor,44,Axio
+TOY_VITZ_069,,Brakes: Good,Fair,70,Vitz
+TOY_AXIO_124,,Engine: Fair,Critical,24,Axio
+TOY_ALLION_141,,Steering: Fair,Critical,31,Allion
+TOY_ALLION_244,,Cooling System: Good,Good,90,Allion
+TOY_PREMIO_283,,Battery: Poor,Good,99,Premio
+TOY_PREMIO_086,,Transmission: Poor,Critical,27,Premio
+TOY_VITZ_270,,Tyres: Fair,Poor,55,Vitz
+TOY_YARIS_236,,Engine: Good,Poor,41,Yaris
+TOY_COROLLA_099,,Tyres: Good,Poor,47,Corolla
+TOY_YARIS_170,,Battery: Poor,Fair,73,Yaris
+TOY_PREMIO_262,,Transmission: Fair,Critical,37,Premio
+TOY_ALLION_174,,Cooling System: Poor,Fair,71,Allion
+TOY_AXIO_194,,Engine: Good,Fair,68,Axio
+TOY_PREMIO_247,,Engine: Good,Poor,46,Premio
+TOY_ALLION_202,,Transmission: Good,Fair,70,Allion
+TOY_PREMIO_278,,Brakes: Critical,Poor,40,Premio
+TOY_COROLLA_117,,Tyres: Good,Poor,46,Corolla
+TOY_AXIO_039,,Tyres: Poor,Good,82,Axio
+TOY_VITZ_277,,Battery: Good,Good,90,Vitz
+TOY_YARIS_069,,Tyres: Fair,Poor,40,Yaris
+TOY_ALLION_191,,Battery: Poor,Critical,24,Allion
+TOY_AXIO_248,,Cooling System: Good,Fair,65,Axio
+TOY_PREMIO_073,,Engine: Fair,Critical,26,Premio
+TOY_PREMIO_105,,Exhaust System: Fair,Critical,39,Premio
+TOY_YARIS_167,,Cooling System: Good,Critical,24,Yaris
+TOY_VITZ_167,,Tyres: Fair,Fair,72,Vitz
+TOY_AXIO_207,,Cooling System: Good,Critical,30,Axio
+TOY_VITZ_119,,Transmission: Fair,Fair,79,Vitz
+TOY_PREMIO_094,,Steering: Good,Good,92,Premio
+TOY_PREMIO_080,,Engine: Poor,Poor,41,Premio
+TOY_YARIS_177,,Suspension: Poor,Good,85,Yaris
+TOY_ALLION_289,,Cooling System: Fair,Fair,71,Allion
+TOY_VITZ_234,,Engine: Fair,Good,87,Vitz
+TOY_VITZ_126,,Brakes: Poor,Poor,52,Vitz
+TOY_AXIO_276,,Tyres: Critical,Fair,74,Axio
+TOY_PREMIO_137,,Steering: Fair,Critical,27,Premio
+TOY_PREMIO_261,,Suspension: Fair,Good,89,Premio
+TOY_PREMIO_245,,Cooling System: Fair,Critical,23,Premio
+TOY_ALLION_038,,Tyres: Poor,Poor,40,Allion
+TOY_VITZ_175,,Suspension: Fair,Good,90,Vitz
+TOY_AXIO_063,,Transmission: Fair,Poor,58,Axio
+TOY_VITZ_299,,Steering: Fair,Fair,61,Vitz
+TOY_COROLLA_300,,Battery: Poor,Good,99,Corolla
+TOY_PREMIO_020,,Suspension: Good,Good,81,Premio
+TOY_COROLLA_047,,Steering: Fair,Critical,34,Corolla
+TOY_AXIO_214,,Battery: Good,Critical,22,Axio
+TOY_YARIS_190,,Battery: Fair,Critical,38,Yaris
+TOY_PREMIO_099,,Exhaust System: Fair,Poor,54,Premio
+TOY_ALLION_009,,Tyres: Fair,Fair,62,Allion
+TOY_YARIS_006,,Battery: Fair,Poor,59,Yaris
+TOY_AXIO_063,,Transmission: Fair,Poor,58,Axio
+TOY_ALLION_272,,Exhaust System: Poor,Fair,66,Allion
+TOY_ALLION_214,,Exhaust System: Fair,Fair,68,Allion
+TOY_COROLLA_256,,Exhaust System: Good,Poor,59,Corolla
+TOY_COROLLA_267,,Cooling System: Fair,Poor,49,Corolla
+TOY_ALLION_054,,Battery: Good,Fair,66,Allion
+TOY_PREMIO_039,,Exhaust System: Poor,Good,98,Premio
+TOY_ALLION_165,,Tyres: Poor,Good,88,Allion
+TOY_COROLLA_253,,Tyres: Good,Critical,29,Corolla
+TOY_COROLLA_126,,Engine: Good,Critical,21,Corolla
+TOY_VITZ_165,,Suspension: Fair,Poor,49,Vitz
+TOY_VITZ_165,,Suspension: Fair,Poor,49,Vitz
+TOY_ALLION_136,,Steering: Fair,Poor,55,Allion
+TOY_COROLLA_267,,Cooling System: Fair,Poor,49,Corolla
+TOY_VITZ_114,,Tyres: Fair,Fair,76,Vitz
+TOY_PREMIO_080,,Engine: Poor,Poor,41,Premio
+TOY_ALLION_060,,Engine: Fair,Good,88,Allion
+TOY_YARIS_098,,Tyres: Fair,Fair,73,Yaris
+TOY_COROLLA_231,,Engine: Fair,Good,95,Corolla
+TOY_PREMIO_234,,Cooling System: Fair,Critical,22,Premio
+TOY_PREMIO_198,,Brakes: Fair,Good,80,Premio
+TOY_ALLION_076,,Brakes: Good,Good,87,Allion
+TOY_COROLLA_281,,Brakes: Critical,Good,88,Corolla
+TOY_AXIO_008,,Battery: Poor,Fair,62,Axio
+TOY_PREMIO_222,,Cooling System: Good,Good,84,Premio
+TOY_COROLLA_265,,Cooling System: Poor,Critical,26,Corolla
+TOY_AXIO_092,,Steering: Fair,Poor,56,Axio
+TOY_ALLION_244,,Cooling System: Good,Good,90,Allion
+TOY_COROLLA_063,,Engine: Poor,Poor,57,Corolla
+TOY_YARIS_140,,Cooling System: Fair,Fair,69,Yaris
+TOY_COROLLA_298,,Transmission: Fair,Poor,49,Corolla
+TOY_COROLLA_042,,Transmission: Fair,Critical,30,Corolla
+TOY_AXIO_271,,Battery: Poor,Good,96,Axio
+TOY_YARIS_286,,Exhaust System: Good,Critical,30,Yaris
+TOY_PREMIO_209,,Battery: Good,Critical,32,Premio
+TOY_ALLION_090,,Exhaust System: Good,Good,83,Allion
+TOY_VITZ_044,,Transmission: Fair,Poor,56,Vitz
+TOY_PREMIO_088,,Exhaust System: Fair,Critical,20,Premio
+TOY_COROLLA_076,,Transmission: Good,Poor,47,Corolla
+TOY_VITZ_062,,Battery: Good,Fair,79,Vitz
+TOY_YARIS_173,,Exhaust System: Fair,Poor,49,Yaris
+TOY_VITZ_274,,Engine: Poor,Poor,49,Vitz
+TOY_PREMIO_043,,Brakes: Fair,Good,91,Premio
+TOY_YARIS_283,,Engine: Fair,Poor,58,Yaris
+TOY_VITZ_174,,Brakes: Fair,Critical,23,Vitz
+TOY_YARIS_041,,Exhaust System: Good,Fair,60,Yaris
+TOY_VITZ_134,,Exhaust System: Poor,Critical,36,Vitz
+TOY_ALLION_076,,Brakes: Good,Good,87,Allion
+TOY_YARIS_213,,Suspension: Fair,Critical,38,Yaris
+TOY_AXIO_294,,Steering: Poor,Poor,55,Axio
+TOY_AXIO_255,,Steering: Fair,Fair,61,Axio
+TOY_COROLLA_277,,Cooling System: Fair,Poor,56,Corolla
+TOY_AXIO_007,,Suspension: Fair,Poor,54,Axio
+TOY_ALLION_121,,Cooling System: Fair,Fair,72,Allion
+TOY_AXIO_063,,Transmission: Fair,Poor,58,Axio
+TOY_VITZ_155,,Cooling System: Poor,Poor,55,Vitz
+TOY_COROLLA_021,,Engine: Fair,Poor,54,Corolla
+TOY_PREMIO_108,,Battery: Poor,Good,89,Premio
+TOY_COROLLA_107,,Engine: Fair,Fair,77,Corolla
+TOY_PREMIO_131,,Transmission: Good,Critical,29,Premio
+TOY_COROLLA_127,,Battery: Poor,Poor,59,Corolla
+TOY_PREMIO_217,,Exhaust System: Poor,Poor,43,Premio
+TOY_COROLLA_183,,Steering: Critical,Fair,75,Corolla
+TOY_YARIS_073,,Tyres: Fair,Critical,24,Yaris
+TOY_ALLION_118,,Cooling System: Fair,Poor,56,Allion
+TOY_COROLLA_053,,Steering: Poor,Good,81,Corolla
+TOY_PREMIO_155,,Tyres: Fair,Critical,22,Premio
+TOY_YARIS_176,,Cooling System: Good,Fair,71,Yaris
+TOY_ALLION_210,,Battery: Fair,Critical,38,Allion
+TOY_AXIO_167,,Exhaust System: Good,Good,83,Axio
+TOY_YARIS_139,,Battery: Fair,Critical,24,Yaris
+TOY_AXIO_110,,Suspension: Good,Critical,27,Axio
+TOY_VITZ_015,,Steering: Fair,Poor,52,Vitz
+TOY_YARIS_271,,Exhaust System: Fair,Critical,36,Yaris
+TOY_COROLLA_220,,Brakes: Fair,Poor,50,Corolla
+TOY_COROLLA_079,,Brakes: Fair,Poor,44,Corolla
+TOY_COROLLA_007,,Transmission: Poor,Fair,77,Corolla
+TOY_YARIS_081,,Exhaust System: Fair,Critical,35,Yaris
+TOY_ALLION_035,,Suspension: Good,Poor,50,Allion
+TOY_VITZ_189,,Exhaust System: Good,Fair,69,Vitz
+TOY_PREMIO_009,,Steering: Fair,Critical,20,Premio
+TOY_AXIO_001,,Steering: Critical,Critical,28,Axio
+TOY_COROLLA_084,,Battery: Fair,Poor,50,Corolla
+TOY_VITZ_060,,Exhaust System: Fair,Good,96,Vitz
+TOY_AXIO_232,,Transmission: Poor,Fair,77,Axio
+TOY_VITZ_127,,Exhaust System: Fair,Poor,44,Vitz
+TOY_YARIS_192,,Battery: Good,Good,92,Yaris
+TOY_VITZ_131,,Tyres: Fair,Good,89,Vitz
+TOY_ALLION_191,,Battery: Poor,Critical,24,Allion
+TOY_YARIS_087,,Cooling System: Poor,Poor,50,Yaris
+TOY_ALLION_079,,Steering: Good,Fair,63,Allion
+TOY_AXIO_230,,Cooling System: Fair,Poor,58,Axio
+TOY_PREMIO_013,,Brakes: Fair,Poor,58,Premio
+TOY_YARIS_121,,Battery: Fair,Critical,20,Yaris
+TOY_VITZ_020,,Battery: Fair,Fair,75,Vitz
+TOY_ALLION_230,,Engine: Poor,Critical,23,Allion
+TOY_COROLLA_259,,Transmission: Fair,Fair,66,Corolla
+TOY_YARIS_220,,Transmission: Fair,Critical,21,Yaris
+TOY_ALLION_139,,Brakes: Poor,Good,89,Allion
+TOY_ALLION_246,,Suspension: Fair,Good,93,Allion
+TOY_COROLLA_290,,Exhaust System: Good,Poor,50,Corolla
+TOY_YARIS_135,,Transmission: Fair,Good,99,Yaris
+TOY_ALLION_250,,Transmission: Good,Fair,74,Allion
+TOY_AXIO_086,,Brakes: Fair,Good,87,Axio
+TOY_PREMIO_064,,Cooling System: Poor,Critical,22,Premio
+TOY_AXIO_014,,Battery: Fair,Fair,67,Axio
+TOY_COROLLA_269,,Tyres: Good,Poor,40,Corolla
+TOY_ALLION_160,,Suspension: Good,Good,90,Allion
+TOY_AXIO_122,,Engine: Good,Good,91,Axio
+TOY_COROLLA_262,,Exhaust System: Fair,Critical,26,Corolla
+TOY_PREMIO_232,,Steering: Poor,Good,85,Premio
+TOY_YARIS_136,,Steering: Poor,Poor,52,Yaris
+TOY_VITZ_011,,Exhaust System: Poor,Good,90,Vitz
+TOY_YARIS_185,,Engine: Fair,Critical,27,Yaris
+TOY_YARIS_068,,Engine: Poor,Poor,51,Yaris
+TOY_PREMIO_124,,Engine: Fair,Good,87,Premio
+TOY_YARIS_068,,Engine: Poor,Poor,51,Yaris
+TOY_VITZ_209,,Engine: Fair,Critical,39,Vitz
+TOY_COROLLA_037,,Exhaust System: Fair,Critical,39,Corolla
+TOY_PREMIO_109,,Suspension: Fair,Critical,27,Premio
+TOY_ALLION_116,,Steering: Fair,Poor,52,Allion
+TOY_AXIO_052,,Transmission: Fair,Good,92,Axio
+TOY_VITZ_186,,Engine: Fair,Poor,57,Vitz
+TOY_YARIS_078,,Exhaust System: Good,Critical,39,Yaris
+TOY_VITZ_231,,Exhaust System: Good,Fair,67,Vitz
+TOY_ALLION_201,,Battery: Good,Good,80,Allion
+TOY_PREMIO_119,,Tyres: Fair,Critical,37,Premio
+TOY_ALLION_187,,Cooling System: Fair,Fair,62,Allion
+TOY_AXIO_060,,Brakes: Fair,Fair,73,Axio
+TOY_VITZ_110,,Brakes: Fair,Poor,49,Vitz
+TOY_ALLION_049,,Suspension: Fair,Critical,28,Allion
+TOY_PREMIO_218,,Cooling System: Fair,Critical,28,Premio
+TOY_AXIO_252,,Transmission: Fair,Critical,38,Axio
+TOY_VITZ_169,,Tyres: Good,Poor,52,Vitz
+TOY_ALLION_100,,Suspension: Fair,Good,86,Allion
+TOY_VITZ_257,,Suspension: Fair,Good,96,Vitz
+TOY_COROLLA_055,,Suspension: Fair,Fair,70,Corolla
+TOY_VITZ_086,,Cooling System: Fair,Poor,41,Vitz
+TOY_YARIS_276,,Suspension: Good,Critical,22,Yaris
+TOY_VITZ_125,,Steering: Poor,Critical,24,Vitz
+TOY_ALLION_241,,Engine: Good,Good,93,Allion
+TOY_AXIO_090,,Brakes: Poor,Good,89,Axio
+TOY_COROLLA_022,,Cooling System: Good,Good,94,Corolla
+TOY_VITZ_217,,Tyres: Fair,Poor,43,Vitz
+TOY_ALLION_215,,Steering: Fair,Critical,32,Allion
+TOY_VITZ_287,,Transmission: Fair,Fair,65,Vitz
+TOY_PREMIO_110,,Brakes: Good,Critical,23,Premio
+TOY_VITZ_137,,Tyres: Good,Poor,59,Vitz
+TOY_PREMIO_004,,Engine: Fair,Good,100,Premio
+TOY_PREMIO_137,,Steering: Fair,Critical,27,Premio
+TOY_VITZ_008,,Steering: Fair,Critical,22,Vitz
+TOY_AXIO_132,,Cooling System: Fair,Poor,49,Axio
+TOY_AXIO_117,,Steering: Poor,Good,94,Axio
+TOY_AXIO_034,,Battery: Poor,Poor,57,Axio
+TOY_YARIS_096,,Steering: Good,Poor,59,Yaris
+TOY_COROLLA_216,,Brakes: Good,Poor,46,Corolla
+TOY_YARIS_172,,Exhaust System: Fair,Fair,64,Yaris
+TOY_ALLION_113,,Cooling System: Fair,Poor,43,Allion
+TOY_VITZ_220,,Steering: Good,Fair,78,Vitz
+TOY_PREMIO_172,,Suspension: Fair,Good,81,Premio
+TOY_COROLLA_129,,Suspension: Good,Fair,70,Corolla
+TOY_PREMIO_216,,Steering: Fair,Fair,60,Premio
+TOY_PREMIO_148,,Exhaust System: Good,Fair,62,Premio
+TOY_VITZ_215,,Cooling System: Fair,Fair,64,Vitz
+TOY_ALLION_002,,Exhaust System: Poor,Good,89,Allion
+TOY_ALLION_281,,Brakes: Critical,Poor,42,Allion
+TOY_YARIS_115,,Transmission: Good,Good,81,Yaris
+TOY_COROLLA_036,,Brakes: Fair,Poor,50,Corolla
+TOY_AXIO_125,,Brakes: Fair,Critical,24,Axio
+TOY_AXIO_115,,Engine: Fair,Good,95,Axio
+TOY_COROLLA_223,,Engine: Critical,Fair,77,Corolla
+TOY_COROLLA_114,,Battery: Poor,Critical,30,Corolla
+TOY_YARIS_062,,Exhaust System: Fair,Fair,60,Yaris
+TOY_ALLION_031,,Exhaust System: Poor,Fair,72,Allion
+TOY_VITZ_290,,Exhaust System: Poor,Good,84,Vitz
+TOY_AXIO_225,,Transmission: Good,Fair,69,Axio
+TOY_PREMIO_146,,Suspension: Good,Good,82,Premio
+TOY_AXIO_204,,Exhaust System: Fair,Critical,22,Axio
+TOY_COROLLA_059,,Battery: Fair,Critical,27,Corolla
+TOY_PREMIO_150,,Steering: Good,Good,98,Premio
+TOY_PREMIO_111,,Exhaust System: Fair,Good,90,Premio
+TOY_VITZ_188,,Battery: Good,Poor,58,Vitz
+TOY_YARIS_300,,Suspension: Poor,Critical,39,Yaris
+TOY_VITZ_065,,Suspension: Poor,Fair,65,Vitz
+TOY_VITZ_034,,Steering: Good,Good,94,Vitz
+TOY_VITZ_295,,Tyres: Poor,Critical,30,Vitz
+TOY_YARIS_236,,Engine: Good,Poor,41,Yaris
+TOY_YARIS_200,,Engine: Fair,Poor,44,Yaris
+TOY_AXIO_217,,Transmission: Poor,Fair,62,Axio
+TOY_COROLLA_104,,Battery: Fair,Fair,64,Corolla
+TOY_AXIO_194,,Engine: Good,Fair,68,Axio
+TOY_PREMIO_108,,Battery: Poor,Good,89,Premio
+TOY_AXIO_278,,Suspension: Good,Critical,36,Axio
+TOY_COROLLA_225,,Cooling System: Fair,Poor,51,Corolla
+TOY_COROLLA_033,,Steering: Fair,Fair,68,Corolla
+TOY_COROLLA_101,,Tyres: Fair,Good,92,Corolla
+TOY_ALLION_044,,Exhaust System: Fair,Good,86,Allion
+TOY_VITZ_275,,Battery: Poor,Good,83,Vitz
+TOY_YARIS_202,,Cooling System: Fair,Fair,74,Yaris
+TOY_YARIS_161,,Suspension: Fair,Fair,61,Yaris
+TOY_ALLION_039,,Exhaust System: Fair,Critical,21,Allion
+TOY_AXIO_194,,Engine: Good,Fair,68,Axio
+TOY_PREMIO_006,,Steering: Poor,Good,80,Premio
+TOY_VITZ_080,,Exhaust System: Good,Fair,75,Vitz
+TOY_PREMIO_112,,Tyres: Critical,Fair,61,Premio
+TOY_AXIO_095,,Transmission: Poor,Fair,76,Axio
+TOY_YARIS_130,,Battery: Critical,Fair,79,Yaris
+TOY_YARIS_112,,Steering: Fair,Good,83,Yaris
+TOY_YARIS_176,,Cooling System: Good,Fair,71,Yaris
+TOY_YARIS_270,,Exhaust System: Good,Good,81,Yaris
+TOY_PREMIO_163,,Battery: Good,Poor,55,Premio
+TOY_ALLION_040,,Tyres: Good,Fair,61,Allion
+TOY_YARIS_255,,Suspension: Fair,Good,91,Yaris
+TOY_YARIS_234,,Cooling System: Fair,Fair,75,Yaris
+TOY_PREMIO_060,,Cooling System: Fair,Good,81,Premio
+TOY_ALLION_212,,Engine: Good,Critical,29,Allion
+TOY_YARIS_214,,Suspension: Fair,Fair,77,Yaris
+TOY_PREMIO_104,,Engine: Good,Poor,54,Premio
+TOY_AXIO_050,,Transmission: Good,Critical,20,Axio
+TOY_AXIO_061,,Transmission: Fair,Poor,54,Axio
+TOY_ALLION_084,,Suspension: Good,Poor,50,Allion
+TOY_PREMIO_187,,Battery: Poor,Critical,32,Premio
+TOY_COROLLA_011,,Cooling System: Fair,Poor,50,Corolla
+TOY_ALLION_136,,Steering: Fair,Poor,55,Allion
+TOY_VITZ_212,,Exhaust System: Fair,Critical,20,Vitz
+TOY_PREMIO_039,,Exhaust System: Poor,Good,98,Premio
+TOY_AXIO_034,,Battery: Poor,Poor,57,Axio
+TOY_AXIO_138,,Brakes: Good,Poor,55,Axio
+TOY_PREMIO_154,,Battery: Fair,Good,87,Premio
+TOY_PREMIO_015,,Transmission: Fair,Fair,61,Premio
+TOY_PREMIO_084,,Brakes: Fair,Critical,23,Premio
+TOY_PREMIO_177,,Tyres: Good,Poor,51,Premio
+TOY_COROLLA_241,,Brakes: Fair,Good,94,Corolla
+TOY_ALLION_287,,Cooling System: Fair,Fair,77,Allion
+TOY_ALLION_018,,Exhaust System: Fair,Good,95,Allion
+TOY_YARIS_160,,Steering: Good,Good,80,Yaris
+TOY_YARIS_091,,Cooling System: Fair,Critical,20,Yaris
+TOY_YARIS_201,,Transmission: Poor,Critical,38,Yaris
+TOY_VITZ_184,,Cooling System: Fair,Good,93,Vitz
+TOY_VITZ_142,,Engine: Fair,Good,95,Vitz
+TOY_PREMIO_281,,Suspension: Fair,Critical,24,Premio
+TOY_VITZ_214,,Transmission: Critical,Critical,20,Vitz
+TOY_PREMIO_149,,Cooling System: Poor,Good,95,Premio
+TOY_VITZ_248,,Exhaust System: Fair,Good,97,Vitz
+TOY_VITZ_262,,Steering: Good,Fair,63,Vitz
+TOY_AXIO_282,,Tyres: Good,Good,84,Axio
+TOY_ALLION_288,,Battery: Fair,Good,86,Allion
+TOY_COROLLA_010,,Engine: Fair,Good,96,Corolla
+TOY_COROLLA_142,,Transmission: Good,Critical,28,Corolla
+TOY_ALLION_225,,Brakes: Fair,Good,93,Allion
+TOY_VITZ_025,,Suspension: Fair,Critical,37,Vitz
+TOY_ALLION_127,,Battery: Fair,Poor,57,Allion
+TOY_PREMIO_191,,Tyres: Good,Critical,30,Premio
+TOY_PREMIO_239,,Transmission: Poor,Good,96,Premio
+TOY_AXIO_155,,Steering: Good,Fair,78,Axio
+TOY_ALLION_109,,Transmission: Poor,Critical,32,Allion
+TOY_AXIO_130,,Battery: Fair,Fair,64,Axio
+TOY_AXIO_128,,Transmission: Fair,Critical,37,Axio
+TOY_AXIO_189,,Tyres: Good,Fair,64,Axio
+TOY_COROLLA_299,,Engine: Good,Fair,69,Corolla
+TOY_VITZ_143,,Cooling System: Poor,Fair,71,Vitz
+TOY_ALLION_027,,Tyres: Poor,Fair,70,Allion
+TOY_ALLION_216,,Battery: Fair,Poor,45,Allion
+TOY_ALLION_242,,Tyres: Fair,Poor,52,Allion
+TOY_VITZ_029,,Battery: Fair,Poor,53,Vitz
+TOY_VITZ_244,,Engine: Fair,Poor,53,Vitz
+TOY_VITZ_130,,Transmission: Good,Poor,56,Vitz
+TOY_AXIO_096,,Engine: Good,Fair,79,Axio
+TOY_VITZ_062,,Battery: Good,Fair,79,Vitz
+TOY_AXIO_267,,Suspension: Fair,Critical,33,Axio
+TOY_YARIS_043,,Battery: Good,Critical,26,Yaris
+TOY_YARIS_242,,Exhaust System: Fair,Good,90,Yaris
+TOY_ALLION_226,,Steering: Poor,Good,97,Allion
+TOY_COROLLA_218,,Steering: Poor,Poor,46,Corolla
+TOY_YARIS_236,,Engine: Good,Poor,41,Yaris
+TOY_AXIO_280,,Exhaust System: Good,Good,98,Axio
+TOY_VITZ_181,,Suspension: Fair,Poor,55,Vitz
+TOY_AXIO_223,,Engine: Fair,Critical,36,Axio
+TOY_VITZ_046,,Tyres: Fair,Critical,29,Vitz
+TOY_COROLLA_131,,Engine: Poor,Fair,78,Corolla
+TOY_YARIS_235,,Exhaust System: Fair,Critical,29,Yaris
+TOY_ALLION_143,,Steering: Poor,Critical,31,Allion
+TOY_PREMIO_287,,Battery: Good,Critical,34,Premio
+TOY_ALLION_102,,Brakes: Good,Poor,41,Allion
+TOY_YARIS_193,,Engine: Fair,Critical,26,Yaris
+TOY_COROLLA_005,,Suspension: Fair,Poor,52,Corolla
+TOY_YARIS_164,,Battery: Fair,Critical,20,Yaris
+TOY_VITZ_187,,Engine: Fair,Poor,56,Vitz
+TOY_COROLLA_187,,Engine: Good,Poor,54,Corolla
+TOY_YARIS_059,,Cooling System: Fair,Poor,50,Yaris
+TOY_ALLION_033,,Cooling System: Good,Critical,37,Allion
+TOY_VITZ_106,,Tyres: Fair,Good,85,Vitz
+TOY_YARIS_110,,Battery: Good,Good,82,Yaris
+TOY_YARIS_022,,Cooling System: Fair,Critical,30,Yaris
+TOY_VITZ_087,,Transmission: Poor,Critical,28,Vitz
+TOY_VITZ_240,,Suspension: Fair,Critical,27,Vitz
+TOY_ALLION_097,,Cooling System: Poor,Poor,42,Allion
+TOY_AXIO_164,,Steering: Poor,Fair,78,Axio
+TOY_AXIO_069,,Engine: Poor,Good,81,Axio
+TOY_YARIS_070,,Suspension: Fair,Fair,64,Yaris
+TOY_YARIS_124,,Exhaust System: Good,Good,90,Yaris
+TOY_COROLLA_274,,Engine: Poor,Fair,74,Corolla
+TOY_COROLLA_053,,Steering: Poor,Good,81,Corolla
+TOY_PREMIO_252,,Engine: Good,Critical,28,Premio
+TOY_COROLLA_216,,Brakes: Good,Poor,46,Corolla
+TOY_PREMIO_078,,Tyres: Fair,Good,90,Premio
+TOY_COROLLA_235,,Engine: Fair,Critical,36,Corolla
+TOY_COROLLA_241,,Brakes: Fair,Good,94,Corolla
+TOY_VITZ_100,,Brakes: Fair,Poor,57,Vitz
+TOY_VITZ_160,,Battery: Fair,Poor,53,Vitz
+TOY_ALLION_189,,Brakes: Good,Good,82,Allion
+TOY_PREMIO_178,,Transmission: Fair,Fair,74,Premio
+TOY_COROLLA_218,,Steering: Poor,Poor,46,Corolla
+TOY_VITZ_010,,Exhaust System: Poor,Critical,21,Vitz
+TOY_PREMIO_044,,Transmission: Poor,Poor,41,Premio
+TOY_AXIO_300,,Exhaust System: Good,Good,82,Axio
+TOY_COROLLA_128,,Battery: Fair,Good,89,Corolla
+TOY_PREMIO_204,,Suspension: Good,Poor,40,Premio
+TOY_YARIS_172,,Exhaust System: Fair,Fair,64,Yaris
+TOY_YARIS_183,,Steering: Fair,Poor,55,Yaris
+TOY_COROLLA_165,,Exhaust System: Good,Fair,79,Corolla
+TOY_YARIS_204,,Battery: Fair,Fair,77,Yaris
+TOY_ALLION_229,,Transmission: Fair,Fair,67,Allion
+TOY_COROLLA_284,,Engine: Fair,Poor,47,Corolla
+TOY_VITZ_204,,Exhaust System: Poor,Fair,76,Vitz
+TOY_PREMIO_290,,Transmission: Poor,Good,92,Premio
+TOY_VITZ_275,,Battery: Poor,Good,83,Vitz
+TOY_COROLLA_205,,Battery: Poor,Critical,37,Corolla
+TOY_VITZ_142,,Engine: Fair,Good,95,Vitz
+TOY_COROLLA_185,,Suspension: Poor,Good,92,Corolla
+TOY_COROLLA_198,,Tyres: Fair,Critical,23,Corolla
+TOY_PREMIO_226,,Tyres: Fair,Poor,41,Premio
+TOY_PREMIO_175,,Cooling System: Good,Poor,49,Premio
+TOY_AXIO_297,,Steering: Good,Poor,58,Axio
+TOY_VITZ_157,,Engine: Poor,Fair,78,Vitz
+TOY_YARIS_240,,Brakes: Poor,Poor,55,Yaris
+TOY_VITZ_054,,Tyres: Fair,Good,92,Vitz
+TOY_YARIS_080,,Brakes: Fair,Critical,28,Yaris
+TOY_YARIS_183,,Steering: Fair,Poor,55,Yaris
+TOY_AXIO_191,,Battery: Fair,Good,85,Axio
+TOY_PREMIO_221,,Engine: Poor,Fair,67,Premio
+TOY_YARIS_248,,Battery: Fair,Poor,45,Yaris
+TOY_AXIO_039,,Tyres: Poor,Good,82,Axio
+TOY_VITZ_042,,Transmission: Fair,Poor,58,Vitz
+TOY_AXIO_044,,Steering: Good,Good,88,Axio
+TOY_PREMIO_008,,Tyres: Poor,Critical,20,Premio
+TOY_AXIO_066,,Engine: Fair,Good,91,Axio
+TOY_AXIO_115,,Engine: Fair,Good,95,Axio
+TOY_COROLLA_300,,Battery: Poor,Good,99,Corolla
+TOY_PREMIO_138,,Battery: Poor,Poor,41,Premio
+TOY_ALLION_277,,Transmission: Fair,Critical,27,Allion
+TOY_VITZ_198,,Engine: Critical,Poor,50,Vitz
+TOY_PREMIO_293,,Steering: Poor,Good,96,Premio
+TOY_ALLION_097,,Cooling System: Poor,Poor,42,Allion
+TOY_ALLION_285,,Exhaust System: Fair,Critical,27,Allion
+TOY_VITZ_068,,Engine: Fair,Poor,56,Vitz
+TOY_PREMIO_099,,Exhaust System: Fair,Poor,54,Premio
+TOY_PREMIO_071,,Tyres: Fair,Fair,64,Premio
+TOY_AXIO_002,,Engine: Fair,Good,90,Axio
+TOY_PREMIO_098,,Transmission: Fair,Poor,48,Premio
+TOY_YARIS_086,,Brakes: Good,Good,80,Yaris
+TOY_AXIO_067,,Engine: Poor,Critical,22,Axio
+TOY_PREMIO_106,,Brakes: Poor,Critical,39,Premio
+TOY_YARIS_165,,Tyres: Good,Poor,46,Yaris
+TOY_YARIS_112,,Steering: Fair,Good,83,Yaris
+TOY_COROLLA_241,,Brakes: Fair,Good,94,Corolla
+TOY_ALLION_259,,Steering: Poor,Poor,46,Allion
+TOY_COROLLA_101,,Tyres: Fair,Good,92,Corolla
+TOY_AXIO_017,,Suspension: Fair,Poor,40,Axio
+TOY_YARIS_183,,Steering: Fair,Poor,55,Yaris
+TOY_ALLION_182,,Transmission: Fair,Poor,44,Allion
+TOY_COROLLA_093,,Brakes: Good,Good,87,Corolla
+TOY_AXIO_090,,Brakes: Poor,Good,89,Axio
+TOY_VITZ_031,,Transmission: Fair,Poor,46,Vitz
+TOY_ALLION_275,,Tyres: Poor,Critical,24,Allion
+TOY_YARIS_044,,Transmission: Good,Critical,20,Yaris
+TOY_YARIS_177,,Suspension: Poor,Good,85,Yaris
+TOY_VITZ_231,,Exhaust System: Good,Fair,67,Vitz
+TOY_COROLLA_209,,Suspension: Fair,Fair,63,Corolla
+TOY_YARIS_064,,Transmission: Fair,Good,89,Yaris
+TOY_PREMIO_091,,Exhaust System: Good,Poor,50,Premio
+TOY_PREMIO_065,,Steering: Fair,Critical,38,Premio
+TOY_PREMIO_018,,Suspension: Fair,Poor,45,Premio
+TOY_PREMIO_025,,Brakes: Fair,Fair,73,Premio
+TOY_VITZ_258,,Suspension: Good,Poor,47,Vitz
+TOY_YARIS_009,,Steering: Critical,Poor,55,Yaris
+TOY_VITZ_113,,Engine: Fair,Poor,45,Vitz
+TOY_AXIO_083,,Brakes: Good,Poor,46,Axio
+TOY_YARIS_198,,Transmission: Fair,Poor,46,Yaris
+TOY_COROLLA_134,,Brakes: Fair,Poor,57,Corolla
+TOY_COROLLA_089,,Suspension: Fair,Poor,59,Corolla
+TOY_AXIO_271,,Battery: Poor,Good,96,Axio
+TOY_VITZ_176,,Cooling System: Fair,Critical,30,Vitz
+TOY_YARIS_110,,Battery: Good,Good,82,Yaris
+TOY_YARIS_273,,Steering: Good,Fair,69,Yaris
+TOY_COROLLA_287,,Cooling System: Poor,Fair,61,Corolla
+TOY_AXIO_151,,Transmission: Fair,Good,98,Axio
+TOY_YARIS_072,,Cooling System: Fair,Poor,48,Yaris
+TOY_COROLLA_122,,Tyres: Fair,Critical,37,Corolla
+TOY_ALLION_049,,Suspension: Fair,Critical,28,Allion
+TOY_VITZ_231,,Exhaust System: Good,Fair,67,Vitz
+TOY_COROLLA_034,,Steering: Poor,Poor,42,Corolla
+TOY_ALLION_164,,Engine: Poor,Good,95,Allion
+TOY_YARIS_289,,Battery: Poor,Fair,62,Yaris
+TOY_ALLION_266,,Brakes: Fair,Critical,32,Allion
+TOY_PREMIO_198,,Brakes: Fair,Good,80,Premio
+TOY_ALLION_143,,Steering: Poor,Critical,31,Allion
+TOY_PREMIO_052,,Cooling System: Poor,Good,85,Premio
+TOY_COROLLA_300,,Battery: Poor,Good,99,Corolla
+TOY_AXIO_081,,Tyres: Fair,Poor,51,Axio
+TOY_AXIO_169,,Transmission: Good,Good,99,Axio
+TOY_YARIS_138,,Suspension: Fair,Good,97,Yaris
+TOY_COROLLA_200,,Engine: Fair,Critical,27,Corolla
+TOY_COROLLA_119,,Battery: Poor,Poor,52,Corolla
+TOY_YARIS_220,,Transmission: Fair,Critical,21,Yaris
+TOY_PREMIO_285,,Transmission: Critical,Fair,65,Premio
+TOY_COROLLA_097,,Tyres: Good,Critical,21,Corolla
+TOY_YARIS_138,,Suspension: Fair,Good,97,Yaris
+TOY_COROLLA_206,,Steering: Fair,Poor,45,Corolla
+TOY_AXIO_246,,Battery: Fair,Fair,79,Axio
+TOY_AXIO_246,,Battery: Fair,Fair,79,Axio
+TOY_AXIO_112,,Battery: Good,Good,83,Axio
+TOY_VITZ_062,,Battery: Good,Fair,79,Vitz
+TOY_AXIO_273,,Steering: Fair,Good,88,Axio
+TOY_ALLION_056,,Battery: Fair,Poor,51,Allion
+TOY_AXIO_140,,Engine: Critical,Poor,41,Axio
+TOY_AXIO_013,,Brakes: Good,Fair,76,Axio
+TOY_VITZ_293,,Transmission: Poor,Good,90,Vitz
+TOY_VITZ_171,,Transmission: Good,Fair,79,Vitz
+TOY_COROLLA_288,,Tyres: Fair,Good,96,Corolla
+TOY_PREMIO_018,,Suspension: Fair,Poor,45,Premio
+TOY_AXIO_111,,Battery: Fair,Fair,76,Axio
+TOY_AXIO_122,,Engine: Good,Good,91,Axio
+TOY_VITZ_282,,Steering: Poor,Critical,35,Vitz
+TOY_ALLION_189,,Brakes: Good,Good,82,Allion
+TOY_VITZ_172,,Transmission: Good,Critical,28,Vitz
+TOY_PREMIO_041,,Engine: Poor,Critical,27,Premio
+TOY_ALLION_250,,Transmission: Good,Fair,74,Allion
+TOY_YARIS_216,,Suspension: Good,Fair,71,Yaris
+TOY_PREMIO_139,,Steering: Poor,Good,86,Premio
+TOY_ALLION_236,,Cooling System: Fair,Good,84,Allion
+TOY_COROLLA_084,,Battery: Fair,Poor,50,Corolla
+TOY_AXIO_298,,Engine: Poor,Critical,21,Axio
+TOY_COROLLA_161,,Battery: Good,Fair,63,Corolla
+TOY_COROLLA_280,,Exhaust System: Good,Critical,35,Corolla
+TOY_YARIS_017,,Engine: Poor,Fair,76,Yaris
+TOY_PREMIO_006,,Steering: Poor,Good,80,Premio
+TOY_AXIO_221,,Tyres: Fair,Critical,36,Axio
+TOY_VITZ_256,,Transmission: Fair,Poor,59,Vitz
+TOY_YARIS_047,,Suspension: Good,Good,88,Yaris
+TOY_VITZ_190,,Steering: Fair,Poor,46,Vitz
+TOY_YARIS_263,,Steering: Poor,Fair,60,Yaris
+TOY_VITZ_289,,Engine: Good,Fair,78,Vitz
+TOY_AXIO_052,,Transmission: Fair,Good,92,Axio
+TOY_YARIS_195,,Brakes: Fair,Critical,31,Yaris
+TOY_YARIS_298,,Suspension: Fair,Poor,51,Yaris
+TOY_VITZ_058,,Battery: Fair,Fair,63,Vitz
+TOY_YARIS_189,,Steering: Poor,Poor,54,Yaris
+TOY_PREMIO_148,,Exhaust System: Good,Fair,62,Premio
+TOY_ALLION_227,,Tyres: Poor,Poor,56,Allion
+TOY_PREMIO_279,,Brakes: Good,Critical,31,Premio
+TOY_COROLLA_291,,Transmission: Good,Poor,50,Corolla
+TOY_YARIS_016,,Brakes: Fair,Critical,24,Yaris
+TOY_PREMIO_091,,Exhaust System: Good,Poor,50,Premio
+TOY_VITZ_225,,Brakes: Fair,Fair,62,Vitz
+TOY_COROLLA_293,,Exhaust System: Poor,Fair,64,Corolla
+TOY_ALLION_252,,Tyres: Good,Critical,30,Allion
+TOY_COROLLA_102,,Battery: Fair,Good,99,Corolla
+TOY_PREMIO_214,,Brakes: Good,Poor,56,Premio
+TOY_ALLION_156,,Suspension: Poor,Good,93,Allion
+TOY_ALLION_057,,Exhaust System: Poor,Poor,58,Allion
+TOY_YARIS_241,,Tyres: Good,Critical,30,Yaris
+TOY_COROLLA_087,,Steering: Fair,Fair,73,Corolla
+TOY_PREMIO_056,,Cooling System: Fair,Poor,51,Premio
+TOY_ALLION_108,,Steering: Fair,Good,89,Allion
+TOY_ALLION_228,,Suspension: Fair,Poor,56,Allion
+TOY_COROLLA_018,,Exhaust System: Poor,Fair,72,Corolla
+TOY_ALLION_119,,Battery: Fair,Good,81,Allion
+TOY_PREMIO_133,,Transmission: Fair,Fair,70,Premio
+TOY_ALLION_198,,Suspension: Good,Critical,24,Allion
+TOY_YARIS_108,,Steering: Fair,Good,80,Yaris
+TOY_AXIO_287,,Suspension: Good,Good,86,Axio
+TOY_YARIS_124,,Exhaust System: Good,Good,90,Yaris
+TOY_COROLLA_029,,Transmission: Good,Fair,67,Corolla
+TOY_VITZ_251,,Steering: Good,Fair,69,Vitz
+TOY_ALLION_163,,Battery: Fair,Poor,59,Allion
+TOY_AXIO_265,,Battery: Fair,Fair,65,Axio
+TOY_YARIS_064,,Transmission: Fair,Good,89,Yaris
+TOY_AXIO_158,,Battery: Good,Fair,65,Axio
+TOY_ALLION_177,,Cooling System: Good,Good,93,Allion
+TOY_COROLLA_153,,Brakes: Fair,Good,88,Corolla
+TOY_VITZ_264,,Exhaust System: Poor,Fair,76,Vitz
+TOY_ALLION_230,,Engine: Poor,Critical,23,Allion
+TOY_PREMIO_292,,Transmission: Good,Poor,50,Premio
+TOY_PREMIO_054,,Transmission: Good,Good,82,Premio
+TOY_AXIO_151,,Transmission: Fair,Good,98,Axio
+TOY_AXIO_108,,Exhaust System: Poor,Fair,73,Axio
+TOY_AXIO_141,,Steering: Fair,Good,97,Axio
+TOY_COROLLA_209,,Suspension: Fair,Fair,63,Corolla
+TOY_YARIS_224,,Transmission: Good,Good,97,Yaris
+TOY_ALLION_036,,Transmission: Fair,Critical,38,Allion
+TOY_YARIS_021,,Steering: Fair,Good,96,Yaris
+TOY_YARIS_105,,Exhaust System: Fair,Fair,78,Yaris
+TOY_VITZ_193,,Tyres: Good,Critical,39,Vitz
+TOY_PREMIO_111,,Exhaust System: Fair,Good,90,Premio
+TOY_VITZ_051,,Transmission: Good,Poor,41,Vitz
+TOY_VITZ_191,,Engine: Fair,Good,83,Vitz
+TOY_PREMIO_016,,Cooling System: Good,Good,83,Premio
+TOY_YARIS_146,,Tyres: Good,Good,98,Yaris
+TOY_AXIO_220,,Suspension: Good,Good,97,Axio
+TOY_AXIO_173,,Suspension: Fair,Fair,78,Axio
+TOY_ALLION_174,,Cooling System: Poor,Fair,71,Allion
+TOY_PREMIO_105,,Exhaust System: Fair,Critical,39,Premio
+TOY_VITZ_231,,Exhaust System: Good,Fair,67,Vitz
+TOY_PREMIO_096,,Suspension: Poor,Critical,36,Premio
+TOY_ALLION_083,,Cooling System: Good,Critical,24,Allion
+TOY_AXIO_288,,Cooling System: Fair,Fair,77,Axio
+TOY_ALLION_009,,Tyres: Fair,Fair,62,Allion
+TOY_COROLLA_296,,Cooling System: Fair,Poor,54,Corolla
+TOY_COROLLA_081,,Cooling System: Poor,Fair,79,Corolla
+TOY_PREMIO_068,,Transmission: Fair,Good,88,Premio
+TOY_ALLION_104,,Engine: Good,Poor,40,Allion
+TOY_YARIS_165,,Tyres: Good,Poor,46,Yaris
+TOY_COROLLA_159,,Transmission: Critical,Poor,42,Corolla
+TOY_PREMIO_133,,Transmission: Fair,Fair,70,Premio
+TOY_VITZ_216,,Battery: Fair,Poor,50,Vitz
+TOY_AXIO_012,,Transmission: Critical,Fair,69,Axio
+TOY_AXIO_047,,Cooling System: Good,Critical,22,Axio
+TOY_VITZ_167,,Tyres: Fair,Fair,72,Vitz
+TOY_COROLLA_032,,Transmission: Good,Good,99,Corolla
+TOY_ALLION_231,,Engine: Fair,Poor,58,Allion
+TOY_PREMIO_032,,Engine: Fair,Fair,70,Premio
+TOY_VITZ_026,,Brakes: Fair,Critical,32,Vitz
+TOY_PREMIO_217,,Exhaust System: Poor,Poor,43,Premio
+TOY_ALLION_262,,Suspension: Good,Critical,25,Allion
+TOY_AXIO_220,,Suspension: Good,Good,97,Axio
+TOY_VITZ_214,,Transmission: Critical,Critical,20,Vitz
+TOY_PREMIO_031,,Brakes: Fair,Fair,62,Premio
+TOY_AXIO_205,,Engine: Fair,Good,81,Axio
+TOY_AXIO_149,,Tyres: Good,Good,100,Axio
+TOY_COROLLA_214,,Suspension: Good,Poor,50,Corolla
+TOY_VITZ_213,,Transmission: Poor,Poor,48,Vitz
+TOY_VITZ_180,,Transmission: Good,Critical,20,Vitz
+TOY_ALLION_283,,Exhaust System: Fair,Good,89,Allion
+TOY_AXIO_052,,Transmission: Fair,Good,92,Axio
+TOY_COROLLA_185,,Suspension: Poor,Good,92,Corolla
+TOY_PREMIO_034,,Steering: Good,Fair,64,Premio
+TOY_YARIS_244,,Exhaust System: Good,Critical,30,Yaris
+TOY_PREMIO_047,,Suspension: Good,Fair,61,Premio
+TOY_PREMIO_015,,Transmission: Fair,Fair,61,Premio
+TOY_COROLLA_128,,Battery: Fair,Good,89,Corolla
+TOY_PREMIO_119,,Tyres: Fair,Critical,37,Premio
+TOY_PREMIO_123,,Transmission: Poor,Critical,20,Premio
+TOY_COROLLA_268,,Transmission: Fair,Poor,45,Corolla
+TOY_PREMIO_251,,Steering: Fair,Poor,46,Premio
+TOY_PREMIO_064,,Cooling System: Poor,Critical,22,Premio
+TOY_PREMIO_011,,Brakes: Fair,Critical,35,Premio
+TOY_ALLION_240,,Cooling System: Poor,Poor,46,Allion
+TOY_COROLLA_042,,Transmission: Fair,Critical,30,Corolla
+TOY_VITZ_213,,Transmission: Poor,Poor,48,Vitz
+TOY_VITZ_268,,Transmission: Good,Good,100,Vitz
+TOY_ALLION_099,,Exhaust System: Fair,Fair,78,Allion
+TOY_COROLLA_165,,Exhaust System: Good,Fair,79,Corolla
+TOY_ALLION_033,,Cooling System: Good,Critical,37,Allion
+TOY_AXIO_295,,Transmission: Poor,Critical,30,Axio
+TOY_PREMIO_271,,Brakes: Fair,Critical,28,Premio
+TOY_VITZ_119,,Transmission: Fair,Fair,79,Vitz
+TOY_ALLION_105,,Cooling System: Good,Fair,73,Allion
+TOY_ALLION_154,,Cooling System: Good,Poor,53,Allion
+TOY_YARIS_115,,Transmission: Good,Good,81,Yaris
+TOY_YARIS_088,,Tyres: Poor,Poor,42,Yaris
+TOY_YARIS_140,,Cooling System: Fair,Fair,69,Yaris
+TOY_VITZ_118,,Steering: Poor,Poor,57,Vitz
+TOY_ALLION_143,,Steering: Poor,Critical,31,Allion
+TOY_YARIS_194,,Steering: Fair,Fair,77,Yaris
+TOY_VITZ_173,,Exhaust System: Good,Poor,43,Vitz
+TOY_YARIS_125,,Transmission: Poor,Critical,25,Yaris
+TOY_PREMIO_243,,Suspension: Poor,Fair,62,Premio
+TOY_VITZ_178,,Brakes: Good,Critical,26,Vitz
+TOY_YARIS_259,,Exhaust System: Fair,Critical,21,Yaris
+TOY_YARIS_023,,Steering: Fair,Poor,57,Yaris
+TOY_VITZ_171,,Transmission: Good,Fair,79,Vitz
+TOY_ALLION_141,,Steering: Fair,Critical,31,Allion
+TOY_ALLION_116,,Steering: Fair,Poor,52,Allion
+TOY_VITZ_145,,Engine: Good,Good,95,Vitz
+TOY_VITZ_289,,Engine: Good,Fair,78,Vitz
+TOY_ALLION_153,,Engine: Fair,Critical,23,Allion
+TOY_COROLLA_036,,Brakes: Fair,Poor,50,Corolla
+TOY_YARIS_100,,Transmission: Good,Fair,62,Yaris
+TOY_VITZ_209,,Engine: Fair,Critical,39,Vitz
+TOY_PREMIO_258,,Exhaust System: Poor,Fair,68,Premio
+TOY_YARIS_167,,Cooling System: Good,Critical,24,Yaris
+TOY_AXIO_057,,Steering: Good,Poor,44,Axio
+TOY_VITZ_167,,Tyres: Fair,Fair,72,Vitz
+TOY_ALLION_119,,Battery: Fair,Good,81,Allion
+TOY_ALLION_027,,Tyres: Poor,Fair,70,Allion
+TOY_AXIO_064,,Suspension: Good,Critical,25,Axio
+TOY_YARIS_258,,Transmission: Good,Poor,53,Yaris
+TOY_ALLION_234,,Cooling System: Fair,Poor,46,Allion
+TOY_AXIO_117,,Steering: Poor,Good,94,Axio
+TOY_COROLLA_022,,Cooling System: Good,Good,94,Corolla
+TOY_COROLLA_050,,Steering: Good,Good,84,Corolla
+TOY_ALLION_266,,Brakes: Fair,Critical,32,Allion
+TOY_VITZ_019,,Transmission: Good,Good,83,Vitz
+TOY_ALLION_080,,Steering: Good,Fair,67,Allion
+TOY_VITZ_023,,Transmission: Fair,Critical,35,Vitz
+TOY_PREMIO_170,,Brakes: Fair,Critical,34,Premio
+TOY_PREMIO_107,,Cooling System: Good,Poor,45,Premio
+TOY_VITZ_270,,Tyres: Fair,Poor,55,Vitz
+TOY_YARIS_240,,Brakes: Poor,Poor,55,Yaris
+TOY_VITZ_118,,Steering: Poor,Poor,57,Vitz
+TOY_ALLION_286,,Engine: Good,Fair,63,Allion
+TOY_COROLLA_190,,Engine: Critical,Critical,31,Corolla
+TOY_ALLION_153,,Engine: Fair,Critical,23,Allion
+TOY_ALLION_106,,Battery: Fair,Fair,67,Allion
+TOY_YARIS_159,,Battery: Poor,Fair,63,Yaris
+TOY_VITZ_199,,Transmission: Poor,Poor,42,Vitz
+TOY_PREMIO_005,,Tyres: Fair,Critical,24,Premio
+TOY_PREMIO_054,,Transmission: Good,Good,82,Premio
+TOY_YARIS_168,,Engine: Fair,Critical,31,Yaris
+TOY_YARIS_205,,Exhaust System: Fair,Poor,46,Yaris
+TOY_ALLION_244,,Cooling System: Good,Good,90,Allion
+TOY_VITZ_003,,Cooling System: Fair,Good,86,Vitz
+TOY_COROLLA_205,,Battery: Poor,Critical,37,Corolla
+TOY_YARIS_115,,Transmission: Good,Good,81,Yaris
+TOY_AXIO_288,,Cooling System: Fair,Fair,77,Axio
+TOY_AXIO_270,,Battery: Poor,Fair,76,Axio
+TOY_AXIO_196,,Steering: Good,Critical,27,Axio
+TOY_AXIO_230,,Cooling System: Fair,Poor,58,Axio
+TOY_YARIS_178,,Suspension: Poor,Critical,27,Yaris
+TOY_COROLLA_266,,Suspension: Critical,Fair,70,Corolla
+TOY_PREMIO_081,,Brakes: Good,Good,100,Premio
+TOY_ALLION_115,,Tyres: Good,Critical,26,Allion
+TOY_VITZ_123,,Transmission: Fair,Critical,21,Vitz
+TOY_AXIO_244,,Cooling System: Poor,Fair,67,Axio
+TOY_COROLLA_125,,Battery: Good,Poor,48,Corolla
+TOY_YARIS_157,,Transmission: Good,Critical,34,Yaris
+TOY_YARIS_128,,Engine: Good,Critical,35,Yaris
+TOY_ALLION_249,,Engine: Fair,Poor,48,Allion
+TOY_AXIO_015,,Engine: Fair,Critical,27,Axio
+TOY_PREMIO_251,,Steering: Fair,Poor,46,Premio
+TOY_COROLLA_056,,Exhaust System: Good,Poor,57,Corolla
+TOY_COROLLA_019,,Engine: Good,Critical,30,Corolla
+TOY_AXIO_059,,Battery: Fair,Fair,64,Axio
+TOY_PREMIO_228,,Transmission: Fair,Good,89,Premio
+TOY_ALLION_145,,Transmission: Fair,Good,85,Allion
+TOY_YARIS_170,,Battery: Poor,Fair,73,Yaris
+TOY_AXIO_161,,Cooling System: Poor,Fair,65,Axio
+TOY_ALLION_164,,Engine: Poor,Good,95,Allion
+TOY_COROLLA_084,,Battery: Fair,Poor,50,Corolla
+TOY_COROLLA_023,,Cooling System: Fair,Poor,53,Corolla
+TOY_PREMIO_242,,Brakes: Fair,Poor,46,Premio
+TOY_COROLLA_078,,Suspension: Good,Critical,30,Corolla
+TOY_YARIS_066,,Cooling System: Fair,Fair,61,Yaris
+TOY_PREMIO_124,,Engine: Fair,Good,87,Premio
+TOY_AXIO_259,,Brakes: Fair,Critical,35,Axio
+TOY_COROLLA_102,,Battery: Fair,Good,99,Corolla
+TOY_YARIS_293,,Engine: Fair,Good,86,Yaris
+TOY_COROLLA_139,,Steering: Fair,Fair,76,Corolla
+TOY_YARIS_268,,Steering: Fair,Critical,36,Yaris
+TOY_AXIO_122,,Engine: Good,Good,91,Axio
+TOY_PREMIO_066,,Suspension: Fair,Good,89,Premio
+TOY_AXIO_205,,Engine: Fair,Good,81,Axio
+TOY_VITZ_166,,Cooling System: Good,Poor,54,Vitz
+TOY_AXIO_210,,Battery: Fair,Good,100,Axio
+TOY_VITZ_091,,Cooling System: Fair,Poor,49,Vitz
+TOY_AXIO_252,,Transmission: Fair,Critical,38,Axio
+TOY_ALLION_052,,Engine: Good,Fair,65,Allion
+TOY_PREMIO_063,,Battery: Fair,Critical,22,Premio
+TOY_VITZ_066,,Engine: Good,Fair,76,Vitz
+TOY_AXIO_165,,Brakes: Fair,Poor,45,Axio
+TOY_ALLION_191,,Battery: Poor,Critical,24,Allion
+TOY_YARIS_176,,Cooling System: Good,Fair,71,Yaris
+TOY_PREMIO_277,,Steering: Good,Good,84,Premio
+TOY_VITZ_210,,Transmission: Good,Fair,66,Vitz
+TOY_COROLLA_157,,Battery: Fair,Poor,40,Corolla
+TOY_VITZ_094,,Transmission: Fair,Critical,39,Vitz
+TOY_VITZ_191,,Engine: Fair,Good,83,Vitz
+TOY_COROLLA_033,,Steering: Fair,Fair,68,Corolla
+TOY_ALLION_276,,Brakes: Fair,Critical,24,Allion
+TOY_AXIO_159,,Brakes: Good,Good,88,Axio
+TOY_VITZ_034,,Steering: Good,Good,94,Vitz
+TOY_YARIS_143,,Transmission: Good,Fair,60,Yaris
+TOY_PREMIO_233,,Steering: Fair,Critical,22,Premio
+TOY_VITZ_134,,Exhaust System: Poor,Critical,36,Vitz
+TOY_ALLION_255,,Exhaust System: Poor,Good,83,Allion
+TOY_PREMIO_139,,Steering: Poor,Good,86,Premio
+TOY_PREMIO_216,,Steering: Fair,Fair,60,Premio
+TOY_AXIO_091,,Suspension: Good,Poor,48,Axio
+TOY_ALLION_037,,Engine: Fair,Poor,56,Allion
+TOY_AXIO_065,,Cooling System: Fair,Good,81,Axio
+TOY_ALLION_187,,Cooling System: Fair,Fair,62,Allion
+TOY_PREMIO_135,,Tyres: Fair,Poor,57,Premio
+TOY_YARIS_112,,Steering: Fair,Good,83,Yaris
+TOY_ALLION_217,,Cooling System: Good,Critical,24,Allion
+TOY_YARIS_268,,Steering: Fair,Critical,36,Yaris
+TOY_VITZ_227,,Cooling System: Poor,Fair,67,Vitz
+TOY_PREMIO_111,,Exhaust System: Fair,Good,90,Premio
+TOY_PREMIO_051,,Tyres: Fair,Good,99,Premio
+TOY_YARIS_257,,Battery: Fair,Poor,55,Yaris
+TOY_YARIS_148,,Brakes: Fair,Good,80,Yaris
+TOY_VITZ_104,,Cooling System: Fair,Poor,51,Vitz
+TOY_PREMIO_201,,Suspension: Fair,Critical,37,Premio
+TOY_PREMIO_217,,Exhaust System: Poor,Poor,43,Premio
+TOY_ALLION_063,,Exhaust System: Good,Fair,75,Allion
+TOY_PREMIO_045,,Exhaust System: Fair,Good,94,Premio
+TOY_VITZ_154,,Battery: Fair,Poor,54,Vitz
+TOY_PREMIO_065,,Steering: Fair,Critical,38,Premio
+TOY_VITZ_056,,Battery: Fair,Poor,43,Vitz
+TOY_AXIO_070,,Brakes: Poor,Fair,79,Axio
+TOY_VITZ_278,,Cooling System: Fair,Good,94,Vitz
+TOY_YARIS_158,,Engine: Critical,Critical,20,Yaris
+TOY_YARIS_035,,Suspension: Good,Poor,48,Yaris
+TOY_YARIS_257,,Battery: Fair,Poor,55,Yaris
+TOY_PREMIO_179,,Brakes: Poor,Poor,59,Premio
+TOY_PREMIO_247,,Engine: Good,Poor,46,Premio
+TOY_VITZ_152,,Exhaust System: Fair,Critical,26,Vitz
+TOY_VITZ_269,,Tyres: Good,Critical,24,Vitz
+TOY_COROLLA_105,,Suspension: Fair,Good,93,Corolla
+TOY_COROLLA_134,,Brakes: Fair,Poor,57,Corolla
+TOY_VITZ_178,,Brakes: Good,Critical,26,Vitz
+TOY_PREMIO_231,,Suspension: Fair,Critical,27,Premio
+TOY_YARIS_224,,Transmission: Good,Good,97,Yaris
+TOY_PREMIO_163,,Battery: Good,Poor,55,Premio
+TOY_COROLLA_137,,Transmission: Fair,Poor,58,Corolla
+TOY_VITZ_021,,Suspension: Fair,Critical,20,Vitz
+TOY_AXIO_105,,Battery: Fair,Poor,46,Axio
+TOY_PREMIO_272,,Engine: Poor,Good,95,Premio
+TOY_PREMIO_225,,Cooling System: Fair,Fair,69,Premio
+TOY_VITZ_223,,Tyres: Fair,Good,92,Vitz
+TOY_YARIS_232,,Transmission: Fair,Poor,46,Yaris
+TOY_ALLION_288,,Battery: Fair,Good,86,Allion
+TOY_COROLLA_029,,Transmission: Good,Fair,67,Corolla
+TOY_YARIS_138,,Suspension: Fair,Good,97,Yaris
+TOY_COROLLA_164,,Tyres: Good,Critical,37,Corolla
+TOY_YARIS_057,,Engine: Good,Poor,41,Yaris
+TOY_COROLLA_101,,Tyres: Fair,Good,92,Corolla
+TOY_COROLLA_274,,Engine: Poor,Fair,74,Corolla
+TOY_ALLION_290,,Suspension: Fair,Fair,62,Allion
+TOY_COROLLA_110,,Exhaust System: Good,Fair,76,Corolla
+TOY_AXIO_201,,Steering: Fair,Good,97,Axio
+TOY_ALLION_112,,Tyres: Fair,Critical,20,Allion
+TOY_PREMIO_153,,Engine: Good,Fair,71,Premio
+TOY_VITZ_011,,Exhaust System: Poor,Good,90,Vitz
+TOY_PREMIO_169,,Brakes: Poor,Fair,72,Premio
+TOY_VITZ_019,,Transmission: Good,Good,83,Vitz
+TOY_YARIS_249,,Cooling System: Poor,Critical,31,Yaris
+TOY_VITZ_086,,Cooling System: Fair,Poor,41,Vitz
+TOY_AXIO_016,,Brakes: Fair,Poor,40,Axio
+TOY_AXIO_141,,Steering: Fair,Good,97,Axio
+TOY_AXIO_246,,Battery: Fair,Fair,79,Axio
+TOY_ALLION_206,,Steering: Poor,Good,88,Allion
+TOY_COROLLA_223,,Engine: Critical,Fair,77,Corolla
+TOY_COROLLA_250,,Steering: Critical,Fair,66,Corolla
+TOY_ALLION_246,,Suspension: Fair,Good,93,Allion
+TOY_YARIS_118,,Cooling System: Good,Good,99,Yaris
+TOY_ALLION_169,,Transmission: Fair,Fair,64,Allion
+TOY_YARIS_162,,Brakes: Good,Fair,79,Yaris
+TOY_COROLLA_142,,Transmission: Good,Critical,28,Corolla
+TOY_VITZ_285,,Battery: Fair,Good,84,Vitz
+TOY_COROLLA_091,,Transmission: Good,Critical,36,Corolla
+TOY_VITZ_068,,Engine: Fair,Poor,56,Vitz
+TOY_ALLION_110,,Engine: Good,Critical,33,Allion
+TOY_COROLLA_112,,Tyres: Poor,Critical,37,Corolla
+TOY_ALLION_291,,Suspension: Good,Critical,20,Allion
+TOY_VITZ_049,,Battery: Fair,Critical,25,Vitz
+TOY_ALLION_091,,Brakes: Fair,Poor,43,Allion
+TOY_VITZ_182,,Tyres: Good,Critical,21,Vitz
+TOY_PREMIO_057,,Exhaust System: Fair,Fair,67,Premio
+TOY_AXIO_266,,Brakes: Good,Critical,23,Axio
+TOY_VITZ_148,,Transmission: Poor,Critical,38,Vitz
+TOY_AXIO_026,,Tyres: Fair,Poor,41,Axio
+TOY_VITZ_013,,Brakes: Poor,Critical,28,Vitz
+TOY_ALLION_291,,Suspension: Good,Critical,20,Allion
+TOY_PREMIO_271,,Brakes: Fair,Critical,28,Premio
+TOY_AXIO_096,,Engine: Good,Fair,79,Axio
+TOY_YARIS_010,,Tyres: Good,Critical,26,Yaris
+TOY_AXIO_050,,Transmission: Good,Critical,20,Axio
+TOY_COROLLA_014,,Exhaust System: Poor,Poor,48,Corolla
+TOY_ALLION_046,,Transmission: Good,Poor,57,Allion
+TOY_YARIS_168,,Engine: Fair,Critical,31,Yaris
+TOY_AXIO_274,,Tyres: Fair,Good,88,Axio
+TOY_COROLLA_172,,Cooling System: Good,Critical,30,Corolla
+TOY_AXIO_263,,Cooling System: Fair,Critical,21,Axio
+TOY_AXIO_255,,Steering: Fair,Fair,61,Axio
+TOY_AXIO_289,,Exhaust System: Good,Good,98,Axio
+TOY_COROLLA_101,,Tyres: Fair,Good,92,Corolla
+TOY_COROLLA_149,,Cooling System: Good,Fair,66,Corolla
+TOY_YARIS_032,,Tyres: Good,Good,91,Yaris
+TOY_COROLLA_072,,Steering: Good,Poor,50,Corolla
+TOY_PREMIO_225,,Cooling System: Fair,Fair,69,Premio
+TOY_ALLION_286,,Engine: Good,Fair,63,Allion
+TOY_PREMIO_050,,Battery: Good,Critical,37,Premio
+TOY_AXIO_133,,Tyres: Fair,Good,91,Axio
+TOY_YARIS_089,,Exhaust System: Fair,Fair,71,Yaris
+TOY_YARIS_191,,Steering: Fair,Good,93,Yaris
+TOY_ALLION_077,,Suspension: Good,Good,98,Allion
+TOY_YARIS_175,,Steering: Good,Fair,60,Yaris
+TOY_AXIO_107,,Suspension: Poor,Fair,76,Axio
+TOY_COROLLA_151,,Battery: Fair,Fair,71,Corolla
+TOY_COROLLA_039,,Suspension: Poor,Fair,69,Corolla
+TOY_VITZ_148,,Transmission: Poor,Critical,38,Vitz
+TOY_ALLION_261,,Engine: Good,Fair,63,Allion
+TOY_ALLION_210,,Battery: Fair,Critical,38,Allion
+TOY_COROLLA_244,,Battery: Fair,Fair,79,Corolla
+TOY_COROLLA_261,,Cooling System: Good,Fair,78,Corolla
+TOY_YARIS_079,,Engine: Good,Critical,32,Yaris
+TOY_COROLLA_290,,Exhaust System: Good,Poor,50,Corolla
+TOY_PREMIO_161,,Engine: Poor,Fair,60,Premio
+TOY_VITZ_293,,Transmission: Poor,Good,90,Vitz
+TOY_PREMIO_053,,Engine: Fair,Critical,36,Premio
+TOY_PREMIO_157,,Brakes: Poor,Poor,42,Premio
+TOY_AXIO_172,,Suspension: Fair,Poor,44,Axio
+TOY_ALLION_079,,Steering: Good,Fair,63,Allion
+TOY_PREMIO_222,,Cooling System: Good,Good,84,Premio
+TOY_AXIO_177,,Brakes: Good,Fair,71,Axio
+TOY_COROLLA_191,,Battery: Good,Good,97,Corolla
+TOY_ALLION_227,,Tyres: Poor,Poor,56,Allion
+TOY_PREMIO_057,,Exhaust System: Fair,Fair,67,Premio
+TOY_PREMIO_194,,Transmission: Poor,Critical,37,Premio
+TOY_AXIO_124,,Engine: Fair,Critical,24,Axio
+TOY_AXIO_271,,Battery: Poor,Good,96,Axio
+TOY_COROLLA_052,,Tyres: Fair,Good,94,Corolla
+TOY_COROLLA_008,,Engine: Good,Good,94,Corolla
+TOY_VITZ_101,,Exhaust System: Fair,Good,81,Vitz
+TOY_ALLION_041,,Cooling System: Good,Fair,65,Allion
+TOY_ALLION_140,,Engine: Fair,Fair,65,Allion
+TOY_ALLION_221,,Tyres: Good,Fair,72,Allion
+TOY_AXIO_278,,Suspension: Good,Critical,36,Axio
+TOY_COROLLA_104,,Battery: Fair,Fair,64,Corolla
+TOY_VITZ_184,,Cooling System: Fair,Good,93,Vitz
+TOY_COROLLA_147,,Transmission: Good,Critical,26,Corolla
+TOY_ALLION_129,,Engine: Fair,Good,96,Allion
+TOY_AXIO_103,,Cooling System: Fair,Good,88,Axio
+TOY_COROLLA_298,,Transmission: Fair,Poor,49,Corolla
+TOY_YARIS_248,,Battery: Fair,Poor,45,Yaris
+TOY_COROLLA_085,,Transmission: Fair,Good,82,Corolla
+TOY_AXIO_157,,Engine: Poor,Poor,51,Axio
+TOY_AXIO_056,,Exhaust System: Good,Critical,36,Axio
+TOY_VITZ_142,,Engine: Fair,Good,95,Vitz
+TOY_COROLLA_158,,Battery: Fair,Fair,66,Corolla
+TOY_VITZ_180,,Transmission: Good,Critical,20,Vitz
+TOY_COROLLA_296,,Cooling System: Fair,Poor,54,Corolla
+TOY_PREMIO_212,,Exhaust System: Poor,Fair,60,Premio
+TOY_AXIO_038,,Steering: Poor,Critical,30,Axio
+TOY_VITZ_018,,Transmission: Fair,Good,86,Vitz
+TOY_ALLION_298,,Battery: Fair,Fair,65,Allion
+TOY_VITZ_112,,Tyres: Poor,Fair,79,Vitz
+TOY_YARIS_008,,Transmission: Good,Fair,75,Yaris
+TOY_YARIS_121,,Battery: Fair,Critical,20,Yaris
+TOY_ALLION_042,,Brakes: Fair,Good,86,Allion
+TOY_PREMIO_286,,Tyres: Fair,Poor,56,Premio
+TOY_YARIS_057,,Engine: Good,Poor,41,Yaris
+TOY_PREMIO_206,,Suspension: Poor,Good,86,Premio
+TOY_ALLION_228,,Suspension: Fair,Poor,56,Allion
+TOY_VITZ_008,,Steering: Fair,Critical,22,Vitz
+TOY_COROLLA_216,,Brakes: Good,Poor,46,Corolla
+TOY_ALLION_202,,Transmission: Good,Fair,70,Allion
+TOY_COROLLA_298,,Transmission: Fair,Poor,49,Corolla
+TOY_AXIO_012,,Transmission: Critical,Fair,69,Axio
+TOY_VITZ_196,,Exhaust System: Good,Good,80,Vitz
+TOY_AXIO_100,,Tyres: Good,Poor,48,Axio
+TOY_YARIS_159,,Battery: Poor,Fair,63,Yaris
+TOY_COROLLA_061,,Battery: Fair,Poor,56,Corolla
+TOY_PREMIO_221,,Engine: Poor,Fair,67,Premio
+TOY_PREMIO_098,,Transmission: Fair,Poor,48,Premio
+TOY_VITZ_051,,Transmission: Good,Poor,41,Vitz
+TOY_ALLION_278,,Cooling System: Poor,Critical,20,Allion
+TOY_AXIO_009,,Suspension: Poor,Good,91,Axio
+TOY_AXIO_041,,Tyres: Good,Critical,24,Axio
+TOY_YARIS_079,,Engine: Good,Critical,32,Yaris
+TOY_YARIS_282,,Exhaust System: Poor,Poor,55,Yaris
+TOY_PREMIO_288,,Tyres: Fair,Critical,29,Premio
+TOY_AXIO_110,,Suspension: Good,Critical,27,Axio
+TOY_ALLION_126,,Brakes: Fair,Fair,63,Allion
+TOY_COROLLA_199,,Tyres: Fair,Critical,31,Corolla
+TOY_VITZ_271,,Suspension: Good,Poor,52,Vitz
+TOY_YARIS_022,,Cooling System: Fair,Critical,30,Yaris
+TOY_ALLION_171,,Battery: Fair,Critical,22,Allion
+TOY_ALLION_267,,Battery: Fair,Poor,56,Allion
+TOY_PREMIO_177,,Tyres: Good,Poor,51,Premio
+TOY_PREMIO_274,,Transmission: Good,Fair,72,Premio
+TOY_VITZ_018,,Transmission: Fair,Good,86,Vitz
+TOY_YARIS_266,,Cooling System: Poor,Fair,66,Yaris
+TOY_YARIS_282,,Exhaust System: Poor,Poor,55,Yaris
+TOY_AXIO_117,,Steering: Poor,Good,94,Axio
+TOY_PREMIO_208,,Suspension: Fair,Poor,44,Premio
+TOY_PREMIO_063,,Battery: Fair,Critical,22,Premio
+TOY_COROLLA_179,,Transmission: Fair,Poor,50,Corolla
+TOY_ALLION_007,,Transmission: Poor,Good,92,Allion
+TOY_YARIS_180,,Cooling System: Good,Good,96,Yaris
+TOY_YARIS_227,,Suspension: Fair,Good,92,Yaris
+TOY_COROLLA_043,,Brakes: Fair,Good,89,Corolla
+TOY_YARIS_038,,Brakes: Good,Critical,23,Yaris
+TOY_ALLION_284,,Transmission: Good,Good,91,Allion
+TOY_AXIO_290,,Exhaust System: Fair,Poor,40,Axio
+TOY_AXIO_270,,Battery: Poor,Fair,76,Axio
+TOY_VITZ_054,,Tyres: Fair,Good,92,Vitz
+TOY_YARIS_047,,Suspension: Good,Good,88,Yaris
+TOY_VITZ_286,,Suspension: Fair,Critical,27,Vitz
+TOY_PREMIO_283,,Battery: Poor,Good,99,Premio
+TOY_PREMIO_269,,Brakes: Good,Critical,31,Premio
+TOY_COROLLA_083,,Cooling System: Fair,Poor,51,Corolla
+TOY_VITZ_072,,Suspension: Good,Poor,40,Vitz
+TOY_YARIS_224,,Transmission: Good,Good,97,Yaris
+TOY_COROLLA_099,,Tyres: Good,Poor,47,Corolla
+TOY_YARIS_167,,Cooling System: Good,Critical,24,Yaris
+TOY_PREMIO_001,,Engine: Fair,Good,92,Premio
+TOY_PREMIO_165,,Cooling System: Fair,Poor,53,Premio
+TOY_AXIO_123,,Engine: Good,Poor,56,Axio
+TOY_COROLLA_179,,Transmission: Fair,Poor,50,Corolla
+TOY_VITZ_120,,Transmission: Poor,Poor,57,Vitz
+TOY_COROLLA_145,,Exhaust System: Good,Poor,41,Corolla
+TOY_PREMIO_129,,Cooling System: Fair,Fair,60,Premio
+TOY_COROLLA_070,,Suspension: Fair,Poor,50,Corolla
+TOY_YARIS_112,,Steering: Fair,Good,83,Yaris
+TOY_VITZ_062,,Battery: Good,Fair,79,Vitz
+TOY_AXIO_220,,Suspension: Good,Good,97,Axio
+TOY_YARIS_178,,Suspension: Poor,Critical,27,Yaris
+TOY_COROLLA_145,,Exhaust System: Good,Poor,41,Corolla
+TOY_PREMIO_086,,Transmission: Poor,Critical,27,Premio
+TOY_ALLION_203,,Brakes: Fair,Poor,46,Allion
+TOY_VITZ_005,,Brakes: Fair,Critical,26,Vitz
+TOY_YARIS_030,,Suspension: Fair,Critical,21,Yaris
+TOY_YARIS_028,,Tyres: Good,Fair,70,Yaris
+TOY_COROLLA_026,,Brakes: Fair,Critical,28,Corolla
+TOY_AXIO_042,,Suspension: Fair,Poor,55,Axio
+TOY_COROLLA_011,,Cooling System: Fair,Poor,50,Corolla
+TOY_COROLLA_276,,Battery: Poor,Poor,48,Corolla
+TOY_ALLION_092,,Engine: Good,Poor,55,Allion
+TOY_AXIO_291,,Engine: Fair,Good,93,Axio
+TOY_PREMIO_150,,Steering: Good,Good,98,Premio
+TOY_PREMIO_119,,Tyres: Fair,Critical,37,Premio
+TOY_COROLLA_198,,Tyres: Fair,Critical,23,Corolla
+TOY_YARIS_114,,Steering: Fair,Good,92,Yaris
+TOY_PREMIO_035,,Battery: Poor,Critical,20,Premio
+TOY_COROLLA_208,,Brakes: Poor,Critical,31,Corolla
+TOY_ALLION_204,,Transmission: Good,Fair,75,Allion
+TOY_AXIO_150,,Transmission: Good,Good,90,Axio
+TOY_COROLLA_006,,Exhaust System: Poor,Poor,49,Corolla
+TOY_ALLION_183,,Brakes: Fair,Good,94,Allion
+TOY_VITZ_161,,Suspension: Good,Critical,23,Vitz
+TOY_AXIO_154,,Transmission: Fair,Critical,28,Axio
+TOY_YARIS_056,,Steering: Poor,Good,92,Yaris
+TOY_YARIS_031,,Exhaust System: Good,Fair,79,Yaris
+TOY_COROLLA_072,,Steering: Good,Poor,50,Corolla
+TOY_COROLLA_017,,Transmission: Fair,Fair,73,Corolla
+TOY_YARIS_102,,Brakes: Fair,Fair,66,Yaris
+TOY_ALLION_071,,Suspension: Poor,Critical,28,Allion
+TOY_ALLION_035,,Suspension: Good,Poor,50,Allion
+TOY_VITZ_275,,Battery: Poor,Good,83,Vitz
+TOY_PREMIO_159,,Engine: Good,Critical,28,Premio
+TOY_VITZ_143,,Cooling System: Poor,Fair,71,Vitz
+TOY_COROLLA_179,,Transmission: Fair,Poor,50,Corolla
+TOY_VITZ_144,,Engine: Good,Good,91,Vitz
+TOY_ALLION_186,,Exhaust System: Fair,Good,98,Allion
+TOY_PREMIO_060,,Cooling System: Fair,Good,81,Premio
+TOY_VITZ_143,,Cooling System: Poor,Fair,71,Vitz
+TOY_COROLLA_270,,Suspension: Poor,Fair,62,Corolla
+TOY_AXIO_131,,Engine: Good,Poor,44,Axio
+TOY_COROLLA_282,,Suspension: Poor,Poor,50,Corolla
+TOY_AXIO_197,,Brakes: Poor,Critical,25,Axio
+TOY_ALLION_105,,Cooling System: Good,Fair,73,Allion
+TOY_VITZ_155,,Cooling System: Poor,Poor,55,Vitz
+TOY_COROLLA_091,,Transmission: Good,Critical,36,Corolla
+TOY_AXIO_100,,Tyres: Good,Poor,48,Axio
+TOY_ALLION_104,,Engine: Good,Poor,40,Allion
+TOY_PREMIO_272,,Engine: Poor,Good,95,Premio
+TOY_AXIO_166,,Brakes: Fair,Poor,43,Axio
+TOY_AXIO_188,,Steering: Fair,Fair,79,Axio
+TOY_ALLION_054,,Battery: Good,Fair,66,Allion
+TOY_PREMIO_276,,Cooling System: Good,Good,81,Premio
+TOY_ALLION_299,,Tyres: Good,Fair,66,Allion
+TOY_ALLION_046,,Transmission: Good,Poor,57,Allion
+TOY_VITZ_046,,Tyres: Fair,Critical,29,Vitz
+TOY_YARIS_104,,Brakes: Fair,Fair,64,Yaris
+TOY_YARIS_226,,Transmission: Fair,Critical,27,Yaris
+TOY_AXIO_234,,Brakes: Fair,Fair,61,Axio
+TOY_VITZ_192,,Battery: Fair,Critical,34,Vitz
+TOY_COROLLA_181,,Transmission: Good,Poor,56,Corolla
+TOY_VITZ_113,,Engine: Fair,Poor,45,Vitz
+TOY_PREMIO_054,,Transmission: Good,Good,82,Premio
+TOY_ALLION_236,,Cooling System: Fair,Good,84,Allion
+TOY_PREMIO_154,,Battery: Fair,Good,87,Premio
+TOY_YARIS_132,,Suspension: Good,Poor,52,Yaris
+TOY_YARIS_222,,Tyres: Fair,Critical,33,Yaris
+TOY_AXIO_192,,Battery: Fair,Fair,77,Axio
+TOY_ALLION_255,,Exhaust System: Poor,Good,83,Allion
+TOY_VITZ_037,,Suspension: Poor,Fair,74,Vitz
+TOY_ALLION_012,,Exhaust System: Poor,Critical,34,Allion
+TOY_YARIS_177,,Suspension: Poor,Good,85,Yaris
+TOY_YARIS_043,,Battery: Good,Critical,26,Yaris
+TOY_PREMIO_179,,Brakes: Poor,Poor,59,Premio
+TOY_PREMIO_100,,Engine: Fair,Critical,24,Premio
+TOY_VITZ_039,,Suspension: Poor,Good,95,Vitz
+TOY_VITZ_174,,Brakes: Fair,Critical,23,Vitz
+TOY_PREMIO_037,,Battery: Fair,Poor,46,Premio
+TOY_COROLLA_157,,Battery: Fair,Poor,40,Corolla
+TOY_ALLION_203,,Brakes: Fair,Poor,46,Allion
+TOY_COROLLA_276,,Battery: Poor,Poor,48,Corolla
+TOY_VITZ_296,,Exhaust System: Poor,Good,87,Vitz
+TOY_YARIS_058,,Brakes: Fair,Fair,74,Yaris
+TOY_AXIO_109,,Transmission: Poor,Good,83,Axio
+TOY_ALLION_008,,Exhaust System: Good,Critical,36,Allion
+TOY_YARIS_252,,Brakes: Fair,Good,91,Yaris
+TOY_ALLION_038,,Tyres: Poor,Poor,40,Allion
+TOY_VITZ_207,,Exhaust System: Poor,Critical,24,Vitz
+TOY_PREMIO_075,,Tyres: Poor,Critical,21,Premio
+TOY_VITZ_011,,Exhaust System: Poor,Good,90,Vitz
+TOY_VITZ_214,,Transmission: Critical,Critical,20,Vitz
+TOY_YARIS_124,,Exhaust System: Good,Good,90,Yaris
+TOY_AXIO_172,,Suspension: Fair,Poor,44,Axio
+TOY_VITZ_117,,Cooling System: Fair,Poor,44,Vitz
+TOY_COROLLA_039,,Suspension: Poor,Fair,69,Corolla
+TOY_VITZ_067,,Cooling System: Fair,Critical,22,Vitz
+TOY_YARIS_142,,Steering: Fair,Poor,41,Yaris
+TOY_VITZ_069,,Brakes: Good,Fair,70,Vitz
+TOY_ALLION_058,,Steering: Fair,Poor,52,Allion
+TOY_COROLLA_217,,Transmission: Good,Good,93,Corolla
+TOY_ALLION_202,,Transmission: Good,Fair,70,Allion
+TOY_COROLLA_124,,Tyres: Good,Poor,54,Corolla
+TOY_ALLION_025,,Battery: Poor,Fair,69,Allion
+TOY_AXIO_194,,Engine: Good,Fair,68,Axio
+TOY_ALLION_109,,Transmission: Poor,Critical,32,Allion
+TOY_ALLION_043,,Tyres: Good,Fair,72,Allion
+TOY_YARIS_019,,Battery: Fair,Good,97,Yaris
+TOY_AXIO_203,,Battery: Good,Fair,65,Axio
+TOY_VITZ_170,,Steering: Fair,Good,89,Vitz
+TOY_ALLION_194,,Brakes: Fair,Fair,63,Allion
+TOY_ALLION_049,,Suspension: Fair,Critical,28,Allion
+TOY_VITZ_252,,Engine: Good,Fair,65,Vitz
+TOY_YARIS_177,,Suspension: Poor,Good,85,Yaris
+TOY_COROLLA_104,,Battery: Fair,Fair,64,Corolla
+TOY_PREMIO_065,,Steering: Fair,Critical,38,Premio
+TOY_VITZ_252,,Engine: Good,Fair,65,Vitz
+TOY_YARIS_056,,Steering: Poor,Good,92,Yaris
+TOY_ALLION_070,,Exhaust System: Fair,Critical,30,Allion
+TOY_ALLION_217,,Cooling System: Good,Critical,24,Allion
+TOY_VITZ_102,,Suspension: Good,Critical,36,Vitz
+TOY_VITZ_120,,Transmission: Poor,Poor,57,Vitz
+TOY_YARIS_167,,Cooling System: Good,Critical,24,Yaris
+TOY_VITZ_184,,Cooling System: Fair,Good,93,Vitz
+TOY_VITZ_135,,Battery: Fair,Fair,78,Vitz
+TOY_VITZ_005,,Brakes: Fair,Critical,26,Vitz
+TOY_AXIO_188,,Steering: Fair,Fair,79,Axio
+TOY_YARIS_178,,Suspension: Poor,Critical,27,Yaris
+TOY_YARIS_113,,Tyres: Poor,Fair,73,Yaris
+TOY_VITZ_166,,Cooling System: Good,Poor,54,Vitz
+TOY_AXIO_243,,Steering: Poor,Critical,26,Axio
+TOY_ALLION_025,,Battery: Poor,Fair,69,Allion
+TOY_ALLION_171,,Battery: Fair,Critical,22,Allion
+TOY_VITZ_254,,Steering: Good,Poor,43,Vitz
+TOY_VITZ_232,,Steering: Fair,Fair,75,Vitz
+TOY_PREMIO_012,,Suspension: Poor,Good,96,Premio
+TOY_COROLLA_126,,Engine: Good,Critical,21,Corolla
+TOY_AXIO_009,,Suspension: Poor,Good,91,Axio
+TOY_AXIO_091,,Suspension: Good,Poor,48,Axio
+TOY_VITZ_110,,Brakes: Fair,Poor,49,Vitz
+TOY_PREMIO_212,,Exhaust System: Poor,Fair,60,Premio
+TOY_ALLION_112,,Tyres: Fair,Critical,20,Allion
+TOY_VITZ_010,,Exhaust System: Poor,Critical,21,Vitz
+TOY_YARIS_050,,Tyres: Good,Poor,47,Yaris
+TOY_AXIO_260,,Transmission: Fair,Fair,69,Axio
+TOY_VITZ_147,,Exhaust System: Good,Critical,23,Vitz
+TOY_PREMIO_056,,Cooling System: Fair,Poor,51,Premio
+TOY_COROLLA_211,,Exhaust System: Poor,Poor,47,Corolla
+TOY_ALLION_102,,Brakes: Good,Poor,41,Allion
+TOY_YARIS_146,,Tyres: Good,Good,98,Yaris
+TOY_PREMIO_077,,Battery: Good,Critical,23,Premio
+TOY_COROLLA_090,,Transmission: Fair,Critical,22,Corolla
+TOY_PREMIO_289,,Brakes: Fair,Critical,20,Premio
+TOY_VITZ_115,,Engine: Fair,Good,86,Vitz
+TOY_PREMIO_187,,Battery: Poor,Critical,32,Premio
+TOY_PREMIO_300,,Brakes: Fair,Poor,44,Premio
+TOY_VITZ_062,,Battery: Good,Fair,79,Vitz
+TOY_VITZ_274,,Engine: Poor,Poor,49,Vitz
+TOY_ALLION_128,,Cooling System: Good,Good,94,Allion
+TOY_AXIO_224,,Tyres: Good,Poor,58,Axio
+TOY_ALLION_231,,Engine: Fair,Poor,58,Allion
+TOY_YARIS_189,,Steering: Poor,Poor,54,Yaris
+TOY_YARIS_228,,Steering: Good,Poor,45,Yaris
+TOY_PREMIO_208,,Suspension: Fair,Poor,44,Premio
+TOY_AXIO_049,,Engine: Fair,Poor,40,Axio
+TOY_VITZ_167,,Tyres: Fair,Fair,72,Vitz
+TOY_AXIO_208,,Cooling System: Fair,Fair,65,Axio
+TOY_VITZ_109,,Exhaust System: Good,Poor,52,Vitz
+TOY_PREMIO_162,,Transmission: Good,Critical,30,Premio
+TOY_VITZ_016,,Steering: Fair,Good,98,Vitz
+TOY_ALLION_089,,Cooling System: Good,Critical,30,Allion
+TOY_AXIO_224,,Tyres: Good,Poor,58,Axio
+TOY_AXIO_168,,Brakes: Poor,Critical,23,Axio
+TOY_PREMIO_181,,Tyres: Poor,Critical,21,Premio
+TOY_AXIO_196,,Steering: Good,Critical,27,Axio
+TOY_YARIS_029,,Brakes: Good,Good,85,Yaris
+TOY_AXIO_078,,Suspension: Good,Poor,43,Axio
+TOY_COROLLA_285,,Transmission: Good,Good,100,Corolla
+TOY_AXIO_149,,Tyres: Good,Good,100,Axio
+TOY_PREMIO_157,,Brakes: Poor,Poor,42,Premio
+TOY_ALLION_116,,Steering: Fair,Poor,52,Allion
+TOY_COROLLA_052,,Tyres: Fair,Good,94,Corolla
+TOY_ALLION_024,,Transmission: Fair,Good,84,Allion
+TOY_PREMIO_043,,Brakes: Fair,Good,91,Premio
+TOY_YARIS_061,,Exhaust System: Good,Critical,28,Yaris
+TOY_AXIO_169,,Transmission: Good,Good,99,Axio
+TOY_YARIS_101,,Brakes: Poor,Critical,30,Yaris
+TOY_YARIS_156,,Steering: Fair,Poor,50,Yaris
+TOY_AXIO_001,,Steering: Critical,Critical,28,Axio
+TOY_YARIS_211,,Cooling System: Fair,Critical,23,Yaris
+TOY_PREMIO_118,,Battery: Fair,Poor,40,Premio
+TOY_VITZ_087,,Transmission: Poor,Critical,28,Vitz
+TOY_YARIS_128,,Engine: Good,Critical,35,Yaris
+TOY_ALLION_258,,Brakes: Fair,Fair,70,Allion
+TOY_AXIO_243,,Steering: Poor,Critical,26,Axio
+TOY_COROLLA_102,,Battery: Fair,Good,99,Corolla
+TOY_AXIO_009,,Suspension: Poor,Good,91,Axio
+TOY_COROLLA_248,,Suspension: Fair,Fair,64,Corolla
+TOY_PREMIO_218,,Cooling System: Fair,Critical,28,Premio
+TOY_AXIO_064,,Suspension: Good,Critical,25,Axio
+TOY_VITZ_267,,Engine: Fair,Fair,77,Vitz
+TOY_ALLION_189,,Brakes: Good,Good,82,Allion
+TOY_ALLION_176,,Transmission: Good,Good,90,Allion
+TOY_AXIO_225,,Transmission: Good,Fair,69,Axio
+TOY_YARIS_042,,Suspension: Fair,Poor,45,Yaris
+TOY_YARIS_031,,Exhaust System: Good,Fair,79,Yaris
+TOY_PREMIO_260,,Tyres: Fair,Critical,30,Premio
+TOY_PREMIO_105,,Exhaust System: Fair,Critical,39,Premio
+TOY_PREMIO_116,,Exhaust System: Fair,Fair,68,Premio
+TOY_AXIO_265,,Battery: Fair,Fair,65,Axio
+TOY_ALLION_163,,Battery: Fair,Poor,59,Allion
+TOY_ALLION_131,,Battery: Fair,Poor,44,Allion
+TOY_ALLION_096,,Engine: Fair,Critical,32,Allion
+TOY_ALLION_181,,Battery: Critical,Good,97,Allion
+TOY_YARIS_083,,Brakes: Poor,Fair,77,Yaris
+TOY_AXIO_049,,Engine: Fair,Poor,40,Axio
+TOY_PREMIO_118,,Battery: Fair,Poor,40,Premio
+TOY_ALLION_184,,Transmission: Good,Fair,65,Allion
+TOY_COROLLA_219,,Battery: Poor,Good,80,Corolla
+TOY_COROLLA_128,,Battery: Fair,Good,89,Corolla
+TOY_PREMIO_031,,Brakes: Fair,Fair,62,Premio
+TOY_AXIO_155,,Steering: Good,Fair,78,Axio
+TOY_VITZ_059,,Engine: Fair,Critical,29,Vitz
+TOY_PREMIO_098,,Transmission: Fair,Poor,48,Premio
+TOY_VITZ_170,,Steering: Fair,Good,89,Vitz
+TOY_AXIO_243,,Steering: Poor,Critical,26,Axio
+TOY_VITZ_276,,Suspension: Good,Poor,55,Vitz
+TOY_VITZ_160,,Battery: Fair,Poor,53,Vitz
+TOY_PREMIO_107,,Cooling System: Good,Poor,45,Premio
+TOY_COROLLA_118,,Brakes: Good,Poor,52,Corolla
+TOY_AXIO_263,,Cooling System: Fair,Critical,21,Axio
+TOY_AXIO_284,,Suspension: Poor,Poor,56,Axio
+TOY_VITZ_153,,Tyres: Good,Poor,58,Vitz
+TOY_ALLION_250,,Transmission: Good,Fair,74,Allion
+TOY_COROLLA_297,,Transmission: Poor,Poor,59,Corolla
+TOY_ALLION_168,,Cooling System: Fair,Poor,57,Allion
+TOY_COROLLA_239,,Steering: Fair,Poor,52,Corolla
+TOY_ALLION_100,,Suspension: Fair,Good,86,Allion
+TOY_ALLION_096,,Engine: Fair,Critical,32,Allion
+TOY_ALLION_219,,Exhaust System: Fair,Good,97,Allion
+TOY_VITZ_081,,Tyres: Good,Critical,30,Vitz
+TOY_VITZ_180,,Transmission: Good,Critical,20,Vitz
+TOY_AXIO_276,,Tyres: Critical,Fair,74,Axio
+TOY_AXIO_068,,Brakes: Good,Poor,44,Axio
+TOY_VITZ_080,,Exhaust System: Good,Fair,75,Vitz
+TOY_AXIO_144,,Brakes: Poor,Fair,68,Axio
+TOY_COROLLA_044,,Battery: Fair,Poor,52,Corolla
+TOY_AXIO_215,,Suspension: Fair,Good,89,Axio
+TOY_ALLION_105,,Cooling System: Good,Fair,73,Allion
+TOY_VITZ_068,,Engine: Fair,Poor,56,Vitz
+TOY_AXIO_268,,Suspension: Poor,Fair,75,Axio
+TOY_YARIS_191,,Steering: Fair,Good,93,Yaris
+TOY_YARIS_181,,Steering: Good,Poor,58,Yaris
+TOY_PREMIO_105,,Exhaust System: Fair,Critical,39,Premio
+TOY_AXIO_299,,Brakes: Good,Poor,54,Axio
+TOY_COROLLA_271,,Exhaust System: Good,Good,80,Corolla
+TOY_COROLLA_277,,Cooling System: Fair,Poor,56,Corolla
+TOY_YARIS_068,,Engine: Poor,Poor,51,Yaris
+TOY_VITZ_048,,Suspension: Fair,Good,85,Vitz
+TOY_AXIO_263,,Cooling System: Fair,Critical,21,Axio
+TOY_VITZ_147,,Exhaust System: Good,Critical,23,Vitz
+TOY_ALLION_001,,Suspension: Fair,Fair,64,Allion
+TOY_ALLION_025,,Battery: Poor,Fair,69,Allion
+TOY_VITZ_214,,Transmission: Critical,Critical,20,Vitz
+TOY_ALLION_089,,Cooling System: Good,Critical,30,Allion
+TOY_ALLION_232,,Cooling System: Poor,Fair,71,Allion
+TOY_YARIS_007,,Exhaust System: Fair,Fair,61,Yaris
+TOY_AXIO_202,,Tyres: Poor,Fair,73,Axio
+TOY_PREMIO_136,,Engine: Good,Fair,72,Premio
+TOY_VITZ_089,,Cooling System: Fair,Critical,37,Vitz
+TOY_AXIO_138,,Brakes: Good,Poor,55,Axio
+TOY_COROLLA_271,,Exhaust System: Good,Good,80,Corolla
+TOY_ALLION_282,,Transmission: Fair,Good,84,Allion
+TOY_VITZ_176,,Cooling System: Fair,Critical,30,Vitz
+TOY_AXIO_207,,Cooling System: Good,Critical,30,Axio
+TOY_ALLION_264,,Battery: Good,Poor,57,Allion
+TOY_YARIS_019,,Battery: Fair,Good,97,Yaris
+TOY_PREMIO_296,,Exhaust System: Poor,Good,84,Premio
+TOY_PREMIO_276,,Cooling System: Good,Good,81,Premio
+TOY_COROLLA_279,,Suspension: Good,Fair,75,Corolla
+TOY_YARIS_083,,Brakes: Poor,Fair,77,Yaris
+TOY_VITZ_166,,Cooling System: Good,Poor,54,Vitz
+TOY_VITZ_085,,Transmission: Poor,Poor,56,Vitz
+TOY_ALLION_045,,Steering: Fair,Good,86,Allion
+TOY_VITZ_155,,Cooling System: Poor,Poor,55,Vitz
+TOY_PREMIO_246,,Battery: Fair,Poor,42,Premio
+TOY_YARIS_182,,Brakes: Poor,Fair,63,Yaris
+TOY_PREMIO_123,,Transmission: Poor,Critical,20,Premio
+TOY_YARIS_049,,Transmission: Fair,Fair,72,Yaris
+TOY_VITZ_021,,Suspension: Fair,Critical,20,Vitz
+TOY_YARIS_098,,Tyres: Fair,Fair,73,Yaris
+TOY_PREMIO_013,,Brakes: Fair,Poor,58,Premio
+TOY_COROLLA_070,,Suspension: Fair,Poor,50,Corolla
+TOY_VITZ_081,,Tyres: Good,Critical,30,Vitz
+TOY_PREMIO_254,,Exhaust System: Fair,Critical,26,Premio
+TOY_PREMIO_135,,Tyres: Fair,Poor,57,Premio
+TOY_ALLION_084,,Suspension: Good,Poor,50,Allion
+TOY_ALLION_054,,Battery: Good,Fair,66,Allion
+TOY_YARIS_230,,Transmission: Fair,Poor,51,Yaris
+TOY_ALLION_236,,Cooling System: Fair,Good,84,Allion
+TOY_VITZ_213,,Transmission: Poor,Poor,48,Vitz
+TOY_ALLION_204,,Transmission: Good,Fair,75,Allion
+TOY_YARIS_196,,Cooling System: Fair,Fair,67,Yaris
+TOY_COROLLA_223,,Engine: Critical,Fair,77,Corolla
+TOY_ALLION_257,,Cooling System: Poor,Good,84,Allion
+TOY_VITZ_128,,Tyres: Fair,Critical,33,Vitz
+TOY_AXIO_094,,Engine: Fair,Poor,57,Axio
+TOY_ALLION_293,,Suspension: Poor,Fair,78,Allion
+TOY_YARIS_060,,Engine: Fair,Good,87,Yaris
+TOY_AXIO_263,,Cooling System: Fair,Critical,21,Axio
+TOY_COROLLA_177,,Engine: Fair,Good,94,Corolla
+TOY_VITZ_245,,Brakes: Fair,Critical,37,Vitz
+TOY_ALLION_062,,Brakes: Good,Good,90,Allion
+TOY_ALLION_091,,Brakes: Fair,Poor,43,Allion
+TOY_AXIO_048,,Tyres: Critical,Fair,65,Axio
+TOY_VITZ_059,,Engine: Fair,Critical,29,Vitz
+TOY_YARIS_110,,Battery: Good,Good,82,Yaris
+TOY_ALLION_217,,Cooling System: Good,Critical,24,Allion
+TOY_COROLLA_109,,Transmission: Fair,Good,90,Corolla
+TOY_VITZ_238,,Steering: Good,Poor,46,Vitz
+TOY_ALLION_091,,Brakes: Fair,Poor,43,Allion
+TOY_PREMIO_130,,Brakes: Fair,Fair,67,Premio
+TOY_COROLLA_061,,Battery: Fair,Poor,56,Corolla
+TOY_VITZ_198,,Engine: Critical,Poor,50,Vitz
+TOY_VITZ_225,,Brakes: Fair,Fair,62,Vitz
+TOY_AXIO_252,,Transmission: Fair,Critical,38,Axio
+TOY_YARIS_293,,Engine: Fair,Good,86,Yaris
+TOY_PREMIO_190,,Brakes: Fair,Poor,46,Premio
+TOY_COROLLA_154,,Cooling System: Good,Critical,26,Corolla
+TOY_COROLLA_012,,Brakes: Fair,Fair,72,Corolla
+TOY_VITZ_184,,Cooling System: Fair,Good,93,Vitz
+TOY_AXIO_144,,Brakes: Poor,Fair,68,Axio
+TOY_AXIO_035,,Transmission: Good,Good,81,Axio
+TOY_AXIO_232,,Transmission: Poor,Fair,77,Axio
+TOY_PREMIO_081,,Brakes: Good,Good,100,Premio
+TOY_VITZ_036,,Transmission: Poor,Fair,68,Vitz
+TOY_PREMIO_137,,Steering: Fair,Critical,27,Premio
+TOY_VITZ_206,,Cooling System: Fair,Poor,57,Vitz
+TOY_AXIO_133,,Tyres: Fair,Good,91,Axio
+TOY_ALLION_064,,Suspension: Fair,Critical,37,Allion
+TOY_YARIS_221,,Exhaust System: Fair,Critical,36,Yaris
+TOY_PREMIO_086,,Transmission: Poor,Critical,27,Premio
+TOY_YARIS_261,,Engine: Poor,Poor,46,Yaris
+TOY_PREMIO_269,,Brakes: Good,Critical,31,Premio
+TOY_AXIO_010,,Suspension: Fair,Fair,65,Axio
+TOY_COROLLA_104,,Battery: Fair,Fair,64,Corolla
+TOY_AXIO_002,,Engine: Fair,Good,90,Axio
+TOY_COROLLA_185,,Suspension: Poor,Good,92,Corolla
+TOY_YARIS_272,,Exhaust System: Good,Fair,62,Yaris
+TOY_PREMIO_069,,Suspension: Fair,Good,90,Premio
+TOY_ALLION_249,,Engine: Fair,Poor,48,Allion
+TOY_VITZ_063,,Steering: Fair,Poor,40,Vitz
+TOY_VITZ_115,,Engine: Fair,Good,86,Vitz
+TOY_AXIO_047,,Cooling System: Good,Critical,22,Axio
+TOY_YARIS_048,,Engine: Fair,Fair,77,Yaris
+TOY_YARIS_256,,Transmission: Fair,Poor,46,Yaris
+TOY_PREMIO_136,,Engine: Good,Fair,72,Premio
+TOY_YARIS_125,,Transmission: Poor,Critical,25,Yaris
+TOY_VITZ_084,,Cooling System: Fair,Good,98,Vitz
+TOY_AXIO_256,,Tyres: Poor,Fair,74,Axio
+TOY_ALLION_035,,Suspension: Good,Poor,50,Allion
+TOY_PREMIO_212,,Exhaust System: Poor,Fair,60,Premio
+TOY_COROLLA_244,,Battery: Fair,Fair,79,Corolla
+TOY_PREMIO_117,,Brakes: Good,Fair,71,Premio
+TOY_VITZ_038,,Brakes: Fair,Critical,35,Vitz
+TOY_COROLLA_158,,Battery: Fair,Fair,66,Corolla
+TOY_YARIS_171,,Brakes: Fair,Poor,49,Yaris
+TOY_AXIO_247,,Steering: Good,Fair,68,Axio
+TOY_ALLION_069,,Exhaust System: Good,Fair,79,Allion
+TOY_ALLION_280,,Transmission: Poor,Good,87,Allion
+TOY_YARIS_050,,Tyres: Good,Poor,47,Yaris
+TOY_VITZ_297,,Tyres: Good,Critical,26,Vitz
+TOY_VITZ_289,,Engine: Good,Fair,78,Vitz
+TOY_AXIO_013,,Brakes: Good,Fair,76,Axio
+TOY_YARIS_092,,Suspension: Fair,Good,91,Yaris
+TOY_YARIS_221,,Exhaust System: Fair,Critical,36,Yaris
+TOY_VITZ_170,,Steering: Fair,Good,89,Vitz
+TOY_ALLION_260,,Brakes: Fair,Fair,60,Allion
+TOY_AXIO_019,,Engine: Critical,Critical,38,Axio
+TOY_AXIO_166,,Brakes: Fair,Poor,43,Axio
+TOY_YARIS_063,,Tyres: Poor,Good,82,Yaris
+TOY_AXIO_268,,Suspension: Poor,Fair,75,Axio
+TOY_AXIO_150,,Transmission: Good,Good,90,Axio
+TOY_VITZ_280,,Exhaust System: Good,Fair,79,Vitz
+TOY_ALLION_269,,Brakes: Good,Poor,52,Allion
+TOY_AXIO_162,,Cooling System: Good,Good,85,Axio
+TOY_COROLLA_146,,Suspension: Fair,Critical,29,Corolla
+TOY_VITZ_110,,Brakes: Fair,Poor,49,Vitz
+TOY_ALLION_013,,Transmission: Poor,Critical,32,Allion
+TOY_COROLLA_106,,Exhaust System: Critical,Fair,78,Corolla
+TOY_PREMIO_219,,Cooling System: Good,Good,98,Premio
+TOY_ALLION_237,,Tyres: Fair,Critical,39,Allion
+TOY_VITZ_023,,Transmission: Fair,Critical,35,Vitz
+TOY_YARIS_202,,Cooling System: Fair,Fair,74,Yaris
+TOY_VITZ_078,,Engine: Good,Fair,74,Vitz
+TOY_YARIS_136,,Steering: Poor,Poor,52,Yaris
+TOY_AXIO_228,,Engine: Good,Fair,61,Axio
+TOY_PREMIO_285,,Transmission: Critical,Fair,65,Premio
+TOY_ALLION_071,,Suspension: Poor,Critical,28,Allion
+TOY_PREMIO_190,,Brakes: Fair,Poor,46,Premio
+TOY_PREMIO_289,,Brakes: Fair,Critical,20,Premio
+TOY_YARIS_156,,Steering: Fair,Poor,50,Yaris
+TOY_PREMIO_045,,Exhaust System: Fair,Good,94,Premio
+TOY_AXIO_282,,Tyres: Good,Good,84,Axio
+TOY_VITZ_198,,Engine: Critical,Poor,50,Vitz
+TOY_COROLLA_060,,Suspension: Good,Critical,28,Corolla
+TOY_ALLION_057,,Exhaust System: Poor,Poor,58,Allion
+TOY_PREMIO_264,,Steering: Fair,Poor,58,Premio
+TOY_ALLION_035,,Suspension: Good,Poor,50,Allion
+TOY_VITZ_096,,Exhaust System: Fair,Fair,63,Vitz
+TOY_ALLION_199,,Tyres: Fair,Critical,39,Allion
+TOY_VITZ_093,,Tyres: Fair,Critical,37,Vitz
+TOY_PREMIO_206,,Suspension: Poor,Good,86,Premio
+TOY_PREMIO_014,,Engine: Fair,Good,94,Premio
+TOY_YARIS_201,,Transmission: Poor,Critical,38,Yaris
+TOY_YARIS_019,,Battery: Fair,Good,97,Yaris
+TOY_VITZ_139,,Brakes: Fair,Good,99,Vitz
+TOY_AXIO_033,,Exhaust System: Fair,Critical,20,Axio
+TOY_COROLLA_039,,Suspension: Poor,Fair,69,Corolla
+TOY_VITZ_055,,Suspension: Poor,Poor,55,Vitz
+TOY_PREMIO_139,,Steering: Poor,Good,86,Premio
+TOY_YARIS_236,,Engine: Good,Poor,41,Yaris
+TOY_PREMIO_040,,Exhaust System: Fair,Fair,65,Premio
+TOY_YARIS_069,,Tyres: Fair,Poor,40,Yaris
+TOY_VITZ_007,,Tyres: Poor,Critical,34,Vitz
+TOY_COROLLA_018,,Exhaust System: Poor,Fair,72,Corolla
+TOY_ALLION_104,,Engine: Good,Poor,40,Allion
+TOY_COROLLA_293,,Exhaust System: Poor,Fair,64,Corolla
+TOY_AXIO_156,,Steering: Fair,Fair,70,Axio
+TOY_COROLLA_018,,Exhaust System: Poor,Fair,72,Corolla
+TOY_COROLLA_283,,Cooling System: Fair,Critical,21,Corolla
+TOY_VITZ_267,,Engine: Fair,Fair,77,Vitz
+TOY_AXIO_148,,Transmission: Poor,Fair,62,Axio
+TOY_AXIO_151,,Transmission: Fair,Good,98,Axio
+TOY_COROLLA_071,,Transmission: Fair,Fair,72,Corolla
+TOY_VITZ_073,,Cooling System: Fair,Critical,24,Vitz
+TOY_YARIS_245,,Suspension: Critical,Critical,21,Yaris
+TOY_YARIS_231,,Brakes: Good,Fair,68,Yaris
+TOY_VITZ_071,,Tyres: Fair,Fair,63,Vitz
+TOY_VITZ_059,,Engine: Fair,Critical,29,Vitz
+TOY_PREMIO_236,,Tyres: Poor,Critical,22,Premio
+TOY_AXIO_125,,Brakes: Fair,Critical,24,Axio
+TOY_AXIO_251,,Suspension: Good,Fair,76,Axio
+TOY_PREMIO_052,,Cooling System: Poor,Good,85,Premio
+TOY_COROLLA_288,,Tyres: Fair,Good,96,Corolla
+TOY_ALLION_209,,Battery: Good,Good,82,Allion
+TOY_VITZ_213,,Transmission: Poor,Poor,48,Vitz
+TOY_COROLLA_162,,Cooling System: Fair,Good,97,Corolla
+TOY_COROLLA_269,,Tyres: Good,Poor,40,Corolla
+TOY_AXIO_196,,Steering: Good,Critical,27,Axio
+TOY_COROLLA_086,,Tyres: Fair,Poor,53,Corolla
+TOY_AXIO_035,,Transmission: Good,Good,81,Axio
+TOY_COROLLA_100,,Tyres: Fair,Fair,65,Corolla
+TOY_PREMIO_200,,Battery: Fair,Critical,39,Premio
+TOY_PREMIO_142,,Cooling System: Good,Fair,65,Premio
+TOY_ALLION_220,,Engine: Fair,Critical,32,Allion
+TOY_AXIO_038,,Steering: Poor,Critical,30,Axio
+TOY_PREMIO_070,,Exhaust System: Good,Fair,60,Premio
+TOY_ALLION_124,,Tyres: Good,Good,93,Allion
+TOY_YARIS_300,,Suspension: Poor,Critical,39,Yaris
+TOY_ALLION_010,,Steering: Fair,Good,84,Allion
+TOY_ALLION_235,,Suspension: Good,Critical,28,Allion
+TOY_ALLION_282,,Transmission: Fair,Good,84,Allion
+TOY_COROLLA_078,,Suspension: Good,Critical,30,Corolla
+TOY_ALLION_117,,Brakes: Fair,Critical,23,Allion
+TOY_YARIS_037,,Steering: Good,Good,86,Yaris
+TOY_VITZ_284,,Cooling System: Fair,Fair,70,Vitz
+TOY_AXIO_254,,Engine: Poor,Poor,53,Axio
+TOY_ALLION_198,,Suspension: Good,Critical,24,Allion
+TOY_PREMIO_070,,Exhaust System: Good,Fair,60,Premio
+TOY_AXIO_069,,Engine: Poor,Good,81,Axio
+TOY_AXIO_154,,Transmission: Fair,Critical,28,Axio
+TOY_ALLION_168,,Cooling System: Fair,Poor,57,Allion
+TOY_AXIO_091,,Suspension: Good,Poor,48,Axio
+TOY_PREMIO_157,,Brakes: Poor,Poor,42,Premio
+TOY_ALLION_190,,Transmission: Fair,Critical,31,Allion
+TOY_VITZ_218,,Battery: Fair,Fair,79,Vitz
+TOY_ALLION_269,,Brakes: Good,Poor,52,Allion
+TOY_PREMIO_217,,Exhaust System: Poor,Poor,43,Premio
+TOY_ALLION_285,,Exhaust System: Fair,Critical,27,Allion
+TOY_PREMIO_237,,Exhaust System: Poor,Fair,79,Premio
+TOY_YARIS_077,,Exhaust System: Poor,Good,85,Yaris
+TOY_PREMIO_300,,Brakes: Fair,Poor,44,Premio
+TOY_AXIO_147,,Steering: Poor,Fair,79,Axio
+TOY_AXIO_299,,Brakes: Good,Poor,54,Axio
+TOY_COROLLA_259,,Transmission: Fair,Fair,66,Corolla
+TOY_ALLION_068,,Steering: Poor,Poor,49,Allion
+TOY_PREMIO_010,,Transmission: Good,Poor,40,Premio
+TOY_AXIO_167,,Exhaust System: Good,Good,83,Axio
+TOY_AXIO_028,,Battery: Fair,Poor,50,Axio
+TOY_ALLION_175,,Cooling System: Fair,Poor,47,Allion
+TOY_PREMIO_175,,Cooling System: Good,Poor,49,Premio
+TOY_YARIS_095,,Exhaust System: Fair,Poor,46,Yaris
+TOY_ALLION_256,,Tyres: Good,Poor,47,Allion
+TOY_YARIS_154,,Battery: Poor,Poor,55,Yaris
+TOY_AXIO_040,,Tyres: Fair,Good,86,Axio
+TOY_PREMIO_299,,Tyres: Poor,Good,92,Premio
+TOY_VITZ_290,,Exhaust System: Poor,Good,84,Vitz
+TOY_AXIO_217,,Transmission: Poor,Fair,62,Axio
+TOY_PREMIO_160,,Transmission: Fair,Critical,33,Premio
+TOY_AXIO_261,,Steering: Fair,Fair,79,Axio
+TOY_ALLION_090,,Exhaust System: Good,Good,83,Allion
+TOY_ALLION_049,,Suspension: Fair,Critical,28,Allion
+TOY_YARIS_161,,Suspension: Fair,Fair,61,Yaris
+TOY_PREMIO_201,,Suspension: Fair,Critical,37,Premio
+TOY_VITZ_075,,Engine: Good,Critical,27,Vitz
+TOY_PREMIO_100,,Engine: Fair,Critical,24,Premio
+TOY_VITZ_145,,Engine: Good,Good,95,Vitz
+TOY_COROLLA_086,,Tyres: Fair,Poor,53,Corolla
+TOY_YARIS_224,,Transmission: Good,Good,97,Yaris
+TOY_ALLION_189,,Brakes: Good,Good,82,Allion
+TOY_AXIO_060,,Brakes: Fair,Fair,73,Axio
+TOY_VITZ_083,,Battery: Poor,Poor,43,Vitz
+TOY_YARIS_270,,Exhaust System: Good,Good,81,Yaris
+TOY_YARIS_140,,Cooling System: Fair,Fair,69,Yaris
+TOY_ALLION_185,,Exhaust System: Fair,Fair,67,Allion
+TOY_ALLION_237,,Tyres: Fair,Critical,39,Allion
+TOY_YARIS_124,,Exhaust System: Good,Good,90,Yaris
+TOY_PREMIO_085,,Engine: Good,Poor,50,Premio
+TOY_PREMIO_083,,Exhaust System: Good,Poor,46,Premio
+TOY_VITZ_262,,Steering: Good,Fair,63,Vitz
+TOY_PREMIO_198,,Brakes: Fair,Good,80,Premio
+TOY_AXIO_243,,Steering: Poor,Critical,26,Axio
+TOY_ALLION_016,,Engine: Fair,Poor,45,Allion
+TOY_YARIS_295,,Tyres: Poor,Fair,67,Yaris
+TOY_ALLION_242,,Tyres: Fair,Poor,52,Allion
+TOY_AXIO_062,,Brakes: Fair,Good,100,Axio
+TOY_COROLLA_174,,Exhaust System: Fair,Poor,47,Corolla
+TOY_AXIO_163,,Transmission: Good,Fair,62,Axio
+TOY_VITZ_102,,Suspension: Good,Critical,36,Vitz
+TOY_YARIS_033,,Exhaust System: Fair,Critical,36,Yaris
+TOY_YARIS_194,,Steering: Fair,Fair,77,Yaris
+TOY_AXIO_171,,Cooling System: Good,Critical,37,Axio
+TOY_YARIS_093,,Steering: Fair,Poor,48,Yaris
+TOY_VITZ_016,,Steering: Fair,Good,98,Vitz
+TOY_ALLION_158,,Transmission: Fair,Critical,34,Allion
+TOY_COROLLA_296,,Cooling System: Fair,Poor,54,Corolla
+TOY_YARIS_285,,Cooling System: Poor,Poor,53,Yaris
+TOY_ALLION_119,,Battery: Fair,Good,81,Allion
+TOY_ALLION_218,,Brakes: Fair,Good,85,Allion
+TOY_YARIS_016,,Brakes: Fair,Critical,24,Yaris
+TOY_YARIS_249,,Cooling System: Poor,Critical,31,Yaris
+TOY_YARIS_200,,Engine: Fair,Poor,44,Yaris
+TOY_AXIO_039,,Tyres: Poor,Good,82,Axio
+TOY_COROLLA_235,,Engine: Fair,Critical,36,Corolla
+TOY_YARIS_210,,Battery: Fair,Critical,24,Yaris
+TOY_PREMIO_187,,Battery: Poor,Critical,32,Premio
+TOY_PREMIO_105,,Exhaust System: Fair,Critical,39,Premio
+TOY_ALLION_032,,Suspension: Good,Good,85,Allion
+TOY_YARIS_029,,Brakes: Good,Good,85,Yaris
+TOY_PREMIO_048,,Exhaust System: Fair,Critical,29,Premio
+TOY_ALLION_001,,Suspension: Fair,Fair,64,Allion
+TOY_VITZ_222,,Brakes: Fair,Poor,49,Vitz
+TOY_YARIS_227,,Suspension: Fair,Good,92,Yaris
+TOY_ALLION_182,,Transmission: Fair,Poor,44,Allion
+TOY_VITZ_196,,Exhaust System: Good,Good,80,Vitz
+TOY_ALLION_221,,Tyres: Good,Fair,72,Allion
+TOY_PREMIO_134,,Suspension: Good,Good,85,Premio
+TOY_YARIS_269,,Engine: Fair,Critical,33,Yaris
+TOY_YARIS_298,,Suspension: Fair,Poor,51,Yaris
+TOY_YARIS_101,,Brakes: Poor,Critical,30,Yaris
+TOY_VITZ_223,,Tyres: Fair,Good,92,Vitz
+TOY_VITZ_204,,Exhaust System: Poor,Fair,76,Vitz
+TOY_YARIS_202,,Cooling System: Fair,Fair,74,Yaris
+TOY_AXIO_053,,Tyres: Fair,Poor,44,Axio
+TOY_YARIS_002,,Brakes: Fair,Good,92,Yaris
+TOY_COROLLA_230,,Cooling System: Critical,Fair,64,Corolla
+TOY_COROLLA_183,,Steering: Critical,Fair,75,Corolla
+TOY_COROLLA_100,,Tyres: Fair,Fair,65,Corolla
+TOY_AXIO_256,,Tyres: Poor,Fair,74,Axio
+TOY_COROLLA_120,,Exhaust System: Fair,Good,96,Corolla
+TOY_ALLION_285,,Exhaust System: Fair,Critical,27,Allion
+TOY_VITZ_076,,Engine: Fair,Fair,73,Vitz
+TOY_AXIO_150,,Transmission: Good,Good,90,Axio
+TOY_PREMIO_245,,Cooling System: Fair,Critical,23,Premio
+TOY_AXIO_083,,Brakes: Good,Poor,46,Axio
+TOY_PREMIO_251,,Steering: Fair,Poor,46,Premio
+TOY_AXIO_008,,Battery: Poor,Fair,62,Axio
+TOY_YARIS_296,,Engine: Fair,Fair,78,Yaris
+TOY_AXIO_295,,Transmission: Poor,Critical,30,Axio
+TOY_YARIS_283,,Engine: Fair,Poor,58,Yaris
+TOY_VITZ_013,,Brakes: Poor,Critical,28,Vitz
+TOY_COROLLA_294,,Tyres: Good,Good,88,Corolla
+TOY_AXIO_274,,Tyres: Fair,Good,88,Axio
+TOY_AXIO_001,,Steering: Critical,Critical,28,Axio
+TOY_COROLLA_277,,Cooling System: Fair,Poor,56,Corolla
+TOY_PREMIO_184,,Engine: Fair,Critical,36,Premio
+TOY_COROLLA_195,,Engine: Fair,Critical,25,Corolla
+TOY_YARIS_119,,Exhaust System: Poor,Good,92,Yaris
+TOY_PREMIO_016,,Cooling System: Good,Good,83,Premio
+TOY_VITZ_024,,Engine: Poor,Fair,76,Vitz
+TOY_VITZ_068,,Engine: Fair,Poor,56,Vitz
+TOY_YARIS_228,,Steering: Good,Poor,45,Yaris
+TOY_COROLLA_113,,Engine: Fair,Good,95,Corolla
+TOY_VITZ_229,,Exhaust System: Good,Good,87,Vitz
+TOY_YARIS_178,,Suspension: Poor,Critical,27,Yaris
+TOY_YARIS_211,,Cooling System: Fair,Critical,23,Yaris
+TOY_ALLION_173,,Cooling System: Good,Critical,38,Allion
+TOY_AXIO_017,,Suspension: Fair,Poor,40,Axio
+TOY_COROLLA_226,,Exhaust System: Poor,Poor,44,Corolla
+TOY_ALLION_041,,Cooling System: Good,Fair,65,Allion
+TOY_COROLLA_021,,Engine: Fair,Poor,54,Corolla
+TOY_AXIO_185,,Exhaust System: Fair,Critical,21,Axio
+TOY_COROLLA_217,,Transmission: Good,Good,93,Corolla
+TOY_YARIS_061,,Exhaust System: Good,Critical,28,Yaris
+TOY_COROLLA_105,,Suspension: Fair,Good,93,Corolla
+TOY_YARIS_076,,Cooling System: Fair,Fair,69,Yaris
+TOY_YARIS_140,,Cooling System: Fair,Fair,69,Yaris
+TOY_COROLLA_050,,Steering: Good,Good,84,Corolla
+TOY_PREMIO_030,,Exhaust System: Poor,Good,100,Premio
+TOY_COROLLA_118,,Brakes: Good,Poor,52,Corolla
+TOY_AXIO_021,,Cooling System: Fair,Poor,50,Axio
+TOY_ALLION_103,,Suspension: Good,Fair,61,Allion
+TOY_PREMIO_160,,Transmission: Fair,Critical,33,Premio
+TOY_AXIO_143,,Suspension: Good,Good,95,Axio
+TOY_AXIO_261,,Steering: Fair,Fair,79,Axio
+TOY_COROLLA_151,,Battery: Fair,Fair,71,Corolla
+TOY_PREMIO_235,,Exhaust System: Poor,Critical,30,Premio
+TOY_PREMIO_219,,Cooling System: Good,Good,98,Premio
+TOY_ALLION_146,,Engine: Good,Fair,60,Allion
+TOY_COROLLA_013,,Battery: Fair,Good,97,Corolla
+TOY_ALLION_123,,Battery: Good,Good,90,Allion
+TOY_VITZ_111,,Steering: Fair,Poor,50,Vitz
+TOY_COROLLA_239,,Steering: Fair,Poor,52,Corolla
+TOY_ALLION_011,,Brakes: Good,Poor,52,Allion
+TOY_ALLION_129,,Engine: Fair,Good,96,Allion
+TOY_ALLION_279,,Engine: Fair,Fair,79,Allion
+TOY_AXIO_017,,Suspension: Fair,Poor,40,Axio
+TOY_PREMIO_275,,Transmission: Poor,Critical,29,Premio
+TOY_YARIS_079,,Engine: Good,Critical,32,Yaris
+TOY_ALLION_277,,Transmission: Fair,Critical,27,Allion
+TOY_VITZ_061,,Brakes: Fair,Good,83,Vitz
+TOY_ALLION_168,,Cooling System: Fair,Poor,57,Allion
+TOY_YARIS_241,,Tyres: Good,Critical,30,Yaris
+TOY_AXIO_099,,Transmission: Fair,Good,97,Axio
+TOY_COROLLA_126,,Engine: Good,Critical,21,Corolla
+TOY_VITZ_138,,Brakes: Fair,Critical,34,Vitz
+TOY_COROLLA_214,,Suspension: Good,Poor,50,Corolla
+TOY_PREMIO_150,,Steering: Good,Good,98,Premio
+TOY_YARIS_208,,Cooling System: Good,Critical,24,Yaris
+TOY_COROLLA_272,,Exhaust System: Fair,Good,93,Corolla
+TOY_PREMIO_164,,Battery: Good,Poor,48,Premio
+TOY_VITZ_196,,Exhaust System: Good,Good,80,Vitz
+TOY_AXIO_239,,Tyres: Fair,Fair,75,Axio
+TOY_PREMIO_265,,Suspension: Fair,Fair,63,Premio
+TOY_ALLION_002,,Exhaust System: Poor,Good,89,Allion
+TOY_PREMIO_065,,Steering: Fair,Critical,38,Premio
+TOY_ALLION_299,,Tyres: Good,Fair,66,Allion
+TOY_ALLION_036,,Transmission: Fair,Critical,38,Allion
+TOY_COROLLA_142,,Transmission: Good,Critical,28,Corolla
+TOY_YARIS_055,,Engine: Fair,Good,91,Yaris
+TOY_YARIS_263,,Steering: Poor,Fair,60,Yaris
+TOY_YARIS_063,,Tyres: Poor,Good,82,Yaris
+TOY_ALLION_209,,Battery: Good,Good,82,Allion
+TOY_YARIS_060,,Engine: Fair,Good,87,Yaris
+TOY_AXIO_241,,Tyres: Fair,Fair,72,Axio
+TOY_AXIO_177,,Brakes: Good,Fair,71,Axio
+TOY_COROLLA_042,,Transmission: Fair,Critical,30,Corolla
+TOY_VITZ_002,,Transmission: Good,Poor,44,Vitz
+TOY_COROLLA_300,,Battery: Poor,Good,99,Corolla
+TOY_VITZ_025,,Suspension: Fair,Critical,37,Vitz
+TOY_PREMIO_108,,Battery: Poor,Good,89,Premio
+TOY_PREMIO_287,,Battery: Good,Critical,34,Premio
+TOY_ALLION_089,,Cooling System: Good,Critical,30,Allion
+TOY_PREMIO_150,,Steering: Good,Good,98,Premio
+TOY_YARIS_119,,Exhaust System: Poor,Good,92,Yaris
+TOY_COROLLA_006,,Exhaust System: Poor,Poor,49,Corolla
+TOY_AXIO_284,,Suspension: Poor,Poor,56,Axio
+TOY_COROLLA_226,,Exhaust System: Poor,Poor,44,Corolla
+TOY_ALLION_217,,Cooling System: Good,Critical,24,Allion
+TOY_AXIO_109,,Transmission: Poor,Good,83,Axio
+TOY_COROLLA_128,,Battery: Fair,Good,89,Corolla
+TOY_COROLLA_016,,Steering: Poor,Poor,55,Corolla
+TOY_COROLLA_202,,Transmission: Poor,Good,89,Corolla
+TOY_ALLION_228,,Suspension: Fair,Poor,56,Allion
+TOY_ALLION_188,,Exhaust System: Fair,Good,80,Allion
+TOY_ALLION_118,,Cooling System: Fair,Poor,56,Allion
+TOY_PREMIO_284,,Transmission: Fair,Fair,61,Premio
+TOY_ALLION_048,,Transmission: Fair,Fair,79,Allion
+TOY_VITZ_238,,Steering: Good,Poor,46,Vitz
+TOY_PREMIO_037,,Battery: Fair,Poor,46,Premio
+TOY_YARIS_064,,Transmission: Fair,Good,89,Yaris
+TOY_ALLION_222,,Cooling System: Fair,Critical,38,Allion
+TOY_YARIS_177,,Suspension: Poor,Good,85,Yaris
+TOY_VITZ_283,,Battery: Fair,Fair,78,Vitz
+TOY_ALLION_163,,Battery: Fair,Poor,59,Allion
+TOY_COROLLA_152,,Brakes: Poor,Good,83,Corolla
+TOY_PREMIO_185,,Steering: Fair,Poor,57,Premio
+TOY_VITZ_014,,Engine: Critical,Critical,29,Vitz
+TOY_COROLLA_062,,Battery: Critical,Poor,47,Corolla
+TOY_ALLION_226,,Steering: Poor,Good,97,Allion
+TOY_PREMIO_154,,Battery: Fair,Good,87,Premio
+TOY_YARIS_002,,Brakes: Fair,Good,92,Yaris
+TOY_VITZ_019,,Transmission: Good,Good,83,Vitz
+TOY_AXIO_213,,Suspension: Good,Good,96,Axio
+TOY_PREMIO_259,,Transmission: Fair,Good,80,Premio
+TOY_YARIS_100,,Transmission: Good,Fair,62,Yaris
+TOY_VITZ_146,,Steering: Critical,Good,82,Vitz
+TOY_ALLION_206,,Steering: Poor,Good,88,Allion
+TOY_COROLLA_122,,Tyres: Fair,Critical,37,Corolla
+TOY_AXIO_163,,Transmission: Good,Fair,62,Axio
+TOY_VITZ_240,,Suspension: Fair,Critical,27,Vitz
+TOY_ALLION_081,,Transmission: Fair,Fair,77,Allion
+TOY_YARIS_172,,Exhaust System: Fair,Fair,64,Yaris
+TOY_AXIO_098,,Brakes: Good,Fair,62,Axio
+TOY_COROLLA_153,,Brakes: Fair,Good,88,Corolla
+TOY_YARIS_029,,Brakes: Good,Good,85,Yaris
+TOY_COROLLA_261,,Cooling System: Good,Fair,78,Corolla
+TOY_COROLLA_048,,Engine: Fair,Poor,52,Corolla
+TOY_YARIS_293,,Engine: Fair,Good,86,Yaris
+TOY_ALLION_035,,Suspension: Good,Poor,50,Allion
+TOY_PREMIO_084,,Brakes: Fair,Critical,23,Premio
+TOY_VITZ_031,,Transmission: Fair,Poor,46,Vitz
