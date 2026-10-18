@@ -100,6 +100,8 @@ def train():
         "linear_baseline_r2": round(r2_score(yte, baseline), 4),
         "condition_accuracy": round(float((cond_true == cond_pred).mean()), 4),
         "condition_counts_true": cond_true.value_counts().to_dict(),
+        "majority_class_accuracy": round(float(cond_true.value_counts(normalize=True).iloc[0]), 4),
+        "condition_recall": {k: round(float((cond_pred[cond_true == k] == k).mean()), 3) for k in cond_true.unique()},
         "note": "Labels are rule-based simulated scores, not mechanic-verified.",
     }
     background = Xtr.sample(200, random_state=0)

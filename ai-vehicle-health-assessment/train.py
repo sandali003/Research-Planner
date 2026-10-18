@@ -8,7 +8,8 @@ from sklearn.compose import ColumnTransformer
 from sklearn.ensemble import (HistGradientBoostingClassifier, HistGradientBoostingRegressor,
                               RandomForestClassifier, RandomForestRegressor)
 from sklearn.metrics import accuracy_score, classification_report, f1_score, mean_absolute_error, r2_score
-from sklearn.model_selection import train_test_split
+from sklearn.dummy import DummyClassifier, DummyRegressor
+from sklearn.model_selection import GroupShuffleSplit, train_test_split
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OneHotEncoder
 
@@ -37,6 +38,11 @@ DATASETS = {
 }
 
 
+# Rows from the same vehicle are near-copies of each other, so a random split leaks them into the
+# test set (battery: macro-F1 0.99 random vs 0.83 grouped). Split by vehicle where an id exists.
+GROUP_COL = {"external_sensor": "vehicle_id", "battery": "vehicle_id", "inspection": "vehicle_id"}
+
+
 def candidates(task):
     if task == "clf":
         return {"RandomForest": RandomForestClassifier(n_estimators=300, n_jobs=-1, random_state=42),
@@ -46,13 +52,26 @@ def candidates(task):
 
 
 def run(name, file, target, task, drop):
-    df = pd.read_csv(DATA / file).drop(columns=drop).dropna(subset=[target])
+    raw = pd.read_csv(DATA / file).dropna(subset=[target])
+    # drop exact duplicate readings (ignoring ids) - the battery file has 3611 of 8000
+    feat_cols = [c for c in raw.columns if c not in ("record_id", "vehicle_id", "timestamp")]
+    raw = raw.drop_duplicates(subset=feat_cols)
+    gcol = GROUP_COL.get(name)
+    groups = raw[gcol] if gcol in raw else None
+    df = raw.drop(columns=drop)
     X, y = df.drop(columns=[target]), df[target]
     X = X.loc[:, X.nunique() > 1]
     cat = X.select_dtypes(exclude="number").columns.tolist()
     pre = ColumnTransformer([("cat", OneHotEncoder(handle_unknown="ignore"), cat)], remainder="passthrough")
     strat = y if task == "clf" else None
-    Xtr, Xte, ytr, yte = train_test_split(X, y, test_size=0.2, random_state=42, stratify=strat)
+    if groups is not None and groups.nunique() >= 5:
+        tr, te = next(GroupShuffleSplit(n_splits=1, test_size=0.2, random_state=42).split(X, y, groups))
+        Xtr, Xte, ytr, yte = X.iloc[tr], X.iloc[te], y.iloc[tr], y.iloc[te]
+    else:
+        Xtr, Xte, ytr, yte = train_test_split(X, y, test_size=0.2, random_state=42, stratify=strat)
+    dummy = (DummyClassifier() if task == "clf" else DummyRegressor()).fit(Xtr, ytr).predict(Xte)
+    base = f1_score(yte, dummy, average="macro") if task == "clf" else r2_score(yte, dummy)
+    print(f"baseline (majority/mean) = {base:.4f}")
 
     best = None
     print(f"\n===== {name}  ({len(df)} rows, target={target}) =====")
@@ -74,7 +93,8 @@ def run(name, file, target, task, drop):
         print(classification_report(yte, pred, zero_division=0))
     joblib.dump(pipe, OUT / f"{name}.joblib")
     return {"model": mname, "rows": len(df), "target": target, "task": task,
-            "score": round(score, 4), "features": X.columns.tolist()}
+            "score": round(score, 4), "baseline": round(base, 4),
+            "grouped_split": groups is not None, "features": X.columns.tolist()}
 
 
 if __name__ == "__main__":
