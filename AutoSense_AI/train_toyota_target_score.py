@@ -17,7 +17,7 @@ from sklearn.metrics import (
 )
 
 # Dataset eka load karanawa
-DATA_PATH = "raw_data/Toyota_Petrol_Engine_Synthetic_8000.csv"
+DATA_PATH = "raw_data/Toyota_Petrol_Engine.csv"
 
 df = pd.read_csv(DATA_PATH)
 

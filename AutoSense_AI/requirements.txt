@@ -1,5 +1,5 @@
-pandas
-scikit-learn
-xgboost
-joblib
-streamlit
+pandas==3.0.6
+scikit-learn==1.9.1
+xgboost==3.4.1
+joblib==1.6.0
+streamlit==1.66.0

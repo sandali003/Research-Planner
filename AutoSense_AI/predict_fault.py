@@ -33,15 +33,39 @@ try:
     )
 
     predicted_fault = model.predict(sensor_data)[0]
+
+    probabilities = model.predict_proba(sensor_data)[0]
+    confidence = float(
+        probabilities[list(model.classes_).index(predicted_fault)]
+    )
+
     recommendation = get_mitigation_recommendation(
-        predicted_fault
+        predicted_fault,
+        confidence=confidence,
+        sensor_readings=sensor_data.iloc[0].to_dict()
     )
 
     print("\n===== AutoSense AI Result =====")
-    print("Predicted fault:", predicted_fault)
-    print("Severity:", recommendation["severity"])
+    print("Predicted fault:", recommendation["display_name"])
+    print(f"Confidence: {confidence:.0%}")
+    print(
+        "Severity:",
+        recommendation["severity"],
+        "-",
+        recommendation["timeframe"]
+    )
     print("Message:", recommendation["message"])
-    print("Recommended action:", recommendation["action"])
+
+    print("\nImmediate actions:")
+    for action in recommendation["immediate_actions"]:
+        print("  -", action)
+
+    print("\nLongevity tips:")
+    for tip in recommendation["longevity_tips"]:
+        print("  -", tip)
+
+    for note in recommendation["notes"]:
+        print("\nNote:", note)
 
 except ValueError:
     print("Invalid input. Please enter numeric sensor values.")

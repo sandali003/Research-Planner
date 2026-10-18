@@ -7,7 +7,7 @@ BASE_DIR = Path(__file__).resolve().parent
 CSV_FILE = (
     BASE_DIR
     / "raw_data"
-    / "AutoSense_Toyota_Battery_Voltage_8000.csv"
+    / "AutoSense_Toyota_Battery_Voltage.csv"
 )
 
 df = pd.read_csv(CSV_FILE)
