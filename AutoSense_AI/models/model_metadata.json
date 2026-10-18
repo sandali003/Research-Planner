@@ -1,0 +1,74 @@
+{
+  "features": [
+    "engine_rpm",
+    "battery_voltage_v",
+    "engine_temp_c",
+    "engine_load_pct"
+  ],
+  "target": "fault_label",
+  "classes": [
+    "Charging_System_Warning",
+    "Cooling_System_Warning",
+    "Engine_Abnormality_Suspected",
+    "Normal"
+  ],
+  "dataset": "AutoSense_Toyota_Battery_Voltage_Deduplicated.csv",
+  "model": "XGBoost",
+  "selection_metric": "grouped CV macro F1",
+  "split": "StratifiedGroupKFold by identical sensor pattern (no pattern in both train and test)",
+  "test_size": 0.2,
+  "random_state": 42,
+  "cv_results": {
+    "Logistic Regression": {
+      "accuracy": {
+        "mean": 0.489900426742532,
+        "std": 0.02755836907634181
+      },
+      "balanced_accuracy": {
+        "mean": 0.596628344814317,
+        "std": 0.02867836044862771
+      },
+      "macro_f1": {
+        "mean": 0.5089421222642654,
+        "std": 0.016797210228463772
+      }
+    },
+    "Random Forest": {
+      "accuracy": {
+        "mean": 0.9176921861132389,
+        "std": 0.012554672514384246
+      },
+      "balanced_accuracy": {
+        "mean": 0.8149441950569016,
+        "std": 0.02224051670844655
+      },
+      "macro_f1": {
+        "mean": 0.827296239215436,
+        "std": 0.014991049431712639
+      }
+    },
+    "XGBoost": {
+      "accuracy": {
+        "mean": 0.9230963757279547,
+        "std": 0.02045360909726064
+      },
+      "balanced_accuracy": {
+        "mean": 0.8315590349592128,
+        "std": 0.060162633872570676
+      },
+      "macro_f1": {
+        "mean": 0.8425680263153884,
+        "std": 0.05084733649605158
+      }
+    }
+  },
+  "test_metrics": {
+    "accuracy": 0.9134396355353075,
+    "balanced_accuracy": 0.7935452010515436,
+    "macro_f1": 0.8049441340736063
+  },
+  "baseline_test_macro_f1": 0.4795460132388405,
+  "inference_latency_ms": 2.2685659996932372,
+  "final_model_trained_on": "all rows (after evaluation)",
+  "data_type": "Simulated research prototype data"
+}
