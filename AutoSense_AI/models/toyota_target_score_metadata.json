@@ -1,0 +1,31 @@
+{
+    "task": "Target_Score regression",
+    "dataset_rows": 8000,
+    "features": [
+        "Engine_Load_Percent",
+        "Injection_Timing",
+        "Fuel_Injection_Pressure",
+        "EGR_Rate",
+        "Boost_Pressure",
+        "Intake_Temperature",
+        "Equivalence_Ratio",
+        "Cylinder_Pressure_Peak",
+        "Combustion_Duration",
+        "Gasoline_Energy_Share",
+        "BSFC",
+        "NOx_Emissions",
+        "Soot_Emissions",
+        "CO_Emissions",
+        "Combustion_Stability_Index",
+        "vehicle_model"
+    ],
+    "excluded_columns": [
+        "Target_Score",
+        "Combustion_Mode",
+        "Gross_Indicated_Thermal_Efficiency"
+    ],
+    "r2": 0.1653303726865183,
+    "mae": 0.03333498599636787,
+    "rmse": 0.041428468572613675,
+    "note": "Synthetic dataset. Target_Score is not a direct engine fault label."
+}
