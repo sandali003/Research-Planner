@@ -8,7 +8,7 @@ BASE_DIR = Path(__file__).resolve().parent
 INPUT_FILE = (
     BASE_DIR
     / "raw_data"
-    / "AutoSense_Toyota_Battery_Voltage_8000.csv"
+    / "AutoSense_Toyota_Battery_Voltage.csv"
 )
 
 OUTPUT_DIR = BASE_DIR / "cleaned_data"
