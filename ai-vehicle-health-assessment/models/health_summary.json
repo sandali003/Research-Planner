@@ -1,0 +1,14 @@
+{
+  "rows": 10000,
+  "r2": 0.9066,
+  "mae": 2.587,
+  "linear_baseline_r2": 0.907,
+  "condition_accuracy": 0.943,
+  "condition_counts_true": {
+    "Good": 1682,
+    "Fair": 274,
+    "Poor": 30,
+    "Critical": 14
+  },
+  "note": "Labels are rule-based simulated scores, not mechanic-verified."
+}
