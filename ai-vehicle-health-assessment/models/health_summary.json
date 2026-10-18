@@ -10,5 +10,12 @@
     "Poor": 30,
     "Critical": 14
   },
+  "majority_class_accuracy": 0.841,
+  "condition_recall": {
+    "Good": 0.977,
+    "Fair": 0.785,
+    "Poor": 0.6,
+    "Critical": 0.643
+  },
   "note": "Labels are rule-based simulated scores, not mechanic-verified."
 }

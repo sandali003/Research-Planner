@@ -4,7 +4,9 @@
     "rows": 20000,
     "target": "health_class",
     "task": "clf",
-    "score": 0.8171,
+    "score": 0.8213,
+    "baseline": 0.2447,
+    "grouped_split": true,
     "features": [
       "vehicle_model",
       "manufacture_year",
@@ -26,7 +28,9 @@
     "rows": 10000,
     "target": "health_class_simulated",
     "task": "clf",
-    "score": 0.8117,
+    "score": 0.8304,
+    "baseline": 0.3022,
+    "grouped_split": true,
     "features": [
       "vehicle_model",
       "manufacture_year",
@@ -48,11 +52,13 @@
     ]
   },
   "battery": {
-    "model": "HistGradientBoosting",
-    "rows": 8000,
+    "model": "RandomForest",
+    "rows": 4389,
     "target": "fault_label",
     "task": "clf",
-    "score": 1.0,
+    "score": 0.8386,
+    "baseline": 0.209,
+    "grouped_split": true,
     "features": [
       "engine_rpm",
       "battery_voltage_v",
@@ -67,6 +73,8 @@
     "target": "Target_Score",
     "task": "reg",
     "score": 0.9977,
+    "baseline": -0.0026,
+    "grouped_split": false,
     "features": [
       "Engine_Load_Percent",
       "Injection_Timing",
@@ -92,6 +100,8 @@
     "target": "Engine Condition",
     "task": "clf",
     "score": 0.6032,
+    "baseline": 0.3867,
+    "grouped_split": false,
     "features": [
       "Engine rpm",
       "Lub oil pressure",
@@ -108,6 +118,8 @@
     "target": "Engine_Condition",
     "task": "clf",
     "score": 0.2952,
+    "baseline": 0.2491,
+    "grouped_split": false,
     "features": [
       "Vibration_Amplitude",
       "RMS_Vibration",
