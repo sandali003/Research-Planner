@@ -45,6 +45,34 @@ router.post('/:id/devices', validate(idParam, 'params'), validate(z.object({ nam
     res.status(201).json({ ...rows[0], api_key: key, note: 'Store this key now; it will not be shown again.' });
   }));
 
+// Latest raw readings (oldest first) from the vehicle's newest session, for the live dashboard.
+router.get('/:id/readings/latest', validate(idParam, 'params'),
+  validate(z.object({ limit: z.coerce.number().int().min(1).max(300).default(60) }), 'query'),
+  asyncHandler(async (req, res) => {
+    const vehicle = await getAccessibleVehicle(req.params.id, req.user);
+    const session = await query(
+      `SELECT id, condition, started_at, ended_at FROM sessions WHERE vehicle_id = $1
+       ORDER BY (ended_at IS NULL) DESC, started_at DESC LIMIT 1`,
+      [vehicle.id],
+    );
+    const s = session.rows[0];
+    if (!s) return res.json({ session: null, sensor: [], obd: [] });
+    const [sensor, obd] = await Promise.all([
+      query(`SELECT ts, accel_x, accel_y, accel_z, temp_c, voltage_v FROM
+               (SELECT * FROM sensor_readings WHERE session_id = $1 ORDER BY ts DESC LIMIT $2) t ORDER BY ts`, [s.id, req.query.limit]),
+      query(`SELECT ts, rpm, engine_load, coolant_temp, intake_temp, speed, dtc_codes FROM
+               (SELECT * FROM obd_readings WHERE session_id = $1 ORDER BY ts DESC LIMIT $2) t ORDER BY ts`, [s.id, req.query.limit]),
+    ]);
+    res.json({ session: s, sensor: sensor.rows, obd: obd.rows });
+  }));
+
+// Full result (SHAP factors etc.) of the newest assessment, or null.
+router.get('/:id/assessments/latest', validate(idParam, 'params'), asyncHandler(async (req, res) => {
+  const vehicle = await getAccessibleVehicle(req.params.id, req.user);
+  const { rows } = await query('SELECT * FROM assessments WHERE vehicle_id = $1 ORDER BY created_at DESC LIMIT 1', [vehicle.id]);
+  res.json(rows[0] ?? null);
+}));
+
 // ---- assessments ----
 router.post('/:id/assessments', validate(idParam, 'params'),
   validate(z.object({ window_seconds: z.number().int().min(2).max(300).default(10) })),
