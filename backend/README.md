@@ -16,8 +16,9 @@ uvicorn server:app --app-dir ml-service --port 8001
 cd vehical-hidden-fault-and-mitigation
 .venv\Scripts\activate                        # pip install -r requirements.txt
 uvicorn api:app --port 8002
+
 # Component 3 deterioration service (from Component3-Deterioration, see its README)
-.venv\Scripts\python -m uvicorn app:app --port 8002
+.venv\Scripts\python -m uvicorn app:app --port 8003
 ```
 
 ## Hidden fault prediction & mitigation (Component 2)
