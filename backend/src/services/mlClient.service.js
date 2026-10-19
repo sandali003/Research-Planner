@@ -2,6 +2,7 @@ import { env } from '../config/env.js';
 import { HttpError } from '../utils/httpError.js';
 
 async function callService(name, baseUrl, timeoutMs, path, init) {
+async function call(baseUrl, path, init) {
   const ctrl = new AbortController();
   const timer = setTimeout(() => ctrl.abort(), timeoutMs);
   try {
@@ -11,6 +12,7 @@ async function callService(name, baseUrl, timeoutMs, path, init) {
       throw new HttpError(422, `${name} rejected the inputs`, body?.detail);
     }
     if (!res.ok) throw new HttpError(502, `${name} returned ${res.status}`);
+    if (!res.ok) throw new HttpError(502, `ML service returned ${res.status}`);
     return await res.json();
   } catch (err) {
     if (err instanceof HttpError) throw err;
@@ -40,3 +42,13 @@ const callHiddenFault = (path, init) =>
 export const predictHiddenFaults = (features) => callHiddenFault('/predict', postJson(features));
 
 export const hiddenFaultHealth = () => callHiddenFault('/health');
+
+export const predict = (features) => call(env.ML_SERVICE_URL, '/predict', postJson(features));
+
+export const mlHealth = () => call(env.ML_SERVICE_URL, '/health');
+
+// Component 3 (Component3-Deterioration/app.py)
+export const assessDeterioration = (input) =>
+  call(env.DETERIORATION_SERVICE_URL, '/api/deterioration', postJson(input));
+
+export const deteriorationHealth = () => call(env.DETERIORATION_SERVICE_URL, '/health');

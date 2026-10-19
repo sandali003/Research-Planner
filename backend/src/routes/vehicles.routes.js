@@ -6,6 +6,7 @@ import { generateKey, hashKey } from '../middleware/deviceAuth.js';
 import { validate } from '../middleware/validate.js';
 import { getAccessibleVehicle } from '../repositories/vehicles.repo.js';
 import { runAssessment } from '../services/assessment.service.js';
+import { runDeterioration } from '../services/deterioration.service.js';
 import { asyncHandler } from '../utils/httpError.js';
 
 const router = Router();
@@ -86,6 +87,31 @@ router.get('/:id/assessments', validate(idParam, 'params'), asyncHandler(async (
   const { rows } = await query(
     `SELECT id, session_id, overall_score, condition, model_version, latency_ms, created_at
      FROM assessments WHERE vehicle_id = $1 ORDER BY created_at DESC LIMIT 50`,
+    [vehicle.id],
+  );
+  res.json(rows);
+}));
+
+// ---- Component 3: deterioration ----
+// vehicle_model and age_years default to the vehicle's model and year.
+const deteriorationBody = z.object({
+  odometer_km: z.number().min(0).max(2_000_000),
+  component: z.string().min(1).max(60),
+  component_state: z.enum(['Good', 'Fair', 'Poor', 'Critical']),
+  vehicle_model: z.string().min(1).max(60).optional(),
+  age_years: z.number().min(0).max(60).optional(),
+});
+
+router.post('/:id/deterioration', validate(idParam, 'params'), validate(deteriorationBody),
+  asyncHandler(async (req, res) => {
+    const vehicle = await getAccessibleVehicle(req.params.id, req.user);
+    res.status(201).json(await runDeterioration(vehicle, req.body));
+  }));
+
+router.get('/:id/deterioration', validate(idParam, 'params'), asyncHandler(async (req, res) => {
+  const vehicle = await getAccessibleVehicle(req.params.id, req.user);
+  const { rows } = await query(
+    'SELECT * FROM deterioration_assessments WHERE vehicle_id = $1 ORDER BY created_at DESC LIMIT 50',
     [vehicle.id],
   );
   res.json(rows);
