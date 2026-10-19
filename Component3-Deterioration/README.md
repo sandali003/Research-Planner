@@ -15,12 +15,12 @@ pip install -r requirements.txt
 ## Web app
 
 ```
-.venv\Scripts\python -m uvicorn app:app --port 8002
+.venv\Scripts\python -m uvicorn app:app --port 8003
 ```
 
-Open http://127.0.0.1:8002 in a browser. API docs: http://127.0.0.1:8002/docs
+Open http://127.0.0.1:8003 in a browser. API docs: http://127.0.0.1:8003/docs
 
-The Node backend (`../backend`) calls this service on port 8002 and stores each
+The Node backend (`../backend`) calls this service on port 8003 and stores each
 deterioration assessment in PostgreSQL (`deterioration_assessments` table).
 
 ## Scripts

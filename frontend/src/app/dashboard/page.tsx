@@ -19,7 +19,7 @@ const COMPONENT_CARDS: { title: string; text: string; href?: string; status: Sta
     title: 'Hidden Fault & Mitigation',
     text: 'Rules + AI anomaly detection to find hidden faults and suggest what to do next.',
     href: '/hidden-fault',
-    status: 'Prototype',
+    status: 'Live',
   },
   {
     title: 'Age & Mileage Deterioration',
