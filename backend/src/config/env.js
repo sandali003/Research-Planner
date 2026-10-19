@@ -11,6 +11,8 @@ const schema = z.object({
   ML_SERVICE_URL: z.string().url().default('http://127.0.0.1:8001'),
   ML_TIMEOUT_MS: z.coerce.number().default(1500),
   DETERIORATION_SERVICE_URL: z.string().url().default('http://127.0.0.1:8002'),
+  // A full component-wise assessment runs two models per component, so allow more time
+  DETERIORATION_TIMEOUT_MS: z.coerce.number().default(5000),
   ACCEL_LSB_PER_G: z.coerce.number().default(16384),
   VOLTAGE_DIVIDER_RATIO: z.coerce.number().default(5),
   CORS_ORIGINS: z.string().default(''),

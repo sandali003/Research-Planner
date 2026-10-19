@@ -16,7 +16,7 @@ import joblib
 import numpy as np
 import pandas as pd
 
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field
 
@@ -112,6 +112,17 @@ class AssessmentInput(BaseModel):
     obd: Optional[ObdInput] = None
 
 
+def _resolve_model(name: str):
+    """Map a vehicle record's model ('Corolla Axio', 'axio') to a trained model name, or None."""
+    known = {k.lower(): k for k in OPTIONS["vehicle_models"]}
+    words = name.strip().lower().split()
+    # The last matching word is the specific model: 'Corolla Axio' -> Axio
+    for word in reversed(words):
+        if word in known:
+            return known[word]
+    return None
+
+
 def _obd_check(reading: ObdInput):
     model = obd_bundle["model"]
     row = pd.DataFrame([reading.model_dump()])[obd_bundle["features"]]
@@ -154,9 +165,24 @@ def deterioration(vehicle: VehicleInput):
 @app.post("/api/assess")
 def assess(data: AssessmentInput):
     """Component-wise assessment for one vehicle (proposal section 4.1)."""
+    unknown = [c.component for c in data.components if c.component not in OPTIONS["components"]]
+    bad_state = [c.component_state for c in data.components if c.component_state not in OPTIONS["component_states"]]
+    if unknown or bad_state:
+        raise HTTPException(422, {
+            "unknown_components": unknown, "unknown_states": bad_state,
+            "allowed_components": OPTIONS["components"], "allowed_states": OPTIONS["component_states"],
+        })
+
+    warnings = []
+    vehicle_model = _resolve_model(data.vehicle_model)
+    if vehicle_model is None:
+        vehicle_model = data.vehicle_model
+        warnings.append(f"Vehicle model '{data.vehicle_model}' is not in the training data "
+                        f"({', '.join(OPTIONS['vehicle_models'])}); the result ignores the model.")
+
     components = []
     for check in data.components:
-        result = assess_vehicle(data.vehicle_model, data.age_years, data.odometer_km,
+        result = assess_vehicle(vehicle_model, data.age_years, data.odometer_km,
                                 check.component, check.component_state)
         components.append({"component": check.component, "component_state": check.component_state, **result})
 
@@ -172,7 +198,6 @@ def assess(data: AssessmentInput):
     ]
 
     # Reliability: say when inputs are outside what the models were trained on
-    warnings = []
     for field, value in [("age_years", data.age_years), ("odometer_km", data.odometer_km)]:
         low, high = TRAINED_RANGE[field]
         if not low <= value <= high:
@@ -185,6 +210,7 @@ def assess(data: AssessmentInput):
         warnings.append("OBD-II reading is unusual compared with normal engine behaviour.")
 
     return {
+        "vehicle_model_used": vehicle_model,
         "status": status,
         "expected_condition": worst["expected_condition"],
         "observed_condition": round(float(np.mean([c["observed_condition"] for c in components])), 1),
