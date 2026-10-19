@@ -1,0 +1,83 @@
+{
+  "description": "Engine condition from vibration, acoustic and exhaust sensors",
+  "features": [
+    "Vibration_Amplitude",
+    "RMS_Vibration",
+    "Vibration_Frequency",
+    "Surface_Temperature",
+    "Exhaust_Temperature",
+    "Acoustic_dB",
+    "Acoustic_Frequency",
+    "Intake_Pressure",
+    "Exhaust_Pressure",
+    "Frequency_Band_Energy",
+    "Amplitude_Mean"
+  ],
+  "target": "Engine_Condition",
+  "classes": [
+    0,
+    1,
+    2
+  ],
+  "class_meaning": "Not confirmed yet - check dataset source",
+  "dataset": "engine_fault_detection_with_vehicle_model.csv",
+  "dataset_rows": 10000,
+  "model": "XGBoost",
+  "selection_metric": "stratified 5-fold CV macro F1",
+  "split": "Stratified hold-out (no duplicate sensor patterns)",
+  "test_size": 0.2,
+  "random_state": 42,
+  "cv_results": {
+    "Logistic Regression": {
+      "accuracy": {
+        "mean": 0.313625,
+        "std": 0.010104145188980623
+      },
+      "balanced_accuracy": {
+        "mean": 0.3459190995677718,
+        "std": 0.011105766636463258
+      },
+      "macro_f1": {
+        "mean": 0.29254261460357484,
+        "std": 0.0063552618460841976
+      }
+    },
+    "Random Forest": {
+      "accuracy": {
+        "mean": 0.541125,
+        "std": 0.013718144918318928
+      },
+      "balanced_accuracy": {
+        "mean": 0.33189675699459065,
+        "std": 0.008759205384714561
+      },
+      "macro_f1": {
+        "mean": 0.3055794012598453,
+        "std": 0.008665710769567188
+      }
+    },
+    "XGBoost": {
+      "accuracy": {
+        "mean": 0.441375,
+        "std": 0.009298857456698654
+      },
+      "balanced_accuracy": {
+        "mean": 0.33928536765276807,
+        "std": 0.008988004824951787
+      },
+      "macro_f1": {
+        "mean": 0.3378629642251475,
+        "std": 0.008626081381850559
+      }
+    }
+  },
+  "test_metrics": {
+    "accuracy": 0.422,
+    "balanced_accuracy": 0.32360199277038443,
+    "macro_f1": 0.32289478987947057
+  },
+  "baseline_test_macro_f1": 0.3010902167507137,
+  "inference_latency_ms": 2.7580429997760803,
+  "final_model_trained_on": "all rows (after evaluation)",
+  "data_type": "Simulated research prototype data"
+}

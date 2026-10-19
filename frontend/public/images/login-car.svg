@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 300" fill="none">
+  <!-- Road glow -->
+  <ellipse cx="280" cy="236" rx="250" ry="16" fill="#0b2a6b" opacity=".35"/>
+  <path d="M20 250h520" stroke="#ffffff" stroke-opacity=".25" stroke-width="2" stroke-dasharray="18 14"/>
+
+  <!-- Car body -->
+  <path d="M58 206c-8 0-14-6-14-14v-18c0-17 12-30 29-33l78-12c22-30 52-50 92-55 40-5 92-3 124 6 22 6 42 22 60 44l42 8c19 4 33 20 33 39v21c0 8-6 14-14 14H58z"
+        fill="#ffffff"/>
+  <!-- Lower body shade -->
+  <path d="M44 184h458v8c0 8-6 14-14 14H58c-8 0-14-6-14-14v-8z" fill="#dbeafe"/>
+
+  <!-- Windows -->
+  <path d="M168 129c20-25 46-40 80-43 14-1 28-1 42-1v44H168z" fill="#2563eb"/>
+  <path d="M304 85c22 0 42 2 60 7 14 4 28 16 42 35l2 2H304V85z" fill="#2563eb"/>
+  <path d="M296 85v46" stroke="#ffffff" stroke-width="8"/>
+  <path d="M190 120c14-14 32-23 54-26" stroke="#93c5fd" stroke-width="4" stroke-linecap="round" opacity=".7"/>
+
+  <!-- Door lines and handles -->
+  <path d="M296 136v58M174 136l-8 58" stroke="#bfdbfe" stroke-width="2"/>
+  <rect x="240" y="146" width="22" height="5" rx="2.5" fill="#93c5fd"/>
+  <rect x="352" y="146" width="22" height="5" rx="2.5" fill="#93c5fd"/>
+
+  <!-- Lights -->
+  <path d="M478 150c10 2 17 8 19 16h-22c-4 0-6-4-4-8l3-6c1-2 2-2 4-2z" fill="#93c5fd"/>
+  <path d="M50 158c4-6 10-10 18-11v14H52c-2 0-3-2-2-3z" fill="#1d4ed8"/>
+
+  <!-- Wheels -->
+  <circle cx="142" cy="206" r="36" fill="#0f2a5f"/>
+  <circle cx="142" cy="206" r="20" fill="#dbeafe"/>
+  <circle cx="142" cy="206" r="7" fill="#2563eb"/>
+  <circle cx="414" cy="206" r="36" fill="#0f2a5f"/>
+  <circle cx="414" cy="206" r="20" fill="#dbeafe"/>
+  <circle cx="414" cy="206" r="7" fill="#2563eb"/>
+
+  <!-- OBD-II link -->
+  <circle cx="250" cy="176" r="6" fill="#2563eb"/>
+  <path d="M250 170V40" stroke="#ffffff" stroke-width="2" stroke-dasharray="4 6"/>
+  <rect x="200" y="14" width="100" height="30" rx="15" fill="#ffffff" fill-opacity=".16" stroke="#ffffff" stroke-opacity=".5"/>
+  <text x="250" y="34" text-anchor="middle" fill="#ffffff" font-family="Segoe UI, system-ui, sans-serif" font-size="14" font-weight="600">OBD-II</text>
+
+  <!-- IoT device link -->
+  <circle cx="440" cy="120" r="6" fill="#2563eb"/>
+  <path d="M452 108a17 17 0 0 1 0 24M460 100a28 28 0 0 1 0 40" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M440 114V64" stroke="#ffffff" stroke-width="2" stroke-dasharray="4 6"/>
+  <rect x="400" y="34" width="80" height="30" rx="15" fill="#ffffff" fill-opacity=".16" stroke="#ffffff" stroke-opacity=".5"/>
+  <text x="440" y="54" text-anchor="middle" fill="#ffffff" font-family="Segoe UI, system-ui, sans-serif" font-size="14" font-weight="600">IoT</text>
+
+  <!-- AI pulse -->
+  <path d="M40 60h40l10-22 16 44 12-30 8 8h44" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity=".85"/>
+  <rect x="40" y="84" width="110" height="30" rx="15" fill="#ffffff" fill-opacity=".16" stroke="#ffffff" stroke-opacity=".5"/>
+  <text x="95" y="104" text-anchor="middle" fill="#ffffff" font-family="Segoe UI, system-ui, sans-serif" font-size="14" font-weight="600">AI Health</text>
+</svg>
