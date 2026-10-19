@@ -11,7 +11,20 @@ npm install && npm run migrate && npm run dev
 
 # ML service (repo root, with the Python deps from ai-vehicle-health-assessment/requirements.txt + fastapi uvicorn)
 uvicorn server:app --app-dir ml-service --port 8001
+
+# Hidden fault service (Component 2)
+cd vehical-hidden-fault-and-mitigation
+.venv\Scripts\activate                        # pip install -r requirements.txt
+uvicorn api:app --port 8002
 ```
+
+## Hidden fault prediction & mitigation (Component 2)
+- `POST /api/v1/vehicles/:id/hidden-faults` `{"window_seconds":60}` -> check on the latest IoT + OBD-II readings
+- `POST /api/v1/vehicles/:id/hidden-faults/manual` `{"engine_rpm":..,"battery_voltage_v":..,"vibration_x_g":..}` -> check on typed-in readings
+- `GET /api/v1/vehicles/:id/hidden-faults` (history), `/latest`, `/:checkId`; `GET /health/hidden-fault`
+
+Each result has the predicted faults, confidence, severity and a mitigation plan (immediate actions + longevity tips),
+stored in `fault_assessments`.
 
 ## Flow
 1. `POST /api/v1/auth/register` -> token
