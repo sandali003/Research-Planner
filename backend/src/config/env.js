@@ -12,7 +12,7 @@ const schema = z.object({
   ML_TIMEOUT_MS: z.coerce.number().default(1500),
   HIDDEN_FAULT_URL: z.string().url().default('http://127.0.0.1:8002'),
   HIDDEN_FAULT_TIMEOUT_MS: z.coerce.number().default(2000),
-  DETERIORATION_SERVICE_URL: z.string().url().default('http://127.0.0.1:8002'),
+  DETERIORATION_SERVICE_URL: z.string().url().default('http://127.0.0.1:8003'),
   ACCEL_LSB_PER_G: z.coerce.number().default(16384),
   VOLTAGE_DIVIDER_RATIO: z.coerce.number().default(5),
   CORS_ORIGINS: z.string().default(''),

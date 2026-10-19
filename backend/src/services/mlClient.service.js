@@ -2,7 +2,6 @@ import { env } from '../config/env.js';
 import { HttpError } from '../utils/httpError.js';
 
 async function callService(name, baseUrl, timeoutMs, path, init) {
-async function call(baseUrl, path, init) {
   const ctrl = new AbortController();
   const timer = setTimeout(() => ctrl.abort(), timeoutMs);
   try {
@@ -12,7 +11,6 @@ async function call(baseUrl, path, init) {
       throw new HttpError(422, `${name} rejected the inputs`, body?.detail);
     }
     if (!res.ok) throw new HttpError(502, `${name} returned ${res.status}`);
-    if (!res.ok) throw new HttpError(502, `ML service returned ${res.status}`);
     return await res.json();
   } catch (err) {
     if (err instanceof HttpError) throw err;
@@ -29,11 +27,11 @@ const postJson = (body) => ({
 });
 
 // Component 1: vehicle health service (ml-service)
-const call = (path, init) => callService('ML service', env.ML_SERVICE_URL, env.ML_TIMEOUT_MS, path, init);
+const callHealth = (path, init) => callService('ML service', env.ML_SERVICE_URL, env.ML_TIMEOUT_MS, path, init);
 
-export const predict = (features) => call('/predict', postJson(features));
+export const predict = (features) => callHealth('/predict', postJson(features));
 
-export const mlHealth = () => call('/health');
+export const mlHealth = () => callHealth('/health');
 
 // Component 2: hidden fault prediction and mitigation service
 const callHiddenFault = (path, init) =>
@@ -43,12 +41,10 @@ export const predictHiddenFaults = (features) => callHiddenFault('/predict', pos
 
 export const hiddenFaultHealth = () => callHiddenFault('/health');
 
-export const predict = (features) => call(env.ML_SERVICE_URL, '/predict', postJson(features));
+// Component 3: deterioration service (Component3-Deterioration/app.py)
+const callDeterioration = (path, init) =>
+  callService('Deterioration service', env.DETERIORATION_SERVICE_URL, env.ML_TIMEOUT_MS, path, init);
 
-export const mlHealth = () => call(env.ML_SERVICE_URL, '/health');
+export const assessDeterioration = (input) => callDeterioration('/api/deterioration', postJson(input));
 
-// Component 3 (Component3-Deterioration/app.py)
-export const assessDeterioration = (input) =>
-  call(env.DETERIORATION_SERVICE_URL, '/api/deterioration', postJson(input));
-
-export const deteriorationHealth = () => call(env.DETERIORATION_SERVICE_URL, '/health');
+export const deteriorationHealth = () => callDeterioration('/health');
