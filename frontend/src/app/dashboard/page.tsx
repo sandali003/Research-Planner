@@ -28,8 +28,9 @@ const COMPONENT_CARDS: { title: string; text: string; href?: string; status: Sta
     status: 'Coming soon',
   },
   {
-    title: 'Component 4',
-    text: 'Reserved for the next research component.',
+    title: 'Maintenance & Valuation',
+    text: 'Intelligent maintenance recommendations and condition-based vehicle valuation.',
+    href: '/maintenance-valuation',
     status: 'Coming soon',
   },
 ];

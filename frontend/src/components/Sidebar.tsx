@@ -36,8 +36,9 @@ const COMPONENTS: NavItem[] = [
     icon: <path d="M12 7v5l3 2M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z" />,
   },
   {
-    label: 'Component 4',
-    icon: <path d="M12 5v14M5 12h14" />,
+    label: 'Maintenance & Valuation',
+    href: '/maintenance-valuation',
+    icon: <path d="M20.6 13.4l-7.2 7.2a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8zM7.5 7.5h.01" />,
   },
 ];
 
