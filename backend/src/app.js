@@ -10,6 +10,7 @@ import sessionRoutes from './routes/sessions.routes.js';
 import readingRoutes from './routes/readings.routes.js';
 import assessmentRoutes from './routes/assessments.routes.js';
 import healthRoutes from './routes/health.routes.js';
+import hiddenFaultRoutes from './routes/hiddenFaults.routes.js';
 
 export const app = express();
 
@@ -25,6 +26,7 @@ app.use('/api/v1/readings', rateLimit({ windowMs: 60 * 1000, limit: 300, standar
 app.use('/health', healthRoutes);
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/vehicles', vehicleRoutes);
+app.use('/api/v1/vehicles', hiddenFaultRoutes);
 app.use('/api/v1/sessions', sessionRoutes);
 app.use('/api/v1/readings', readingRoutes);
 app.use('/api/v1/assessments', assessmentRoutes);
