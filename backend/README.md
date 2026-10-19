@@ -11,6 +11,9 @@ npm install && npm run migrate && npm run dev
 
 # ML service (repo root, with the Python deps from ai-vehicle-health-assessment/requirements.txt + fastapi uvicorn)
 uvicorn server:app --app-dir ml-service --port 8001
+
+# Component 3 deterioration service (from Component3-Deterioration, see its README)
+.venv\Scripts\python -m uvicorn app:app --port 8002
 ```
 
 ## Flow
@@ -21,8 +24,12 @@ uvicorn server:app --app-dir ml-service --port 8001
    - `POST /api/v1/readings/obd` `{"readings":[{"rpm":..,"engine_load":..,"dtc_codes":["P0300"]}]}`
 4. `POST /api/v1/vehicles/:id/assessments` `{"window_seconds":10}` -> score, condition, SHAP factors, explanation
 5. `GET /api/v1/vehicles/:id/health-summary` -> contract for Components 2-4
+6. Component 3: `POST /api/v1/vehicles/:id/deterioration`
+   `{"odometer_km":120000,"component":"Brakes","component_state":"Poor"}` -> expected vs observed
+   condition, deviation, status; saved in `deterioration_assessments`. `vehicle_model` / `age_years`
+   default to the vehicle's model / year. History: `GET /api/v1/vehicles/:id/deterioration`
 
-Other: `POST /api/v1/sessions` (+ `/:id/stop`, `GET /:id`), `GET /api/v1/assessments/:id`, `GET /health`, `/health/db`, `/health/ml`.
+Other: `POST /api/v1/sessions` (+ `/:id/stop`, `GET /:id`), `GET /api/v1/assessments/:id`, `GET /health`, `/health/db`, `/health/ml`, `/health/deterioration`.
 
 ## Notes
 - Raw MPU6050 counts are converted to vibration RMS/peak in g (`ACCEL_LSB_PER_G`); gravity is removed per window.
