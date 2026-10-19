@@ -50,7 +50,8 @@ stored in `fault_assessments`.
      Defaults: `vehicle_model` / `age_years` from the vehicle record ("Corolla Axio" is matched to Axio);
      `obd` from the vehicle's OBD readings of the last 30 min (`obd_source: "session"`).
      The single form `{"odometer_km":..,"component":"Brakes","component_state":"Poor"}` still works.
-   - `GET /api/v1/vehicles/:id/deterioration` (history), `/deterioration/latest`, `/deterioration/:assessmentId`
+   - `GET /api/v1/vehicles/:id/deterioration` (history), `/deterioration/latest`, `/deterioration/:assessmentId`,
+     `/deterioration/:assessmentId/context` (age vs condition chart data)
    - `health-summary` includes `deterioration` (status, worst component, `high_deterioration_components` for Component 2)
 
 Other: `POST /api/v1/sessions` (+ `/:id/stop`, `GET /:id`), `GET /api/v1/assessments/:id`, `GET /health`, `/health/db`, `/health/ml`, `/health/deterioration`.

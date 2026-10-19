@@ -1,5 +1,6 @@
 import type {
-  AssessmentListItem, AssessmentResult, AssessmentRow, FaultCheck, FaultCheckListItem, FaultCheckRow,
+  AssessmentListItem, AssessmentResult, AssessmentRow, DeteriorationAssessment, DeteriorationContext,
+  DeteriorationInput, DeteriorationListItem, FaultCheck, FaultCheckListItem, FaultCheckRow,
   FaultInputs, LatestReadings, User, Vehicle,
 } from './types';
 
@@ -73,4 +74,15 @@ export const api = {
   latestFaultCheck: (vehicleId: number) => request<FaultCheckRow | null>(`/vehicles/${vehicleId}/hidden-faults/latest`),
   faultCheckById: (vehicleId: number, checkId: number) =>
     request<FaultCheckRow>(`/vehicles/${vehicleId}/hidden-faults/${checkId}`),
+
+  // Component 3: age- and mileage-adjusted deterioration
+  assessDeterioration: (vehicleId: number, input: DeteriorationInput) =>
+    post<DeteriorationAssessment>(`/vehicles/${vehicleId}/deterioration`, input),
+  deteriorations: (vehicleId: number) => request<DeteriorationListItem[]>(`/vehicles/${vehicleId}/deterioration`),
+  latestDeterioration: (vehicleId: number) =>
+    request<DeteriorationAssessment | null>(`/vehicles/${vehicleId}/deterioration/latest`),
+  deteriorationById: (vehicleId: number, id: number) =>
+    request<DeteriorationAssessment>(`/vehicles/${vehicleId}/deterioration/${id}`),
+  deteriorationContext: (vehicleId: number, id: number) =>
+    request<DeteriorationContext>(`/vehicles/${vehicleId}/deterioration/${id}/context`),
 };

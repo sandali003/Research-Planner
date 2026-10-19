@@ -25,7 +25,7 @@ const COMPONENT_CARDS: { title: string; text: string; href?: string; status: Sta
     title: 'Age & Mileage Deterioration',
     text: 'Vehicle deterioration adjusted for the age and mileage of the vehicle.',
     href: '/deterioration',
-    status: 'Coming soon',
+    status: 'Live',
   },
   {
     title: 'Maintenance & Valuation',
