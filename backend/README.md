@@ -24,10 +24,21 @@ uvicorn server:app --app-dir ml-service --port 8001
    - `POST /api/v1/readings/obd` `{"readings":[{"rpm":..,"engine_load":..,"dtc_codes":["P0300"]}]}`
 4. `POST /api/v1/vehicles/:id/assessments` `{"window_seconds":10}` -> score, condition, SHAP factors, explanation
 5. `GET /api/v1/vehicles/:id/health-summary` -> contract for Components 2-4
-6. Component 3: `POST /api/v1/vehicles/:id/deterioration`
-   `{"odometer_km":120000,"component":"Brakes","component_state":"Poor"}` -> expected vs observed
-   condition, deviation, status; saved in `deterioration_assessments`. `vehicle_model` / `age_years`
-   default to the vehicle's model / year. History: `GET /api/v1/vehicles/:id/deterioration`
+6. Component 3 (age- and mileage-adjusted deterioration):
+   - `POST /api/v1/vehicles/:id/deterioration`
+     ```json
+     {"odometer_km":120000,
+      "components":[{"component":"Brakes","component_state":"Poor"},{"component":"Battery","component_state":"Good"}],
+      "obd":{"engine_rpm":2000,"engine_load":55,"coolant_temp":88}}
+     ```
+     Returns overall status (Normal / Slightly high / High), expected vs observed condition, worst deviation,
+     warnings and every component (expected, observed, deviation, status, reasons, maintenance advice).
+     Saved in `deterioration_assessments` (one row per run) + `deterioration_components`.
+     Defaults: `vehicle_model` / `age_years` from the vehicle record ("Corolla Axio" is matched to Axio);
+     `obd` from the vehicle's OBD readings of the last 30 min (`obd_source: "session"`).
+     The single form `{"odometer_km":..,"component":"Brakes","component_state":"Poor"}` still works.
+   - `GET /api/v1/vehicles/:id/deterioration` (history), `/deterioration/latest`, `/deterioration/:assessmentId`
+   - `health-summary` includes `deterioration` (status, worst component, `high_deterioration_components` for Component 2)
 
 Other: `POST /api/v1/sessions` (+ `/:id/stop`, `GET /:id`), `GET /api/v1/assessments/:id`, `GET /health`, `/health/db`, `/health/ml`, `/health/deterioration`.
 
