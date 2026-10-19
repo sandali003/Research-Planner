@@ -2,9 +2,8 @@
 
 import Link from 'next/link';
 import { useCallback, useEffect, useState, type FormEvent } from 'react';
-import { TopBar } from '@/components/TopBar';
 import { api } from '@/lib/api';
-import { AuthGuard } from '@/lib/auth';
+import { AppShell } from '@/components/AppShell';
 import type { Vehicle } from '@/lib/types';
 
 function VehiclesView() {
@@ -40,7 +39,6 @@ function VehiclesView() {
 
   return (
     <>
-      <TopBar />
       <main className="container">
         <h1>Your vehicles</h1>
         {error && <p className="error" role="alert">{error}</p>}
@@ -85,5 +83,5 @@ function VehiclesView() {
 }
 
 export default function VehiclesPage() {
-  return <AuthGuard><VehiclesView /></AuthGuard>;
+  return <AppShell><VehiclesView /></AppShell>;
 }

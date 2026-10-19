@@ -1,0 +1,77 @@
+{
+  "description": "Engine condition from oil, fuel and coolant sensors",
+  "features": [
+    "Engine rpm",
+    "Lub oil pressure",
+    "Fuel pressure",
+    "Coolant pressure",
+    "lub oil temp",
+    "Coolant temp"
+  ],
+  "target": "Engine Condition",
+  "classes": [
+    0,
+    1
+  ],
+  "class_meaning": "Not confirmed yet - check dataset source",
+  "dataset": "engine_data_with_vehicle_model.csv",
+  "dataset_rows": 19535,
+  "model": "Logistic Regression",
+  "selection_metric": "stratified 5-fold CV macro F1",
+  "split": "Stratified hold-out (no duplicate sensor patterns)",
+  "test_size": 0.2,
+  "random_state": 42,
+  "cv_results": {
+    "Logistic Regression": {
+      "accuracy": {
+        "mean": 0.6482607293666026,
+        "std": 0.011813109442658658
+      },
+      "balanced_accuracy": {
+        "mean": 0.6404070957938369,
+        "std": 0.011285302911707363
+      },
+      "macro_f1": {
+        "mean": 0.6340151167501931,
+        "std": 0.01152275210902988
+      }
+    },
+    "Random Forest": {
+      "accuracy": {
+        "mean": 0.6458929136276391,
+        "std": 0.008180788332569525
+      },
+      "balanced_accuracy": {
+        "mean": 0.6258015204682487,
+        "std": 0.009000975447718764
+      },
+      "macro_f1": {
+        "mean": 0.6241624226635146,
+        "std": 0.00882856484178832
+      }
+    },
+    "XGBoost": {
+      "accuracy": {
+        "mean": 0.6366784696097249,
+        "std": 0.008356080631287621
+      },
+      "balanced_accuracy": {
+        "mean": 0.6357397020442004,
+        "std": 0.010471416447329896
+      },
+      "macro_f1": {
+        "mean": 0.625856626617098,
+        "std": 0.009271245717718916
+      }
+    }
+  },
+  "test_metrics": {
+    "accuracy": 0.6519068338878935,
+    "balanced_accuracy": 0.640109211904047,
+    "macro_f1": 0.6354962418558909
+  },
+  "baseline_test_macro_f1": 0.6354962418558909,
+  "inference_latency_ms": 1.545730999787338,
+  "final_model_trained_on": "all rows (after evaluation)",
+  "data_type": "Simulated research prototype data"
+}

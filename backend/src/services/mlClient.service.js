@@ -1,26 +1,50 @@
 import { env } from '../config/env.js';
 import { HttpError } from '../utils/httpError.js';
 
-async function call(path, init) {
+async function callService(name, baseUrl, timeoutMs, path, init) {
   const ctrl = new AbortController();
-  const timer = setTimeout(() => ctrl.abort(), env.ML_TIMEOUT_MS);
+  const timer = setTimeout(() => ctrl.abort(), timeoutMs);
   try {
-    const res = await fetch(`${env.ML_SERVICE_URL}${path}`, { ...init, signal: ctrl.signal });
-    if (!res.ok) throw new HttpError(502, `ML service returned ${res.status}`);
+    const res = await fetch(`${baseUrl}${path}`, { ...init, signal: ctrl.signal });
+    if (res.status === 422) {
+      const body = await res.json().catch(() => null);
+      throw new HttpError(422, `${name} rejected the inputs`, body?.detail);
+    }
+    if (!res.ok) throw new HttpError(502, `${name} returned ${res.status}`);
     return await res.json();
   } catch (err) {
     if (err instanceof HttpError) throw err;
-    throw new HttpError(503, 'ML service unavailable');
+    throw new HttpError(503, `${name} unavailable`);
   } finally {
     clearTimeout(timer);
   }
 }
 
-export const predict = (features) =>
-  call('/predict', {
-    method: 'POST',
-    headers: { 'content-type': 'application/json' },
-    body: JSON.stringify(features),
-  });
+const postJson = (body) => ({
+  method: 'POST',
+  headers: { 'content-type': 'application/json' },
+  body: JSON.stringify(body),
+});
 
-export const mlHealth = () => call('/health');
+// Component 1: vehicle health service (ml-service)
+const callHealth = (path, init) => callService('ML service', env.ML_SERVICE_URL, env.ML_TIMEOUT_MS, path, init);
+
+export const predict = (features) => callHealth('/predict', postJson(features));
+
+export const mlHealth = () => callHealth('/health');
+
+// Component 2: hidden fault prediction and mitigation service
+const callHiddenFault = (path, init) =>
+  callService('Hidden fault service', env.HIDDEN_FAULT_URL, env.HIDDEN_FAULT_TIMEOUT_MS, path, init);
+
+export const predictHiddenFaults = (features) => callHiddenFault('/predict', postJson(features));
+
+export const hiddenFaultHealth = () => callHiddenFault('/health');
+
+// Component 3: deterioration service (Component3-Deterioration/app.py)
+const callDeterioration = (path, init) =>
+  callService('Deterioration service', env.DETERIORATION_SERVICE_URL, env.ML_TIMEOUT_MS, path, init);
+
+export const assessDeterioration = (input) => callDeterioration('/api/deterioration', postJson(input));
+
+export const deteriorationHealth = () => callDeterioration('/health');
