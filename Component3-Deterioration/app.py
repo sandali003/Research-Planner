@@ -240,6 +240,7 @@ def history(vehicle_model: str):
     rows = _history[_history["vehicle_model"] == vehicle_model]
     return {
         "trained_range": TRAINED_RANGE,
+        "typical_km_per_year": round(deterioration_bundle["typical_km_per_year"]),
         "points": rows[["age_years", "odometer_km", "inspection_score", "status"]].to_dict(orient="records"),
     }
 

@@ -125,3 +125,64 @@ export interface FaultCheckListItem {
   id: number; source: 'iot' | 'manual'; status: string; primary_fault: string;
   severity: Severity; latency_ms: number | null; created_at: string;
 }
+
+// ---- Component 3: Age- and Mileage-Adjusted Deterioration ----
+export type DeteriorationStatus = 'Normal' | 'Slightly high' | 'High';
+export type ComponentState = 'Good' | 'Fair' | 'Poor' | 'Critical';
+
+export interface ComponentCheck { component: string; component_state: ComponentState }
+
+export interface ObdReading { engine_rpm: number; engine_load: number; coolant_temp: number }
+
+export interface DeteriorationInput {
+  odometer_km: number;
+  components: ComponentCheck[];
+  age_years?: number;
+  vehicle_model?: string;
+  obd?: ObdReading;
+}
+
+export interface DeteriorationComponent extends ComponentCheck {
+  expected_score: number;
+  observed_score: number;
+  deviation: number;
+  status: DeteriorationStatus;
+  reasons: string[];
+  advice: string | null;
+}
+
+export interface DeteriorationAssessment {
+  id: number;
+  vehicle_id: number;
+  created_at: string;
+  status: DeteriorationStatus;
+  vehicle_model: string;
+  age_years: number;
+  odometer_km: number;
+  km_per_year: number | null;
+  component: string;            // worst component
+  component_state: ComponentState;
+  expected_score: number;
+  observed_score: number;       // average over components
+  deviation: number;            // worst deviation
+  warnings: string[];
+  obd: (Partial<{ reading: ObdReading; anomaly: boolean; anomaly_score: number }>) | null;
+  obd_source: 'request' | 'session' | null;
+  model_version: string | null;
+  latency_ms: number | null;
+  components: DeteriorationComponent[];
+}
+
+export interface DeteriorationListItem {
+  id: number; created_at: string; status: DeteriorationStatus; vehicle_model: string;
+  age_years: number; odometer_km: number; km_per_year: number | null;
+  expected_score: number; observed_score: number; deviation: number;
+  worst_component: string; obd_source: 'request' | 'session' | null;
+}
+
+export interface DeteriorationContext {
+  curve: { age_years: number; expected: number }[];
+  trained_range: { age_years: [number, number]; odometer_km: [number, number] };
+  typical_km_per_year: number;
+  points: { age_years: number; odometer_km: number; inspection_score: number; status: DeteriorationStatus }[];
+}

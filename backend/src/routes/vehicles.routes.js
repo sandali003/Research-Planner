@@ -7,6 +7,7 @@ import { validate } from '../middleware/validate.js';
 import { getAccessibleVehicle } from '../repositories/vehicles.repo.js';
 import { runAssessment } from '../services/assessment.service.js';
 import { deteriorationSummary, getDeterioration, runDeterioration } from '../services/deterioration.service.js';
+import { deteriorationContext } from '../services/mlClient.service.js';
 import { HttpError, asyncHandler } from '../utils/httpError.js';
 
 const router = Router();
@@ -142,13 +143,28 @@ router.get('/:id/deterioration/latest', validate(idParam, 'params'), asyncHandle
   res.json(await getDeterioration('vehicle_id = $1', [vehicle.id]));
 }));
 
-router.get('/:id/deterioration/:assessmentId',
-  validate(z.object({ id: z.coerce.number().int().positive(), assessmentId: z.coerce.number().int().positive() }), 'params'),
+const assessmentParams = z.object({ id: z.coerce.number().int().positive(), assessmentId: z.coerce.number().int().positive() });
+
+router.get('/:id/deterioration/:assessmentId', validate(assessmentParams, 'params'),
   asyncHandler(async (req, res) => {
     const vehicle = await getAccessibleVehicle(req.params.id, req.user);
     const a = await getDeterioration('id = $1 AND vehicle_id = $2', [req.params.assessmentId, vehicle.id]);
     if (!a) throw new HttpError(404, 'Deterioration assessment not found');
     res.json(a);
+  }));
+
+// Age vs condition chart data for one assessment: expected curve at its usage + training inspections
+router.get('/:id/deterioration/:assessmentId/context', validate(assessmentParams, 'params'),
+  asyncHandler(async (req, res) => {
+    const vehicle = await getAccessibleVehicle(req.params.id, req.user);
+    const { rows } = await query(
+      'SELECT vehicle_model, age_years, odometer_km, km_per_year FROM deterioration_assessments WHERE id = $1 AND vehicle_id = $2',
+      [req.params.assessmentId, vehicle.id],
+    );
+    const a = rows[0];
+    if (!a) throw new HttpError(404, 'Deterioration assessment not found');
+    const kmPerYear = a.km_per_year ?? a.odometer_km / Math.max(a.age_years, 1);
+    res.json(await deteriorationContext(a.vehicle_model, Math.round(kmPerYear)));
   }));
 
 // Stable contract for Components 2-4: latest score + the processed features it was based on.
