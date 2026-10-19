@@ -5,9 +5,8 @@ import { useCallback, useEffect, useState } from 'react';
 import { FactorBars } from '@/components/FactorBars';
 import { ScoreGauge } from '@/components/ScoreGauge';
 import { Sparkline } from '@/components/Sparkline';
-import { TopBar } from '@/components/TopBar';
 import { ApiError, api } from '@/lib/api';
-import { AuthGuard } from '@/lib/auth';
+import { AppShell } from '@/components/AppShell';
 import { CONDITION_COLOR, fmt, fmtTime, vibrationSeries } from '@/lib/format';
 import type { AssessmentListItem, AssessmentRow, LatestReadings } from '@/lib/types';
 
@@ -72,7 +71,6 @@ function VehicleView({ id }: { id: number }) {
 
   return (
     <>
-      <TopBar />
       <main className="container">
         <p><Link href="/vehicles">← Vehicles</Link></p>
         <div className="row spread">
@@ -198,5 +196,5 @@ function VehicleView({ id }: { id: number }) {
 
 export default function VehiclePage({ params }: { params: { id: string } }) {
   const id = Number(params.id);
-  return <AuthGuard>{Number.isInteger(id) && id > 0 ? <VehicleView id={id} /> : <p className="container">Invalid vehicle id.</p>}</AuthGuard>;
+  return <AppShell>{Number.isInteger(id) && id > 0 ? <VehicleView id={id} /> : <p className="container">Invalid vehicle id.</p>}</AppShell>;
 }
