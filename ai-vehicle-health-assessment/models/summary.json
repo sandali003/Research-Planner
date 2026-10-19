@@ -1,0 +1,138 @@
+{
+  "inspection": {
+    "model": "HistGradientBoosting",
+    "rows": 20000,
+    "target": "health_class",
+    "task": "clf",
+    "score": 0.8213,
+    "baseline": 0.2447,
+    "grouped_split": true,
+    "features": [
+      "vehicle_model",
+      "manufacture_year",
+      "odometer_km",
+      "engine_condition",
+      "battery_condition",
+      "cooling_system_condition",
+      "transmission_condition",
+      "brake_condition",
+      "tyre_condition",
+      "suspension_condition",
+      "steering_condition",
+      "electrical_condition",
+      "exhaust_condition"
+    ]
+  },
+  "external_sensor": {
+    "model": "HistGradientBoosting",
+    "rows": 10000,
+    "target": "health_class_simulated",
+    "task": "clf",
+    "score": 0.8304,
+    "baseline": 0.3022,
+    "grouped_split": true,
+    "features": [
+      "vehicle_model",
+      "manufacture_year",
+      "odometer_km",
+      "operating_condition",
+      "engine_rpm",
+      "engine_load_pct",
+      "ds18b20_temp_c",
+      "battery_voltage_v",
+      "mpu6050_accel_x_g",
+      "mpu6050_accel_y_g",
+      "mpu6050_accel_z_g",
+      "mpu6050_gyro_x_dps",
+      "mpu6050_gyro_y_dps",
+      "mpu6050_gyro_z_dps",
+      "vibration_rms_g",
+      "vibration_peak_g",
+      "dtc_count_simulated"
+    ]
+  },
+  "battery": {
+    "model": "RandomForest",
+    "rows": 4389,
+    "target": "fault_label",
+    "task": "clf",
+    "score": 0.8386,
+    "baseline": 0.209,
+    "grouped_split": true,
+    "features": [
+      "engine_rpm",
+      "battery_voltage_v",
+      "engine_temp_c",
+      "engine_load_pct",
+      "vehicle_model"
+    ]
+  },
+  "petrol_engine": {
+    "model": "HistGradientBoosting",
+    "rows": 8000,
+    "target": "Target_Score",
+    "task": "reg",
+    "score": 0.9977,
+    "baseline": -0.0026,
+    "grouped_split": false,
+    "features": [
+      "Engine_Load_Percent",
+      "Injection_Timing",
+      "Fuel_Injection_Pressure",
+      "EGR_Rate",
+      "Boost_Pressure",
+      "Intake_Temperature",
+      "Equivalence_Ratio",
+      "Cylinder_Pressure_Peak",
+      "Combustion_Duration",
+      "BSFC",
+      "NOx_Emissions",
+      "Soot_Emissions",
+      "CO_Emissions",
+      "Gross_Indicated_Thermal_Efficiency",
+      "Combustion_Stability_Index",
+      "vehicle_model"
+    ]
+  },
+  "engine_data": {
+    "model": "RandomForest",
+    "rows": 19535,
+    "target": "Engine Condition",
+    "task": "clf",
+    "score": 0.6032,
+    "baseline": 0.3867,
+    "grouped_split": false,
+    "features": [
+      "Engine rpm",
+      "Lub oil pressure",
+      "Fuel pressure",
+      "Coolant pressure",
+      "lub oil temp",
+      "Coolant temp",
+      "vehicle_model"
+    ]
+  },
+  "engine_fault": {
+    "model": "HistGradientBoosting",
+    "rows": 10000,
+    "target": "Engine_Condition",
+    "task": "clf",
+    "score": 0.2952,
+    "baseline": 0.2491,
+    "grouped_split": false,
+    "features": [
+      "Vibration_Amplitude",
+      "RMS_Vibration",
+      "Vibration_Frequency",
+      "Surface_Temperature",
+      "Exhaust_Temperature",
+      "Acoustic_dB",
+      "Acoustic_Frequency",
+      "Intake_Pressure",
+      "Exhaust_Pressure",
+      "Frequency_Band_Energy",
+      "Amplitude_Mean",
+      "vehicle_model"
+    ]
+  }
+}
