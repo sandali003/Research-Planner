@@ -6,8 +6,9 @@ import { generateKey, hashKey } from '../middleware/deviceAuth.js';
 import { validate } from '../middleware/validate.js';
 import { getAccessibleVehicle } from '../repositories/vehicles.repo.js';
 import { runAssessment } from '../services/assessment.service.js';
-import { runDeterioration } from '../services/deterioration.service.js';
-import { asyncHandler } from '../utils/httpError.js';
+import { deteriorationSummary, getDeterioration, runDeterioration } from '../services/deterioration.service.js';
+import { deteriorationContext } from '../services/mlClient.service.js';
+import { HttpError, asyncHandler } from '../utils/httpError.js';
 
 const router = Router();
 router.use(requireUser);
@@ -93,14 +94,30 @@ router.get('/:id/assessments', validate(idParam, 'params'), asyncHandler(async (
 }));
 
 // ---- Component 3: deterioration ----
-// vehicle_model and age_years default to the vehicle's model and year.
-const deteriorationBody = z.object({
+// vehicle_model and age_years default to the vehicle's model and year; obd defaults to the
+// vehicle's recent IoT readings. A single { component, component_state } is still accepted.
+const componentState = z.enum(['Good', 'Fair', 'Poor', 'Critical']);
+const componentCheck = z.object({ component: z.string().min(1).max(60), component_state: componentState });
+export const deteriorationBody = z.object({
   odometer_km: z.number().min(0).max(2_000_000),
-  component: z.string().min(1).max(60),
-  component_state: z.enum(['Good', 'Fair', 'Poor', 'Critical']),
+  components: z.array(componentCheck).min(1).max(20).optional(),
+  component: z.string().min(1).max(60).optional(),
+  component_state: componentState.optional(),
   vehicle_model: z.string().min(1).max(60).optional(),
   age_years: z.number().min(0).max(60).optional(),
-});
+  obd: z.object({
+    engine_rpm: z.number().min(0).max(12000),
+    engine_load: z.number().min(0).max(100),
+    coolant_temp: z.number().min(-40).max(150),
+  }).optional(),
+})
+  .transform(({ component, component_state, ...b }) => ({
+    ...b,
+    components: b.components ?? (component && component_state ? [{ component, component_state }] : []),
+  }))
+  .refine((b) => b.components.length > 0, { message: 'Give components: [{ component, component_state }]', path: ['components'] })
+  .refine((b) => new Set(b.components.map((c) => c.component)).size === b.components.length,
+    { message: 'Each component may appear only once', path: ['components'] });
 
 router.post('/:id/deterioration', validate(idParam, 'params'), validate(deteriorationBody),
   asyncHandler(async (req, res) => {
@@ -108,14 +125,47 @@ router.post('/:id/deterioration', validate(idParam, 'params'), validate(deterior
     res.status(201).json(await runDeterioration(vehicle, req.body));
   }));
 
+// History: one summary row per assessment, newest first
 router.get('/:id/deterioration', validate(idParam, 'params'), asyncHandler(async (req, res) => {
   const vehicle = await getAccessibleVehicle(req.params.id, req.user);
   const { rows } = await query(
-    'SELECT * FROM deterioration_assessments WHERE vehicle_id = $1 ORDER BY created_at DESC LIMIT 50',
+    `SELECT id, created_at, status, vehicle_model, age_years, odometer_km, km_per_year,
+            expected_score, observed_score, deviation, component AS worst_component, obd_source
+     FROM deterioration_assessments WHERE vehicle_id = $1 ORDER BY created_at DESC LIMIT 50`,
     [vehicle.id],
   );
   res.json(rows);
 }));
+
+// Newest assessment with every component, or null
+router.get('/:id/deterioration/latest', validate(idParam, 'params'), asyncHandler(async (req, res) => {
+  const vehicle = await getAccessibleVehicle(req.params.id, req.user);
+  res.json(await getDeterioration('vehicle_id = $1', [vehicle.id]));
+}));
+
+const assessmentParams = z.object({ id: z.coerce.number().int().positive(), assessmentId: z.coerce.number().int().positive() });
+
+router.get('/:id/deterioration/:assessmentId', validate(assessmentParams, 'params'),
+  asyncHandler(async (req, res) => {
+    const vehicle = await getAccessibleVehicle(req.params.id, req.user);
+    const a = await getDeterioration('id = $1 AND vehicle_id = $2', [req.params.assessmentId, vehicle.id]);
+    if (!a) throw new HttpError(404, 'Deterioration assessment not found');
+    res.json(a);
+  }));
+
+// Age vs condition chart data for one assessment: expected curve at its usage + training inspections
+router.get('/:id/deterioration/:assessmentId/context', validate(assessmentParams, 'params'),
+  asyncHandler(async (req, res) => {
+    const vehicle = await getAccessibleVehicle(req.params.id, req.user);
+    const { rows } = await query(
+      'SELECT vehicle_model, age_years, odometer_km, km_per_year FROM deterioration_assessments WHERE id = $1 AND vehicle_id = $2',
+      [req.params.assessmentId, vehicle.id],
+    );
+    const a = rows[0];
+    if (!a) throw new HttpError(404, 'Deterioration assessment not found');
+    const kmPerYear = a.km_per_year ?? a.odometer_km / Math.max(a.age_years, 1);
+    res.json(await deteriorationContext(a.vehicle_model, Math.round(kmPerYear)));
+  }));
 
 // Stable contract for Components 2-4: latest score + the processed features it was based on.
 router.get('/:id/health-summary', validate(idParam, 'params'), asyncHandler(async (req, res) => {
@@ -125,6 +175,7 @@ router.get('/:id/health-summary', validate(idParam, 'params'), asyncHandler(asyn
     [vehicle.id],
   );
   const a = rows[0];
+  const deterioration = await getDeterioration('vehicle_id = $1', [vehicle.id]);
   res.json({
     vehicle_id: vehicle.id,
     assessed_at: a?.created_at ?? null,
@@ -133,6 +184,7 @@ router.get('/:id/health-summary', validate(idParam, 'params'), asyncHandler(asyn
     component_scores: a?.result.components ?? null,
     features: a?.features ?? null,
     explanation: a?.result.explanation ?? null,
+    deterioration: deteriorationSummary(deterioration), // Component 3
   });
 }));
 

@@ -266,3 +266,63 @@ button.link-btn:hover:not(:disabled) { text-decoration: underline; }
 .chip-target { background: #fee2e2; color: #b91c1c; margin-right: 4px; }
 .trace { margin: 0; padding-left: 22px; display: grid; gap: 6px; font-size: 14px; }
 @media (max-width: 600px) { .shap-block .bar-row { grid-template-columns: 120px 1fr 50px; } }
+
+/* ----- Age & mileage deterioration (Component 3) ----- */
+.det-form { display: grid; gap: 16px; }
+.det-step {
+  display: inline-grid; place-items: center; width: 22px; height: 22px; margin-right: 8px; border-radius: 50%;
+  background: var(--accent-soft); color: var(--accent); font-size: 12px; font-weight: 700; vertical-align: 1px;
+}
+.det-profile { display: grid; grid-template-columns: 1fr 1fr; gap: 0 16px; max-width: 520px; }
+.det-usage { margin: 10px 0 0; }
+.det-checklist { display: grid; grid-template-columns: 1fr 1fr; gap: 0 28px; }
+@media (max-width: 900px) { .det-checklist { grid-template-columns: 1fr; } }
+.det-check { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 14px; }
+.det-seg { display: inline-flex; padding: 2px; border-radius: 8px; background: var(--bg); border: 1px solid var(--border); }
+.det-seg button { border: none; background: transparent; padding: 4px 9px; font-size: 12px; color: var(--muted); border-radius: 6px; }
+.det-seg button.on { background: var(--card); color: var(--text); font-weight: 700; box-shadow: 0 1px 3px rgba(15, 23, 42, .14); }
+.det-seg button.on.bad { color: var(--critical); }
+.det-obd { grid-template-columns: repeat(3, 1fr); max-width: 640px; }
+.det-run { position: sticky; bottom: 0; z-index: 2; background: var(--bg); padding: 10px 0; }
+.det-run button.primary { padding: 10px 22px; font-weight: 600; }
+
+.det-pill { display: inline-flex; align-items: center; gap: 5px; }
+.det-pill svg { width: 13px; height: 13px; flex: none; }
+.det-verdict { font-size: 20px; font-weight: 700; line-height: 1.35; margin: 12px 0 16px; max-width: 760px; }
+.det-tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+@media (max-width: 760px) { .det-tiles { grid-template-columns: repeat(2, 1fr); } }
+.det-tiles > div { background: var(--bg); border-radius: 10px; padding: 12px 14px; display: flex; flex-direction: column; }
+.det-tiles span { font-size: 12px; color: var(--muted); }
+.det-tiles strong { font-size: 26px; letter-spacing: -.01em; }
+.det-tiles small { font-size: 12px; color: var(--muted); }
+.det-notice { margin: 12px 0 0; }
+.det-report .issue p { margin-top: 6px; }
+
+/* chart keys: expected = hollow ring, observed = solid dot (shape + colour) */
+.det-legend { display: flex; flex-wrap: wrap; gap: 14px; font-size: 12px; color: var(--muted); }
+.key-expected, .key-observed, .key-history, .key-line { display: inline-block; vertical-align: -1px; margin-right: 6px; }
+.key-expected { width: 11px; height: 11px; border-radius: 50%; border: 2px solid #5b6b8c; background: #fff; }
+.key-observed { width: 11px; height: 11px; border-radius: 50%; background: var(--accent); }
+.key-history { width: 9px; height: 9px; border-radius: 50%; background: #c3cfe3; }
+.key-line { width: 16px; height: 2px; background: var(--accent-light); vertical-align: 3px; }
+
+.chart-wrap { position: relative; }
+.det-chart { width: 100%; height: auto; display: block; overflow: visible; }
+.det-chart text { fill: var(--muted); font-size: 11px; font-family: inherit; }
+.det-chart text.lbl { fill: var(--text); font-size: 13px; }
+.det-chart text.val { fill: var(--text); font-size: 12px; font-variant-numeric: tabular-nums; }
+.det-chart text.halo { font-weight: 700; paint-order: stroke; stroke: #fff; stroke-width: 4px; stroke-linejoin: round; }
+.det-chart .grid { stroke: var(--track); stroke-width: 1; }
+.det-chart .link { stroke: #c3cfe3; stroke-width: 2; stroke-linecap: round; }
+.det-chart .curve { fill: none; stroke: var(--accent-light); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.det-chart .mark-expected { fill: #fff; stroke: #5b6b8c; stroke-width: 2.5; }
+.det-chart .mark-observed { fill: var(--accent); stroke: #fff; stroke-width: 2; }
+.det-chart .mark-history { fill: #c3cfe3; }
+.det-chart .dot-sev-none { fill: var(--good); }
+.det-chart .dot-sev-low { fill: var(--fair); }
+.det-chart .dot-sev-high { fill: var(--critical); }
+.chart-tip {
+  position: absolute; z-index: 5; pointer-events: none; transform: translate(-50%, calc(-100% - 12px));
+  background: var(--text); color: #fff; font-size: 12px; line-height: 1.45; padding: 7px 10px; border-radius: 8px;
+  white-space: nowrap; box-shadow: 0 4px 14px rgba(15, 30, 61, .25);
+}
