@@ -1,5 +1,6 @@
 import type {
-  AssessmentListItem, AssessmentResult, AssessmentRow, LatestReadings, User, Vehicle,
+  AssessmentListItem, AssessmentResult, AssessmentRow, FaultCheck, FaultCheckListItem, FaultCheckRow,
+  FaultInputs, LatestReadings, User, Vehicle,
 } from './types';
 
 const BASE = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:3000/api/v1';
@@ -62,4 +63,14 @@ export const api = {
     post<AssessmentResult & { id: number }>(`/vehicles/${vehicleId}/assessments`, { window_seconds: windowSeconds }),
   latestAssessment: (vehicleId: number) => request<AssessmentRow | null>(`/vehicles/${vehicleId}/assessments/latest`),
   assessments: (vehicleId: number) => request<AssessmentListItem[]>(`/vehicles/${vehicleId}/assessments`),
+
+  // Component 2: hidden fault prediction and mitigation
+  faultCheck: (vehicleId: number, windowSeconds: number) =>
+    post<FaultCheck>(`/vehicles/${vehicleId}/hidden-faults`, { window_seconds: windowSeconds }),
+  manualFaultCheck: (vehicleId: number, inputs: FaultInputs) =>
+    post<FaultCheck>(`/vehicles/${vehicleId}/hidden-faults/manual`, inputs),
+  faultChecks: (vehicleId: number) => request<FaultCheckListItem[]>(`/vehicles/${vehicleId}/hidden-faults`),
+  latestFaultCheck: (vehicleId: number) => request<FaultCheckRow | null>(`/vehicles/${vehicleId}/hidden-faults/latest`),
+  faultCheckById: (vehicleId: number, checkId: number) =>
+    request<FaultCheckRow>(`/vehicles/${vehicleId}/hidden-faults/${checkId}`),
 };

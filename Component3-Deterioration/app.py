@@ -1,8 +1,8 @@
 """Component 3 web app + ML service: serves the trained models to the browser
 page and to the Node backend (which stores the results in PostgreSQL).
 
-Run:  .venv\\Scripts\\python -m uvicorn app:app --port 8002
-Open: http://127.0.0.1:8002
+Run:  .venv\\Scripts\\python -m uvicorn app:app --port 8003
+Open: http://127.0.0.1:8003
 """
 import os
 

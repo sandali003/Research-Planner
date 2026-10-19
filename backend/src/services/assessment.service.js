@@ -7,7 +7,7 @@ import { predict } from './mlClient.service.js';
 const MAX_WINDOW_ROWS = 2000;
 
 /** Newest session for the vehicle (open session preferred). */
-async function latestSession(vehicleId) {
+export async function latestSession(vehicleId) {
   const { rows } = await query(
     `SELECT id FROM sessions WHERE vehicle_id = $1
      ORDER BY (ended_at IS NULL) DESC, started_at DESC LIMIT 1`,
