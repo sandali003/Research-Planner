@@ -16,6 +16,8 @@ uvicorn server:app --app-dir ml-service --port 8001
 cd vehical-hidden-fault-and-mitigation
 .venv\Scripts\activate                        # pip install -r requirements.txt
 uvicorn api:app --port 8002
+# Component 3 deterioration service (from Component3-Deterioration, see its README)
+.venv\Scripts\python -m uvicorn app:app --port 8002
 ```
 
 ## Hidden fault prediction & mitigation (Component 2)
@@ -34,8 +36,12 @@ stored in `fault_assessments`.
    - `POST /api/v1/readings/obd` `{"readings":[{"rpm":..,"engine_load":..,"dtc_codes":["P0300"]}]}`
 4. `POST /api/v1/vehicles/:id/assessments` `{"window_seconds":10}` -> score, condition, SHAP factors, explanation
 5. `GET /api/v1/vehicles/:id/health-summary` -> contract for Components 2-4
+6. Component 3: `POST /api/v1/vehicles/:id/deterioration`
+   `{"odometer_km":120000,"component":"Brakes","component_state":"Poor"}` -> expected vs observed
+   condition, deviation, status; saved in `deterioration_assessments`. `vehicle_model` / `age_years`
+   default to the vehicle's model / year. History: `GET /api/v1/vehicles/:id/deterioration`
 
-Other: `POST /api/v1/sessions` (+ `/:id/stop`, `GET /:id`), `GET /api/v1/assessments/:id`, `GET /health`, `/health/db`, `/health/ml`.
+Other: `POST /api/v1/sessions` (+ `/:id/stop`, `GET /:id`), `GET /api/v1/assessments/:id`, `GET /health`, `/health/db`, `/health/ml`, `/health/deterioration`.
 
 ## Notes
 - Raw MPU6050 counts are converted to vibration RMS/peak in g (`ACCEL_LSB_PER_G`); gravity is removed per window.
