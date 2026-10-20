@@ -12,6 +12,9 @@ Explanation   = every fired rule is recorded in `trace` (how the plan
                 was reached).
 """
 
+from pathlib import Path
+import json
+
 from experta import AS, MATCH, NOT, TEST, Fact, KnowledgeEngine, Rule
 
 from mitigation_rules import FAULT_RULES, LOW_CONFIDENCE_THRESHOLD, SEVERITY_ORDER
@@ -26,6 +29,14 @@ VERY_HOT_ENGINE_C = 110
 HIGH_TEMP_NOTE_C = 105
 OVERCHARGE_V = 15.0
 UNDERCHARGE_V = 12.4
+
+# Classifier faults below this confidence are reported as a note, not a fault.
+# Tuned on held-out vehicles by benchmark/tune_fusion.py (models/fusion_config.json).
+FUSION_CONFIG_PATH = Path(__file__).resolve().parent / "models" / "fusion_config.json"
+CLASSIFIER_MIN_CONFIDENCE = (
+    json.loads(FUSION_CONFIG_PATH.read_text(encoding="utf-8"))["classifier_min_confidence"]
+    if FUSION_CONFIG_PATH.exists() else 0.0
+)
 
 # Which model's SHAP factors explain a fault from each source
 SOURCE_MODEL = {"AI classifier": "classifier", "AI anomaly model": "anomaly"}
@@ -181,28 +192,41 @@ class VehicleFaultExpert(KnowledgeEngine):
     # ==================================================================
     # 2. ML fusion rules (salience 80)
     # ==================================================================
+    # Salience 85 so classifier faults exist before the anomaly rules check NOT(Fault())
     @Rule(Prediction(fault=MATCH.fault, confidence=MATCH.conf),
-          TEST(lambda fault: fault != "Normal"),
-          salience=80)
+          TEST(lambda fault, conf: fault != "Normal" and conf >= CLASSIFIER_MIN_CONFIDENCE),
+          salience=85)
     def classifier_fault(self, fault, conf):
         reason = f"XGBoost classifier predicted {fault.replace('_', ' ')} ({conf:.0%} confidence)"
         self.declare(Fault(name=fault, source="AI classifier", confidence=conf, reason=reason))
         self._log("F1 Classifier fault", reason)
 
+    @Rule(Prediction(fault=MATCH.fault, confidence=MATCH.conf),
+          TEST(lambda fault, conf: fault != "Normal" and conf < CLASSIFIER_MIN_CONFIDENCE),
+          salience=85)
+    def classifier_unconfirmed(self, fault, conf):
+        name = fault.replace("_", " ")
+        self.declare(Note(fault=None, text=(
+            f"Possible {name}, but the model is not confident enough ({conf:.0%}) to report it. "
+            "Check again with a longer reading or a manual inspection.")))
+        self._log("F1b Classifier below confidence gate",
+                  f"{name} at {conf:.0%} < {CLASSIFIER_MIN_CONFIDENCE:.0%}")
+
     @Rule(Anomaly(flagged=True, score=MATCH.score, threshold=MATCH.thr),
-          NOT(Fault(source="Rule")), NOT(WarmingUp()),
+          NOT(Fault()), NOT(WarmingUp()),
           salience=80)
     def hidden_anomaly(self, score, thr):
-        reason = f"Anomaly score {score:.2f} above threshold {thr:.2f}; no rule explains it"
+        reason = f"Anomaly score {score:.2f} above threshold {thr:.2f}; no rule or classifier explains it"
         self.declare(Fault(name="Hidden_Anomaly", source="AI anomaly model", confidence=None, reason=reason))
         self._log("F2 Hidden fault", reason)
 
-    @Rule(Anomaly(flagged=True, score=MATCH.score), Fault(name=MATCH.name, source="Rule"),
+    @Rule(Anomaly(flagged=True, score=MATCH.score), Fault(name=MATCH.name, source=MATCH.src),
+          TEST(lambda src: src in ("Rule", "AI classifier")),
           salience=80)
-    def anomaly_confirms_rule(self, score, name):
+    def anomaly_confirms_fault(self, score, name, src):
         reason = f"Anomaly model also flagged this reading (score {score:.2f})"
         self.declare(Fault(name=name, source="AI anomaly model", confidence=None, reason=reason))
-        self._log("F3 AI confirms rule", f"{name}: {reason}")
+        self._log("F3 AI confirms fault", f"{name} ({src}): {reason}")
 
     @Rule(Anomaly(flagged=True), WarmingUp(), NOT(Fault(source="Rule")),
           salience=80)
