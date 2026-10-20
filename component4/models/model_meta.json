@@ -1,0 +1,66 @@
+{
+  "data_dir": "D:\\autosense\\Research-Planner\\Raw Data\\sandali\\New folder",
+  "n_vehicles": 2000,
+  "split": "80/20 train/test, random_state=42; model selection by 5-fold CV MAE on train",
+  "baseline": {
+    "model": "LinearRegression",
+    "features": [
+      [
+        "vehicle_age",
+        "mileage_km",
+        "engine_capacity_cc"
+      ],
+      [
+        "vehicle_model",
+        "fuel_type",
+        "transmission"
+      ]
+    ],
+    "test_MAE": 499886.25699835474,
+    "test_RMSE": 677054.4669054803,
+    "test_R2": 0.9551802602049936,
+    "test_MAPE_%": 6.152729961787427
+  },
+  "condition_aware": {
+    "model": "LinearRegression",
+    "features": [
+      [
+        "vehicle_age",
+        "mileage_km",
+        "engine_capacity_cc",
+        "health_score",
+        "fault_count",
+        "severity_level",
+        "deterioration_deviation"
+      ],
+      [
+        "vehicle_model",
+        "fuel_type",
+        "transmission",
+        "deterioration_class"
+      ]
+    ],
+    "test_MAE": 366278.3116266465,
+    "test_RMSE": 488142.74313137314,
+    "test_R2": 0.9767021529321347,
+    "test_MAPE_%": 4.537201163096718
+  },
+  "improvement_over_baseline": {
+    "MAE_reduction_lkr": 133607.94537170825,
+    "MAE_reduction_%": 26.727669244995468,
+    "R2_gain": 0.021521892727141112
+  },
+  "health_score_dependency": {
+    "R2_age_mileage_deterioration": 0.9999960689836326,
+    "R2_plus_fault_features": 0.9999960719614961
+  },
+  "repair_cost_lookup_validation": {
+    "records": 2070,
+    "records_without_lookup": 0,
+    "MAE": 5829.951690821256,
+    "RMSE": 11083.586681205988,
+    "R2": 0.9444043567387561,
+    "MAPE_%": 11.877592845208444,
+    "share_within_min_max_%": 95.89371980676329
+  }
+}

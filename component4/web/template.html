@@ -1,0 +1,415 @@
+<title>AutoSense Valuation Bench</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: instrument-panel workbench. Headline figures up top, the vehicle checker as the main working surface, evidence below. */
+:root {
+  --paper: #f3f5f7;
+  --panel: #ffffff;
+  --ink: #17212b;
+  --muted: #5b6875;
+  --line: #d9dfe5;
+  --accent: #0d6680;
+  --accent-soft: #e2eff3;
+  --good: #2f7d4f;
+  --warn: #b7791f;
+  --high: #c2561a;
+  --crit: #b3261e;
+  --chip-ink: #ffffff;
+  --display: "Barlow Semi Condensed", "Arial Narrow", system-ui, sans-serif;
+  --body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --paper: #0f151b; --panel: #172029; --ink: #e4eaf0; --muted: #94a3b1; --line: #2a3742;
+    --accent: #5cb8d4; --accent-soft: #16313b; --good: #5fbf85; --warn: #e0a84a; --high: #ec8a4f; --crit: #f0716a; --chip-ink: #0f151b;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --paper: #0f151b; --panel: #172029; --ink: #e4eaf0; --muted: #94a3b1; --line: #2a3742;
+  --accent: #5cb8d4; --accent-soft: #16313b; --good: #5fbf85; --warn: #e0a84a; --high: #ec8a4f; --crit: #f0716a; --chip-ink: #0f151b;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--paper); color: var(--ink); font: 16px/1.55 var(--body);
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 28px 56px;
+}
+.wrap { max-width: 1120px; margin: 0 auto; display: grid; gap: 40px; }
+h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; letter-spacing: 0.01em; }
+h1 { font-size: clamp(2rem, 4.5vw, 2.9rem); font-weight: 700; line-height: 1.05; }
+h2 { font-size: 1.6rem; font-weight: 600; }
+h3 { font-size: 1.15rem; font-weight: 600; }
+p { margin: 0; max-width: 68ch; }
+.eyebrow { font: 600 0.75rem/1 var(--mono); letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); }
+.muted { color: var(--muted); }
+.num { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+section { display: grid; gap: 18px; }
+.section-head { display: grid; gap: 6px; }
+
+/* Header */
+header { display: grid; gap: 22px; }
+header .intro { display: grid; gap: 10px; }
+.gauges { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+.gauge { background: var(--panel); padding: 16px 18px; display: grid; gap: 4px; align-content: start; }
+.gauge .label { font: 600 0.72rem/1.3 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.gauge .value { font: 600 1.9rem/1.1 var(--display); font-variant-numeric: tabular-nums; }
+.gauge .sub { font-size: 0.88rem; color: var(--muted); }
+.gauge.lead .value { color: var(--accent); }
+
+/* Checker */
+.bench { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; display: grid; }
+.controls { display: flex; flex-wrap: wrap; gap: 12px 16px; align-items: end; padding: 16px 18px; border-bottom: 1px solid var(--line); }
+.field { display: grid; gap: 4px; }
+.field label { font: 600 0.72rem/1 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+select, button { font: inherit; color: var(--ink); }
+select { background: var(--paper); border: 1px solid var(--line); border-radius: 4px; padding: 7px 10px; min-width: 150px; max-width: 100%; }
+button.btn { background: var(--accent); color: var(--panel); border: 0; border-radius: 4px; padding: 8px 14px; font-weight: 600; cursor: pointer; }
+button.btn:hover { filter: brightness(1.08); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.bench-body { display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr); }
+@media (max-width: 820px) { .bench-body { grid-template-columns: 1fr; } }
+.spec { padding: 18px; border-right: 1px solid var(--line); display: grid; gap: 16px; align-content: start; }
+@media (max-width: 820px) { .spec { border-right: 0; border-bottom: 1px solid var(--line); } }
+.spec dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; font-size: 0.93rem; }
+.spec dt { color: var(--muted); }
+.spec dd { margin: 0; text-align: right; font-family: var(--mono); font-variant-numeric: tabular-nums; font-size: 0.88rem; }
+.spec .group { display: grid; gap: 8px; }
+.spec .group-title { font: 600 0.72rem/1 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
+.meter { height: 6px; border-radius: 3px; background: var(--line); overflow: hidden; }
+.meter i { display: block; height: 100%; background: var(--accent); }
+
+.result { padding: 18px; display: grid; gap: 20px; align-content: start; min-width: 0; }
+.values { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; }
+.val { display: grid; gap: 2px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 6px; }
+.val .label { font: 600 0.7rem/1.3 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.val .amount { font: 600 1.45rem/1.15 var(--display); font-variant-numeric: tabular-nums; }
+.val .delta { font: 0.82rem/1.3 var(--mono); color: var(--muted); }
+.val.primary { background: var(--accent-soft); border-color: transparent; }
+.val.primary .amount { color: var(--accent); }
+
+.recs { display: grid; gap: 10px; }
+.rec { display: grid; grid-template-columns: auto auto minmax(0, 1fr) auto; gap: 4px 14px; align-items: start; padding: 12px 14px; border: 1px solid var(--line); border-left-width: 4px; border-radius: 6px; }
+.rec[data-sev="Critical"] { border-left-color: var(--crit); }
+.rec[data-sev="High"] { border-left-color: var(--high); }
+.rec[data-sev="Medium"] { border-left-color: var(--warn); }
+.rec[data-sev="Low"] { border-left-color: var(--good); }
+.rec input { margin-top: 5px; width: 17px; height: 17px; accent-color: var(--accent); }
+.rec .rank { font: 600 1.1rem/1.3 var(--display); color: var(--muted); }
+.rec .what { display: grid; gap: 3px; min-width: 0; }
+.rec .title { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; font-weight: 600; }
+.rec .code { font: 600 0.82rem/1 var(--mono); color: var(--accent); }
+.rec .action { font-size: 0.93rem; }
+.rec .repair { font-size: 0.85rem; color: var(--muted); }
+.rec .money { text-align: right; display: grid; gap: 2px; font-family: var(--mono); font-variant-numeric: tabular-nums; font-size: 0.85rem; white-space: nowrap; }
+.rec .money b { font-size: 0.95rem; }
+@media (max-width: 560px) { .rec { grid-template-columns: auto auto minmax(0, 1fr); } .rec .money { grid-column: 3; text-align: left; } }
+.chip { display: inline-block; font: 600 0.68rem/1 var(--mono); letter-spacing: 0.06em; text-transform: uppercase; padding: 4px 7px; border-radius: 3px; color: var(--chip-ink); }
+.chip.Critical { background: var(--crit); } .chip.High { background: var(--high); } .chip.Medium { background: var(--warn); } .chip.Low { background: var(--good); }
+.none { padding: 14px; border: 1px dashed var(--line); border-radius: 6px; color: var(--muted); }
+
+.plan { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; padding: 14px; background: var(--paper); border-radius: 6px; }
+.plan div { display: grid; gap: 2px; }
+.plan .label { font: 600 0.7rem/1.3 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.plan .amount { font: 600 1.2rem/1.2 var(--display); font-variant-numeric: tabular-nums; }
+.pos { color: var(--good); } .neg { color: var(--crit); }
+.footnote { font-size: 0.85rem; color: var(--muted); }
+
+/* Evidence */
+.two { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: 28px; }
+@media (max-width: 860px) { .two { grid-template-columns: 1fr; } }
+.chart svg { width: 100%; height: auto; display: block; }
+.chart text { fill: var(--muted); font: 12px var(--mono); }
+.chart .lbl { fill: var(--ink); font: 600 13px var(--body); }
+.chart .gridline { stroke: var(--line); }
+.table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; background: var(--panel); }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+th, td { padding: 8px 12px; text-align: right; border-bottom: 1px solid var(--line); white-space: nowrap; }
+th:first-child, td:first-child { text-align: left; }
+th { font: 600 0.7rem/1.3 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); background: var(--paper); }
+td { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+td:first-child { font-family: var(--body); }
+tr:last-child td { border-bottom: 0; }
+td.best { color: var(--accent); font-weight: 600; }
+
+.notes { display: grid; gap: 12px; padding: 18px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); }
+.notes ol { margin: 0; padding-left: 1.2em; display: grid; gap: 8px; max-width: 75ch; }
+@media (prefers-reduced-motion: no-preference) { .meter i { transition: width 0.3s ease; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="intro">
+      <span class="eyebrow">AutoSense · J26-IT-386 · Component 4</span>
+      <h1>AutoSense Valuation Bench</h1>
+      <p class="muted">Condition-based vehicle valuation and maintenance recommendation, trained on 2,000 Toyota records (Yaris, Vitz, Axio, Corolla, Allion, Premio). Pick any vehicle below to see its valuation, ranked repairs and how selected repairs change the estimated value.</p>
+    </div>
+    <div class="gauges" id="gauges"></div>
+  </header>
+
+  <section aria-labelledby="bench-h">
+    <div class="section-head">
+      <span class="eyebrow">Vehicle check</span>
+      <h2 id="bench-h">Valuation and repair plan</h2>
+    </div>
+    <div class="bench">
+      <div class="controls">
+        <div class="field"><label for="f-model">Model</label><select id="f-model"></select></div>
+        <div class="field"><label for="f-vehicle">Vehicle</label><select id="f-vehicle"></select></div>
+        <button class="btn" id="b-random" type="button">Random vehicle with faults</button>
+      </div>
+      <div class="bench-body">
+        <aside class="spec" id="spec"></aside>
+        <div class="result" id="result"></div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="ev-h">
+    <div class="section-head">
+      <span class="eyebrow">Model evaluation</span>
+      <h2 id="ev-h">Does condition data improve valuation?</h2>
+      <p class="muted" id="ev-sub"></p>
+    </div>
+    <div class="two">
+      <div class="chart" id="chart-mae"></div>
+      <div class="chart" id="chart-imp"></div>
+    </div>
+    <div class="table-wrap"><table id="results-table"></table></div>
+    <p class="footnote">All four algorithms compared on every feature set. The best model per row is chosen by 5-fold cross-validation MAE on the training split; numbers shown are on the 400-vehicle held-out test set.</p>
+  </section>
+
+  <section class="notes" aria-labelledby="notes-h">
+    <h3 id="notes-h">Read these results with the data in mind</h3>
+    <ol id="notes"></ol>
+  </section>
+</div>
+
+<script>
+const D = __C4_DATA__;
+const SEV = { None: 0, Low: 1, Medium: 2, High: 3, Critical: 4 };
+const SEV_NAME = Object.fromEntries(Object.entries(SEV).map(([k, v]) => [v, k]));
+const PRI = { Low: 1, Medium: 2, High: 3 };
+const SET_LABEL = {
+  baseline_market_only: "Market only (baseline)",
+  market_plus_C1: "Market + C1 health score",
+  market_plus_C2: "Market + C2 faults",
+  market_plus_C3: "Market + C3 deterioration",
+  condition_aware_C1_C2_C3: "Condition-aware (C1+C2+C3)",
+};
+const FEATURE_LABEL = {
+  vehicle_age: "Vehicle age", vehicle_model: "Model", health_score: "C1 health score",
+  deterioration_deviation: "C3 deterioration deviation", mileage_km: "Mileage", engine_capacity_cc: "Engine cc",
+  fuel_type: "Fuel type", transmission: "Transmission", deterioration_class: "C3 deterioration class",
+  fault_count: "C2 fault count", severity_level: "C2 severity",
+};
+
+const fmt = n => Math.round(n).toLocaleString("en-US");
+const lkr = n => "LKR " + fmt(n);
+const mlkr = n => "LKR " + (n / 1e6).toFixed(2) + "M";
+const signed = n => (n >= 0 ? "+" : "−") + fmt(Math.abs(n));
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+const vehicles = D.vehicles.map(r => Object.fromEntries(D.vehicleCols.map((c, i) => [c, r[i]])));
+vehicles.forEach(v => { v.severity = v.severity || "None"; v.severity_level = SEV[v.severity]; });
+const byId = Object.fromEntries(vehicles.map(v => [v.vehicle_id, v]));
+const faultsBy = {};
+D.faults.forEach(([id, code, sev]) => (faultsBy[id] ||= []).push({ fault_code: code, severity: sev }));
+const rules = Object.fromEntries(D.rules.map(r => [r.fault_code, r]));
+const costs = {};
+D.costs.forEach(([m, t, typ, mn, mx]) => costs[m + "|" + t] = { typ, mn, mx });
+
+function predict(model, v) {
+  let z = model.intercept;
+  for (const n of model.numeric) z += n.coef * ((v[n.col] - n.mean) / n.scale);
+  for (const [col, map] of Object.entries(model.categorical)) z += map[String(v[col])] ?? 0;
+  return Math.expm1(z);
+}
+function afterRepair(v, remaining) {
+  const lvl = Math.max(0, ...remaining.map(f => SEV[f.severity]));
+  return { ...v, fault_count: remaining.length, severity_level: lvl, severity: SEV_NAME[lvl] };
+}
+
+// Check the JavaScript port against the Python predictions exported with the data.
+for (const [id, ref] of Object.entries(D.check)) {
+  for (const k of ["baseline", "condition"]) {
+    const js = predict(D.models[k], byId[id]);
+    if (Math.abs(js - ref[k]) > 1) console.error(`Prediction mismatch for ${id} ${k}: ${js} vs ${ref[k]}`);
+  }
+}
+
+/* Header gauges */
+(function gauges() {
+  const b = D.meta.baseline, c = D.meta.condition_aware, imp = D.meta.improvement_over_baseline;
+  document.getElementById("gauges").innerHTML = `
+    <div class="gauge"><span class="label">Baseline MAE · market only</span><span class="value">${lkr(b.test_MAE)}</span><span class="sub">R² ${b.test_R2.toFixed(3)} · ${b.model}</span></div>
+    <div class="gauge lead"><span class="label">Condition-aware MAE · C1+C2+C3</span><span class="value">${lkr(c.test_MAE)}</span><span class="sub">R² ${c.test_R2.toFixed(3)} · ${c.model}</span></div>
+    <div class="gauge"><span class="label">Error reduction</span><span class="value">${imp["MAE_reduction_%"].toFixed(1)}%</span><span class="sub">${lkr(imp.MAE_reduction_lkr)} less error per vehicle</span></div>
+    <div class="gauge"><span class="label">Repair-cost lookup</span><span class="value">${D.meta.repair_cost_lookup_validation["share_within_min_max_%"].toFixed(1)}%</span><span class="sub">of ${fmt(D.meta.repair_cost_lookup_validation.records)} repair records inside the min–max range</span></div>`;
+})();
+
+/* Vehicle checker */
+const fModel = document.getElementById("f-model"), fVehicle = document.getElementById("f-vehicle");
+const models = [...new Set(vehicles.map(v => v.vehicle_model))].sort();
+fModel.innerHTML = `<option value="">All models</option>` + models.map(m => `<option>${m}</option>`).join("");
+function fillVehicles(selectId) {
+  const list = vehicles.filter(v => !fModel.value || v.vehicle_model === fModel.value);
+  fVehicle.innerHTML = list.map(v => `<option value="${v.vehicle_id}">${v.vehicle_id} · ${v.vehicle_model} ${v.manufacture_year} · ${v.fault_count} fault${v.fault_count === 1 ? "" : "s"}</option>`).join("");
+  if (selectId && list.some(v => v.vehicle_id === selectId)) fVehicle.value = selectId;
+  render();
+}
+fModel.addEventListener("change", () => fillVehicles());
+fVehicle.addEventListener("change", render);
+document.getElementById("b-random").addEventListener("click", () => {
+  const pool = vehicles.filter(v => v.fault_count >= 2 && (!fModel.value || v.vehicle_model === fModel.value));
+  fVehicle.value = pool[Math.floor(Math.random() * pool.length)].vehicle_id;
+  render();
+});
+
+let selected = new Set();
+function render() {
+  const v = byId[fVehicle.value];
+  if (!v) return;
+  const faults = faultsBy[v.vehicle_id] || [];
+  if (render.last !== v.vehicle_id) { selected = new Set(faults.map((_, i) => i)); render.last = v.vehicle_id; }
+
+  const hs = v.health_score;
+  document.getElementById("spec").innerHTML = `
+    <div class="group"><span class="group-title">Vehicle</span>
+      <h3>${esc(v.vehicle_model)} ${v.manufacture_year}</h3>
+      <dl>
+        <dt>ID</dt><dd>${v.vehicle_id}</dd>
+        <dt>Age</dt><dd>${v.vehicle_age} yrs</dd>
+        <dt>Mileage</dt><dd>${fmt(v.mileage_km)} km</dd>
+        <dt>Engine</dt><dd>${v.engine_capacity_cc} cc</dd>
+        <dt>Fuel</dt><dd>${esc(v.fuel_type)}</dd>
+        <dt>Gearbox</dt><dd>${esc(v.transmission)}</dd>
+      </dl></div>
+    <div class="group"><span class="group-title">C1 · Health</span>
+      <dl><dt>Health score</dt><dd>${hs.toFixed(1)} / 100</dd></dl>
+      <div class="meter" role="img" aria-label="Health score ${hs.toFixed(1)} of 100"><i style="width:${hs}%"></i></div></div>
+    <div class="group"><span class="group-title">C2 · Hidden faults</span>
+      <dl><dt>Faults</dt><dd>${v.fault_count}</dd><dt>Worst severity</dt><dd>${v.severity}</dd></dl></div>
+    <div class="group"><span class="group-title">C3 · Deterioration</span>
+      <dl><dt>Deviation</dt><dd>${v.deterioration_deviation >= 0 ? "+" : ""}${v.deterioration_deviation.toFixed(2)}</dd><dt>Class</dt><dd>${esc(v.deterioration_class)}</dd></dl></div>`;
+
+  const base = predict(D.models.baseline, v);
+  const cond = predict(D.models.condition, v);
+
+  const recs = faults.map((f, i) => {
+    const r = rules[f.fault_code];
+    const cost = r ? costs[v.vehicle_model + "|" + r.primary_repair_type] : null;
+    const gain = predict(D.models.condition, afterRepair(v, faults.filter((_, j) => j !== i))) - cond;
+    return { i, f, r, cost, gain, score: SEV[f.severity] * 10 + (r ? PRI[r.repair_priority] : 0) };
+  }).sort((a, b) => b.score - a.score);
+
+  const remaining = faults.filter((_, i) => !selected.has(i));
+  const after = predict(D.models.condition, afterRepair(v, remaining));
+  const planCost = recs.filter(x => selected.has(x.i) && x.cost).reduce((s, x) => s + x.cost.typ, 0);
+  const change = after - cond, net = change - planCost;
+  const adj = cond - base, actualErr = (cond - v.listing_price_lkr) / v.listing_price_lkr * 100;
+
+  document.getElementById("result").innerHTML = `
+    <div class="values">
+      <div class="val"><span class="label">Baseline market value</span><span class="amount">${mlkr(base)}</span><span class="delta">market features only</span></div>
+      <div class="val primary"><span class="label">Condition-adjusted value</span><span class="amount">${mlkr(cond)}</span><span class="delta">${signed(adj)} vs baseline</span></div>
+      <div class="val"><span class="label">Listing price in dataset</span><span class="amount">${mlkr(v.listing_price_lkr)}</span><span class="delta">model error ${actualErr >= 0 ? "+" : "−"}${Math.abs(actualErr).toFixed(1)}%</span></div>
+    </div>
+    <div class="section-head"><h3>Recommended maintenance, ranked</h3>
+      <p class="footnote">Ranked by detected severity first, then the fault rule's priority. Tick the repairs to include in the plan.</p></div>
+    <div class="recs">${recs.length ? recs.map((x, k) => `
+      <div class="rec" data-sev="${x.f.severity}">
+        <input type="checkbox" id="rep-${x.i}" data-i="${x.i}" ${selected.has(x.i) ? "checked" : ""} aria-label="Include ${x.f.fault_code} repair in plan">
+        <span class="rank">${k + 1}</span>
+        <label class="what" for="rep-${x.i}">
+          <span class="title"><span class="code">${x.f.fault_code}</span> ${esc(x.r?.detected_problem || "Unknown fault code")} <span class="chip ${x.f.severity}">${x.f.severity}</span></span>
+          <span class="action">${esc(x.r?.recommended_maintenance || "Refer to a mechanic")}</span>
+          <span class="repair">Repair: ${esc(x.r?.primary_repair_type || "–")}${x.r?.secondary_repair_type ? " · alternative: " + esc(x.r.secondary_repair_type) : ""} · ${esc(x.r?.component || "")}</span>
+        </label>
+        <span class="money">${x.cost ? `<b>${lkr(x.cost.typ)}</b><span class="muted">${fmt(x.cost.mn)}–${fmt(x.cost.mx)}</span>` : `<span class="muted">no cost data</span>`}<span class="${x.gain >= 0 ? "pos" : "neg"}">${signed(x.gain)} value</span></span>
+      </div>`).join("") : `<div class="none">No faults detected for this vehicle. No repairs to recommend.</div>`}</div>
+    ${recs.length ? `
+    <div class="plan">
+      <div><span class="label">Repairs in plan</span><span class="amount">${selected.size} of ${recs.length}</span></div>
+      <div><span class="label">Typical repair cost</span><span class="amount">${lkr(planCost)}</span></div>
+      <div><span class="label">Value after repairs</span><span class="amount">${mlkr(after)}</span></div>
+      <div><span class="label">Value change − cost</span><span class="amount ${net >= 0 ? "pos" : "neg"}">${signed(net)}</span></div>
+    </div>
+    <p class="footnote">Value change is a model estimate (${signed(change)} for this plan), not a guaranteed selling-price increase.</p>` : ""}`;
+
+  document.querySelectorAll(".rec input").forEach(cb => cb.addEventListener("change", e => {
+    const i = +e.target.dataset.i;
+    e.target.checked ? selected.add(i) : selected.delete(i);
+    render();
+    document.getElementById("rep-" + i)?.focus();
+  }));
+}
+
+/* Evaluation charts */
+const best = {};
+D.results.forEach(r => { if (!best[r.feature_set] || r.cv_MAE < best[r.feature_set].cv_MAE) best[r.feature_set] = r; });
+const sets = Object.keys(SET_LABEL);
+
+function barChart(el, title, rows, max, step, tickFmt, colorFn) {
+  const W = 560, labelW = 200, rowH = 34, top = 34, bottom = 30, right = 70;
+  const H = top + rows.length * rowH + bottom, plotW = W - labelW - right;
+  const x = v => labelW + (v / max) * plotW;
+  let ticks = "";
+  for (let t = 0; t <= max + 1e-9; t += step)
+    ticks += `<line class="gridline" x1="${x(t)}" x2="${x(t)}" y1="${top - 6}" y2="${H - bottom}"/><text x="${x(t)}" y="${H - bottom + 18}" text-anchor="middle">${tickFmt(t)}</text>`;
+  const bars = rows.map((r, i) => {
+    const y = top + i * rowH;
+    return `<text class="lbl" x="${labelW - 10}" y="${y + rowH / 2 + 4}" text-anchor="end">${esc(r.label)}</text>
+      <rect x="${labelW}" y="${y + 7}" width="${Math.max(1, x(r.value) - labelW)}" height="${rowH - 14}" rx="2" style="fill:${colorFn(r, i)}"/>
+      <text x="${x(r.value) + 6}" y="${y + rowH / 2 + 4}">${r.text}</text>`;
+  }).join("");
+  el.innerHTML = `<h3>${title}</h3><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(title)}">${ticks}${bars}</svg>`;
+}
+function drawCharts() {
+  barChart(document.getElementById("chart-mae"), "Test MAE by feature set (lower is better)",
+    sets.map(s => ({ label: SET_LABEL[s], value: best[s].test_MAE, text: fmt(best[s].test_MAE / 1000) + "k", s })),
+    600000, 100000, t => t / 1000 + "k",
+    r => r.s === "baseline_market_only" ? "var(--muted)" : "var(--accent)");
+  const imp = D.importance.slice(0, 8);
+  const maxImp = Math.ceil(Math.max(...imp.map(r => r.MAE_increase_lkr)) / 500000) * 500000;
+  barChart(document.getElementById("chart-imp"), "Feature importance, condition-aware model",
+    imp.map(r => ({ label: FEATURE_LABEL[r.feature] || r.feature, value: Math.max(0, r.MAE_increase_lkr), text: (r.MAE_increase_lkr / 1e6).toFixed(2) + "M", f: r.feature })),
+    maxImp, 500000, t => (t / 1e6).toFixed(1) + "M",
+    r => /health|deterioration|fault|severity/.test(r.f) ? "var(--accent)" : "var(--muted)");
+}
+drawCharts();
+document.getElementById("ev-sub").textContent =
+  `Each bar is the best of four algorithms for that feature set. Importance is the extra MAE (LKR) when a feature is shuffled; condition features are shown in the accent colour.`;
+
+(function table() {
+  const algos = ["LinearRegression", "RandomForest", "GradientBoosting", "XGBoost"];
+  const cell = (s, a) => D.results.find(r => r.feature_set === s && r.model === a);
+  let h = `<thead><tr><th>Feature set</th>${algos.map(a => `<th>${a} MAE</th>`).join("")}<th>Best R²</th><th>Best MAPE</th></tr></thead><tbody>`;
+  for (const s of sets) {
+    h += `<tr><td>${SET_LABEL[s]}</td>${algos.map(a => `<td class="${best[s].model === a ? "best" : ""}">${fmt(cell(s, a).test_MAE)}</td>`).join("")}<td>${best[s].test_R2.toFixed(4)}</td><td>${best[s]["test_MAPE_%"].toFixed(2)}%</td></tr>`;
+  }
+  document.getElementById("results-table").innerHTML = h + "</tbody>";
+})();
+
+(function notes() {
+  const hs = D.meta.health_score_dependency;
+  const items = [
+    `The dataset is synthetic. Results show that the pipeline works and how the comparison is set up, not real Sri Lankan market behaviour. Real listings should be collected with the validation template before final claims.`,
+    `The C1 health score is almost fully explained by age, mileage and C3 deterioration (R² ${hs.R2_age_mileage_deterioration.toFixed(4)}). Adding fault features changes nothing, so C1 and C3 carry the same information here. For the same reason, do not read the sign of the health score coefficient as an explanation.`,
+    `Fault features (C2) barely move the price: MAE drops from ${fmt(best.baseline_market_only.test_MAE)} to ${fmt(best.market_plus_C2.test_MAE)} LKR. Repair scenarios therefore show small value gains. This comes from how the data was generated.`,
+    `Linear Regression beats the tree models on every feature set, which suggests prices were generated with a log-linear formula.`,
+    `The original "condition" label (Excellent/Good/Fair/Poor) is a binned copy of the health score, so it is left out to avoid leakage. Estimated repair cost is also left out because it is a Component 4 output.`,
+  ];
+  document.getElementById("notes").innerHTML = items.map(t => `<li>${t}</li>`).join("");
+})();
+
+fillVehicles("M4TP00002");
+</script>
