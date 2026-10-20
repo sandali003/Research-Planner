@@ -5,7 +5,7 @@ Pipeline
        thermal    <- DS18B20 temperature sensor
        electrical <- battery voltage sensor
        vibration  <- MPU6050 vibration RMS / peak
-       obd        <- OBD-II diagnostic trouble codes
+       obd        <- OBD-II diagnostic trouble codes x engine operation (RPM, engine load)
   2. Overall score (0-100) predicted by an ML model trained on the 4 component scores.
   3. Condition: Good / Fair / Poor / Critical from the overall score.
   4. XAI: SHAP values on the component scores + plain-language reasons from the raw readings.
@@ -30,7 +30,11 @@ SUMMARY_FILE = ROOT / "models" / "health_summary.json"
 
 COMPONENTS = ["thermal", "electrical", "vibration", "obd"]
 LABELS = {"thermal": "Engine temperature", "electrical": "Battery / electrical",
-          "vibration": "Vibration", "obd": "OBD-II fault codes"}
+          "vibration": "Vibration", "obd": "OBD-II (fault codes, RPM, load)"}
+
+# Engine operation limits (OBD-II live data). Lugging = high load at low RPM.
+RPM_NORMAL = (600, 4500)
+LUG_RPM, LUG_LOAD = 1500, 70
 
 # Condition bands on the overall score. Good/Fair/Poor edges match the dataset's own classes;
 # the Poor/Critical split at 50 is our choice (the dataset has no Critical class).
@@ -62,12 +66,29 @@ def parse_dtcs(codes):
     return [c.strip().upper() for c in str(codes).replace(",", ";").split(";") if c.strip()]
 
 
+def _missing(x):
+    return x is None or (isinstance(x, float) and np.isnan(x))
+
+
+def engine_operation(r):
+    """0-100 from OBD-II RPM and load; 100 when they are not provided (no evidence of a problem)."""
+    rpm, load = r.get("engine_rpm"), r.get("engine_load_pct")
+    if _missing(rpm):
+        return 100.0
+    score = _ramp(rpm, *RPM_NORMAL, 300, 6500)
+    if not _missing(load) and rpm < LUG_RPM:
+        score = min(score, _ramp(load, 0, LUG_LOAD, -1, 100))
+    return score
+
+
 def component_scores(r):
-    """r: dict with ds18b20_temp_c, battery_voltage_v, vibration_rms_g, vibration_peak_g, dtc_codes."""
+    """r: dict with ds18b20_temp_c, battery_voltage_v, vibration_rms_g, vibration_peak_g, dtc_codes
+    and optionally engine_rpm, engine_load_pct."""
     thermal = _ramp(r["ds18b20_temp_c"], 70, 100, 40, 125)
     electrical = _ramp(r["battery_voltage_v"], 13.4, 14.6, 11.0, 15.6)
     vib = 0.6 * _ramp(r["vibration_rms_g"], 0, 0.04, -1, 0.20) + 0.4 * _ramp(r["vibration_peak_g"], 0, 0.20, -1, 1.0)
-    obd = max(0.0, 100 - 30 * len(parse_dtcs(r.get("dtc_codes"))))
+    dtc = max(0.0, 100 - 30 * len(parse_dtcs(r.get("dtc_codes"))))
+    obd = dtc * engine_operation(r) / 100
     return {"thermal": thermal, "electrical": electrical, "vibration": vib, "obd": obd}
 
 
@@ -78,9 +99,10 @@ def condition_of(score):
 # ---------------------------------------------------------------- 2. train overall model
 def _frame(df):
     rows = [component_scores({"ds18b20_temp_c": t, "battery_voltage_v": v, "vibration_rms_g": a,
-                              "vibration_peak_g": p, "dtc_codes": c})
-            for t, v, a, p, c in zip(df.ds18b20_temp_c, df.battery_voltage_v, df.vibration_rms_g,
-                                     df.vibration_peak_g, df.dtc_codes_simulated)]
+                              "vibration_peak_g": p, "dtc_codes": c, "engine_rpm": rpm, "engine_load_pct": load})
+            for t, v, a, p, c, rpm, load in zip(df.ds18b20_temp_c, df.battery_voltage_v, df.vibration_rms_g,
+                                                df.vibration_peak_g, df.dtc_codes_simulated,
+                                                df.engine_rpm, df.engine_load_pct)]
     return pd.DataFrame(rows)[COMPONENTS]
 
 
@@ -149,12 +171,29 @@ def _reasons(r, comps):
     out["vibration"] = (f"vibration RMS {rms:.3f} g (normal ≤ 0.04) and peak {pk:.3f} g (normal ≤ 0.20)")
     out["obd"] = ("no fault codes stored" if not dtcs else
                   f"{len(dtcs)} fault code(s): " + "; ".join(f"{c} {DTC_INFO.get(c, 'see service manual')}" for c in dtcs))
+    out["obd"] += "; " + _engine_reason(r)
     return out
+
+
+def _engine_reason(r):
+    rpm, load = r.get("engine_rpm"), r.get("engine_load_pct")
+    if _missing(rpm):
+        return "engine RPM not provided"
+    lo, hi = RPM_NORMAL
+    if rpm < lo:
+        return f"engine RPM {rpm:.0f} is below {lo} (unstable / rough idle)"
+    if rpm > hi:
+        return f"engine RPM {rpm:.0f} is above {hi} (over-revving)"
+    if not _missing(load) and rpm < LUG_RPM and load > LUG_LOAD:
+        return f"engine load {load:.0f}% at only {rpm:.0f} RPM (engine lugging / strain)"
+    load_txt = "" if _missing(load) else f", load {load:.0f}%"
+    return f"engine RPM {rpm:.0f}{load_txt} is normal"
 
 
 def assess(reading):
     """reading: dict(ds18b20_temp_c, battery_voltage_v, vibration_rms_g, vibration_peak_g, dtc_codes[, engine_rpm, engine_load_pct])"""
     c = _load()
+    reading = {**reading, "engine_rpm": reading.get("engine_rpm"), "engine_load_pct": reading.get("engine_load_pct")}
     comps = component_scores(reading)
     X = pd.DataFrame([comps])[COMPONENTS]
     overall = float(np.clip(c["model"].predict(X)[0], 0, 100))

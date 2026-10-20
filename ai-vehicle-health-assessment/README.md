@@ -5,7 +5,9 @@ Component of the research project: takes OBD-II data and external sensor reading
 health score, gives a condition (Good / Fair / Poor / Critical) and explains why with XAI (SHAP).
 
 ## Pipeline (`health_assessment.py`)
-1. Component scores (0-100): engine temperature, battery/electrical, vibration, OBD-II fault codes
+1. Component scores (0-100): engine temperature, battery/electrical, vibration, OBD-II
+   (fault-code score x engine-operation factor from RPM and load: RPM normal 600-4500,
+   lugging = load > 70% below 1500 RPM; no penalty when RPM/load are not provided)
 2. Overall score: Gradient Boosting model (monotonic) trained on the component scores
 3. Condition: Good >= 80, Fair 60-80, Poor 50-60, Critical < 50
 4. XAI: SHAP contributions per component + plain-language reasons from raw readings

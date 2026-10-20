@@ -29,8 +29,14 @@ export interface AssessmentRow {
 }
 
 export interface AssessmentListItem {
-  id: number; overall_score: number; condition: AssessmentResult['condition'];
+  id: number; session_id: number | null; overall_score: number; condition: AssessmentResult['condition'];
   latency_ms: number | null; created_at: string;
+}
+
+/** Readings typed in by hand for a health assessment. */
+export interface ManualAssessmentInputs {
+  ds18b20_temp_c: number; battery_voltage_v: number; vibration_rms_g: number; vibration_peak_g: number;
+  engine_rpm?: number; engine_load_pct?: number; dtc_codes?: string[];
 }
 
 export interface SensorRow {
