@@ -4,7 +4,7 @@ import pandas as pd
 
 from data_prep import PROBLEM_SYNONYMS
 
-model = joblib.load("solution_prediction_model.joblib")
+model = joblib.load("models/solution_prediction_model.joblib")
 
 service_history = input("Enter service history: ").strip().replace(",", ";")
 common_problem = input("Enter common problem: ").strip()

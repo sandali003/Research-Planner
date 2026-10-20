@@ -1,3 +1,10 @@
 .venv/
 __pycache__/
 *.pyc
+
+# Large external datasets (rebuild with external_data/build_mot_toyota.py)
+external_data/*.csv
+external_data/*.xlsx
+test_result.csv
+test_item.csv
+lookups/

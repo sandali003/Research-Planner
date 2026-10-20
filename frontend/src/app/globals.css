@@ -274,7 +274,8 @@ button.link-btn:hover:not(:disabled) { text-decoration: underline; }
   display: inline-grid; place-items: center; width: 22px; height: 22px; margin-right: 8px; border-radius: 50%;
   background: var(--accent-soft); color: var(--accent); font-size: 12px; font-weight: 700; vertical-align: 1px;
 }
-.det-profile { display: grid; grid-template-columns: 1fr 1fr; gap: 0 16px; max-width: 520px; }
+.det-profile { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0 16px; max-width: 760px; }
+@media (max-width: 640px) { .det-profile { grid-template-columns: 1fr 1fr; } }
 .det-usage { margin: 10px 0 0; }
 .det-checklist { display: grid; grid-template-columns: 1fr 1fr; gap: 0 28px; }
 @media (max-width: 900px) { .det-checklist { grid-template-columns: 1fr; } }
@@ -306,6 +307,23 @@ button.link-btn:hover:not(:disabled) { text-decoration: underline; }
 .key-observed { width: 11px; height: 11px; border-radius: 50%; background: var(--accent); }
 .key-history { width: 9px; height: 9px; border-radius: 50%; background: #c3cfe3; }
 .key-line { width: 16px; height: 2px; background: var(--accent-light); vertical-align: 3px; }
+
+/* Component 3: real-data contextual assessment */
+.ctx-card h3 { font-size: 15px; margin: 18px 0 6px; }
+.ctx-worse { color: var(--critical); }
+.ctx-better { color: var(--good); }
+.key-grade { display: inline-block; width: 11px; height: 11px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; }
+.g-good { fill: #86efac; background: #86efac; }
+.g-wear { fill: #d9f99d; background: #d9f99d; }
+.g-minor { fill: #fde68a; background: #fde68a; }
+.g-major { fill: #fdba74; background: #fdba74; }
+.g-danger { fill: #fca5a5; background: #fca5a5; }
+.ctx-chart path { stroke: #fff; stroke-width: 0.6; }
+.ctx-chart .age-real { stroke: var(--text); stroke-width: 2; }
+.ctx-chart .age-eff { stroke-width: 2.5; stroke-dasharray: 6 4; }
+.ctx-chart .age-eff.dot-sev-none { stroke: var(--good); }
+.ctx-chart .age-eff.dot-sev-low { stroke: var(--fair); }
+.ctx-chart .age-eff.dot-sev-high { stroke: var(--critical); }
 
 .chart-wrap { position: relative; }
 .det-chart { width: 100%; height: auto; display: block; overflow: visible; }

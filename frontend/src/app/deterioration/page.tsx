@@ -8,7 +8,7 @@ import { api, ApiError } from '@/lib/api';
 import { fmt, fmtTime } from '@/lib/format';
 import type {
   ComponentCheck, ComponentState, DeteriorationAssessment, DeteriorationContext, DeteriorationInput,
-  DeteriorationListItem, Vehicle,
+  DeteriorationListItem, FuelType, Vehicle,
 } from '@/lib/types';
 
 // Components and states the Component 3 models were trained on
@@ -43,6 +43,8 @@ function DeteriorationView() {
 
   const [odometer, setOdometer] = useState('');
   const [age, setAge] = useState('');
+  const [fuel, setFuel] = useState<FuelType | ''>('');
+  const [engineCc, setEngineCc] = useState('');
   const [states, setStates] = useState<Record<string, ComponentState | ''>>({});
   const [obdMode, setObdMode] = useState<'iot' | 'manual'>('iot');
   const [obd, setObd] = useState<Record<string, string>>({});
@@ -99,6 +101,8 @@ function DeteriorationView() {
 
     const input: DeteriorationInput = { odometer_km: Number(odometer), components: checks };
     if (age.trim()) input.age_years = Number(age);
+    if (fuel) input.fuel_type = fuel;
+    if (engineCc.trim()) input.engine_cc = Number(engineCc);
     if (obdMode === 'manual') {
       const vals = OBD_FIELDS.map((f) => obd[f.key]?.trim() ?? '');
       if (vals.some((v) => !v)) { setError('Fill in all three OBD-II values, or switch to Live IoT data.'); return; }
@@ -168,6 +172,20 @@ function DeteriorationView() {
                   <input id="det-age" type="number" min={0} max={60} step={0.1}
                     placeholder={autoAge != null ? `${fmt(autoAge)} (from ${vehicle?.year})` : 'e.g. 9'}
                     value={age} onChange={(e) => setAge(e.target.value)} />
+                </div>
+                <div>
+                  <label htmlFor="det-fuel">Fuel</label>
+                  <select id="det-fuel" value={fuel} onChange={(e) => setFuel(e.target.value as FuelType | '')}>
+                    <option value="">Petrol (default)</option>
+                    <option value="petrol">Petrol</option>
+                    <option value="hybrid">Hybrid</option>
+                    <option value="diesel">Diesel</option>
+                  </select>
+                </div>
+                <div>
+                  <label htmlFor="det-cc">Engine (cc)</label>
+                  <input id="det-cc" type="number" min={600} max={5000} step={1} placeholder="e.g. 1500"
+                    value={engineCc} onChange={(e) => setEngineCc(e.target.value)} />
                 </div>
               </div>
               <p className="muted small det-usage">
@@ -246,14 +264,17 @@ function DeteriorationView() {
             {history.length === 0 ? <p className="muted" style={{ margin: 0 }}>No assessments yet.</p> : (
               <div style={{ overflowX: 'auto' }}>
                 <table>
-                  <thead><tr><th>Time</th><th>Odometer</th><th>Worst component</th><th>Deviation</th><th>Status</th><th>OBD</th><th /></tr></thead>
+                  <thead><tr><th>Time</th><th>Odometer</th><th>Worst component</th><th>Condition age</th><th>Better-condition cars</th><th>Status</th><th>OBD</th><th /></tr></thead>
                   <tbody>
                     {history.map((h) => (
                       <tr key={h.id} className={result?.id === h.id ? 'selected' : undefined}>
                         <td>{fmtTime(h.created_at)}</td>
                         <td>{h.odometer_km.toLocaleString()} km</td>
                         <td>{prettyComponent(h.worst_component)}</td>
-                        <td>{h.deviation > 0 ? '+' : ''}{fmt(h.deviation)}</td>
+                        <td>{h.effective_age != null
+                          ? `${fmt(h.effective_age)} (${h.age_gap != null && h.age_gap > 0 ? '+' : ''}${fmt(h.age_gap ?? 0)})`
+                          : '—'}</td>
+                        <td>{h.worse_than_pct != null ? `${h.worse_than_pct}%` : '—'}</td>
                         <td><DeteriorationPill status={h.status} /></td>
                         <td>{h.obd_source === 'session' ? 'IoT' : h.obd_source === 'request' ? 'Manual' : '—'}</td>
                         <td><button type="button" className="link-btn" onClick={() => openAssessment(h.id)}>View</button></td>

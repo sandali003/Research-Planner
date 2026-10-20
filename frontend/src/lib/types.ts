@@ -157,12 +157,50 @@ export interface ComponentCheck { component: string; component_state: ComponentS
 
 export interface ObdReading { engine_rpm: number; engine_load: number; coolant_temp: number }
 
+export type FuelType = 'petrol' | 'diesel' | 'hybrid';
+
 export interface DeteriorationInput {
   odometer_km: number;
   components: ComponentCheck[];
   age_years?: number;
   vehicle_model?: string;
   obd?: ObdReading;
+  fuel_type?: FuelType;
+  engine_cc?: number;
+}
+
+/** Real-data contextual result for the whole vehicle or one component (Component 3, step 3) */
+export interface ContextualResult {
+  observed_grade: number;
+  observed_label: string;
+  expected_grade: number;
+  grade_distribution: Record<string, number>;
+  percentile: number;          // share of comparable cars in a worse condition
+  worse_than_pct: number;      // "worse than X% of comparable cars"
+  effective_age: number;       // condition-equivalent age
+  effective_age_bound: 'within' | 'younger' | 'older';
+  age_gap: number;             // effective age - real age
+  status: DeteriorationStatus;
+}
+
+export interface ContextualComponent extends ContextualResult, ComponentCheck { mot_group: string }
+
+export interface ContextualAssessment {
+  available: boolean;
+  method?: string;
+  platform: string;
+  fuel_type?: string;
+  engine_cc?: number;
+  age_years?: number;
+  km_per_year?: number;
+  overall?: ContextualResult;
+  status?: DeteriorationStatus;
+  worst_component?: string;
+  components: ContextualComponent[];
+  /** Share of comparable cars in each overall grade, by age */
+  curve?: ({ age_years: number } & Record<string, number>)[];
+  thresholds?: Record<string, number>;
+  notes: string[];
 }
 
 export interface DeteriorationComponent extends ComponentCheck {
@@ -194,6 +232,10 @@ export interface DeteriorationAssessment {
   model_version: string | null;
   latency_ms: number | null;
   components: DeteriorationComponent[];
+  contextual?: ContextualAssessment | null;
+  legacy_status?: DeteriorationStatus | null;
+  fuel_type?: FuelType | null;
+  engine_cc?: number | null;
 }
 
 export interface DeteriorationListItem {
@@ -201,6 +243,7 @@ export interface DeteriorationListItem {
   age_years: number; odometer_km: number; km_per_year: number | null;
   expected_score: number; observed_score: number; deviation: number;
   worst_component: string; obd_source: 'request' | 'session' | null;
+  effective_age?: number | null; age_gap?: number | null; worse_than_pct?: number | null;
 }
 
 export interface DeteriorationContext {
