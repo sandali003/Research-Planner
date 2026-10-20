@@ -15,6 +15,7 @@ import pandas as pd
 BASE_DIR = Path(__file__).resolve().parent
 MODEL_PATH = BASE_DIR / "models" / "obd_anomaly_model.joblib"
 METADATA_PATH = BASE_DIR / "models" / "obd_anomaly_metadata.json"
+FUSION_CONFIG_PATH = BASE_DIR / "models" / "fusion_config.json"
 
 # Thresholds taken from the label_reason column of
 # toyota_obd_original_labeled.csv
@@ -128,6 +129,10 @@ class OBDAssessor:
             metadata = json.load(f)
         self.features = metadata["features"]
         self.threshold = metadata["threshold"]
+        # Threshold calibrated on unseen vehicles (benchmark/tune_fusion.py), if available
+        if FUSION_CONFIG_PATH.exists():
+            with open(FUSION_CONFIG_PATH, encoding="utf-8") as f:
+                self.threshold = json.load(f)["anomaly_threshold"]
 
     def anomaly_score(self, readings):
         """Higher score = more abnormal."""

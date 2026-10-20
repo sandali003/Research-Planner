@@ -43,8 +43,19 @@ export const hiddenFaultHealth = () => callHiddenFault('/health');
 
 // Component 3: deterioration service (Component3-Deterioration/app.py)
 const callDeterioration = (path, init) =>
-  callService('Deterioration service', env.DETERIORATION_SERVICE_URL, env.ML_TIMEOUT_MS, path, init);
+  callService('Deterioration service', env.DETERIORATION_SERVICE_URL, env.DETERIORATION_TIMEOUT_MS, path, init);
 
-export const assessDeterioration = (input) => callDeterioration('/api/deterioration', postJson(input));
+// Component-wise assessment (one or more inspected components)
+export const assessDeterioration = (input) => callDeterioration('/api/assess', postJson(input));
 
 export const deteriorationHealth = () => callDeterioration('/health');
+
+// Chart data: expected condition by age, and the training inspections for one vehicle model
+export async function deteriorationContext(vehicleModel, kmPerYear) {
+  const model = encodeURIComponent(vehicleModel);
+  const [curve, history] = await Promise.all([
+    callDeterioration(`/api/expected-curve?vehicle_model=${model}&km_per_year=${kmPerYear}`),
+    callDeterioration(`/api/history?vehicle_model=${model}`),
+  ]);
+  return { curve, ...history };
+}

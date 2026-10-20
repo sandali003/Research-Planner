@@ -41,6 +41,24 @@ export async function runAssessment(vehicleId, windowSeconds) {
     throw new HttpError(422, 'Not enough recent sensor data for an assessment', { missing, windowSeconds });
   }
 
+  return scoreAndSave(vehicleId, sessionId, features);
+}
+
+/** Assessment on readings typed in by the user (no session). */
+export async function runManualAssessment(vehicleId, inputs) {
+  const features = {
+    ds18b20_temp_c: inputs.ds18b20_temp_c,
+    battery_voltage_v: inputs.battery_voltage_v,
+    vibration_rms_g: inputs.vibration_rms_g,
+    vibration_peak_g: inputs.vibration_peak_g,
+    dtc_codes: [...new Set((inputs.dtc_codes ?? []).map((c) => c.toUpperCase()))].join(';'),
+    engine_rpm: inputs.engine_rpm ?? null,
+    engine_load_pct: inputs.engine_load_pct ?? null,
+  };
+  return scoreAndSave(vehicleId, null, features);
+}
+
+async function scoreAndSave(vehicleId, sessionId, features) {
   const started = Date.now();
   const result = await predict(features);
   const latencyMs = Date.now() - started;
