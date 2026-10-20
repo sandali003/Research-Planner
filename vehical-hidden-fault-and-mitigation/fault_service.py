@@ -51,12 +51,14 @@ def _version(path):
 
 
 def _factor_facts(model, explanation):
-    """Top features pushing towards the result, as expert system facts."""
-    pushing = [f for f in explanation["factors"] if f["impact"] > 0][:TOP_FACTORS]
+    """Every SHAP factor (largest effect first) as expert system facts.
+
+    All of them are needed: the root cause sums the SHAP values per sensor group.
+    """
     return [
         {"model": model, "feature": f["feature"], "label": f["label"],
          "value": f["value"], "impact": f["impact"], "rank": rank}
-        for rank, f in enumerate(pushing, start=1)
+        for rank, f in enumerate(explanation["factors"], start=1)
     ]
 
 
@@ -136,9 +138,21 @@ class HiddenFaultService:
                 key_factors += explanations["anomaly"]["factors"][:TOP_FACTORS]
 
             content = FAULT_RULES.get(name, {})
+            display_name = content.get("display_name", name.replace("_", " "))
+            causes = [c for c in es["causes"] if c["fault"] == name]
+            likely_cause = None
+            if causes:
+                cause = max(causes, key=lambda c: c["share"])
+                likely_cause = {"sensor_group": cause["group"], "label": cause["label"],
+                                "share": cause["share"], "model": cause["model"],
+                                "method": "SHAP values summed per sensor group"}
+                if name == "Hidden_Anomaly":
+                    display_name = f"{display_name}: likely cause {cause['label'].lower()}"
+
             issues.append({
                 "fault": name,
-                "display_name": content.get("display_name", name.replace("_", " ")),
+                "display_name": display_name,
+                "likely_cause": likely_cause,
                 "sources": sources,
                 "confidence": round(max(confidences), 4) if confidences else None,
                 "severity": severity,

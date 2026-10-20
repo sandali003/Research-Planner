@@ -6,6 +6,7 @@ Facts         = sensor readings, ML predictions, anomaly result and the
 Inference     = Experta forward chaining (Rete), ordered by salience:
                   100 detection   Toyota threshold rules
                    80 ML fusion   classifier faults, hidden anomalies
+                   70 XAI         root cause of each AI fault (SHAP per sensor group)
                    60 severity    base severity + escalation rules
                    40 mitigation  base actions + SHAP-targeted actions
 Explanation   = every fired rule is recorded in `trace` (how the plan
@@ -66,6 +67,35 @@ FEATURE_GROUP = {
     "vibration_z": "vibration",
     "vibration_magnitude": "vibration",
 }
+GROUP_LABELS = {
+    "voltage": "Battery voltage",
+    "temperature": "Engine temperature",
+    "load": "Engine load",
+    "rpm": "Engine speed (RPM)",
+    "vibration": "Engine vibration",
+}
+
+
+def root_causes(factors):
+    """XAI root cause per model: SHAP values summed per sensor group, largest positive group.
+
+    Same method as benchmark/run_xai_eval.py, where it named the injected
+    sensor in 91-98% of anomaly-model detections.
+    """
+    sums = {}
+    for f in factors:
+        group = FEATURE_GROUP.get(f["feature"])
+        if group:
+            model_sums = sums.setdefault(f["model"], {})
+            model_sums[group] = model_sums.get(group, 0.0) + f["impact"]
+    causes = []
+    for model, groups in sums.items():
+        positive = {g: s for g, s in groups.items() if s > 0}
+        if positive:
+            group = max(positive, key=positive.get)
+            causes.append({"model": model, "group": group, "label": GROUP_LABELS[group],
+                           "share": round(positive[group] / sum(positive.values()), 3)})
+    return causes
 
 
 # ----- Fact types -----------------------------------------------------
@@ -83,6 +113,14 @@ class Anomaly(Fact):
 
 class Factor(Fact):
     """model, feature, label, value, impact, rank (SHAP)"""
+
+
+class RootCause(Fact):
+    """model, group, label, share (sensor group that SHAP says drives the model output)"""
+
+
+class Cause(Fact):
+    """fault, model, group, label, share (likely cause reported with a fault)"""
 
 
 class WarmingUp(Fact):
@@ -237,6 +275,20 @@ class VehicleFaultExpert(KnowledgeEngine):
         self._log("F4 Cold engine anomaly", "Anomaly flagged while warming up; not reported as a fault")
 
     # ==================================================================
+    # 2b. XAI root cause (salience 70): name the sensor behind an AI fault.
+    #     For Hidden_Anomaly this turns "unusual pattern" into a named cause.
+    # ==================================================================
+    @Rule(Fault(name=MATCH.name, source=MATCH.source),
+          RootCause(model=MATCH.model, group=MATCH.group, label=MATCH.label, share=MATCH.share),
+          TEST(lambda source, model: SOURCE_MODEL.get(source) == model),
+          NOT(Cause(fault=MATCH.name)),
+          salience=70)
+    def xai_root_cause(self, name, model, group, label, share):
+        self.declare(Cause(fault=name, model=model, group=group, label=label, share=share))
+        self._log("X1 XAI root cause",
+                  f"{name}: SHAP ({model}) attributes {share:.0%} of the result to {label.lower()}")
+
+    # ==================================================================
     # 3. Severity rules (salience 60)
     # ==================================================================
     @Rule(Fault(name=MATCH.name), NOT(Severity(fault=MATCH.name, kind="base")),
@@ -335,18 +387,13 @@ class VehicleFaultExpert(KnowledgeEngine):
             self.declare(Tip(fault=name, text=text))
         self._log("M1 Mitigation plan", f"{name}: knowledge base actions and longevity tips")
 
-    @Rule(Fault(name=MATCH.name, source=MATCH.source),
-          Factor(model=MATCH.model, feature=MATCH.feature, label=MATCH.label, value=MATCH.value, rank=1),
-          TEST(lambda source, model: SOURCE_MODEL.get(source) == model),
+    @Rule(Cause(fault=MATCH.name, group=MATCH.group, label=MATCH.label, share=MATCH.share),
           NOT(Action(fault=MATCH.name, kind="targeted")),
           salience=40)
-    def shap_targeted_action(self, name, feature, label, value):
-        group = FEATURE_GROUP.get(feature)
-        if group is None:
-            return
-        self.declare(Action(fault=name, text=FACTOR_ACTIONS[group], priority=1, kind="targeted", feature=feature))
+    def shap_targeted_action(self, name, group, label, share):
+        self.declare(Action(fault=name, text=FACTOR_ACTIONS[group], priority=1, kind="targeted", feature=group))
         self._log("M2 SHAP-targeted action",
-                  f"{name}: main cause by SHAP is {label} ({value:.2f}) -> {group} check")
+                  f"{name}: main cause by SHAP is {label} ({share:.0%} of the explanation) -> {group} check")
 
     @Rule(Sensors(dtc_codes=MATCH.codes), TEST(lambda codes: bool(codes)),
           salience=40)
@@ -366,6 +413,8 @@ def run_expert_system(sensors, prediction=None, anomaly=None, factors=()):
         engine.declare(Anomaly(**anomaly))
     for factor in factors:
         engine.declare(Factor(**factor))
+    for cause in root_causes(factors):
+        engine.declare(RootCause(**cause))
     engine.run()
 
     facts = list(engine.facts.values())
@@ -376,6 +425,7 @@ def run_expert_system(sensors, prediction=None, anomaly=None, factors=()):
         "actions": of_type(Action),
         "tips": of_type(Tip),
         "notes": of_type(Note),
+        "causes": of_type(Cause),
         "trace": engine.trace,
     }
 

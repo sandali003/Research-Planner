@@ -72,7 +72,11 @@ export interface FaultIssue {
   notes: string[];
   targeted_actions?: string[];
   key_factors?: ShapFactor[];
+  likely_cause?: LikelyCause | null;
 }
+
+/** XAI root cause: the sensor group SHAP says drives an AI-detected fault */
+export interface LikelyCause { sensor_group: string; label: string; share: number; model: string; method: string }
 
 export interface ShapFactor { feature: string; label: string; value: number; impact: number }
 

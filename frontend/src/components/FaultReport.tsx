@@ -75,9 +75,15 @@ function IssueCard({ issue }: { issue: FaultIssue }) {
       {issue.reasons.length > 0 && (
         <p className="muted small">Why: {issue.reasons.join(' · ')}</p>
       )}
-      {mainCauses.length > 0 && (
+      {issue.likely_cause && (
         <p className="small main-cause">
-          Main cause (SHAP): {mainCauses.map((f) => `${f.label} ${fmt(f.value, 2)}`).join(', ')}
+          <strong>Likely cause (AI explanation): {issue.likely_cause.label}</strong>
+          {' '}({(issue.likely_cause.share * 100).toFixed(0)}% of the {issue.likely_cause.model === 'anomaly' ? 'anomaly' : 'prediction'})
+        </p>
+      )}
+      {mainCauses.length > 0 && (
+        <p className="small muted">
+          Main readings (SHAP): {mainCauses.map((f) => `${f.label} ${fmt(f.value, 2)}`).join(', ')}
         </p>
       )}
       <h4>Immediate actions</h4>
