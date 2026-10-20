@@ -264,6 +264,7 @@ button.link-btn:hover:not(:disabled) { text-decoration: underline; }
 .main-cause { color: var(--accent); font-weight: 500; }
 .issue li.targeted { font-weight: 500; }
 .chip-target { background: #fee2e2; color: #b91c1c; margin-right: 4px; }
+.chip-warn { background: #fef3c7; color: #92400e; }
 .trace { margin: 0; padding-left: 22px; display: grid; gap: 6px; font-size: 14px; }
 @media (max-width: 600px) { .shap-block .bar-row { grid-template-columns: 120px 1fr 50px; } }
 

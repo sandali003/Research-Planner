@@ -6,7 +6,8 @@ Facts         = sensor readings, ML predictions, anomaly result and the
 Inference     = Experta forward chaining (Rete), ordered by salience:
                   100 detection   Toyota threshold rules
                    80 ML fusion   classifier faults, hidden anomalies
-                   70 XAI         root cause of each AI fault (SHAP per sensor group)
+                   70 XAI         root cause of each AI fault (SHAP per sensor group),
+                                  reliability check (does the cause fit the fault?)
                    60 severity    base severity + escalation rules
                    40 mitigation  base actions + SHAP-targeted actions
 Explanation   = every fired rule is recorded in `trace` (how the plan
@@ -76,6 +77,16 @@ GROUP_LABELS = {
 }
 
 
+# Sensor groups that can physically explain each classifier fault. When SHAP
+# says another group drives the prediction, the model is likely outside what
+# it learned (e.g. high rpm/load) and the result is marked low reliability.
+EXPECTED_CAUSES = {
+    "Charging_System_Warning": {"voltage"},
+    "Cooling_System_Warning": {"temperature"},
+    "Engine_Abnormality_Suspected": {"temperature", "rpm"},
+}
+
+
 def root_causes(factors):
     """XAI root cause per model: SHAP values summed per sensor group, largest positive group.
 
@@ -121,6 +132,10 @@ class RootCause(Fact):
 
 class Cause(Fact):
     """fault, model, group, label, share (likely cause reported with a fault)"""
+
+
+class Reliability(Fact):
+    """fault, level, reason (XAI check of whether the AI result makes physical sense)"""
 
 
 class WarmingUp(Fact):
@@ -288,6 +303,18 @@ class VehicleFaultExpert(KnowledgeEngine):
         self._log("X1 XAI root cause",
                   f"{name}: SHAP ({model}) attributes {share:.0%} of the result to {label.lower()}")
 
+    @Rule(Cause(fault=MATCH.name, model="classifier", group=MATCH.group, label=MATCH.label),
+          TEST(lambda name, group: name in EXPECTED_CAUSES and group not in EXPECTED_CAUSES[name]),
+          salience=65)
+    def xai_reliability(self, name, group, label):
+        expected = " or ".join(GROUP_LABELS[g].lower() for g in sorted(EXPECTED_CAUSES[name]))
+        reason = (f"The AI decision is driven by {label.lower()}, not by {expected}, "
+                  "so the reading may be outside what the model learned.")
+        self.declare(Reliability(fault=name, level="Low", reason=reason))
+        self.declare(Note(fault=name, text=(
+            f"Low reliability: {reason} Confirm with another reading or a manual check.")))
+        self._log("X2 XAI reliability check", f"{name}: driven by {label.lower()}, expected {expected}")
+
     # ==================================================================
     # 3. Severity rules (salience 60)
     # ==================================================================
@@ -426,6 +453,7 @@ def run_expert_system(sensors, prediction=None, anomaly=None, factors=()):
         "tips": of_type(Tip),
         "notes": of_type(Note),
         "causes": of_type(Cause),
+        "reliability": of_type(Reliability),
         "trace": engine.trace,
     }
 

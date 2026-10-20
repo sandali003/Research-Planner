@@ -73,6 +73,19 @@ export interface FaultIssue {
   targeted_actions?: string[];
   key_factors?: ShapFactor[];
   likely_cause?: LikelyCause | null;
+  counterfactual?: Counterfactual | null;
+  reliability?: { level: 'Normal' | 'Low'; reason: string | null } | null;
+}
+
+/** What has to change for the model to call the reading normal (repair target) */
+export interface Counterfactual {
+  sensor_groups: string[];
+  changes: {
+    feature: string; group: string; label: string; from: number; to: number; direction: 'up' | 'down';
+    healthy_range?: [number, number];
+  }[];
+  fraction_back_to_normal: number;
+  text: string;
 }
 
 /** XAI root cause: the sensor group SHAP says drives an AI-detected fault */

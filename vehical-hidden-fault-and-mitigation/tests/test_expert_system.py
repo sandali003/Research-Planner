@@ -102,6 +102,17 @@ class FusionAndMitigation(unittest.TestCase):
             dict(model="anomaly", feature="vibration_x", label="Vibration X", value=0.4, impact=1.0, rank=1)])
         self.assertEqual(r["causes"], [])
 
+    def test_cause_that_does_not_fit_the_fault_is_low_reliability(self):
+        def reliability(feature):
+            r = run_expert_system(
+                sensors(), prediction=dict(fault="Cooling_System_Warning", confidence=0.95),
+                factors=[dict(model="classifier", feature=feature, label=feature, value=1.0, impact=1.0, rank=1)])
+            return [x["level"] for x in r["reliability"]], rules_fired(r)
+        levels, fired = reliability("engine_load_pct")
+        self.assertEqual(levels, ["Low"])
+        self.assertIn("X2", fired)
+        self.assertEqual(reliability("engine_temp_c")[0], [])
+
     def test_every_fault_has_a_mitigation_plan(self):
         r = run_expert_system(sensors(vibration=0.5),
                               prediction=dict(fault="Cooling_System_Warning", confidence=0.9))
@@ -127,6 +138,15 @@ class Pipeline(unittest.TestCase):
         cause = r["issues"][0]["likely_cause"]
         self.assertEqual(cause["sensor_group"], "voltage")
         self.assertGreater(cause["share"], 0.5)
+
+    def test_counterfactual_gives_a_repair_target(self):
+        r = self.service.assess(dict(engine_rpm=800, engine_load_pct=5, coolant_temp_c=82, battery_voltage_v=15.3))
+        issue = r["issues"][0]
+        change = issue["counterfactual"]["changes"][0]
+        self.assertEqual((change["group"], change["direction"]), ("voltage", "down"))
+        self.assertTrue(14.0 <= change["to"] < 15.3)
+        self.assertTrue(any(a.startswith("Repair target:") for a in issue["immediate_actions"]))
+        self.assertEqual(issue["reliability"]["level"], "Normal")
 
     def test_missing_inputs_raise(self):
         with self.assertRaises(ValueError):
