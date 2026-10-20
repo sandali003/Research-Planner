@@ -1,0 +1,10 @@
+{
+  "classifier_min_confidence": 0.8,
+  "anomaly_threshold_percentile": 99.5,
+  "anomaly_threshold": 1.2602193475777181,
+  "threshold_rule": "percentile of out-of-fold anomaly scores (GroupKFold by vehicle)",
+  "objective": "max macro F1 on injected faults (benchmark/fault_injection.py) with false alarm rate <= 5%",
+  "tuning_macro_f1": 0.6232,
+  "tuning_false_alarm_rate": 0.0481,
+  "tuning_readings": 6236
+}
