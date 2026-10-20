@@ -1,7 +1,7 @@
 import type {
   AssessmentListItem, AssessmentResult, AssessmentRow, DeteriorationAssessment, DeteriorationContext,
   DeteriorationInput, DeteriorationListItem, FaultCheck, FaultCheckListItem, FaultCheckRow,
-  FaultInputs, LatestReadings, User, Vehicle,
+  FaultInputs, LatestReadings, ManualAssessmentInputs, User, Vehicle,
 } from './types';
 
 const BASE = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:3000/api/v1';
@@ -62,6 +62,8 @@ export const api = {
     request<LatestReadings>(`/vehicles/${vehicleId}/readings/latest?limit=${limit}`),
   assess: (vehicleId: number, windowSeconds: number) =>
     post<AssessmentResult & { id: number }>(`/vehicles/${vehicleId}/assessments`, { window_seconds: windowSeconds }),
+  manualAssess: (vehicleId: number, inputs: ManualAssessmentInputs) =>
+    post<AssessmentResult & { id: number }>(`/vehicles/${vehicleId}/assessments/manual`, inputs),
   latestAssessment: (vehicleId: number) => request<AssessmentRow | null>(`/vehicles/${vehicleId}/assessments/latest`),
   assessments: (vehicleId: number) => request<AssessmentListItem[]>(`/vehicles/${vehicleId}/assessments`),
 

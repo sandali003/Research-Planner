@@ -5,7 +5,7 @@ import { requireUser } from '../middleware/auth.js';
 import { generateKey, hashKey } from '../middleware/deviceAuth.js';
 import { validate } from '../middleware/validate.js';
 import { getAccessibleVehicle } from '../repositories/vehicles.repo.js';
-import { runAssessment } from '../services/assessment.service.js';
+import { runAssessment, runManualAssessment } from '../services/assessment.service.js';
 import { deteriorationSummary, getDeterioration, runDeterioration } from '../services/deterioration.service.js';
 import { deteriorationContext } from '../services/mlClient.service.js';
 import { HttpError, asyncHandler } from '../utils/httpError.js';
@@ -81,6 +81,23 @@ router.post('/:id/assessments', validate(idParam, 'params'),
   asyncHandler(async (req, res) => {
     const vehicle = await getAccessibleVehicle(req.params.id, req.user);
     res.status(201).json(await runAssessment(vehicle.id, req.body.window_seconds));
+  }));
+
+// Assessment on readings entered by hand (OBD-II + external sensors)
+const manualAssessmentBody = z.object({
+  ds18b20_temp_c: z.number().min(-40).max(150),
+  battery_voltage_v: z.number().min(0).max(20),
+  vibration_rms_g: z.number().min(0).max(4),
+  vibration_peak_g: z.number().min(0).max(8),
+  engine_rpm: z.number().min(0).max(12000).optional(),
+  engine_load_pct: z.number().min(0).max(100).optional(),
+  dtc_codes: z.array(z.string().regex(/^[PCBU][0-9A-F]{4}$/i)).max(20).optional(),
+});
+
+router.post('/:id/assessments/manual', validate(idParam, 'params'), validate(manualAssessmentBody),
+  asyncHandler(async (req, res) => {
+    const vehicle = await getAccessibleVehicle(req.params.id, req.user);
+    res.status(201).json(await runManualAssessment(vehicle.id, req.body));
   }));
 
 router.get('/:id/assessments', validate(idParam, 'params'), asyncHandler(async (req, res) => {
