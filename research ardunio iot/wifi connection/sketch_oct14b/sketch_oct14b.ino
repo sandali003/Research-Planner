@@ -5,16 +5,16 @@
 #include <OneWire.h>
 #include <DallasTemperature.h>
 
-// Wi-Fi details
-const char* WIFI_SSID = "SLT_FIBRE";
-const char* WIFI_PASSWORD = "Abhishek";
+// Wi-Fi details (iPhone hotspot, "Maximize Compatibility" on for 2.4 GHz)
+const char* WIFI_SSID = "Tharuka’s iphone";
+const char* WIFI_PASSWORD = "12345678";
 
-// Laptop API URLs
+// AutoSense backend on the laptop (run "ipconfig" if the hotspot gives a new IP)
 const char* API_URL =
-    "http://192.168.1.7:8000/readings";
+    "http://172.20.10.9:3000/api/v1/readings";
 
-const char* STATUS_URL =
-    "http://192.168.1.7:8000/control/status";
+// Device key from the website: Vehicles -> vehicle -> add device (shown only once)
+const char* DEVICE_KEY = "f9485bc13b54eaf0303d5e7369fbb27b9c5f8839a378dacf";
 
 // Sensor pins
 const int SDA_PIN = 21;
@@ -28,10 +28,9 @@ OneWire oneWire(ONE_WIRE_BUS);
 DallasTemperature tempSensor(&oneWire);
 
 bool mpuConnected = false;
-bool wasCollecting = false;
 
-unsigned long lastStatusCheck = 0;
-const unsigned long STATUS_INTERVAL = 2000;
+unsigned long lastSend = 0;
+const unsigned long SEND_INTERVAL = 2000;
 
 // Connect to Wi-Fi
 void connectWiFi() {
@@ -50,42 +49,7 @@ void connectWiFi() {
   Serial.println(WiFi.localIP());
 }
 
-// Check laptop's START / STOP command
-bool isCollectionEnabled() {
-  if (WiFi.status() != WL_CONNECTED) {
-    return false;
-  }
-
-  HTTPClient http;
-  http.setTimeout(3000);
-
-  if (!http.begin(STATUS_URL)) {
-    Serial.println("Cannot connect to control API.");
-    return false;
-  }
-
-  int code = http.GET();
-  bool enabled = false;
-
-  if (code == HTTP_CODE_OK) {
-    String response = http.getString();
-    response.replace(" ", "");
-    response.replace("\n", "");
-    response.replace("\r", "");
-
-    if (response.indexOf("\"enabled\":true") >= 0) {
-      enabled = true;
-    }
-  } else {
-    Serial.print("Status check failed: ");
-    Serial.println(code);
-  }
-
-  http.end();
-  return enabled;
-}
-
-// Read sensors and send data to API
+// Read sensors and send one reading to the backend
 void collectAndSendData() {
   int16_t ax = 0, ay = 0, az = 0;
   bool mpuOK = false;
@@ -114,27 +78,26 @@ void collectAndSendData() {
   int voltageADC = analogRead(VOLTAGE_PIN);
   float pinVoltage = voltageADC * (3.3f / 4095.0f);
 
-  String json = "{";
-  json += "\"vehicle_id\":\"TEST_CAR_001\",";
-
-  json += "\"accel_x\":";
-  json += mpuOK ? String(ax) : "null";
-
-  json += ",\"accel_y\":";
-  json += mpuOK ? String(ay) : "null";
-
-  json += ",\"accel_z\":";
-  json += mpuOK ? String(az) : "null";
-
-  json += ",\"temperature_c\":";
-  json += tempOK ? String(tempC, 2) : "null";
-
-  json += ",\"voltage_adc\":";
-  json += String(voltageADC);
-
-  json += ",\"pin_voltage_v\":";
+  // Backend format: {"readings":[{...}]}. Missing sensors are left out (null is rejected).
+  String json = "{\"readings\":[{";
+  json += "\"pin_voltage_v\":";
   json += String(pinVoltage, 3);
-  json += "}";
+
+  if (mpuOK) {
+    json += ",\"accel_x\":";
+    json += String(ax);
+    json += ",\"accel_y\":";
+    json += String(ay);
+    json += ",\"accel_z\":";
+    json += String(az);
+  }
+
+  if (tempOK) {
+    json += ",\"temperature_c\":";
+    json += String(tempC, 2);
+  }
+
+  json += "}]}";
 
   Serial.println("\nSending sensor data:");
   Serial.println(json);
@@ -144,6 +107,7 @@ void collectAndSendData() {
 
   if (http.begin(API_URL)) {
     http.addHeader("Content-Type", "application/json");
+    http.addHeader("x-device-key", DEVICE_KEY);
 
     int httpCode = http.POST(json);
 
@@ -189,8 +153,7 @@ void setup() {
 
   connectWiFi();
 
-  Serial.println("AutoSense control system ready.");
-  Serial.println("Waiting for START command...");
+  Serial.println("AutoSense ready. Sending readings every 2 seconds.");
 }
 
 void loop() {
@@ -199,27 +162,9 @@ void loop() {
     connectWiFi();
   }
 
-  // Check the control command every 2 seconds
-  if (millis() - lastStatusCheck >= STATUS_INTERVAL) {
-    lastStatusCheck = millis();
-
-    bool enabled = isCollectionEnabled();
-
-    if (enabled && !wasCollecting) {
-      Serial.println("START received: collection enabled.");
-    }
-
-    if (!enabled && wasCollecting) {
-      Serial.println("STOP received: collection stopped.");
-    }
-
-    wasCollecting = enabled;
-
-    if (enabled) {
-      collectAndSendData();
-    } else {
-      Serial.println("Collection stopped. Waiting...");
-    }
+  if (millis() - lastSend >= SEND_INTERVAL) {
+    lastSend = millis();
+    collectAndSendData();
   }
 
   delay(10);
