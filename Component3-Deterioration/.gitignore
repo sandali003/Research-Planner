@@ -8,3 +8,4 @@ external_data/*.xlsx
 test_result.csv
 test_item.csv
 lookups/
+mot_2024/
