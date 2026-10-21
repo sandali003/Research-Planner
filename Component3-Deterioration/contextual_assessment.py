@@ -4,11 +4,15 @@ For a vehicle (model, age, mileage) and its inspected components, places the
 observed condition in the distribution of comparable vehicles learned from
 UK MOT data (train_expected_condition.py) and reports:
 
-  percentile         share of comparable cars in a worse condition (mid-rank).
-                     "Worse than X% of comparable cars" = 1 - percentile.
+  percentile         share of comparable cars in the same or a worse condition
+                     (tail). "Worse than X% of comparable cars" = 1 - percentile:
+                     the share in a better condition, so a car with no defect is
+                     worse than 0%. The mid-rank percentile was used before; it
+                     gave cars in the commonest grade a misleading rank and
+                     ranked worse on held-out data (predictive_validity_results.md).
   effective age      condition-equivalent age: the age at which a car driven
                      like this one (same km per year) is typically, i.e. at the
-                     50th percentile, in this condition. Searched between 1 and
+                     50th (mid-rank) percentile, in this condition. Searched between 1 and
                      25 years; a defect that is not typical at any age in the
                      data is reported as "older than 25" (bound = "older").
   age gap            effective age - real age (+5 = five years "older" than it is)
@@ -19,11 +23,12 @@ UK MOT data (train_expected_condition.py) and reports:
                      The vehicle status is the worst of the overall result and
                      its components (one accelerated component flags the car).
   next-test risk     second, separate output: probability of a major defect at
-                     the next inspection (9-16 months), from the grade, the
-                     percentile and the age/mileage risk (evaluate_predictive_validity.py).
-                     Being worse than peers is not the same as being about to
-                     fail, so the two are reported side by side and combined in
-                     a decision (repair now / monitor / plan / routine).
+                     the next inspection (9-16 months), from the grade and the
+                     baseline's age/mileage risk (model F in
+                     evaluate_predictive_validity.py). Adding the percentile
+                     does not improve it: being worse than peers is not the same
+                     as being about to fail, so the two are reported side by side
+                     and combined in a decision (repair now / monitor / plan / routine).
 
 Inspection states map to the DVSA defect categories used for the grades:
 Good -> no defect, Fair -> wear (advisory), Poor -> minor defect,
@@ -121,14 +126,14 @@ def _risk_level(probability, cuts):
     return "Low"
 
 
-def _next_test_risk(target, grade, levels, probs, percentile):
+def _next_test_risk(target, grade, levels, probs):
     """Probability of a major defect at the next inspection, or None without a risk model."""
     if RISK is None or target not in RISK["models"]:
         return None
     m = RISK["models"][target]
     peer_risk = float(np.clip(probs[0, [levels.index(k) for k in m["bad_levels"]]].sum(), 1e-4, 1 - 1e-4))
     x = np.hstack([m["encoder"].transform(pd.DataFrame({target: [grade]})).toarray(),
-                   [[np.log(1 - percentile + 1e-3), np.log(peer_risk / (1 - peer_risk))]]])
+                   [[np.log(peer_risk / (1 - peer_risk))]]])
     probability = float(m["model"].predict_proba(x)[0, 1])
     return {
         "probability": round(probability, 3),
@@ -142,7 +147,7 @@ def _assess(target, grade, grade_names, platform, fuel, engine_cc, age, km, km_p
     model = MODELS[target]
     levels = sorted(grade_names)
     probs = model.predict_proba(_rows(platform, fuel, engine_cc, [age], km_per_year))
-    percentile = float(_percentile(probs, levels, grade)[0])
+    percentile = float(probs[0, :levels.index(grade) + 1].sum())   # same or worse condition
     effective, bound = _effective_age(model, levels, grade, platform, fuel, engine_cc, km_per_year)
     return {
         "observed_grade": grade,
@@ -155,7 +160,7 @@ def _assess(target, grade, grade_names, platform, fuel, engine_cc, age, km, km_p
         "effective_age_bound": bound,
         "age_gap": round(effective - age, 1),
         "status": _status(percentile),
-        "next_test_risk": _next_test_risk(target, grade, levels, probs, percentile),
+        "next_test_risk": _next_test_risk(target, grade, levels, probs),
     }
 
 
@@ -222,7 +227,14 @@ def assess_contextual(vehicle_model, age_years, odometer_km, components, fuel_ty
     if risks:
         at_risk = any(r["level"] != "Low" for r in risks)
         key, label, text = DECISIONS[(status != "Normal", at_risk)]
-        decision = {"key": key, "label": label, "text": text,
+        # The risk model learned from cars whose defects were repaired after the test, so
+        # a major defect found now always needs repair, whatever next year's risk is
+        major_now = [r["component"] for r in results if r["observed_grade"] == min(COMPONENT_GRADES)]
+        if major_now:
+            key, label = "repair_now", "Repair now"
+            text = (f"Major defect now in {', '.join(c.replace('_', ' ').lower() for c in major_now)}: "
+                    "repair it. The next-inspection risk assumes current defects are repaired.")
+        decision = {"key": key, "label": label, "text": text, "major_now": major_now,
                     "risk_components": [r["component"] for r in results
                                         if r["next_test_risk"] and r["next_test_risk"]["level"] != "Low"]}
     else:

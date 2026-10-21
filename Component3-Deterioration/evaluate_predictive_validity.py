@@ -17,7 +17,9 @@ Predictors of a 2024 major failure (proposal section 3.3 baselines):
                                signal flips for rare defects. C-tail gives every
                                Good car 0 and only ranks cars that have a defect.
   D  Proposed + condition      logistic regression on the 2023 grade and C
-  E  Combined (dual output)    logistic regression on the 2023 grade, C and A: the
+  E  Combined (dual output)    logistic regression on the 2023 grade, C and A
+  F  Ablation: E without C     logistic regression on the 2023 grade and A only;
+                               E vs F is what the percentile adds. F is the
                                next-inspection risk shown next to the percentile
 Targets: overall (2024 grade Major or Dangerous) and per component (2024 major
 defect in brakes, suspension, tyres, exhaust/emissions, steering).
@@ -25,7 +27,7 @@ defect in brakes, suspension, tyres, exhaust/emissions, steering).
 No leakage: the expected-condition models are refitted on the 2023 training
 vehicles only (same 80/20 vehicle split as train_expected_condition.py); every
 number below is on held-out vehicles. Metrics: ROC-AUC, PR-AUC, precision /
-recall / F1 of the flags (C's High / Slightly-high flags; A and B flag the same
+recall / F1 of the flags (the app's High / Slightly-high flags, from C-tail; A and B flag the same
 number of cars, so the comparison is fair) and bootstrap 95% CIs of AUC gains.
 
 Within-age-band AUC: the same ranking inside age bands (weighted mean), so the
@@ -33,9 +35,11 @@ age signal is removed. Age + mileage alone falls towards 0.5 there; this shows
 whether the percentile still separates cars of the same age (the "worse than
 peers" signal is not just age in disguise).
 
-Also saves the deployed next-inspection risk model (E refitted on every car,
-on top of the deployed expected-condition model) to
-models/next_test_risk_model.joblib, used by contextual_assessment.py.
+Also saves the deployed next-inspection risk model to
+models/next_test_risk_model.joblib, used by contextual_assessment.py. It is F
+(grade + age/mileage risk), refitted on every car on top of the deployed
+expected-condition model: E and F rank cars the same (the percentile adds no
+failure signal), so the simpler model is deployed.
 
 Run:  python external_data/build_mot_toyota.py mot_2024 2024 --no-excel
       python evaluate_predictive_validity.py
@@ -108,11 +112,15 @@ def scores(model, levels, frame, grade_col, bad_levels, tail=False):
     return (expected_risk, c, 1 - same_or_worse(probs, levels, grades)) if tail else (expected_risk, c)
 
 
-def risk_design(pairs, grade_col, enc, a, c):
-    """E's inputs: 2023 grade (one-hot), log of the contextual score, logit of the age/mileage risk."""
+def grade_risk_design(pairs, grade_col, enc, a):
+    """F's inputs (deployed): 2023 grade (one-hot) and logit of the age/mileage risk."""
     a = np.clip(a, 1e-4, 1 - 1e-4)
-    return np.hstack([enc.transform(pairs[[grade_col]]).toarray(),
-                      np.log(c + 1e-3)[:, None], np.log(a / (1 - a))[:, None]])
+    return np.hstack([enc.transform(pairs[[grade_col]]).toarray(), np.log(a / (1 - a))[:, None]])
+
+
+def risk_design(pairs, grade_col, enc, a, c):
+    """E's inputs: F's inputs plus the log of the contextual score."""
+    return np.hstack([grade_risk_design(pairs, grade_col, enc, a), np.log(c + 1e-3)[:, None]])
 
 
 def within_band_auc(y, score, age):
@@ -180,22 +188,28 @@ def evaluate_target(name, grade_col, levels, bad_levels, train23, train_pairs, t
     lr_e = LogisticRegression(max_iter=1000).fit(risk_design(train_pairs, grade_col, enc, a_tr, c_tr), y_tr)
     e_te = lr_e.predict_proba(risk_design(test_pairs, grade_col, enc, a_te, c_te))[:, 1]
 
+    # F: E without the percentile (ablation)
+    lr_f = LogisticRegression(max_iter=1000).fit(grade_risk_design(train_pairs, grade_col, enc, a_tr), y_tr)
+    f_te = lr_f.predict_proba(grade_risk_design(test_pairs, grade_col, enc, a_te))[:, 1]
+
     predictors = {"A Age + mileage only": a_te, "B Current condition only": b_te,
                   "C Proposed (contextual)": c_te, "C-tail Tail percentile": t_te, "D Proposed + condition": d_te,
-                  "E Combined (dual output)": e_te}
+                  "E Combined (dual output)": e_te,
+                  "F Ablation: E without percentile": f_te}
     age = test_pairs["age_years"].values
     rows = [{"Target": name, "Predictor": p, "n": len(y_te), "positive rate": y_te.mean(),
              "ROC-AUC": roc_auc_score(y_te, s), "PR-AUC": average_precision_score(y_te, s),
              "AUC within age band": within_band_auc(y_te, s, age)}
             for p, s in predictors.items()]
 
-    # Flags: C's statistical flags vs A and B flagging the same number of cars
+    # Flags: the app's statistical flags (share of comparable cars in the same or a worse
+    # condition, C-tail) vs A and B flagging the same number of cars
     flags = []
-    pct = 1 - c_te
+    same_or_worse_share = 1 - t_te
     for label, cut in (("High (worst 10%)", HIGH_PERCENTILE), ("High + Slightly high (worst 25%)", SLIGHT_PERCENTILE)):
-        c_flag = pct <= cut
+        c_flag = same_or_worse_share <= cut
         k = int(c_flag.sum())
-        for p, flag in (("C Proposed (contextual)", c_flag), ("A Age + mileage only", top_k(a_te, k)),
+        for p, flag in (("C-tail Tail percentile", c_flag), ("A Age + mileage only", top_k(a_te, k)),
                         ("B Current condition only", top_k(b_te, k))):
             flags.append({"Target": name, "Flag": label, "Predictor": p, **flag_metrics(y_te, flag)})
 
@@ -204,19 +218,20 @@ def evaluate_target(name, grade_col, levels, bad_levels, train23, train_pairs, t
                    ("C-tail Tail percentile", "C Proposed (contextual)"),
                    ("D Proposed + condition", "B Current condition only"),
                    ("E Combined (dual output)", "B Current condition only"),
-                   ("E Combined (dual output)", "A Age + mileage only")]
+                   ("E Combined (dual output)", "A Age + mileage only"),
+                   ("E Combined (dual output)", "F Ablation: E without percentile")]
     gains = {f"{p} vs {base[0]}": bootstrap_gain(y_te, predictors[p], predictors[base], rng)
              for p, base in comparisons}
     return rows, flags, gains
 
 
 def fit_deployed_risk(name, grade_col, levels, bad_levels, model, pairs):
-    """E refitted on every car with a follow-up, on the deployed expected-condition model."""
+    """F refitted on every car with a follow-up, on the deployed expected-condition model."""
     y = pairs[f"{grade_col}_next"].isin(bad_levels).astype(int).values
-    a, c = scores(model, levels, pairs, grade_col, bad_levels)
+    a, _ = scores(model, levels, pairs, grade_col, bad_levels)
     enc = OneHotEncoder(handle_unknown="ignore").fit(pairs[[grade_col]])
-    lr = LogisticRegression(max_iter=1000).fit(risk_design(pairs, grade_col, enc, a, c), y)
-    risk = lr.predict_proba(risk_design(pairs, grade_col, enc, a, c))[:, 1]
+    lr = LogisticRegression(max_iter=1000).fit(grade_risk_design(pairs, grade_col, enc, a), y)
+    risk = lr.predict_proba(grade_risk_design(pairs, grade_col, enc, a))[:, 1]
     return {"target": name, "bad_levels": list(bad_levels), "encoder": enc, "model": lr,
             "base_rate": float(y.mean()),
             "cuts": {k: float(np.quantile(risk, q)) for k, q in RISK_LEVELS.items()}}
@@ -269,6 +284,7 @@ def main():
     joblib.dump({
         "models": risk_models,
         "horizon": "next MOT test, 9-16 months later",
+        "features": "grade one-hot + logit(age/mileage risk)",   # F; see grade_risk_design
         "levels": RISK_LEVELS,
         "data": "UK MOT 2023 -> 2024 follow-up tests (DVSA), Toyota Yaris/Vitz/Corolla",
         # Held-out evidence shown with the result (overall target)
@@ -289,7 +305,7 @@ def main():
         + ", ".join(f"{lo}-{hi}" for lo, hi in zip(AGE_BANDS[:-1], AGE_BANDS[1:])) + " years (age signal removed).", "",
         "## Bootstrap 95% CI of the ROC-AUC gains", "",
         markdown(gain_table), "",
-        "## Flags: precision / recall / F1 (A and B flag the same number of cars as C)", "",
+        "## Flags: precision / recall / F1 (A and B flag the same number of cars as the app's C-tail flags)", "",
         markdown(flag_table, pct_cols=("flagged", "precision", "recall", "f1")), "",
     ]
     REPORT_FILE.write_text("\n".join(report), encoding="utf-8")
