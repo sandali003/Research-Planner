@@ -17,5 +17,6 @@ function Start-Model($title, $dir, $cmd) {
 Start-Model 'ML health :8001' $root '.\ml-service\.venv\Scripts\python -m uvicorn server:app --app-dir ml-service --port 8001'
 Start-Model 'Hidden fault :8002' "$root\vehical-hidden-fault-and-mitigation" '.\.venv\Scripts\python -m uvicorn api:app --port 8002'
 Start-Model 'Deterioration :8003' "$root\Component3-Deterioration" '.\.venv\Scripts\python -m uvicorn app:app --port 8003'
+Start-Model 'Value uplift :8004' "$root\component4" '.\.venv\Scripts\python -m uvicorn api:app --app-dir real --port 8004'
 
-Write-Host 'Models started on ports 8001, 8002, 8003.'
+Write-Host 'Models started on ports 8001, 8002, 8003, 8004.'

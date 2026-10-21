@@ -11,6 +11,7 @@ import readingRoutes from './routes/readings.routes.js';
 import assessmentRoutes from './routes/assessments.routes.js';
 import healthRoutes from './routes/health.routes.js';
 import hiddenFaultRoutes from './routes/hiddenFaults.routes.js';
+import valueUpliftRoutes from './routes/valueUplift.routes.js';
 
 export const app = express();
 
@@ -27,6 +28,7 @@ app.use('/health', healthRoutes);
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/vehicles', vehicleRoutes);
 app.use('/api/v1/vehicles', hiddenFaultRoutes);
+app.use('/api/v1/vehicles', valueUpliftRoutes);
 app.use('/api/v1/sessions', sessionRoutes);
 app.use('/api/v1/readings', readingRoutes);
 app.use('/api/v1/assessments', assessmentRoutes);

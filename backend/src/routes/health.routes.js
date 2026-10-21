@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { query } from '../config/db.js';
-import { deteriorationHealth, hiddenFaultHealth, mlHealth } from '../services/mlClient.service.js';
+import { deteriorationHealth, hiddenFaultHealth, mlHealth, valuationHealth } from '../services/mlClient.service.js';
 import { asyncHandler } from '../utils/httpError.js';
 
 const router = Router();
@@ -22,6 +22,10 @@ router.get('/hidden-fault', asyncHandler(async (_req, res) => {
 
 router.get('/deterioration', asyncHandler(async (_req, res) => {
   res.json(await deteriorationHealth());
+}));
+
+router.get('/valuation', asyncHandler(async (_req, res) => {
+  res.json(await valuationHealth());
 }));
 
 export default router;

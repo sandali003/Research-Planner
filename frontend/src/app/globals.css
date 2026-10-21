@@ -377,3 +377,13 @@ button.link-btn:hover:not(:disabled) { text-decoration: underline; }
   background: var(--text); color: #fff; font-size: 12px; line-height: 1.45; padding: 7px 10px; border-radius: 8px;
   white-space: nowrap; box-shadow: 0 4px 14px rgba(15, 30, 61, .25);
 }
+
+/* Component 4: value-uplift plan */
+.uplift-figures { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 10px; }
+.uplift-figures > div { background: var(--bg); border-radius: 8px; padding: 8px 10px; display: flex; flex-direction: column; }
+.uplift-figures span, .uplift-figures small { font-size: 12px; color: var(--muted); }
+.uplift-figures strong { font-size: 16px; }
+@media (max-width: 520px) { .uplift-figures { grid-template-columns: 1fr; } }
+.plain-list { list-style: none; padding: 0; margin: 0; }
+.plain-list li { padding: 8px 0; border-bottom: 1px solid var(--border); }
+.plain-list li:last-child { border-bottom: none; }

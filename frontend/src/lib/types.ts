@@ -279,3 +279,49 @@ export interface DeteriorationContext {
   typical_km_per_year: number;
   points: { age_years: number; odometer_km: number; inspection_score: number; status: DeteriorationStatus }[];
 }
+
+// ---- Component 4: Maintenance Recommendation and Condition-Based Valuation ----
+export type BuyerType = 'private' | 'dealer';
+
+export interface ValueUpliftInput {
+  budget_lkr?: number;
+  sell_within_days?: number;
+  buyer?: BuyerType;
+  mileage_km?: number;
+  fuel_type?: FuelType;
+  engine_cc?: number;
+}
+
+export interface UpliftAction {
+  id: string;
+  kind: 'safety' | 'value';
+  component: string;
+  action: string;
+  reason: string;
+  cost_lkr: number;
+  cost_range_lkr: [number, number];
+  lead_days: number;
+  value_gain_lkr: number;            // share of the plan's gain (Shapley)
+  gain_if_done_alone_lkr: number | null;
+  net_gain_lkr: number;
+  roi: number | null;
+}
+
+export interface ValueUplift {
+  market_value_lkr: number;
+  condition: { percentile: number; condition_score: number; typical_condition_score: number };
+  current_value_lkr: number;
+  plan: UpliftAction[];
+  plan_summary: {
+    cost_lkr: number; value_gain_lkr: number; value_gain_range_lkr: [number, number]; net_gain_lkr: number;
+    value_after_lkr: number; condition_score_after: number; percentile_after: number;
+  };
+  not_recommended: { id: string; component: string; action: string; cost_lkr: number; value_gain_lkr: number;
+    net_gain_lkr: number; why_not: string }[];
+  reliability_repairs: { id: string; component: string; action: string; reason: string; cost_lkr: number }[];
+  inputs: { budget_lkr: number | null; sell_within_days: number | null; buyer: BuyerType; buyer_factor: number };
+  notes: string[];
+  vehicle: { model: string; age_years: number; mileage_km: number; engine_cc: number | null; fuel_type: string | null };
+  latency_ms: number;
+  sources: { deterioration_id: number; deterioration_at: string; fault_check_at: string | null; fault_count: number };
+}
