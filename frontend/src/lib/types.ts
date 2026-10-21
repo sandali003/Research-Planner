@@ -181,6 +181,27 @@ export interface ContextualResult {
   effective_age_bound: 'within' | 'younger' | 'older';
   age_gap: number;             // effective age - real age
   status: DeteriorationStatus;
+  next_test_risk?: NextTestRisk | null;
+}
+
+export type RiskLevel = 'Low' | 'Elevated' | 'High';
+
+/** Second output: chance of a major defect at the next inspection (not the same as being worse than peers) */
+export interface NextTestRisk {
+  probability: number;
+  level: RiskLevel;
+  comparable_defect_rate: number;   // comparable cars with a major defect now
+  base_rate: number;                // all cars at the next test
+}
+
+export type DecisionKey = 'repair_now' | 'monitor' | 'plan' | 'routine';
+
+/** Peer status x next-test risk */
+export interface ContextualDecision {
+  key: DecisionKey;
+  label: string;
+  text: string;
+  risk_components: string[];
 }
 
 export interface ContextualComponent extends ContextualResult, ComponentCheck { mot_group: string }
@@ -200,6 +221,10 @@ export interface ContextualAssessment {
   /** Share of comparable cars in each overall grade, by age */
   curve?: ({ age_years: number } & Record<string, number>)[];
   thresholds?: Record<string, number>;
+  decision?: ContextualDecision | null;
+  risk_horizon?: string | null;
+  /** Held-out ROC-AUC per predictor (overall), and inside age bands */
+  evidence?: Record<string, { auc: number; auc_within_age: number }> | null;
   notes: string[];
 }
 
@@ -244,6 +269,7 @@ export interface DeteriorationListItem {
   expected_score: number; observed_score: number; deviation: number;
   worst_component: string; obd_source: 'request' | 'session' | null;
   effective_age?: number | null; age_gap?: number | null; worse_than_pct?: number | null;
+  next_test_risk?: number | null; decision?: DecisionKey | null;
 }
 
 export interface DeteriorationContext {

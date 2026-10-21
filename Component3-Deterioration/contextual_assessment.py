@@ -18,6 +18,12 @@ UK MOT data (train_expected_condition.py) and reports:
                        Normal        otherwise
                      The vehicle status is the worst of the overall result and
                      its components (one accelerated component flags the car).
+  next-test risk     second, separate output: probability of a major defect at
+                     the next inspection (9-16 months), from the grade, the
+                     percentile and the age/mileage risk (evaluate_predictive_validity.py).
+                     Being worse than peers is not the same as being about to
+                     fail, so the two are reported side by side and combined in
+                     a decision (repair now / monitor / plan / routine).
 
 Inspection states map to the DVSA defect categories used for the grades:
 Good -> no defect, Fair -> wear (advisory), Poor -> minor defect,
@@ -35,6 +41,7 @@ import pandas as pd
 from mot_condition import COMPONENT_GRADES, OVERALL_GRADES, PLATFORM
 
 MODEL_FILE = Path(__file__).resolve().parent / "models" / "expected_condition_model.joblib"
+RISK_MODEL_FILE = MODEL_FILE.with_name("next_test_risk_model.joblib")
 
 STATE_TO_GRADE = {"Good": 4, "Fair": 3, "Poor": 2, "Critical": 1}
 COMPONENT_GROUP = {
@@ -58,6 +65,20 @@ CURVE_AGES = np.arange(1, 26)
 
 _bundle = joblib.load(MODEL_FILE)
 MODELS = _bundle["models"]
+# Optional until evaluate_predictive_validity.py has been run
+RISK = joblib.load(RISK_MODEL_FILE) if RISK_MODEL_FILE.exists() else None
+
+# Peer status x next-test risk -> what to do
+DECISIONS = {
+    (True, True): ("repair_now", "Repair now",
+                   "Worse than comparable cars and likely to have a major defect at the next inspection."),
+    (True, False): ("monitor", "Monitor",
+                    "Wearing faster than comparable cars, but a major defect is not likely yet. Service early and re-check."),
+    (False, True): ("plan", "Plan maintenance",
+                    "Normal for its age and mileage, but cars like this often fail the next inspection. "
+                    "Plan age-related maintenance."),
+    (False, False): ("routine", "Routine", "Normal for its age and mileage and a low risk at the next inspection."),
+}
 
 
 def _status(percentile):
@@ -92,6 +113,31 @@ def _effective_age(model, levels, grade, platform, fuel, engine_cc, km_per_year)
     return float(a0 + (0.5 - p0) / max(p1 - p0, 1e-9) * (a1 - a0)), "within"
 
 
+def _risk_level(probability, cuts):
+    if probability >= cuts["High"]:
+        return "High"
+    if probability >= cuts["Elevated"]:
+        return "Elevated"
+    return "Low"
+
+
+def _next_test_risk(target, grade, levels, probs, percentile):
+    """Probability of a major defect at the next inspection, or None without a risk model."""
+    if RISK is None or target not in RISK["models"]:
+        return None
+    m = RISK["models"][target]
+    peer_risk = float(np.clip(probs[0, [levels.index(k) for k in m["bad_levels"]]].sum(), 1e-4, 1 - 1e-4))
+    x = np.hstack([m["encoder"].transform(pd.DataFrame({target: [grade]})).toarray(),
+                   [[np.log(1 - percentile + 1e-3), np.log(peer_risk / (1 - peer_risk))]]])
+    probability = float(m["model"].predict_proba(x)[0, 1])
+    return {
+        "probability": round(probability, 3),
+        "level": _risk_level(probability, m["cuts"]),
+        "comparable_defect_rate": round(peer_risk, 3),   # comparable cars with a major defect now
+        "base_rate": round(m["base_rate"], 3),           # all cars at the next test
+    }
+
+
 def _assess(target, grade, grade_names, platform, fuel, engine_cc, age, km, km_per_year):
     model = MODELS[target]
     levels = sorted(grade_names)
@@ -109,6 +155,7 @@ def _assess(target, grade, grade_names, platform, fuel, engine_cc, age, km, km_p
         "effective_age_bound": bound,
         "age_gap": round(effective - age, 1),
         "status": _status(percentile),
+        "next_test_risk": _next_test_risk(target, grade, levels, probs, percentile),
     }
 
 
@@ -168,6 +215,19 @@ def assess_contextual(vehicle_model, age_years, odometer_km, components, fuel_ty
     worst = min(results, key=lambda r: r["percentile"])
     status = max([overall["status"]] + [r["status"] for r in results], key=STATUS_ORDER.index)
 
+    # Two outputs: peer status (percentile) and next-test risk; the car is at risk when
+    # the whole vehicle or any inspected component is at elevated or high risk
+    risks = [r["next_test_risk"] for r in [overall] + results if r["next_test_risk"]]
+    decision = None
+    if risks:
+        at_risk = any(r["level"] != "Low" for r in risks)
+        key, label, text = DECISIONS[(status != "Normal", at_risk)]
+        decision = {"key": key, "label": label, "text": text,
+                    "risk_components": [r["component"] for r in results
+                                        if r["next_test_risk"] and r["next_test_risk"]["level"] != "Low"]}
+    else:
+        notes.append("Next-inspection risk is not available yet (run evaluate_predictive_validity.py).")
+
     return {
         "available": True,
         "method": "Probabilistic age- and mileage-adjusted baseline (UK MOT 2023, Toyota)",
@@ -182,5 +242,8 @@ def assess_contextual(vehicle_model, age_years, odometer_km, components, fuel_ty
         "components": sorted(results, key=lambda r: r["percentile"]),
         "curve": condition_curve(platform, fuel, engine_cc, km_per_year),
         "thresholds": {"High": HIGH_PERCENTILE, "Slightly high": SLIGHT_PERCENTILE},
+        "decision": decision,
+        "risk_horizon": RISK["horizon"] if RISK else None,
+        "evidence": RISK["evidence"] if RISK else None,
         "notes": notes,
     }

@@ -3,7 +3,8 @@
 import { useEffect, useRef, useState, type MouseEvent, type ReactNode } from 'react';
 import { fmt, fmtTime } from '@/lib/format';
 import type {
-  ContextualAssessment, ContextualResult, DeteriorationAssessment, DeteriorationComponent, DeteriorationContext,
+  ContextualAssessment, ContextualDecision, ContextualResult, DecisionKey, DeteriorationAssessment, DeteriorationComponent,
+  DeteriorationContext, NextTestRisk, RiskLevel,
   DeteriorationStatus,
 } from '@/lib/types';
 
@@ -225,6 +226,78 @@ function ConditionByAgeChart({ curve, age, effective, status }: {
   );
 }
 
+/* ---------- second output: risk at the next inspection ---------- */
+const RISK_CLASS: Record<RiskLevel, string> = { Low: 'sev-none', Elevated: 'sev-low', High: 'sev-high' };
+const pct = (v: number) => `${fmt(v * 100, 0)}%`;
+
+function RiskPill({ risk }: { risk: NextTestRisk }) {
+  return <span className={`sev det-pill ${RISK_CLASS[risk.level]}`}>{risk.level} risk</span>;
+}
+
+const DECISION_CLASS: Record<DecisionKey, string> = {
+  repair_now: 'sev-high', monitor: 'sev-low', plan: 'sev-low', routine: 'sev-none',
+};
+
+/** Peer status (rows) x next-test risk (columns); the car's cell is highlighted. */
+function DecisionMatrix({ decision }: { decision: ContextualDecision }) {
+  const cells: { key: DecisionKey; label: string; hint: string }[][] = [
+    [{ key: 'monitor', label: 'Monitor', hint: 'early wear, not failing yet' },
+      { key: 'repair_now', label: 'Repair now', hint: 'worn and likely to fail' }],
+    [{ key: 'routine', label: 'Routine', hint: 'normal and low risk' },
+      { key: 'plan', label: 'Plan maintenance', hint: 'normal for its age, but old cars fail' }],
+  ];
+  return (
+    <div className="decision-matrix" role="table" aria-label="Decision from peer comparison and next-inspection risk">
+      <span />
+      <span className="dm-head" role="columnheader">Low risk next inspection</span>
+      <span className="dm-head" role="columnheader">Elevated / high risk</span>
+      {cells.map((row, i) => (
+        <div key={i} role="row" style={{ display: 'contents' }}>
+          <span className="dm-head dm-row" role="rowheader">{i === 0 ? 'Worse than comparable cars' : 'Normal for age & mileage'}</span>
+          {row.map((c) => (
+            <div key={c.key} role="cell" aria-current={c.key === decision.key ? 'true' : undefined}
+              className={`dm-cell ${c.key === decision.key ? `on ${DECISION_CLASS[c.key]}` : ''}`}>
+              <strong>{c.label}</strong><small>{c.hint}</small>
+            </div>
+          ))}
+        </div>
+      ))}
+    </div>
+  );
+}
+
+const EVIDENCE_ROWS: [string, string][] = [
+  ['A Age + mileage only', 'Age + mileage only'],
+  ['B Current condition only', 'Current condition only'],
+  ['C Proposed (contextual)', 'Peer percentile (output 1)'],
+  ['C-tail Tail percentile', 'Peer percentile, tail (same or worse)'],
+  ['E Combined (dual output)', 'Combined (output 2)'],
+];
+
+/** Held-out evidence that "worse than peers" and "about to fail" are different signals. */
+function Evidence({ evidence }: { evidence: NonNullable<ContextualAssessment['evidence']> }) {
+  const rows = EVIDENCE_ROWS.filter(([k]) => evidence[k]);
+  if (!rows.length) return null;
+  return (
+    <details className="det-evidence">
+      <summary>Why two outputs?</summary>
+      <p className="muted small">
+        Tested on held-out UK cars against their next MOT test. Being worse than comparable cars and failing the next
+        inspection are different signals: age alone predicts failure well, but says nothing about cars of the same age.
+        Inside the same age band, the peer percentile still separates cars.
+      </p>
+      <table>
+        <thead><tr><th>Predictor of a major defect at the next test</th><th>ROC-AUC</th><th>Within same age band</th></tr></thead>
+        <tbody>
+          {rows.map(([k, label]) => (
+            <tr key={k}><td>{label}</td><td>{fmt(evidence[k].auc, 3)}</td><td>{fmt(evidence[k].auc_within_age, 3)}</td></tr>
+          ))}
+        </tbody>
+      </table>
+    </details>
+  );
+}
+
 function ContextualPanel({ a }: { a: DeteriorationAssessment }) {
   const c = a.contextual;
   if (!c) return null;
@@ -238,25 +311,70 @@ function ContextualPanel({ a }: { a: DeteriorationAssessment }) {
   }
   const o = c.overall;
   const status = c.status ?? o.status;
+  const risk = o.next_test_risk;
   const eff = o.effective_age_bound === 'within'
     ? `a typical ${fmt(o.effective_age)}-year-old`
     : o.effective_age_bound === 'older' ? `a car older than ${MAX_AGE} years` : 'an almost new car';
+  const hasRisk = c.components.some((r) => r.next_test_risk);
   return (
-    <section className={`card status-card ctx-card ${STATUS_CLASS[status]}`} style={{ marginTop: 16 }}>
+    <section className={`card status-card ctx-card ${c.decision ? DECISION_CLASS[c.decision.key] : STATUS_CLASS[status]}`}>
       <div className="row spread">
         <h2 style={{ margin: 0 }}>Compared with real vehicles of the same age &amp; mileage</h2>
-        <DeteriorationPill status={status} />
+        <span className="muted small">{fmtTime(a.created_at)}{a.latency_ms != null && ` · ${a.latency_ms} ms`}</span>
       </div>
-      <p className="det-verdict">
-        This {fmt(a.age_years)}-year-old {a.vehicle_model} is in the condition of {eff} {c.platform} driven{' '}
-        {c.km_per_year?.toLocaleString()} km/year, worse than <strong>{o.worse_than_pct}%</strong> of comparable cars.
-      </p>
-      <div className="det-tiles">
-        <div><span>Real age</span><strong>{fmt(a.age_years)}</strong><small>years · {a.odometer_km.toLocaleString()} km</small></div>
-        <div><span>Condition-equivalent age</span><strong>{effAge(o)}</strong><small>years, where this condition is typical</small></div>
-        <div><span>Age gap</span><strong className={o.age_gap > 0 ? 'ctx-worse' : 'ctx-better'}>{ageGap(o)}</strong><small>years older (+) or younger (−)</small></div>
-        <div><span>Comparable cars in better condition</span><strong>{o.worse_than_pct}%</strong><small>overall: {o.observed_label}</small></div>
+
+      {c.decision && (
+        <div className={`decision-banner ${DECISION_CLASS[c.decision.key]}`}>
+          <strong>{c.decision.label}</strong>
+          <span>{c.decision.text}</span>
+        </div>
+      )}
+
+      <div className="dual-out">
+        <div className="out-box">
+          <div className="row spread">
+            <h3>1 · Condition vs comparable cars</h3>
+            <DeteriorationPill status={status} />
+          </div>
+          <p className="det-verdict">
+            This {fmt(a.age_years)}-year-old {a.vehicle_model} is in the condition of {eff} {c.platform} driven{' '}
+            {c.km_per_year?.toLocaleString()} km/year, worse than <strong>{o.worse_than_pct}%</strong> of comparable cars.
+          </p>
+          <div className="det-tiles det-tiles-3">
+            <div><span>Condition-equivalent age</span><strong>{effAge(o)}</strong><small>real age {fmt(a.age_years)} years</small></div>
+            <div><span>Age gap</span><strong className={o.age_gap > 0 ? 'ctx-worse' : 'ctx-better'}>{ageGap(o)}</strong><small>years older (+) or younger (−)</small></div>
+            <div><span>Comparable cars in better condition</span><strong>{o.worse_than_pct}%</strong><small>overall: {o.observed_label}</small></div>
+          </div>
+        </div>
+
+        <div className="out-box">
+          <div className="row spread">
+            <h3>2 · Risk at the next inspection</h3>
+            {risk && <RiskPill risk={risk} />}
+          </div>
+          {risk ? (
+            <>
+              <p className="det-verdict">
+                <strong>{pct(risk.probability)}</strong> chance of a major defect at the {c.risk_horizon ?? 'next inspection'}.
+              </p>
+              <div className="det-tiles det-tiles-3">
+                <div><span>This vehicle</span><strong>{pct(risk.probability)}</strong><small>major defect, next test</small></div>
+                <div><span>Comparable cars now</span><strong>{pct(risk.comparable_defect_rate)}</strong><small>same age &amp; mileage, major defect</small></div>
+                <div><span>All cars</span><strong>{pct(risk.base_rate)}</strong><small>major defect, next test</small></div>
+              </div>
+            </>
+          ) : (
+            <p className="muted small">Not available yet: the next-inspection risk model has not been trained.</p>
+          )}
+        </div>
       </div>
+
+      {c.decision && (
+        <>
+          <h3>What to do</h3>
+          <DecisionMatrix decision={c.decision} />
+        </>
+      )}
 
       <div className="row spread" style={{ marginTop: 16 }}>
         <h3 style={{ margin: 0 }}>Condition of comparable {c.platform}s by age</h3>
@@ -273,49 +391,90 @@ function ContextualPanel({ a }: { a: DeteriorationAssessment }) {
       <h3>Components</h3>
       <div style={{ overflowX: 'auto' }}>
         <table>
-          <thead><tr><th>Component</th><th>Reported</th><th>MOT grade</th><th>Better-condition cars</th><th>Condition age</th><th>Gap</th><th>Status</th></tr></thead>
+          <thead>
+            <tr>
+              <th>Component</th><th>Reported</th><th>MOT grade</th><th>Better-condition cars</th><th>Condition age</th>
+              <th>Gap</th><th>Vs peers</th>{hasRisk && <th>Next-test risk</th>}
+            </tr>
+          </thead>
           <tbody>
             {c.components.map((r) => (
               <tr key={r.component}>
                 <td>{prettyComponent(r.component)}</td><td>{r.component_state}</td><td>{r.observed_label}</td>
                 <td>{r.worse_than_pct}%</td><td>{effAge(r)}</td><td>{ageGap(r)}</td>
                 <td><DeteriorationPill status={r.status} /></td>
+                {hasRisk && (
+                  <td>{r.next_test_risk ? <>{pct(r.next_test_risk.probability)} <RiskPill risk={r.next_test_risk} /></> : '—'}</td>
+                )}
               </tr>
             ))}
           </tbody>
         </table>
       </div>
       <p className="muted small">
-        High = worst 10% of comparable cars, Slightly high = worst 10–25%. {c.method}.
+        Vs peers: High = worst 10% of comparable cars, Slightly high = worst 10–25%.
+        {hasRisk && ' Next-test risk: High = top 10% of cars, Elevated = top 10–25%.'} {c.method}.
       </p>
+      {c.evidence && <Evidence evidence={c.evidence} />}
       {c.notes.map((n) => <p key={n} className="notice info small">{n}</p>)}
     </section>
   );
 }
 
 function verdict(a: DeteriorationAssessment) {
-  const ctxStatus = Object.fromEntries((a.contextual?.available ? a.contextual.components : []).map((c) => [c.component, c.status]));
-  const flagged = a.components.filter((c) => (ctxStatus[c.component] ?? c.status) !== 'Normal')
-    .map((c) => prettyComponent(c.component));
+  const flagged = a.components.filter((c) => c.status !== 'Normal').map((c) => prettyComponent(c.component));
   const veh = `${fmt(a.age_years)}-year-old ${a.vehicle_model} with ${a.odometer_km.toLocaleString()} km`;
   if (!flagged.length) return `This ${veh} is deteriorating as expected for its age and mileage.`;
   const list = flagged.length > 2 ? `${flagged.slice(0, 2).join(', ')} and ${flagged.length - 2} more` : flagged.join(' and ');
   return `${list} ${flagged.length > 1 ? 'are' : 'is'} deteriorating faster than expected for a ${veh}.`;
 }
 
+function ObdCard({ a }: { a: DeteriorationAssessment }) {
+  return (
+    <section className="card">
+      <h2>OBD-II evidence</h2>
+      {a.obd?.reading ? (
+        <>
+          <p style={{ marginTop: 0 }}>
+            {a.obd.anomaly
+              ? <span className="sev sev-high">Unusual engine reading</span>
+              : <span className="sev sev-none">Normal engine reading</span>}
+            <span className="muted small"> · {a.obd_source === 'session' ? 'from the vehicle’s IoT device' : 'entered manually'}</span>
+          </p>
+          <table className="kv">
+            <tbody>
+              <tr><th>Engine RPM</th><td>{fmt(a.obd.reading.engine_rpm, 0)}</td></tr>
+              <tr><th>Engine load</th><td>{fmt(a.obd.reading.engine_load)} %</td></tr>
+              <tr><th>Coolant temp</th><td>{fmt(a.obd.reading.coolant_temp)} °C</td></tr>
+              <tr><th>Anomaly score</th><td>{fmt(a.obd.anomaly_score, 3)}</td></tr>
+            </tbody>
+          </table>
+          <p className="muted small">Supporting evidence; not part of the deviation score yet.</p>
+        </>
+      ) : (
+        <p className="muted small" style={{ margin: 0 }}>
+          No OBD-II reading was available. Connect the vehicle&apos;s device or enter a reading manually.
+        </p>
+      )}
+    </section>
+  );
+}
+
 // Median km/year in the training data; used until the chart context has loaded
 const DEFAULT_TYPICAL_KM_PER_YEAR = 10888;
 
-export function DeteriorationReport({ a, ctx }: { a: DeteriorationAssessment; ctx: DeteriorationContext | null }) {
+/** Inspection-data model (synthetic training data): covers every component, including those the MOT does not inspect. */
+function InspectionModel({ a, ctx, withObd }: { a: DeteriorationAssessment; ctx: DeteriorationContext | null; withObd: boolean }) {
   const [showTable, setShowTable] = useState(false);
   const typicalKmPerYear = ctx?.typical_km_per_year ?? DEFAULT_TYPICAL_KM_PER_YEAR;
   const flagged = a.components.filter((c) => c.status !== 'Normal');
   const highUsage = (a.km_per_year ?? 0) > 1.3 * typicalKmPerYear;
+  const status = a.legacy_status ?? a.status;
   return (
-    <div className="det-report">
-      <section className={`card status-card ${STATUS_CLASS[a.status]}`}>
+    <>
+      <section className={`card status-card ${STATUS_CLASS[status]}`}>
         <div className="row spread">
-          <DeteriorationPill status={a.status} long />
+          <DeteriorationPill status={status} long />
           <span className="muted small">{fmtTime(a.created_at)}{a.latency_ms != null && ` · ${a.latency_ms} ms`}</span>
         </div>
         <p className="det-verdict">{verdict(a)}</p>
@@ -328,10 +487,7 @@ export function DeteriorationReport({ a, ctx }: { a: DeteriorationAssessment; ct
         {a.warnings.map((w) => <p key={w} className="notice det-notice">{w}</p>)}
       </section>
 
-      <ContextualPanel a={a} />
-
-      <h2 className="section-title">Inspection-data model (all components)</h2>
-      <div className="fault-layout">
+      <div className="fault-layout" style={{ marginTop: 16 }}>
         <section className="card">
           <div className="row spread">
             <h2>Component-wise deterioration</h2>
@@ -383,33 +539,7 @@ export function DeteriorationReport({ a, ctx }: { a: DeteriorationAssessment; ct
               </p>
             )}
           </section>
-
-          <section className="card">
-            <h2>OBD-II evidence</h2>
-            {a.obd?.reading ? (
-              <>
-                <p style={{ marginTop: 0 }}>
-                  {a.obd.anomaly
-                    ? <span className="sev sev-high">Unusual engine reading</span>
-                    : <span className="sev sev-none">Normal engine reading</span>}
-                  <span className="muted small"> · {a.obd_source === 'session' ? 'from the vehicle’s IoT device' : 'entered manually'}</span>
-                </p>
-                <table className="kv">
-                  <tbody>
-                    <tr><th>Engine RPM</th><td>{fmt(a.obd.reading.engine_rpm, 0)}</td></tr>
-                    <tr><th>Engine load</th><td>{fmt(a.obd.reading.engine_load)} %</td></tr>
-                    <tr><th>Coolant temp</th><td>{fmt(a.obd.reading.coolant_temp)} °C</td></tr>
-                    <tr><th>Anomaly score</th><td>{fmt(a.obd.anomaly_score, 3)}</td></tr>
-                  </tbody>
-                </table>
-                <p className="muted small">Supporting evidence; not part of the deviation score yet.</p>
-              </>
-            ) : (
-              <p className="muted small" style={{ margin: 0 }}>
-                No OBD-II reading was available. Connect the vehicle&apos;s device or enter a reading manually.
-              </p>
-            )}
-          </section>
+          {withObd && <ObdCard a={a} />}
         </div>
       </div>
 
@@ -424,6 +554,33 @@ export function DeteriorationReport({ a, ctx }: { a: DeteriorationAssessment; ct
         </div>
         {ctx ? <AgeChart a={a} ctx={ctx} /> : <p className="muted small">Loading chart…</p>}
       </section>
+    </>
+  );
+}
+
+export function DeteriorationReport({ a, ctx }: { a: DeteriorationAssessment; ctx: DeteriorationContext | null }) {
+  // The real-data assessment (two outputs) leads when it covers the vehicle; the
+  // synthetic inspection-data model stays available below for every component.
+  if (!a.contextual?.available) {
+    return (
+      <div className="det-report">
+        <InspectionModel a={a} ctx={ctx} withObd />
+        <ContextualPanel a={a} />
+      </div>
+    );
+  }
+  return (
+    <div className="det-report">
+      <ContextualPanel a={a} />
+      {a.warnings.map((w) => <p key={w} className="notice det-notice">{w}</p>)}
+      <div style={{ marginTop: 16 }}><ObdCard a={a} /></div>
+      <details className="det-legacy">
+        <summary>
+          Inspection-data model, all components
+          <span className="muted small"> · synthetic training data, also covers components the MOT does not inspect</span>
+        </summary>
+        <InspectionModel a={a} ctx={ctx} withObd={false} />
+      </details>
     </div>
   );
 }

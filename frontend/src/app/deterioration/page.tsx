@@ -7,9 +7,13 @@ import { DeteriorationPill, DeteriorationReport, prettyComponent } from '@/compo
 import { api, ApiError } from '@/lib/api';
 import { fmt, fmtTime } from '@/lib/format';
 import type {
-  ComponentCheck, ComponentState, DeteriorationAssessment, DeteriorationContext, DeteriorationInput,
+  ComponentCheck, ComponentState, DecisionKey, DeteriorationAssessment, DeteriorationContext, DeteriorationInput,
   DeteriorationListItem, FuelType, Vehicle,
 } from '@/lib/types';
+
+const DECISION_LABEL: Record<DecisionKey, string> = {
+  repair_now: 'Repair now', monitor: 'Monitor', plan: 'Plan maintenance', routine: 'Routine',
+};
 
 // Components and states the Component 3 models were trained on
 const COMPONENTS = ['Battery', 'Brakes', 'Cooling_System', 'Engine', 'Exhaust_System', 'Steering', 'Suspension', 'Transmission', 'Tyres'];
@@ -264,7 +268,7 @@ function DeteriorationView() {
             {history.length === 0 ? <p className="muted" style={{ margin: 0 }}>No assessments yet.</p> : (
               <div style={{ overflowX: 'auto' }}>
                 <table>
-                  <thead><tr><th>Time</th><th>Odometer</th><th>Worst component</th><th>Condition age</th><th>Better-condition cars</th><th>Status</th><th>OBD</th><th /></tr></thead>
+                  <thead><tr><th>Time</th><th>Odometer</th><th>Worst component</th><th>Condition age</th><th>Better-condition cars</th><th>Vs peers</th><th>Next-test risk</th><th>Decision</th><th>OBD</th><th /></tr></thead>
                   <tbody>
                     {history.map((h) => (
                       <tr key={h.id} className={result?.id === h.id ? 'selected' : undefined}>
@@ -276,6 +280,8 @@ function DeteriorationView() {
                           : '—'}</td>
                         <td>{h.worse_than_pct != null ? `${h.worse_than_pct}%` : '—'}</td>
                         <td><DeteriorationPill status={h.status} /></td>
+                        <td>{h.next_test_risk != null ? `${fmt(h.next_test_risk * 100, 0)}%` : '—'}</td>
+                        <td>{h.decision ? DECISION_LABEL[h.decision] : '—'}</td>
                         <td>{h.obd_source === 'session' ? 'IoT' : h.obd_source === 'request' ? 'Manual' : '—'}</td>
                         <td><button type="button" className="link-btn" onClick={() => openAssessment(h.id)}>View</button></td>
                       </tr>
