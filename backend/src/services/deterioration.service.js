@@ -57,6 +57,8 @@ export async function runDeterioration(vehicle, input) {
     odometer_km: input.odometer_km,
     components: input.components,
     ...(obd && { obd }),
+    ...(input.fuel_type && { fuel_type: input.fuel_type }),
+    ...(input.engine_cc && { engine_cc: input.engine_cc }),
   };
 
   const started = Date.now();
@@ -77,8 +79,8 @@ export async function runDeterioration(vehicle, input) {
       `INSERT INTO deterioration_assessments
          (vehicle_id, vehicle_model, age_years, odometer_km, component, component_state,
           expected_score, observed_score, deviation, status, reasons, model_version, latency_ms,
-          km_per_year, warnings, obd, obd_source)
-       VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17)
+          km_per_year, warnings, obd, obd_source, contextual, legacy_status, fuel_type, engine_cc)
+       VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21)
        RETURNING *`,
       [
         vehicle.id, result.vehicle_model_used, request.age_years, request.odometer_km,
@@ -87,6 +89,8 @@ export async function runDeterioration(vehicle, input) {
         JSON.stringify(worst.reasons ?? []), health?.model_version ?? null, latencyMs,
         result.km_per_year, JSON.stringify(result.warnings ?? []),
         obd ? JSON.stringify({ reading: obd, ...result.obd }) : null, obdSource,
+        result.contextual ? JSON.stringify(result.contextual) : null, result.legacy_status ?? null,
+        request.fuel_type ?? null, request.engine_cc ?? null,
       ],
     );
     const assessment = rows[0];
@@ -133,13 +137,22 @@ export async function getDeterioration(where, params) {
 /** Compact result for other components (e.g. Component 2 uses high-deterioration components as input). */
 export function deteriorationSummary(a) {
   if (!a) return null;
+  const ctx = a.contextual?.available ? a.contextual : null;
+  // Real-data statuses where the contextual assessment covers a component, the
+  // inspection-data model's status for the others
+  const contextualStatus = Object.fromEntries((ctx?.components ?? []).map((c) => [c.component, c.status]));
   return {
     assessed_at: a.created_at,
     status: a.status,
     expected_score: a.expected_score,
     observed_score: a.observed_score,
-    worst_component: a.component,
+    worst_component: ctx?.worst_component ?? a.component,
     worst_deviation: a.deviation,
-    high_deterioration_components: a.components.filter((c) => c.status !== 'Normal').map((c) => c.component),
+    effective_age: ctx?.overall.effective_age ?? null,
+    age_gap: ctx?.overall.age_gap ?? null,
+    worse_than_pct: ctx?.overall.worse_than_pct ?? null,
+    high_deterioration_components: a.components
+      .filter((c) => (contextualStatus[c.component] ?? c.status) !== 'Normal')
+      .map((c) => c.component),
   };
 }

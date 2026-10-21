@@ -69,15 +69,27 @@ function IssueCard({ issue }: { issue: FaultIssue }) {
       <div className="issue-meta">
         {issue.sources.map((s) => <span key={s} className="chip">{s}</span>)}
         {issue.confidence != null && <span className="chip">Confidence {(issue.confidence * 100).toFixed(0)}%</span>}
+        {issue.reliability?.level === 'Low' && <span className="chip chip-warn">Low reliability</span>}
         <span className="chip chip-time">Act: {issue.timeframe}</span>
       </div>
       <p>{issue.message}</p>
       {issue.reasons.length > 0 && (
         <p className="muted small">Why: {issue.reasons.join(' · ')}</p>
       )}
-      {mainCauses.length > 0 && (
+      {issue.likely_cause && (
         <p className="small main-cause">
-          Main cause (SHAP): {mainCauses.map((f) => `${f.label} ${fmt(f.value, 2)}`).join(', ')}
+          <strong>Likely cause (AI explanation): {issue.likely_cause.label}</strong>
+          {' '}({(issue.likely_cause.share * 100).toFixed(0)}% of the {issue.likely_cause.model === 'anomaly' ? 'anomaly' : 'prediction'})
+        </p>
+      )}
+      {issue.counterfactual && (
+        <p className="small main-cause">
+          <strong>What needs to change (counterfactual):</strong> {issue.counterfactual.text}
+        </p>
+      )}
+      {mainCauses.length > 0 && (
+        <p className="small muted">
+          Main readings (SHAP): {mainCauses.map((f) => `${f.label} ${fmt(f.value, 2)}`).join(', ')}
         </p>
       )}
       <h4>Immediate actions</h4>

@@ -20,6 +20,7 @@ node_modules/
 out/
 
 # Env & secrets
+research ardunio iot/**/secrets.h
 .env
 .env.*
 !.env.example

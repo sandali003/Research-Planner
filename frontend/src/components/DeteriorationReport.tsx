@@ -3,7 +3,8 @@
 import { useEffect, useRef, useState, type MouseEvent, type ReactNode } from 'react';
 import { fmt, fmtTime } from '@/lib/format';
 import type {
-  DeteriorationAssessment, DeteriorationComponent, DeteriorationContext, DeteriorationStatus,
+  ContextualAssessment, ContextualResult, DeteriorationAssessment, DeteriorationComponent, DeteriorationContext,
+  DeteriorationStatus,
 } from '@/lib/types';
 
 export const STATUS_CLASS: Record<DeteriorationStatus, string> = {
@@ -154,8 +155,148 @@ function AgeChart({ a, ctx }: { a: DeteriorationAssessment; ctx: DeteriorationCo
   );
 }
 
+/* ---------- real-data contextual assessment (Component 3, step 3) ---------- */
+const GRADES = ['Dangerous', 'Major', 'Minor', 'Wear', 'Good'] as const;   // worst first, stacked from the bottom
+const GRADE_CLASS: Record<(typeof GRADES)[number], string> = {
+  Dangerous: 'g-danger', Major: 'g-major', Minor: 'g-minor', Wear: 'g-wear', Good: 'g-good',
+};
+const MAX_AGE = 25;
+
+/** Condition-equivalent age as text; outside the real data it is a bound. */
+function effAge(r: ContextualResult) {
+  if (r.effective_age_bound === 'younger') return '< 1';
+  if (r.effective_age_bound === 'older') return `> ${MAX_AGE}`;
+  return fmt(r.effective_age);
+}
+function ageGap(r: ContextualResult) {
+  if (r.effective_age_bound === 'older') return `≥ ${signed(r.age_gap)}`;
+  if (r.effective_age_bound === 'younger') return `≤ ${signed(r.age_gap)}`;
+  return signed(r.age_gap);
+}
+
+/** Share of comparable cars in each condition grade by age, with this car's real and effective age. */
+function ConditionByAgeChart({ curve, age, effective, status }: {
+  curve: NonNullable<ContextualAssessment['curve']>; age: number; effective: number; status: DeteriorationStatus;
+}) {
+  const { show, hide, node } = useTip();
+  const [ref, W] = useWidth(640);
+  const H = W < 480 ? 230 : 280, L = 40, R = 14, T = 10, B = 36;
+  const x = (v: number) => L + ((v - 1) / (MAX_AGE - 1)) * (W - L - R);
+  const y = (v: number) => T + (1 - v) * (H - T - B);
+  const stacks = curve.map((p) => {
+    let base = 0;
+    return GRADES.map((g) => { const lo = base; base += p[g] ?? 0; return [lo, base] as const; });
+  });
+  const band = (gi: number) => {
+    const upper = curve.map((p, i) => `${x(p.age_years).toFixed(1)},${y(stacks[i][gi][1]).toFixed(1)}`);
+    const lower = curve.map((p, i) => `${x(p.age_years).toFixed(1)},${y(stacks[i][gi][0]).toFixed(1)}`).reverse();
+    return `M${upper.join('L')}L${lower.join('L')}Z`;
+  };
+  const step = W < 480 ? 6 : 4;
+  const ticks = Array.from({ length: Math.floor((MAX_AGE - 1) / step) + 1 }, (_, i) => 1 + i * step);
+  const ax = x(Math.min(Math.max(age, 1), MAX_AGE)), ex = x(Math.min(Math.max(effective, 1), MAX_AGE));
+  return (
+    <div className="chart-wrap" ref={ref}>
+      <svg className="det-chart ctx-chart" viewBox={`0 0 ${W} ${H}`} role="img"
+        aria-label="Share of comparable cars in each condition grade by age, with this vehicle's real and condition-equivalent age">
+        {GRADES.map((g, gi) => <path key={g} d={band(gi)} className={GRADE_CLASS[g]} />)}
+        {[0, 0.25, 0.5, 0.75, 1].map((t) => (
+          <g key={t}>
+            <line className="grid" x1={L} x2={W - R} y1={y(t)} y2={y(t)} />
+            <text x={L - 6} y={y(t) + 4} textAnchor="end">{t * 100}%</text>
+          </g>
+        ))}
+        {ticks.map((t) => <text key={t} x={x(t)} y={H - 18} textAnchor="middle">{t}</text>)}
+        <text x={(L + W - R) / 2} y={H - 2} textAnchor="middle">Vehicle age (years)</text>
+        {curve.map((p) => (
+          <rect key={p.age_years} x={x(p.age_years) - (W - L - R) / (2 * (MAX_AGE - 1))} y={T}
+            width={(W - L - R) / (MAX_AGE - 1)} height={H - T - B} fill="transparent"
+            onMouseMove={show(<><b>Age {p.age_years} yrs</b><br />
+              {[...GRADES].reverse().map((g) => <span key={g}>{g} {fmt((p[g] ?? 0) * 100, 0)}%<br /></span>)}</>)}
+            onMouseLeave={hide} />
+        ))}
+        <line className="age-real" x1={ax} x2={ax} y1={T} y2={H - B} />
+        <line className={`age-eff dot-${STATUS_CLASS[status]}`} x1={ex} x2={ex} y1={T} y2={H - B} />
+        <text className="lbl halo" x={ax + (ax > ex ? 6 : -6)} y={T + 14} textAnchor={ax > ex ? 'start' : 'end'}>Real age</text>
+        <text className="lbl halo" x={ex + (ex >= ax ? 6 : -6)} y={T + 30} textAnchor={ex >= ax ? 'start' : 'end'}>Condition age</text>
+      </svg>
+      {node}
+    </div>
+  );
+}
+
+function ContextualPanel({ a }: { a: DeteriorationAssessment }) {
+  const c = a.contextual;
+  if (!c) return null;
+  if (!c.available || !c.overall) {
+    return c.notes.length ? (
+      <section className="card" style={{ marginTop: 16 }}>
+        <h2>Compared with real vehicles</h2>
+        {c.notes.map((n) => <p key={n} className="notice info small">{n}</p>)}
+      </section>
+    ) : null;
+  }
+  const o = c.overall;
+  const status = c.status ?? o.status;
+  const eff = o.effective_age_bound === 'within'
+    ? `a typical ${fmt(o.effective_age)}-year-old`
+    : o.effective_age_bound === 'older' ? `a car older than ${MAX_AGE} years` : 'an almost new car';
+  return (
+    <section className={`card status-card ctx-card ${STATUS_CLASS[status]}`} style={{ marginTop: 16 }}>
+      <div className="row spread">
+        <h2 style={{ margin: 0 }}>Compared with real vehicles of the same age &amp; mileage</h2>
+        <DeteriorationPill status={status} />
+      </div>
+      <p className="det-verdict">
+        This {fmt(a.age_years)}-year-old {a.vehicle_model} is in the condition of {eff} {c.platform} driven{' '}
+        {c.km_per_year?.toLocaleString()} km/year, worse than <strong>{o.worse_than_pct}%</strong> of comparable cars.
+      </p>
+      <div className="det-tiles">
+        <div><span>Real age</span><strong>{fmt(a.age_years)}</strong><small>years · {a.odometer_km.toLocaleString()} km</small></div>
+        <div><span>Condition-equivalent age</span><strong>{effAge(o)}</strong><small>years, where this condition is typical</small></div>
+        <div><span>Age gap</span><strong className={o.age_gap > 0 ? 'ctx-worse' : 'ctx-better'}>{ageGap(o)}</strong><small>years older (+) or younger (−)</small></div>
+        <div><span>Comparable cars in better condition</span><strong>{o.worse_than_pct}%</strong><small>overall: {o.observed_label}</small></div>
+      </div>
+
+      <div className="row spread" style={{ marginTop: 16 }}>
+        <h3 style={{ margin: 0 }}>Condition of comparable {c.platform}s by age</h3>
+        <div className="det-legend">
+          {[...GRADES].reverse().map((g) => <span key={g}><i className={`key-grade ${GRADE_CLASS[g]}`} />{g}</span>)}
+        </div>
+      </div>
+      <p className="muted small" style={{ margin: '4px 0 8px' }}>
+        Share of cars driven {c.km_per_year?.toLocaleString()} km/year in each MOT condition grade. The condition age is
+        where this car&apos;s condition is the typical (middle) one.
+      </p>
+      {c.curve && <ConditionByAgeChart curve={c.curve} age={a.age_years} effective={o.effective_age} status={status} />}
+
+      <h3>Components</h3>
+      <div style={{ overflowX: 'auto' }}>
+        <table>
+          <thead><tr><th>Component</th><th>Reported</th><th>MOT grade</th><th>Better-condition cars</th><th>Condition age</th><th>Gap</th><th>Status</th></tr></thead>
+          <tbody>
+            {c.components.map((r) => (
+              <tr key={r.component}>
+                <td>{prettyComponent(r.component)}</td><td>{r.component_state}</td><td>{r.observed_label}</td>
+                <td>{r.worse_than_pct}%</td><td>{effAge(r)}</td><td>{ageGap(r)}</td>
+                <td><DeteriorationPill status={r.status} /></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p className="muted small">
+        High = worst 10% of comparable cars, Slightly high = worst 10–25%. {c.method}.
+      </p>
+      {c.notes.map((n) => <p key={n} className="notice info small">{n}</p>)}
+    </section>
+  );
+}
+
 function verdict(a: DeteriorationAssessment) {
-  const flagged = a.components.filter((c) => c.status !== 'Normal').map((c) => prettyComponent(c.component));
+  const ctxStatus = Object.fromEntries((a.contextual?.available ? a.contextual.components : []).map((c) => [c.component, c.status]));
+  const flagged = a.components.filter((c) => (ctxStatus[c.component] ?? c.status) !== 'Normal')
+    .map((c) => prettyComponent(c.component));
   const veh = `${fmt(a.age_years)}-year-old ${a.vehicle_model} with ${a.odometer_km.toLocaleString()} km`;
   if (!flagged.length) return `This ${veh} is deteriorating as expected for its age and mileage.`;
   const list = flagged.length > 2 ? `${flagged.slice(0, 2).join(', ')} and ${flagged.length - 2} more` : flagged.join(' and ');
@@ -187,6 +328,9 @@ export function DeteriorationReport({ a, ctx }: { a: DeteriorationAssessment; ct
         {a.warnings.map((w) => <p key={w} className="notice det-notice">{w}</p>)}
       </section>
 
+      <ContextualPanel a={a} />
+
+      <h2 className="section-title">Inspection-data model (all components)</h2>
       <div className="fault-layout">
         <section className="card">
           <div className="row spread">

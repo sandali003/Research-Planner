@@ -48,7 +48,7 @@ print(summary.head(5).round(3).to_string(index=False))
 # 4. Save
 os.makedirs("reports", exist_ok=True)
 summary.round(4).to_csv("reports/obd_vehicle_anomaly.csv", index=False)
-joblib.dump({"model": model, "features": OBD_FEATURES}, "obd_anomaly_model.joblib", compress=3)
+joblib.dump({"model": model, "features": OBD_FEATURES}, "models/obd_anomaly_model.joblib", compress=3)
 
-print("\nModel saved: obd_anomaly_model.joblib")
+print("\nModel saved: models/obd_anomaly_model.joblib")
 print("Per-vehicle summary: reports/obd_vehicle_anomaly.csv")

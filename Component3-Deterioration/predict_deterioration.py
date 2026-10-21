@@ -4,7 +4,7 @@ import pandas as pd
 
 from train_deterioration_model import deterioration_status
 
-bundle = joblib.load("deterioration_model.joblib")
+bundle = joblib.load("models/deterioration_model.joblib")
 
 
 def assess_vehicle(vehicle_model, age_years, odometer_km, component, component_state):

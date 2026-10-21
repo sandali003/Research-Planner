@@ -63,7 +63,7 @@ evaluate(INSPECTION_4K_FILE)
 # 5. Train final model on the 7000-record dataset and save
 model = make_model()
 model.fit(df[features], df[target])
-joblib.dump(model, "vehicle_condition_model.joblib", compress=3)
+joblib.dump(model, "models/vehicle_condition_model.joblib", compress=3)
 
 print("\nModel saved successfully!")
-print("File: vehicle_condition_model.joblib")
+print("File: models/vehicle_condition_model.joblib")

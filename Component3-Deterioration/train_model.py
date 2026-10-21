@@ -75,7 +75,7 @@ model = make_model()
 model.fit(df[INPUTS], df["SOLUTION USED"])
 
 # 5. Save model
-joblib.dump(model, "solution_prediction_model.joblib")
+joblib.dump(model, "models/solution_prediction_model.joblib")
 
 print("\nModel saved successfully!")
-print("File: solution_prediction_model.joblib")
+print("File: models/solution_prediction_model.joblib")

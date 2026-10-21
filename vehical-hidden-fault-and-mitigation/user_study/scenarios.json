@@ -1,0 +1,574 @@
+[
+  {
+    "id": "S1",
+    "title": "Idling at a car sale",
+    "inputs": {
+      "engine_rpm": 800,
+      "engine_load_pct": 5,
+      "coolant_temp_c": 82,
+      "battery_voltage_v": 15.3
+    },
+    "scanner_codes": [
+      "P0563 System Voltage High"
+    ],
+    "true_problem": "Battery / charging system",
+    "best_decision": "Negotiate and repair the named part",
+    "system_output": {
+      "status": "Fault detected",
+      "primary_fault": "Charging_System_Warning",
+      "issues": [
+        {
+          "fault": "Charging_System_Warning",
+          "display_name": "Charging System Warning",
+          "likely_cause": {
+            "sensor_group": "voltage",
+            "label": "Battery voltage",
+            "share": 0.886,
+            "model": "classifier",
+            "method": "SHAP values summed per sensor group"
+          },
+          "counterfactual": {
+            "sensor_groups": [
+              "voltage"
+            ],
+            "changes": [
+              {
+                "feature": "battery_voltage_v",
+                "group": "voltage",
+                "label": "Battery voltage",
+                "from": 15.3,
+                "to": 14.715,
+                "direction": "down",
+                "healthy_range": [
+                  13.56,
+                  14.41
+                ]
+              }
+            ],
+            "fraction_back_to_normal": 0.45,
+            "text": "Battery voltage has to come down from 15.3 V to about 14.7 V (healthy range 13.6-14.4 V)"
+          },
+          "reliability": {
+            "level": "Normal",
+            "reason": null
+          },
+          "sources": [
+            "AI classifier"
+          ],
+          "confidence": 0.9996,
+          "severity": "High",
+          "timeframe": "Immediately (within 1-2 days)",
+          "message": "The battery voltage suggests the battery may not be charging properly.",
+          "reasons": [
+            "XGBoost classifier predicted Charging System Warning (100% confidence)"
+          ],
+          "immediate_actions": [
+            "Voltage is too high (possible overcharging). This can damage the battery and electronics; get the charging system checked as soon as possible.",
+            "Have the battery, alternator and voltage regulator tested; the voltage reading is driving this result.",
+            "Have the battery and alternator (charging unit) tested at a garage.",
+            "Check that the battery terminals are tight and free of white or green corrosion.",
+            "Avoid using many electrical items (A/C, lights, audio) at the same time until it is checked.",
+            "Repair target: Battery voltage has to come down from 15.3 V to about 14.7 V (healthy range 13.6-14.4 V). Take a new reading after the repair to confirm."
+          ],
+          "targeted_actions": [
+            "Have the battery, alternator and voltage regulator tested; the voltage reading is driving this result.",
+            "Repair target: Battery voltage has to come down from 15.3 V to about 14.7 V (healthy range 13.6-14.4 V). Take a new reading after the repair to confirm."
+          ],
+          "longevity_tips": [
+            "Clean the battery terminals every few months.",
+            "Avoid many very short trips; they do not give the battery time to recharge.",
+            "Replace the battery every 3-4 years or when a test shows it is weak.",
+            "Have the alternator belt checked at every service."
+          ],
+          "notes": [],
+          "key_factors": [
+            {
+              "feature": "battery_voltage_v",
+              "label": "Battery voltage",
+              "value": 15.3,
+              "impact": 6.8739
+            },
+            {
+              "feature": "engine_temp_c",
+              "label": "Engine temperature",
+              "value": 82.0,
+              "impact": 0.6172
+            },
+            {
+              "feature": "engine_load_pct",
+              "label": "Engine load",
+              "value": 5.0,
+              "impact": 0.264
+            }
+          ]
+        }
+      ],
+      "notes": [
+        "Vibration or OBD-II data missing: the rule and anomaly checks were skipped."
+      ]
+    }
+  },
+  {
+    "id": "S2",
+    "title": "Short test drive in town",
+    "inputs": {
+      "engine_rpm": 900,
+      "engine_load_pct": 20,
+      "coolant_temp_c": 88,
+      "battery_voltage_v": 12.5
+    },
+    "scanner_codes": [],
+    "true_problem": "Battery / charging system",
+    "best_decision": "Negotiate and repair the named part",
+    "system_output": {
+      "status": "Fault detected",
+      "primary_fault": "Charging_System_Warning",
+      "issues": [
+        {
+          "fault": "Charging_System_Warning",
+          "display_name": "Charging System Warning",
+          "likely_cause": {
+            "sensor_group": "voltage",
+            "label": "Battery voltage",
+            "share": 0.879,
+            "model": "classifier",
+            "method": "SHAP values summed per sensor group"
+          },
+          "counterfactual": {
+            "sensor_groups": [
+              "voltage"
+            ],
+            "changes": [
+              {
+                "feature": "battery_voltage_v",
+                "group": "voltage",
+                "label": "Battery voltage",
+                "from": 12.5,
+                "to": 13.438,
+                "direction": "up",
+                "healthy_range": [
+                  13.56,
+                  14.41
+                ]
+              }
+            ],
+            "fraction_back_to_normal": 0.625,
+            "text": "Battery voltage has to come up from 12.5 V to about 13.4 V (healthy range 13.6-14.4 V)"
+          },
+          "reliability": {
+            "level": "Normal",
+            "reason": null
+          },
+          "sources": [
+            "AI classifier"
+          ],
+          "confidence": 0.9994,
+          "severity": "Medium",
+          "timeframe": "Soon (within 3-7 days)",
+          "message": "The battery voltage suggests the battery may not be charging properly.",
+          "reasons": [
+            "XGBoost classifier predicted Charging System Warning (100% confidence)"
+          ],
+          "immediate_actions": [
+            "Have the battery, alternator and voltage regulator tested; the voltage reading is driving this result.",
+            "Have the battery and alternator (charging unit) tested at a garage.",
+            "Check that the battery terminals are tight and free of white or green corrosion.",
+            "Avoid using many electrical items (A/C, lights, audio) at the same time until it is checked.",
+            "Repair target: Battery voltage has to come up from 12.5 V to about 13.4 V (healthy range 13.6-14.4 V). Take a new reading after the repair to confirm."
+          ],
+          "targeted_actions": [
+            "Have the battery, alternator and voltage regulator tested; the voltage reading is driving this result.",
+            "Repair target: Battery voltage has to come up from 12.5 V to about 13.4 V (healthy range 13.6-14.4 V). Take a new reading after the repair to confirm."
+          ],
+          "longevity_tips": [
+            "Clean the battery terminals every few months.",
+            "Avoid many very short trips; they do not give the battery time to recharge.",
+            "Replace the battery every 3-4 years or when a test shows it is weak.",
+            "Have the alternator belt checked at every service."
+          ],
+          "notes": [],
+          "key_factors": [
+            {
+              "feature": "battery_voltage_v",
+              "label": "Battery voltage",
+              "value": 12.5,
+              "impact": 6.5114
+            },
+            {
+              "feature": "engine_temp_c",
+              "label": "Engine temperature",
+              "value": 88.0,
+              "impact": 0.5121
+            },
+            {
+              "feature": "engine_load_pct",
+              "label": "Engine load",
+              "value": 20.0,
+              "impact": 0.3539
+            }
+          ]
+        }
+      ],
+      "notes": [
+        "Vibration or OBD-II data missing: the rule and anomaly checks were skipped."
+      ]
+    }
+  },
+  {
+    "id": "S3",
+    "title": "After a 20-minute drive",
+    "inputs": {
+      "engine_rpm": 1800,
+      "engine_load_pct": 45,
+      "coolant_temp_c": 104,
+      "battery_voltage_v": 14.0,
+      "vibration_x_g": 0.05,
+      "vibration_y_g": 0.04,
+      "vibration_z_g": 0.06
+    },
+    "scanner_codes": [],
+    "true_problem": "Cooling system",
+    "best_decision": "Get a full inspection before buying",
+    "system_output": {
+      "status": "Fault detected",
+      "primary_fault": "Cooling_System_Warning",
+      "issues": [
+        {
+          "fault": "Cooling_System_Warning",
+          "display_name": "Cooling System Warning",
+          "likely_cause": {
+            "sensor_group": "temperature",
+            "label": "Engine temperature",
+            "share": 0.785,
+            "model": "anomaly",
+            "method": "SHAP values summed per sensor group"
+          },
+          "counterfactual": {
+            "sensor_groups": [
+              "temperature"
+            ],
+            "changes": [
+              {
+                "feature": "engine_temp_c",
+                "group": "temperature",
+                "label": "Engine temperature",
+                "from": 104.0,
+                "to": 97.68,
+                "direction": "down",
+                "healthy_range": [
+                  79.9,
+                  95.8
+                ]
+              }
+            ],
+            "fraction_back_to_normal": 0.4,
+            "text": "Engine temperature has to come down from 104 \u00b0C to about 98 \u00b0C (healthy range 80-96 \u00b0C)"
+          },
+          "reliability": null,
+          "sources": [
+            "AI classifier",
+            "AI anomaly model"
+          ],
+          "confidence": 0.9932,
+          "severity": "High",
+          "timeframe": "Immediately (within 1-2 days)",
+          "message": "The engine temperature is higher than normal. Overheating can seriously damage the engine.",
+          "reasons": [
+            "XGBoost classifier predicted Cooling System Warning (99% confidence)",
+            "Anomaly model also flagged this reading (score 2.29)"
+          ],
+          "immediate_actions": [
+            "Check the coolant level, radiator fan and thermostat; the engine temperature is driving this result.",
+            "If the temperature gauge is high, stop in a safe place and switch off the engine.",
+            "Do not open the radiator cap while the engine is hot.",
+            "When the engine is cool, check the coolant level and look for leaks under the car.",
+            "Have the radiator, thermostat, cooling fan and water pump inspected before long drives.",
+            "Repair target: Engine temperature has to come down from 104 \u00b0C to about 98 \u00b0C (healthy range 80-96 \u00b0C). Take a new reading after the repair to confirm."
+          ],
+          "targeted_actions": [
+            "Check the coolant level, radiator fan and thermostat; the engine temperature is driving this result.",
+            "Repair target: Engine temperature has to come down from 104 \u00b0C to about 98 \u00b0C (healthy range 80-96 \u00b0C). Take a new reading after the repair to confirm."
+          ],
+          "longevity_tips": [
+            "Use the coolant type recommended for your vehicle, not plain water.",
+            "Replace the coolant at the interval in the owner's manual (usually every 2-3 years).",
+            "Keep the radiator front clean from dust and leaves.",
+            "Watch the temperature gauge in heavy traffic and on hills."
+          ],
+          "notes": [],
+          "key_factors": [
+            {
+              "feature": "engine_temp_c",
+              "label": "Engine temperature",
+              "value": 104.0,
+              "impact": 1.5773
+            },
+            {
+              "feature": "engine_load_pct",
+              "label": "Engine load",
+              "value": 45.0,
+              "impact": 0.9724
+            },
+            {
+              "feature": "engine_rpm",
+              "label": "Engine RPM",
+              "value": 1800.0,
+              "impact": 0.666
+            },
+            {
+              "feature": "coolant_temp",
+              "label": "Coolant temperature",
+              "value": 104.0,
+              "impact": 4.6147
+            },
+            {
+              "feature": "vibration_magnitude",
+              "label": "Vibration level",
+              "value": 0.08774964387392122,
+              "impact": 1.1867
+            },
+            {
+              "feature": "engine_rpm",
+              "label": "Engine RPM",
+              "value": 1800.0,
+              "impact": -0.2283
+            }
+          ]
+        }
+      ],
+      "notes": []
+    }
+  },
+  {
+    "id": "S4",
+    "title": "Highway speed",
+    "inputs": {
+      "engine_rpm": 3400,
+      "engine_load_pct": 25,
+      "coolant_temp_c": 84,
+      "battery_voltage_v": 14.0,
+      "vibration_x_g": -0.3,
+      "vibration_y_g": 0.3,
+      "vibration_z_g": -0.1
+    },
+    "scanner_codes": [],
+    "true_problem": "Engine mounts / ignition (vibration)",
+    "best_decision": "Negotiate and repair the named part",
+    "system_output": {
+      "status": "Fault detected",
+      "primary_fault": "Hidden_Anomaly",
+      "issues": [
+        {
+          "fault": "Hidden_Anomaly",
+          "display_name": "Unusual Pattern Detected (Possible Hidden Fault): likely cause engine vibration",
+          "likely_cause": {
+            "sensor_group": "vibration",
+            "label": "Engine vibration",
+            "share": 0.662,
+            "model": "anomaly",
+            "method": "SHAP values summed per sensor group"
+          },
+          "counterfactual": {
+            "sensor_groups": [
+              "vibration"
+            ],
+            "changes": [
+              {
+                "feature": "vibration_magnitude",
+                "group": "vibration",
+                "label": "Engine vibration",
+                "from": 0.436,
+                "to": 0.227,
+                "direction": "down",
+                "healthy_range": [
+                  0.076,
+                  0.369
+                ]
+              }
+            ],
+            "fraction_back_to_normal": 0.475,
+            "text": "Engine vibration has to come down from 0.44 g to about 0.23 g (healthy range 0.08-0.37 g)"
+          },
+          "reliability": null,
+          "sources": [
+            "AI anomaly model"
+          ],
+          "confidence": null,
+          "severity": "Low",
+          "timeframe": "Plan soon (within 1-2 weeks)",
+          "message": "No known fault rule was triggered, but the AI model found that this combination of readings is unusual compared with healthy Toyota engines.",
+          "reasons": [
+            "Anomaly score 3.61 above threshold 1.26; no rule or classifier explains it"
+          ],
+          "immediate_actions": [
+            "Have the engine mounts, spark plugs and ignition coils checked; engine vibration is driving this result.",
+            "Take another reading to see if the pattern repeats.",
+            "If it repeats, have the vehicle scanned at a garage.",
+            "Repair target: Engine vibration has to come down from 0.44 g to about 0.23 g (healthy range 0.08-0.37 g). Take a new reading after the repair to confirm."
+          ],
+          "targeted_actions": [
+            "Have the engine mounts, spark plugs and ignition coils checked; engine vibration is driving this result.",
+            "Repair target: Engine vibration has to come down from 0.44 g to about 0.23 g (healthy range 0.08-0.37 g). Take a new reading after the repair to confirm."
+          ],
+          "longevity_tips": [
+            "Run regular checks so changes are spotted early.",
+            "Follow the service schedule in the owner's manual."
+          ],
+          "notes": [],
+          "key_factors": [
+            {
+              "feature": "vibration_x",
+              "label": "Vibration X",
+              "value": -0.3,
+              "impact": 2.3704
+            },
+            {
+              "feature": "vibration_y",
+              "label": "Vibration Y",
+              "value": 0.3,
+              "impact": 1.6694
+            },
+            {
+              "feature": "engine_rpm",
+              "label": "Engine RPM",
+              "value": 3400.0,
+              "impact": 1.48
+            }
+          ]
+        }
+      ],
+      "notes": []
+    }
+  },
+  {
+    "id": "S5",
+    "title": "Healthy car, normal driving",
+    "inputs": {
+      "engine_rpm": 1800,
+      "engine_load_pct": 45,
+      "coolant_temp_c": 88,
+      "battery_voltage_v": 14.1,
+      "vibration_x_g": 0.05,
+      "vibration_y_g": 0.04,
+      "vibration_z_g": 0.06
+    },
+    "scanner_codes": [],
+    "true_problem": "No problem",
+    "best_decision": "Buy",
+    "system_output": {
+      "status": "Normal",
+      "primary_fault": "Normal",
+      "issues": [],
+      "notes": []
+    }
+  },
+  {
+    "id": "S6",
+    "title": "Climbing a hill, heavily loaded",
+    "inputs": {
+      "engine_rpm": 2689,
+      "engine_load_pct": 80,
+      "coolant_temp_c": 97,
+      "battery_voltage_v": 13.73,
+      "vibration_x_g": 0.1024,
+      "vibration_y_g": 0.2383,
+      "vibration_z_g": -0.0079
+    },
+    "scanner_codes": [],
+    "true_problem": "No problem (warm engine under heavy load)",
+    "best_decision": "Take another reading before deciding",
+    "system_output": {
+      "status": "Fault detected",
+      "primary_fault": "Engine_Abnormality_Suspected",
+      "issues": [
+        {
+          "fault": "Engine_Abnormality_Suspected",
+          "display_name": "Engine Abnormality Suspected",
+          "likely_cause": {
+            "sensor_group": "load",
+            "label": "Engine load",
+            "share": 0.654,
+            "model": "classifier",
+            "method": "SHAP values summed per sensor group"
+          },
+          "counterfactual": {
+            "sensor_groups": [
+              "voltage"
+            ],
+            "changes": [
+              {
+                "feature": "battery_voltage_v",
+                "group": "voltage",
+                "label": "Battery voltage",
+                "from": 13.73,
+                "to": 13.831,
+                "direction": "up",
+                "healthy_range": [
+                  13.56,
+                  14.41
+                ]
+              }
+            ],
+            "fraction_back_to_normal": 0.375,
+            "text": "Battery voltage has to come up from 13.7 V to about 13.8 V (healthy range 13.6-14.4 V)"
+          },
+          "reliability": {
+            "level": "Low",
+            "reason": "The AI decision is driven by engine load, not by engine speed (rpm) or engine temperature, so the reading may be outside what the model learned."
+          },
+          "sources": [
+            "AI classifier"
+          ],
+          "confidence": 0.9352,
+          "severity": "Medium",
+          "timeframe": "Soon (within 3-7 days)",
+          "message": "The engine readings do not match a normal pattern. This is a warning, not a confirmed diagnosis.",
+          "reasons": [
+            "XGBoost classifier predicted Engine Abnormality Suspected (94% confidence)"
+          ],
+          "immediate_actions": [
+            "Avoid heavy loads and hard acceleration until it is checked; the engine load is driving this result.",
+            "Have the engine scanned for fault codes at a garage.",
+            "Have the spark plugs, ignition coils and fuel injectors checked.",
+            "Avoid hard acceleration and heavy loads until it is checked.",
+            "Repair target: Battery voltage has to come up from 13.7 V to about 13.8 V (healthy range 13.6-14.4 V). Take a new reading after the repair to confirm."
+          ],
+          "targeted_actions": [
+            "Avoid heavy loads and hard acceleration until it is checked; the engine load is driving this result.",
+            "Repair target: Battery voltage has to come up from 13.7 V to about 13.8 V (healthy range 13.6-14.4 V). Take a new reading after the repair to confirm."
+          ],
+          "longevity_tips": [
+            "Use good-quality fuel from reliable stations.",
+            "Replace spark plugs and the air filter on schedule.",
+            "Let the engine idle smoothly for a short time after a cold start before driving hard.",
+            "Do not ignore shaking, rough idling or loss of power; check them early."
+          ],
+          "notes": [
+            "Low reliability: The AI decision is driven by engine load, not by engine speed (rpm) or engine temperature, so the reading may be outside what the model learned. Confirm with another reading or a manual check."
+          ],
+          "key_factors": [
+            {
+              "feature": "engine_rpm",
+              "label": "Engine RPM",
+              "value": 2689.0,
+              "impact": -3.68
+            },
+            {
+              "feature": "engine_load_pct",
+              "label": "Engine load",
+              "value": 80.0,
+              "impact": 1.8441
+            },
+            {
+              "feature": "battery_voltage_v",
+              "label": "Battery voltage",
+              "value": 13.73,
+              "impact": 0.6007
+            }
+          ]
+        }
+      ],
+      "notes": []
+    }
+  }
+]

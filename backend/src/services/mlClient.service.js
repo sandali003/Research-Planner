@@ -50,6 +50,14 @@ export const assessDeterioration = (input) => callDeterioration('/api/assess', p
 
 export const deteriorationHealth = () => callDeterioration('/health');
 
+// Component 4: value-uplift service (component4/real/api.py)
+const callValuation = (path, init) =>
+  callService('Valuation service', env.VALUATION_SERVICE_URL, env.VALUATION_TIMEOUT_MS, path, init);
+
+export const valueUplift = (body) => callValuation('/api/value-uplift', postJson(body));
+
+export const valuationHealth = () => callValuation('/health');
+
 // Chart data: expected condition by age, and the training inspections for one vehicle model
 export async function deteriorationContext(vehicleModel, kmPerYear) {
   const model = encodeURIComponent(vehicleModel);
