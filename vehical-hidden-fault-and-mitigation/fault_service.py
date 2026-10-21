@@ -20,6 +20,7 @@ import pandas as pd
 from counterfactual import find_counterfactual
 from expert_system import max_severity, run_expert_system
 from explainer import AnomalyExplainer, ClassifierExplainer
+import dtc_knowledge
 from mitigation_rules import FAULT_RULES, SEVERITY_ORDER, TIMEFRAMES
 from obd_assessment import OBDAssessor, vibration_magnitude
 
@@ -178,6 +179,11 @@ class HiddenFaultService:
 
             content = FAULT_RULES.get(name, {})
             display_name = content.get("display_name", name.replace("_", " "))
+            code = dtc_knowledge.code_of(name)
+            if code and dtc_knowledge.lookup(code):
+                entry = dtc_knowledge.lookup(code)
+                display_name = f"{code}: {entry['title']}"
+                content = {"message": entry["summary"]}
             causes = [c for c in es["causes"] if c["fault"] == name]
             likely_cause = None
             if causes:

@@ -19,6 +19,7 @@ import json
 
 from experta import AS, MATCH, NOT, TEST, Fact, KnowledgeEngine, Rule
 
+import dtc_knowledge
 from mitigation_rules import FAULT_RULES, LOW_CONFIDENCE_THRESHOLD, SEVERITY_ORDER
 from obd_assessment import (
     HOT_COOLANT_C, HOT_MIN_LOAD_PCT, IDLE_MAX_LOAD_PCT, IDLE_MAX_RPM,
@@ -138,6 +139,10 @@ class Reliability(Fact):
     """fault, level, reason (XAI check of whether the AI result makes physical sense)"""
 
 
+class DTC(Fact):
+    """code, title, family, severity, causes (tuple), repair (text): a stored trouble code (OBDex)"""
+
+
 class WarmingUp(Fact):
     pass
 
@@ -198,6 +203,19 @@ class VehicleFaultExpert(KnowledgeEngine):
         reason = f"Vibration {vib:.2f}g >= {_vibration_warning(model)}g"
         self.declare(Fault(name="Abnormal_Vibration", source="Rule", confidence=None, reason=reason))
         self._log("D2 Abnormal vibration", reason)
+
+    @Rule(DTC(code=MATCH.code, title=MATCH.title, severity=MATCH.level, causes=MATCH.causes, repair=MATCH.repair),
+          salience=100)
+    def ecu_trouble_code(self, code, title, level, causes, repair):
+        name = dtc_knowledge.fault_name(code)
+        reason = f"The car's computer stored {code}: {title}"
+        self.declare(Fault(name=name, source="ECU trouble code", confidence=None, reason=reason))
+        self.declare(Severity(fault=name, level=level, kind="base", reason="OBDex flags (limp mode / check engine light)"))
+        for rank, cause in enumerate(causes, start=1):
+            self.declare(Action(fault=name, text=f"Check: {cause}", priority=rank, kind="base", feature=None))
+        if repair:
+            self.declare(Note(fault=name, text=repair))
+        self._log("D8 ECU trouble code", f"{code}: {title} -> {level}")
 
     @Rule(Sensors(rpm=MATCH.rpm, load=MATCH.load),
           TEST(lambda rpm, load: _num(rpm, load) and load >= LUGGING_LOAD_PCT and rpm < LUGGING_MAX_RPM),
@@ -315,6 +333,15 @@ class VehicleFaultExpert(KnowledgeEngine):
             f"Low reliability: {reason} Confirm with another reading or a manual check.")))
         self._log("X2 XAI reliability check", f"{name}: driven by {label.lower()}, expected {expected}")
 
+    @Rule(DTC(code=MATCH.code, title=MATCH.title, family=MATCH.family),
+          Fault(name=MATCH.name, source=MATCH.src),
+          TEST(lambda family, name, src: src != "ECU trouble code"
+               and name in dtc_knowledge.CONFIRMS.get(family, ())),
+          salience=65)
+    def ecu_confirms_fault(self, code, title, family, name, src):
+        self.declare(Note(fault=name, text=f"Confirmed by the car's own trouble code {code} ({title})."))
+        self._log("X3 ECU code confirms fault", f"{name} ({src}) matches {code} ({family})")
+
     # ==================================================================
     # 3. Severity rules (salience 60)
     # ==================================================================
@@ -429,6 +456,21 @@ class VehicleFaultExpert(KnowledgeEngine):
         self._log("M3 Stored trouble codes", ", ".join(codes))
 
 
+def dtc_fact(code, entry):
+    """Fact for one stored code: the most likely causes become the checks of its plan."""
+    r = entry["repair"]
+    parts = []
+    if r.get("difficulty"):
+        parts.append(f"{r['difficulty']} repair")
+    if r.get("hours"):
+        parts.append(f"about {r['hours'][0]}-{r['hours'][1]} hours")
+    if r.get("diy_possible"):
+        parts.append("possible to do yourself")
+    repair = ("Typical repair: " + ", ".join(parts) + ".") if parts else ""
+    return DTC(code=code, title=entry["title"], family=entry["family"], severity=dtc_knowledge.severity(entry),
+               causes=tuple(c["text"] for c in entry["causes"][:dtc_knowledge.MAX_CAUSES]), repair=repair)
+
+
 def run_expert_system(sensors, prediction=None, anomaly=None, factors=()):
     """Assert the facts, run inference, and return the derived facts + trace."""
     engine = VehicleFaultExpert()
@@ -442,6 +484,10 @@ def run_expert_system(sensors, prediction=None, anomaly=None, factors=()):
         engine.declare(Factor(**factor))
     for cause in root_causes(factors):
         engine.declare(RootCause(**cause))
+    for code in sensors.get("dtc_codes") or ():
+        entry = dtc_knowledge.lookup(code)
+        if entry:
+            engine.declare(dtc_fact(str(code).upper(), entry))
     engine.run()
 
     facts = list(engine.facts.values())

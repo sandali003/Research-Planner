@@ -120,6 +120,33 @@ class FusionAndMitigation(unittest.TestCase):
             self.assertTrue(any(a["fault"] == name for a in r["actions"]), name)
 
 
+class TroubleCodes(unittest.TestCase):
+
+    def test_stored_code_becomes_a_fault_with_likely_causes(self):
+        r = run_expert_system(sensors(dtc_codes=("p0301",)))
+        self.assertIn("DTC_P0301", fault_names(r))
+        self.assertIn("D8", rules_fired(r))
+        self.assertEqual({s["level"] for s in r["severities"] if s["fault"] == "DTC_P0301"}, {"High"})
+        checks = [a["text"] for a in r["actions"] if a["fault"] == "DTC_P0301"]
+        self.assertTrue(1 <= len(checks) <= 3 and all(c.startswith("Check: ") for c in checks))
+
+    def test_code_confirms_the_ai_fault(self):
+        r = run_expert_system(sensors(dtc_codes=("P0217",)),
+                              prediction=dict(fault="Cooling_System_Warning", confidence=0.9))
+        self.assertIn("X3", rules_fired(r))
+        self.assertTrue(any(n["fault"] == "Cooling_System_Warning" and "P0217" in n["text"] for n in r["notes"]))
+
+    def test_unrelated_code_does_not_confirm(self):
+        r = run_expert_system(sensors(dtc_codes=("P0562",)),
+                              prediction=dict(fault="Cooling_System_Warning", confidence=0.9))
+        self.assertNotIn("X3", rules_fired(r))
+
+    def test_unknown_code_is_only_listed(self):
+        r = run_expert_system(sensors(dtc_codes=("P9999",)))
+        self.assertEqual(fault_names(r), set())
+        self.assertIn("M3", rules_fired(r))
+
+
 class Pipeline(unittest.TestCase):
 
     @classmethod
