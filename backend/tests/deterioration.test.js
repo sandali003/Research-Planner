@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { averageObd, vehicleAge } from '../src/services/deterioration.service.js';
+import { averageObd, deteriorationSummary, vehicleAge } from '../src/services/deterioration.service.js';
 import { deteriorationBody } from '../src/routes/vehicles.routes.js';
 
 describe('vehicleAge', () => {
@@ -48,5 +48,31 @@ describe('deteriorationBody', () => {
       components: [{ component: 'Brakes', component_state: 'Poor' }, { component: 'Brakes', component_state: 'Good' }],
     }).success).toBe(false);
     expect(deteriorationBody.safeParse({ odometer_km: 1, component: 'Brakes', component_state: 'Bad' }).success).toBe(false);
+  });
+});
+
+describe('deteriorationSummary', () => {
+  const base = {
+    created_at: '2026-10-21', status: 'High', expected_score: 70, observed_score: 50, component: 'Brakes', deviation: -20,
+    components: [{ component: 'Brakes', status: 'High' }, { component: 'Battery', status: 'Normal' }],
+  };
+
+  it('reports both outputs and the decision from the real-data assessment', () => {
+    const risk = { probability: 0.42, level: 'High', comparable_defect_rate: 0.1, base_rate: 0.3 };
+    const s = deteriorationSummary({
+      ...base,
+      contextual: {
+        available: true, worst_component: 'Brakes',
+        overall: { effective_age: 14, age_gap: 5, worse_than_pct: 92, next_test_risk: risk },
+        components: [{ component: 'Brakes', status: 'High' }],
+        decision: { key: 'repair_now', risk_components: ['Brakes'] },
+      },
+    });
+    expect(s).toMatchObject({ worse_than_pct: 92, next_test_risk: risk, decision: 'repair_now', at_risk_components: ['Brakes'] });
+  });
+
+  it('leaves the risk empty without a real-data assessment', () => {
+    const s = deteriorationSummary({ ...base, contextual: null });
+    expect(s).toMatchObject({ next_test_risk: null, decision: null, at_risk_components: [], high_deterioration_components: ['Brakes'] });
   });
 });

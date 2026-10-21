@@ -20,7 +20,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field
 
-from contextual_assessment import MODEL_FILE as CONTEXTUAL_MODEL_FILE, assess_contextual
+from contextual_assessment import MODEL_FILE as CONTEXTUAL_MODEL_FILE, RISK_MODEL_FILE, assess_contextual
 from data_prep import PROBLEM_SYNONYMS, CONDITION_ORDER, load_inspections, load_service_data
 from predict_deterioration import assess_vehicle, bundle as deterioration_bundle
 
@@ -144,10 +144,11 @@ def home():
 @app.get("/health")
 def health():
     model_file = os.path.join(BASE_DIR, "models", "deterioration_model.joblib")
+    risk = f"+risk-{int(os.path.getmtime(RISK_MODEL_FILE))}" if RISK_MODEL_FILE.exists() else ""
     return {
         "status": "ok",
         "model_version": f"deterioration-{int(os.path.getmtime(model_file))}"
-                         f"+contextual-{int(os.path.getmtime(CONTEXTUAL_MODEL_FILE))}",
+                         f"+contextual-{int(os.path.getmtime(CONTEXTUAL_MODEL_FILE))}{risk}",
     }
 
 

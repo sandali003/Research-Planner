@@ -151,6 +151,10 @@ export function deteriorationSummary(a) {
     effective_age: ctx?.overall.effective_age ?? null,
     age_gap: ctx?.overall.age_gap ?? null,
     worse_than_pct: ctx?.overall.worse_than_pct ?? null,
+    // Second output: risk of a major defect at the next inspection, and the combined decision
+    next_test_risk: ctx?.overall.next_test_risk ?? null,
+    decision: ctx?.decision?.key ?? null,
+    at_risk_components: ctx?.decision?.risk_components ?? [],
     high_deterioration_components: a.components
       .filter((c) => (contextualStatus[c.component] ?? c.status) !== 'Normal')
       .map((c) => c.component),
