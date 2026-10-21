@@ -153,7 +153,9 @@ router.get('/:id/deterioration', validate(idParam, 'params'), asyncHandler(async
             expected_score, observed_score, deviation, component AS worst_component, obd_source,
             (contextual->'overall'->>'effective_age')::real AS effective_age,
             (contextual->'overall'->>'age_gap')::real AS age_gap,
-            (contextual->'overall'->>'worse_than_pct')::int AS worse_than_pct
+            (contextual->'overall'->>'worse_than_pct')::int AS worse_than_pct,
+            (contextual->'overall'->'next_test_risk'->>'probability')::real AS next_test_risk,
+            contextual->'decision'->>'key' AS decision
      FROM deterioration_assessments WHERE vehicle_id = $1 ORDER BY created_at DESC LIMIT 50`,
     [vehicle.id],
   );

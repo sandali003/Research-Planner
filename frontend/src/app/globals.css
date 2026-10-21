@@ -274,8 +274,11 @@ button.link-btn:hover:not(:disabled) { text-decoration: underline; }
   display: inline-grid; place-items: center; width: 22px; height: 22px; margin-right: 8px; border-radius: 50%;
   background: var(--accent-soft); color: var(--accent); font-size: 12px; font-weight: 700; vertical-align: 1px;
 }
-.det-profile { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0 16px; max-width: 760px; }
+.det-profile { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0 16px; max-width: 960px; }
+@media (max-width: 900px) { .det-profile { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 640px) { .det-profile { grid-template-columns: 1fr 1fr; } }
+.det-preview { text-align: left; max-width: 640px; margin: 12px auto 0; padding-left: 20px; }
+.det-preview li { margin: 4px 0; }
 .det-usage { margin: 10px 0 0; }
 .det-checklist { display: grid; grid-template-columns: 1fr 1fr; gap: 0 28px; }
 @media (max-width: 900px) { .det-checklist { grid-template-columns: 1fr; } }
@@ -324,6 +327,35 @@ button.link-btn:hover:not(:disabled) { text-decoration: underline; }
 .ctx-chart .age-eff.dot-sev-none { stroke: var(--good); }
 .ctx-chart .age-eff.dot-sev-low { stroke: var(--fair); }
 .ctx-chart .age-eff.dot-sev-high { stroke: var(--critical); }
+
+/* Component 3: two outputs (vs peers, next-test risk) and the decision */
+.det-report > .card + .ctx-card { margin-top: 16px; }
+.decision-banner { display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: baseline; margin: 14px 0 4px;
+  padding: 12px 14px; border-radius: 10px; border-left: 4px solid var(--good); background: color-mix(in srgb, var(--good) 8%, transparent); }
+.decision-banner.sev-low { border-left-color: var(--fair); background: color-mix(in srgb, var(--fair) 10%, transparent); }
+.decision-banner.sev-high { border-left-color: var(--critical); background: color-mix(in srgb, var(--critical) 8%, transparent); }
+.decision-banner strong { font-size: 18px; }
+.dual-out { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 14px; }
+@media (max-width: 900px) { .dual-out { grid-template-columns: 1fr; } }
+.out-box { border: 1px solid var(--border); border-radius: 12px; padding: 14px; min-width: 0; }
+.out-box h3 { margin: 0; }
+.out-box .det-verdict { font-size: 16px; margin: 10px 0 12px; }
+.det-tiles.det-tiles-3 { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 520px) { .det-tiles.det-tiles-3 { grid-template-columns: 1fr 1fr; } }
+.det-tiles-3 strong { font-size: 22px; }
+.decision-matrix { display: grid; grid-template-columns: minmax(90px, auto) 1fr 1fr; gap: 6px; font-size: 13px; }
+.dm-head { font-size: 12px; color: var(--muted); align-self: end; }
+.dm-row { align-self: center; }
+.dm-cell { border: 1px dashed var(--border); border-radius: 10px; padding: 10px 12px; display: flex; flex-direction: column; color: var(--muted); }
+.dm-cell small { font-size: 12px; }
+.dm-cell.on { border: 2px solid var(--good); color: var(--text); background: color-mix(in srgb, var(--good) 8%, transparent); }
+.dm-cell.on.sev-low { border-color: var(--fair); background: color-mix(in srgb, var(--fair) 10%, transparent); }
+.dm-cell.on.sev-high { border-color: var(--critical); background: color-mix(in srgb, var(--critical) 8%, transparent); }
+.det-evidence { margin-top: 14px; }
+.det-evidence summary, .det-legacy > summary { cursor: pointer; font-weight: 600; }
+.det-evidence table { margin-top: 6px; }
+.det-legacy { margin-top: 16px; }
+.det-legacy > summary { padding: 12px 0; }
 
 .chart-wrap { position: relative; }
 .det-chart { width: 100%; height: auto; display: block; overflow: visible; }

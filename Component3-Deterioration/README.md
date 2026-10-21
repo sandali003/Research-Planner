@@ -1,8 +1,17 @@
 # Component 3 – Age- and Mileage-Adjusted Vehicle Deterioration Assessment
 
-Part of the AutoSense platform (J26-IT-386). Learns the condition expected for a
-vehicle's age and mileage, estimates its observed condition from inspection
-evidence, and flags accelerated deterioration when observed falls below expected.
+Part of the AutoSense platform (J26-IT-386). Learns a calibrated, monotonic
+"normal condition" baseline for a vehicle's age and mileage from real UK MOT
+inspections, and gives two separate outputs:
+
+1. **Condition vs comparable cars**: Condition Percentile ("worse than X% of
+   comparable cars") and Condition-Equivalent Age.
+2. **Risk at the next inspection**: probability of a major defect at the next
+   test (9-16 months).
+
+Worse than peers is not the same as about to fail (see the predictive-validity
+report), so the two are combined in a decision: repair now / monitor / plan
+maintenance / routine.
 
 ## Setup
 
@@ -34,21 +43,29 @@ deterioration assessment in PostgreSQL (`deterioration_assessments` table).
 | `train_model.py` / `predict.py` | Recommended solution from service history + problem | `models/solution_prediction_model.joblib` |
 | `train_obd_anomaly_model.py` | Unsupervised OBD-II anomaly detection (no labels available) | `models/obd_anomaly_model.joblib`, `reports/obd_vehicle_anomaly.csv` |
 | `external_data/build_mot_toyota.py` | Toyota Yaris / Vitz / Corolla tests from the UK MOT anonymised data (DVSA), with failure / minor / advisory counts per component | `external_data/mot_toyota_<year>.csv` / `.xlsx` (not in git) |
+| `contextual_assessment.py` | Both outputs and the decision for one vehicle (used by the API) | – |
+| `evaluate_predictive_validity.py` | 2023 test vs the same car's 2024 test: predictors A–E, ROC-AUC overall and within age bands, bootstrap CIs; saves the next-inspection risk model | `models/next_test_risk_model.joblib`, `reports/predictive_validity_results.md` |
 | `mot_condition.py` + `train_expected_condition.py` | Condition grades from the official DVSA defect categories; probabilistic, monotonic expected-condition baseline (age, km, platform, fuel, engine) for the overall vehicle and per component, compared with marginal / platform-only / age-only baselines | `models/expected_condition_model.joblib`, `reports/expected_condition_results.md` |
 
 All trained models are in `models/`.
 
-## Current results (unseen vehicles)
+## Training order (real data)
 
-| Poor-condition detection | F1 | ROC-AUC |
-|---|---|---|
-| A. Age + mileage only | 0.21 | 0.505 |
-| B. Current condition only | 0.589 | 0.832 |
-| C. Proposed deviation method | 0.592 | 0.846 |
+```
+python external_data/build_mot_toyota.py            # 2023 tests
+python external_data/build_mot_toyota.py mot_2024 2024 --no-excel
+python train_expected_condition.py                  # output 1 baseline
+python evaluate_predictive_validity.py              # evidence + output 2 risk model
+```
 
-The expected-condition model has R² ≈ −0.03: in the current synthetic data,
-age and mileage have no relationship with inspection score, so the age/mileage
-adjustment adds almost nothing yet. Retrain with real service-centre data.
+Results: `reports/expected_condition_results.md` (baseline, held-out vehicles)
+and `reports/predictive_validity_results.md` (next-test outcome). Until the risk
+model exists the API returns output 1 only and says so in the notes.
+
+The inspection-data model (`train_deterioration_model.py`) is trained on
+synthetic data. The app keeps it, collapsed, for components the MOT does not
+inspect (battery, engine, cooling, transmission); it is not used for the
+research results.
 
 ## Data notes
 
