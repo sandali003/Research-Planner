@@ -201,6 +201,7 @@ export interface ContextualDecision {
   key: DecisionKey;
   label: string;
   text: string;
+  major_now?: string[];        // components with a major defect now (always repair now)
   risk_components: string[];
 }
 

@@ -269,9 +269,9 @@ function DecisionMatrix({ decision }: { decision: ContextualDecision }) {
 const EVIDENCE_ROWS: [string, string][] = [
   ['A Age + mileage only', 'Age + mileage only'],
   ['B Current condition only', 'Current condition only'],
-  ['C Proposed (contextual)', 'Peer percentile (output 1)'],
-  ['C-tail Tail percentile', 'Peer percentile, tail (same or worse)'],
-  ['E Combined (dual output)', 'Combined (output 2)'],
+  ['C-tail Tail percentile', 'Peer percentile (output 1)'],
+  ['F Ablation: E without percentile', 'Condition + age/mileage risk (output 2)'],
+  ['E Combined (dual output)', 'Output 2 + peer percentile'],
 ];
 
 /** Held-out evidence that "worse than peers" and "about to fail" are different signals. */
@@ -283,8 +283,9 @@ function Evidence({ evidence }: { evidence: NonNullable<ContextualAssessment['ev
       <summary>Why two outputs?</summary>
       <p className="muted small">
         Tested on held-out UK cars against their next MOT test. Being worse than comparable cars and failing the next
-        inspection are different signals: age alone predicts failure well, but says nothing about cars of the same age.
-        Inside the same age band, the peer percentile still separates cars.
+        inspection are different signals: the peer percentile alone predicts failure poorly, and adding it to the
+        risk model does not change the result. The percentile compares a car fairly with cars of its age; the risk
+        tells whether it is likely to fail. One cannot replace the other.
       </p>
       <table>
         <thead><tr><th>Predictor of a major defect at the next test</th><th>ROC-AUC</th><th>Within same age band</th></tr></thead>
@@ -338,7 +339,10 @@ function ContextualPanel({ a }: { a: DeteriorationAssessment }) {
           </div>
           <p className="det-verdict">
             This {fmt(a.age_years)}-year-old {a.vehicle_model} is in the condition of {eff} {c.platform} driven{' '}
-            {c.km_per_year?.toLocaleString()} km/year, worse than <strong>{o.worse_than_pct}%</strong> of comparable cars.
+            {c.km_per_year?.toLocaleString()} km/year
+            {o.worse_than_pct > 0
+              ? <>, worse than <strong>{o.worse_than_pct}%</strong> of comparable cars.</>
+              : <>; no comparable car is in a better condition.</>}
           </p>
           <div className="det-tiles det-tiles-3">
             <div><span>Condition-equivalent age</span><strong>{effAge(o)}</strong><small>real age {fmt(a.age_years)} years</small></div>
@@ -357,6 +361,7 @@ function ContextualPanel({ a }: { a: DeteriorationAssessment }) {
               <p className="det-verdict">
                 <strong>{pct(risk.probability)}</strong> chance of a major defect at the {c.risk_horizon ?? 'next inspection'}.
               </p>
+              <p className="muted small" style={{ marginTop: -6 }}>Assumes defects found now are repaired.</p>
               <div className="det-tiles det-tiles-3">
                 <div><span>This vehicle</span><strong>{pct(risk.probability)}</strong><small>major defect, next test</small></div>
                 <div><span>Comparable cars now</span><strong>{pct(risk.comparable_defect_rate)}</strong><small>same age &amp; mileage, major defect</small></div>

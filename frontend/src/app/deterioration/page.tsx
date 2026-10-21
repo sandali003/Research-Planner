@@ -18,6 +18,8 @@ const DECISION_LABEL: Record<DecisionKey, string> = {
 // Components and states the Component 3 models were trained on
 const COMPONENTS = ['Battery', 'Brakes', 'Cooling_System', 'Engine', 'Exhaust_System', 'Steering', 'Suspension', 'Transmission', 'Tyres'];
 const STATES: ComponentState[] = ['Good', 'Fair', 'Poor', 'Critical'];
+// Vehicle models Component 3 knows; all have the real-data (UK MOT) baseline
+const MODELS = ['Allion', 'Axio', 'Corolla', 'Premio', 'Vitz', 'Yaris'];
 const EXAMPLE: Record<string, ComponentState> = {
   Brakes: 'Poor', Battery: 'Critical', Engine: 'Fair', Tyres: 'Good', Suspension: 'Fair', Cooling_System: 'Good',
 };
@@ -47,6 +49,7 @@ function DeteriorationView() {
 
   const [odometer, setOdometer] = useState('');
   const [age, setAge] = useState('');
+  const [model, setModel] = useState('');
   const [fuel, setFuel] = useState<FuelType | ''>('');
   const [engineCc, setEngineCc] = useState('');
   const [states, setStates] = useState<Record<string, ComponentState | ''>>({});
@@ -85,6 +88,7 @@ function DeteriorationView() {
   useEffect(() => {
     if (!vehicleId) return;
     setAge('');
+    setModel('');
     setOdometer('');
     loadVehicle(vehicleId);
   }, [vehicleId, loadVehicle]);
@@ -93,6 +97,7 @@ function DeteriorationView() {
     .filter((c) => states[c])
     .map((c) => ({ component: c, component_state: states[c] as ComponentState }));
 
+  const modelValue = model || vehicle?.model || null;
   const autoAge = vehicle?.year ? vehicleAge(vehicle.year) : null;
   const ageValue = age.trim() ? Number(age) : autoAge;
   const kmPerYear = ageValue != null && Number(odometer) > 0 ? Number(odometer) / Math.max(ageValue, 1) : null;
@@ -101,9 +106,11 @@ function DeteriorationView() {
     e.preventDefault();
     if (!vehicleId) return;
     if (!checks.length) { setError('Set the state of at least one inspected component.'); return; }
+    if (!modelValue) { setError('This vehicle has no model. Select its model.'); return; }
     if (ageValue == null) { setError('This vehicle has no year. Enter its age in years.'); return; }
 
     const input: DeteriorationInput = { odometer_km: Number(odometer), components: checks };
+    if (model) input.vehicle_model = model;
     if (age.trim()) input.age_years = Number(age);
     if (fuel) input.fuel_type = fuel;
     if (engineCc.trim()) input.engine_cc = Number(engineCc);
@@ -167,6 +174,13 @@ function DeteriorationView() {
               <p className="muted small">Age and mileage set the condition expected for this vehicle.</p>
               <div className="det-profile">
                 <div>
+                  <label htmlFor="det-model">Model</label>
+                  <select id="det-model" value={model} onChange={(e) => setModel(e.target.value)}>
+                    <option value="">{vehicle?.model ? `${vehicle.model} (vehicle)` : 'Select model'}</option>
+                    {MODELS.map((m) => <option key={m} value={m}>{m}</option>)}
+                  </select>
+                </div>
+                <div>
                   <label htmlFor="det-odo">Odometer (km)</label>
                   <input id="det-odo" type="number" min={0} max={2000000} required placeholder="150000"
                     value={odometer} onChange={(e) => setOdometer(e.target.value)} />
@@ -193,8 +207,9 @@ function DeteriorationView() {
                 </div>
               </div>
               <p className="muted small det-usage">
-                Model: <strong>{vehicle?.model ?? '—'}</strong>
+                Model: <strong>{modelValue ?? '—'}</strong>
                 {kmPerYear != null && <> · Usage ≈ <strong>{Math.round(kmPerYear).toLocaleString()} km/year</strong></>}
+                {' '}· Real-data comparison (UK MOT): {MODELS.join(', ')}; brakes, suspension, steering, tyres and exhaust.
               </p>
             </section>
 
@@ -260,6 +275,11 @@ function DeteriorationView() {
             <section className="card empty-state">
               <h2>No assessment yet</h2>
               <p className="muted">Fill in the odometer and inspection evidence, then run an assessment.</p>
+              <ul className="det-preview muted small">
+                <li><strong>Condition vs comparable cars:</strong> condition percentile and condition-equivalent age</li>
+                <li><strong>Risk at the next inspection:</strong> chance of a major defect at the next test</li>
+                <li><strong>What to do:</strong> repair now, monitor, plan maintenance or routine</li>
+              </ul>
             </section>
           )}
 
