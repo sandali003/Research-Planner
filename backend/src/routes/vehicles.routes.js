@@ -122,6 +122,9 @@ export const deteriorationBody = z.object({
   component_state: componentState.optional(),
   vehicle_model: z.string().min(1).max(60).optional(),
   age_years: z.number().min(0).max(60).optional(),
+  // Real-data baseline inputs (Component 3 defaults: petrol, median engine size)
+  fuel_type: z.enum(['petrol', 'diesel', 'hybrid']).optional(),
+  engine_cc: z.number().min(600).max(5000).optional(),
   obd: z.object({
     engine_rpm: z.number().min(0).max(12000),
     engine_load: z.number().min(0).max(100),
@@ -147,7 +150,10 @@ router.get('/:id/deterioration', validate(idParam, 'params'), asyncHandler(async
   const vehicle = await getAccessibleVehicle(req.params.id, req.user);
   const { rows } = await query(
     `SELECT id, created_at, status, vehicle_model, age_years, odometer_km, km_per_year,
-            expected_score, observed_score, deviation, component AS worst_component, obd_source
+            expected_score, observed_score, deviation, component AS worst_component, obd_source,
+            (contextual->'overall'->>'effective_age')::real AS effective_age,
+            (contextual->'overall'->>'age_gap')::real AS age_gap,
+            (contextual->'overall'->>'worse_than_pct')::int AS worse_than_pct
      FROM deterioration_assessments WHERE vehicle_id = $1 ORDER BY created_at DESC LIMIT 50`,
     [vehicle.id],
   );

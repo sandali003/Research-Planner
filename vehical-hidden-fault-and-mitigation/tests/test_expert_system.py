@@ -69,7 +69,7 @@ class FusionAndMitigation(unittest.TestCase):
         )
         targeted = [a for a in r["actions"] if a["kind"] == "targeted"]
         self.assertEqual(len(targeted), 1)
-        self.assertEqual(targeted[0]["feature"], "battery_voltage_v")
+        self.assertEqual(targeted[0]["feature"], "voltage")
         self.assertIn("High", {s["level"] for s in r["severities"]})   # overcharging escalation
 
     def test_same_fault_different_cause_gives_different_action(self):
@@ -82,11 +82,69 @@ class FusionAndMitigation(unittest.TestCase):
             return [a["text"] for a in r["actions"] if a["kind"] == "targeted"]
         self.assertNotEqual(targeted_for("engine_temp_c"), targeted_for("engine_load_pct"))
 
+    def test_hidden_anomaly_is_named_by_shap(self):
+        # Vibration spread over several features still wins as a group
+        factors = [
+            dict(model="anomaly", feature="engine_rpm", label="Engine RPM", value=2000, impact=0.9, rank=1),
+            dict(model="anomaly", feature="vibration_x", label="Vibration X", value=0.4, impact=0.6, rank=2),
+            dict(model="anomaly", feature="vibration_magnitude", label="Vibration level", value=0.6, impact=0.5, rank=3),
+            dict(model="anomaly", feature="coolant_temp", label="Coolant temperature", value=88, impact=-0.2, rank=4),
+        ]
+        r = run_expert_system(sensors(), anomaly=dict(score=3.0, threshold=0.0, flagged=True), factors=factors)
+        self.assertEqual(fault_names(r), {"Hidden_Anomaly"})
+        self.assertEqual([(c["fault"], c["group"]) for c in r["causes"]], [("Hidden_Anomaly", "vibration")])
+        self.assertIn("X1", rules_fired(r))
+        targeted = [a for a in r["actions"] if a["kind"] == "targeted"]
+        self.assertEqual([a["feature"] for a in targeted], ["vibration"])
+
+    def test_rule_faults_get_no_xai_cause(self):
+        r = run_expert_system(sensors(vibration=0.6), factors=[
+            dict(model="anomaly", feature="vibration_x", label="Vibration X", value=0.4, impact=1.0, rank=1)])
+        self.assertEqual(r["causes"], [])
+
+    def test_cause_that_does_not_fit_the_fault_is_low_reliability(self):
+        def reliability(feature):
+            r = run_expert_system(
+                sensors(), prediction=dict(fault="Cooling_System_Warning", confidence=0.95),
+                factors=[dict(model="classifier", feature=feature, label=feature, value=1.0, impact=1.0, rank=1)])
+            return [x["level"] for x in r["reliability"]], rules_fired(r)
+        levels, fired = reliability("engine_load_pct")
+        self.assertEqual(levels, ["Low"])
+        self.assertIn("X2", fired)
+        self.assertEqual(reliability("engine_temp_c")[0], [])
+
     def test_every_fault_has_a_mitigation_plan(self):
         r = run_expert_system(sensors(vibration=0.5),
                               prediction=dict(fault="Cooling_System_Warning", confidence=0.9))
         for name in fault_names(r):
             self.assertTrue(any(a["fault"] == name for a in r["actions"]), name)
+
+
+class TroubleCodes(unittest.TestCase):
+
+    def test_stored_code_becomes_a_fault_with_likely_causes(self):
+        r = run_expert_system(sensors(dtc_codes=("p0301",)))
+        self.assertIn("DTC_P0301", fault_names(r))
+        self.assertIn("D8", rules_fired(r))
+        self.assertEqual({s["level"] for s in r["severities"] if s["fault"] == "DTC_P0301"}, {"High"})
+        checks = [a["text"] for a in r["actions"] if a["fault"] == "DTC_P0301"]
+        self.assertTrue(1 <= len(checks) <= 3 and all(c.startswith("Check: ") for c in checks))
+
+    def test_code_confirms_the_ai_fault(self):
+        r = run_expert_system(sensors(dtc_codes=("P0217",)),
+                              prediction=dict(fault="Cooling_System_Warning", confidence=0.9))
+        self.assertIn("X3", rules_fired(r))
+        self.assertTrue(any(n["fault"] == "Cooling_System_Warning" and "P0217" in n["text"] for n in r["notes"]))
+
+    def test_unrelated_code_does_not_confirm(self):
+        r = run_expert_system(sensors(dtc_codes=("P0562",)),
+                              prediction=dict(fault="Cooling_System_Warning", confidence=0.9))
+        self.assertNotIn("X3", rules_fired(r))
+
+    def test_unknown_code_is_only_listed(self):
+        r = run_expert_system(sensors(dtc_codes=("P9999",)))
+        self.assertEqual(fault_names(r), set())
+        self.assertIn("M3", rules_fired(r))
 
 
 class Pipeline(unittest.TestCase):
@@ -101,6 +159,21 @@ class Pipeline(unittest.TestCase):
         self.assertEqual(r["explanations"]["classifier"]["factors"][0]["feature"], "battery_voltage_v")
         self.assertGreater(r["engine"]["rules_fired"], 0)
         self.assertLess(r["latency_ms"], 2000)      # proposal target: <= 2 s
+
+    def test_issues_report_the_likely_cause(self):
+        r = self.service.assess(dict(engine_rpm=800, engine_load_pct=5, coolant_temp_c=82, battery_voltage_v=15.3))
+        cause = r["issues"][0]["likely_cause"]
+        self.assertEqual(cause["sensor_group"], "voltage")
+        self.assertGreater(cause["share"], 0.5)
+
+    def test_counterfactual_gives_a_repair_target(self):
+        r = self.service.assess(dict(engine_rpm=800, engine_load_pct=5, coolant_temp_c=82, battery_voltage_v=15.3))
+        issue = r["issues"][0]
+        change = issue["counterfactual"]["changes"][0]
+        self.assertEqual((change["group"], change["direction"]), ("voltage", "down"))
+        self.assertTrue(14.0 <= change["to"] < 15.3)
+        self.assertTrue(any(a.startswith("Repair target:") for a in issue["immediate_actions"]))
+        self.assertEqual(issue["reliability"]["level"], "Normal")
 
     def test_missing_inputs_raise(self):
         with self.assertRaises(ValueError):

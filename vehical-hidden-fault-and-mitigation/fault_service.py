@@ -17,8 +17,10 @@ import time
 import joblib
 import pandas as pd
 
+from counterfactual import find_counterfactual
 from expert_system import max_severity, run_expert_system
 from explainer import AnomalyExplainer, ClassifierExplainer
+import dtc_knowledge
 from mitigation_rules import FAULT_RULES, SEVERITY_ORDER, TIMEFRAMES
 from obd_assessment import OBDAssessor, vibration_magnitude
 
@@ -28,6 +30,11 @@ MODEL_DIR = BASE_DIR / "models"
 CLASSIFIER_PATH = MODEL_DIR / "autosense_fault_model.joblib"
 CLASSIFIER_METADATA_PATH = MODEL_DIR / "model_metadata.json"
 ANOMALY_METADATA_PATH = MODEL_DIR / "obd_anomaly_metadata.json"
+
+# Healthy readings each model was trained on: their medians are the
+# "normal" values the counterfactuals move towards
+CLASSIFIER_DATA_PATH = BASE_DIR / "cleaned_data" / "AutoSense_Toyota_Battery_Voltage_Deduplicated.csv"
+ANOMALY_DATA_PATH = BASE_DIR / "raw_data" / "toyota_obd_original_labeled.csv"
 
 # Inputs each model needs (keys of the request)
 CLASSIFIER_INPUTS = [
@@ -51,12 +58,14 @@ def _version(path):
 
 
 def _factor_facts(model, explanation):
-    """Top features pushing towards the result, as expert system facts."""
-    pushing = [f for f in explanation["factors"] if f["impact"] > 0][:TOP_FACTORS]
+    """Every SHAP factor (largest effect first) as expert system facts.
+
+    All of them are needed: the root cause sums the SHAP values per sensor group.
+    """
     return [
         {"model": model, "feature": f["feature"], "label": f["label"],
          "value": f["value"], "impact": f["impact"], "rank": rank}
-        for rank, f in enumerate(pushing, start=1)
+        for rank, f in enumerate(explanation["factors"], start=1)
     ]
 
 
@@ -78,6 +87,14 @@ class HiddenFaultService:
             "fault_classifier": _version(CLASSIFIER_METADATA_PATH),
             "obd_anomaly": _version(ANOMALY_METADATA_PATH),
         }
+        clf_data = pd.read_csv(CLASSIFIER_DATA_PATH)
+        clf_healthy = clf_data.loc[clf_data["fault_label"] == "Normal", self.classifier_features]
+        obd_data = pd.read_csv(ANOMALY_DATA_PATH)
+        obd_healthy = obd_data.loc[obd_data["fault"] == 0, self.obd.features]
+        self.classifier_normal, self.anomaly_normal = clf_healthy.median(), obd_healthy.median()
+        # Healthy range (5th-95th percentile) shown with each repair target
+        self.classifier_healthy = {f: tuple(clf_healthy[f].quantile([0.05, 0.95])) for f in self.classifier_features}
+        self.anomaly_healthy = {f: tuple(obd_healthy[f].quantile([0.05, 0.95])) for f in self.obd.features}
 
     # -----------------------------------------------------------
     # 1 + 2. ML models and their SHAP explanations
@@ -94,8 +111,9 @@ class HiddenFaultService:
         }
         return result, self.classifier_explainer.explain(row, prediction)
 
-    def _anomaly(self, inputs):
-        readings = {
+    @staticmethod
+    def _anomaly_readings(inputs):
+        return {
             "engine_rpm": inputs["engine_rpm"],
             "engine_load": inputs["engine_load_pct"],
             "coolant_temp": inputs["coolant_temp_c"],
@@ -104,6 +122,9 @@ class HiddenFaultService:
             "vibration_z": inputs["vibration_z_g"],
             "vibration_magnitude": inputs["vibration_magnitude_g"],
         }
+
+    def _anomaly(self, inputs):
+        readings = self._anomaly_readings(inputs)
         score = self.obd.anomaly_score(readings)
         result = {
             "score": score,
@@ -114,10 +135,31 @@ class HiddenFaultService:
         return result, self.anomaly_explainer.explain(row)
 
     # -----------------------------------------------------------
+    # 2b. Counterfactuals: what has to change for each model to say normal
+    # -----------------------------------------------------------
+    def _counterfactuals(self, inputs, classifier, anomaly):
+        out = {"classifier": None, "anomaly": None}
+        if classifier and classifier["prediction"] != "Normal":
+            row = pd.DataFrame([{k: inputs[k] for k in self.classifier_features}])
+            out["classifier"] = find_counterfactual(
+                row, self.classifier_features,
+                lambda df: self.classifier.predict(df[self.classifier_features]) == "Normal",
+                self.classifier_normal, healthy=self.classifier_healthy,
+            )
+        if anomaly and anomaly["is_anomaly"]:
+            row = pd.DataFrame([self._anomaly_readings(inputs)])[self.obd.features]
+            out["anomaly"] = find_counterfactual(
+                row, self.obd.features,
+                lambda df: -self.obd.model.decision_function(df[self.obd.features]) < self.obd.threshold,
+                self.anomaly_normal, healthy=self.anomaly_healthy,
+            )
+        return out
+
+    # -----------------------------------------------------------
     # 4. Turn the expert system's facts into issues
     # -----------------------------------------------------------
     @staticmethod
-    def _issues(es, explanations):
+    def _issues(es, explanations, counterfactuals):
         issues = []
         for name in _unique(f["name"] for f in es["faults"]):
             faults = [f for f in es["faults"] if f["name"] == name]
@@ -136,17 +178,50 @@ class HiddenFaultService:
                 key_factors += explanations["anomaly"]["factors"][:TOP_FACTORS]
 
             content = FAULT_RULES.get(name, {})
+            display_name = content.get("display_name", name.replace("_", " "))
+            code = dtc_knowledge.code_of(name)
+            if code and dtc_knowledge.lookup(code):
+                entry = dtc_knowledge.lookup(code)
+                display_name = f"{code}: {entry['title']}"
+                content = {"message": entry["summary"]}
+            causes = [c for c in es["causes"] if c["fault"] == name]
+            likely_cause = None
+            if causes:
+                cause = max(causes, key=lambda c: c["share"])
+                likely_cause = {"sensor_group": cause["group"], "label": cause["label"],
+                                "share": cause["share"], "model": cause["model"],
+                                "method": "SHAP values summed per sensor group"}
+                if name == "Hidden_Anomaly":
+                    display_name = f"{display_name}: likely cause {cause['label'].lower()}"
+
+            # Repair target: the classifier's counterfactual for its faults,
+            # the anomaly model's for a hidden anomaly
+            counterfactual = (counterfactuals["classifier"] if "AI classifier" in sources
+                              else counterfactuals["anomaly"] if name == "Hidden_Anomaly" else None)
+            target_actions = ([f"Repair target: {counterfactual['text']}. Take a new reading after the "
+                               "repair to confirm."] if counterfactual else [])
+
+            # XAI reliability check (classifier faults only)
+            low = [r for r in es["reliability"] if r["fault"] == name]
+            checked = any(c["model"] == "classifier" for c in causes)
+            reliability = ({"level": "Low", "reason": low[0]["reason"]} if low
+                           else {"level": "Normal", "reason": None} if checked else None)
+
             issues.append({
                 "fault": name,
-                "display_name": content.get("display_name", name.replace("_", " ")),
+                "display_name": display_name,
+                "likely_cause": likely_cause,
+                "counterfactual": counterfactual,
+                "reliability": reliability,
                 "sources": sources,
                 "confidence": round(max(confidences), 4) if confidences else None,
                 "severity": severity,
                 "timeframe": TIMEFRAMES[severity],
                 "message": content.get("message", ""),
                 "reasons": _unique(f["reason"] for f in faults),
-                "immediate_actions": _unique(a["text"] for a in actions),
-                "targeted_actions": _unique(a["text"] for a in actions if a["kind"] == "targeted"),
+                "immediate_actions": _unique([a["text"] for a in actions] + target_actions),
+                "targeted_actions": _unique([a["text"] for a in actions if a["kind"] == "targeted"]
+                                            + target_actions),
                 "longevity_tips": _unique(t["text"] for t in es["tips"] if t["fault"] == name),
                 "notes": _unique(n["text"] for n in es["notes"] if n["fault"] == name),
                 "key_factors": key_factors,
@@ -215,7 +290,7 @@ class HiddenFaultService:
             factors=factors,
         )
 
-        issues = self._issues(es, explanations)
+        issues = self._issues(es, explanations, self._counterfactuals(inputs, classifier, anomaly))
         notes = _unique(n["text"] for n in es["notes"] if n["fault"] is None)
         if not run_classifier:
             notes.append("Battery voltage or engine temperature missing: the fault classifier was skipped.")

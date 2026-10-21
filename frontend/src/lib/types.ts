@@ -72,7 +72,24 @@ export interface FaultIssue {
   notes: string[];
   targeted_actions?: string[];
   key_factors?: ShapFactor[];
+  likely_cause?: LikelyCause | null;
+  counterfactual?: Counterfactual | null;
+  reliability?: { level: 'Normal' | 'Low'; reason: string | null } | null;
 }
+
+/** What has to change for the model to call the reading normal (repair target) */
+export interface Counterfactual {
+  sensor_groups: string[];
+  changes: {
+    feature: string; group: string; label: string; from: number; to: number; direction: 'up' | 'down';
+    healthy_range?: [number, number];
+  }[];
+  fraction_back_to_normal: number;
+  text: string;
+}
+
+/** XAI root cause: the sensor group SHAP says drives an AI-detected fault */
+export interface LikelyCause { sensor_group: string; label: string; share: number; model: string; method: string }
 
 export interface ShapFactor { feature: string; label: string; value: number; impact: number }
 
@@ -140,12 +157,50 @@ export interface ComponentCheck { component: string; component_state: ComponentS
 
 export interface ObdReading { engine_rpm: number; engine_load: number; coolant_temp: number }
 
+export type FuelType = 'petrol' | 'diesel' | 'hybrid';
+
 export interface DeteriorationInput {
   odometer_km: number;
   components: ComponentCheck[];
   age_years?: number;
   vehicle_model?: string;
   obd?: ObdReading;
+  fuel_type?: FuelType;
+  engine_cc?: number;
+}
+
+/** Real-data contextual result for the whole vehicle or one component (Component 3, step 3) */
+export interface ContextualResult {
+  observed_grade: number;
+  observed_label: string;
+  expected_grade: number;
+  grade_distribution: Record<string, number>;
+  percentile: number;          // share of comparable cars in a worse condition
+  worse_than_pct: number;      // "worse than X% of comparable cars"
+  effective_age: number;       // condition-equivalent age
+  effective_age_bound: 'within' | 'younger' | 'older';
+  age_gap: number;             // effective age - real age
+  status: DeteriorationStatus;
+}
+
+export interface ContextualComponent extends ContextualResult, ComponentCheck { mot_group: string }
+
+export interface ContextualAssessment {
+  available: boolean;
+  method?: string;
+  platform: string;
+  fuel_type?: string;
+  engine_cc?: number;
+  age_years?: number;
+  km_per_year?: number;
+  overall?: ContextualResult;
+  status?: DeteriorationStatus;
+  worst_component?: string;
+  components: ContextualComponent[];
+  /** Share of comparable cars in each overall grade, by age */
+  curve?: ({ age_years: number } & Record<string, number>)[];
+  thresholds?: Record<string, number>;
+  notes: string[];
 }
 
 export interface DeteriorationComponent extends ComponentCheck {
@@ -177,6 +232,10 @@ export interface DeteriorationAssessment {
   model_version: string | null;
   latency_ms: number | null;
   components: DeteriorationComponent[];
+  contextual?: ContextualAssessment | null;
+  legacy_status?: DeteriorationStatus | null;
+  fuel_type?: FuelType | null;
+  engine_cc?: number | null;
 }
 
 export interface DeteriorationListItem {
@@ -184,6 +243,7 @@ export interface DeteriorationListItem {
   age_years: number; odometer_km: number; km_per_year: number | null;
   expected_score: number; observed_score: number; deviation: number;
   worst_component: string; obd_source: 'request' | 'session' | null;
+  effective_age?: number | null; age_gap?: number | null; worse_than_pct?: number | null;
 }
 
 export interface DeteriorationContext {
@@ -191,4 +251,50 @@ export interface DeteriorationContext {
   trained_range: { age_years: [number, number]; odometer_km: [number, number] };
   typical_km_per_year: number;
   points: { age_years: number; odometer_km: number; inspection_score: number; status: DeteriorationStatus }[];
+}
+
+// ---- Component 4: Maintenance Recommendation and Condition-Based Valuation ----
+export type BuyerType = 'private' | 'dealer';
+
+export interface ValueUpliftInput {
+  budget_lkr?: number;
+  sell_within_days?: number;
+  buyer?: BuyerType;
+  mileage_km?: number;
+  fuel_type?: FuelType;
+  engine_cc?: number;
+}
+
+export interface UpliftAction {
+  id: string;
+  kind: 'safety' | 'value';
+  component: string;
+  action: string;
+  reason: string;
+  cost_lkr: number;
+  cost_range_lkr: [number, number];
+  lead_days: number;
+  value_gain_lkr: number;            // share of the plan's gain (Shapley)
+  gain_if_done_alone_lkr: number | null;
+  net_gain_lkr: number;
+  roi: number | null;
+}
+
+export interface ValueUplift {
+  market_value_lkr: number;
+  condition: { percentile: number; condition_score: number; typical_condition_score: number };
+  current_value_lkr: number;
+  plan: UpliftAction[];
+  plan_summary: {
+    cost_lkr: number; value_gain_lkr: number; value_gain_range_lkr: [number, number]; net_gain_lkr: number;
+    value_after_lkr: number; condition_score_after: number; percentile_after: number;
+  };
+  not_recommended: { id: string; component: string; action: string; cost_lkr: number; value_gain_lkr: number;
+    net_gain_lkr: number; why_not: string }[];
+  reliability_repairs: { id: string; component: string; action: string; reason: string; cost_lkr: number }[];
+  inputs: { budget_lkr: number | null; sell_within_days: number | null; buyer: BuyerType; buyer_factor: number };
+  notes: string[];
+  vehicle: { model: string; age_years: number; mileage_km: number; engine_cc: number | null; fuel_type: string | null };
+  latency_ms: number;
+  sources: { deterioration_id: number; deterioration_at: string; fault_check_at: string | null; fault_count: number };
 }

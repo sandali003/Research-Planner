@@ -176,8 +176,8 @@ if __name__ == "__main__":
         "evidence_features": EVIDENCE_FEATURES,
         "typical_km_per_year": float((df["odometer_km"] / df["age_years"].clip(lower=1)).median()),
         "metrics": {"regression": regression, "classification": classification},
-    }, "deterioration_model.joblib", compress=3)
+    }, "models/deterioration_model.joblib", compress=3)
 
     print("\nFinal threshold:", threshold)
-    print("Model saved: deterioration_model.joblib")
+    print("Model saved: models/deterioration_model.joblib")
     print("Per-inspection results: reports/deterioration_results.csv")

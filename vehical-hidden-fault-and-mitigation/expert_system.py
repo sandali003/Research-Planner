@@ -6,6 +6,8 @@ Facts         = sensor readings, ML predictions, anomaly result and the
 Inference     = Experta forward chaining (Rete), ordered by salience:
                   100 detection   Toyota threshold rules
                    80 ML fusion   classifier faults, hidden anomalies
+                   70 XAI         root cause of each AI fault (SHAP per sensor group),
+                                  reliability check (does the cause fit the fault?)
                    60 severity    base severity + escalation rules
                    40 mitigation  base actions + SHAP-targeted actions
 Explanation   = every fired rule is recorded in `trace` (how the plan
@@ -17,6 +19,7 @@ import json
 
 from experta import AS, MATCH, NOT, TEST, Fact, KnowledgeEngine, Rule
 
+import dtc_knowledge
 from mitigation_rules import FAULT_RULES, LOW_CONFIDENCE_THRESHOLD, SEVERITY_ORDER
 from obd_assessment import (
     HOT_COOLANT_C, HOT_MIN_LOAD_PCT, IDLE_MAX_LOAD_PCT, IDLE_MAX_RPM,
@@ -66,6 +69,45 @@ FEATURE_GROUP = {
     "vibration_z": "vibration",
     "vibration_magnitude": "vibration",
 }
+GROUP_LABELS = {
+    "voltage": "Battery voltage",
+    "temperature": "Engine temperature",
+    "load": "Engine load",
+    "rpm": "Engine speed (RPM)",
+    "vibration": "Engine vibration",
+}
+
+
+# Sensor groups that can physically explain each classifier fault. When SHAP
+# says another group drives the prediction, the model is likely outside what
+# it learned (e.g. high rpm/load) and the result is marked low reliability.
+EXPECTED_CAUSES = {
+    "Charging_System_Warning": {"voltage"},
+    "Cooling_System_Warning": {"temperature"},
+    "Engine_Abnormality_Suspected": {"temperature", "rpm"},
+}
+
+
+def root_causes(factors):
+    """XAI root cause per model: SHAP values summed per sensor group, largest positive group.
+
+    Same method as benchmark/run_xai_eval.py, where it named the injected
+    sensor in 91-98% of anomaly-model detections.
+    """
+    sums = {}
+    for f in factors:
+        group = FEATURE_GROUP.get(f["feature"])
+        if group:
+            model_sums = sums.setdefault(f["model"], {})
+            model_sums[group] = model_sums.get(group, 0.0) + f["impact"]
+    causes = []
+    for model, groups in sums.items():
+        positive = {g: s for g, s in groups.items() if s > 0}
+        if positive:
+            group = max(positive, key=positive.get)
+            causes.append({"model": model, "group": group, "label": GROUP_LABELS[group],
+                           "share": round(positive[group] / sum(positive.values()), 3)})
+    return causes
 
 
 # ----- Fact types -----------------------------------------------------
@@ -83,6 +125,22 @@ class Anomaly(Fact):
 
 class Factor(Fact):
     """model, feature, label, value, impact, rank (SHAP)"""
+
+
+class RootCause(Fact):
+    """model, group, label, share (sensor group that SHAP says drives the model output)"""
+
+
+class Cause(Fact):
+    """fault, model, group, label, share (likely cause reported with a fault)"""
+
+
+class Reliability(Fact):
+    """fault, level, reason (XAI check of whether the AI result makes physical sense)"""
+
+
+class DTC(Fact):
+    """code, title, family, severity, causes (tuple), repair (text): a stored trouble code (OBDex)"""
 
 
 class WarmingUp(Fact):
@@ -145,6 +203,19 @@ class VehicleFaultExpert(KnowledgeEngine):
         reason = f"Vibration {vib:.2f}g >= {_vibration_warning(model)}g"
         self.declare(Fault(name="Abnormal_Vibration", source="Rule", confidence=None, reason=reason))
         self._log("D2 Abnormal vibration", reason)
+
+    @Rule(DTC(code=MATCH.code, title=MATCH.title, severity=MATCH.level, causes=MATCH.causes, repair=MATCH.repair),
+          salience=100)
+    def ecu_trouble_code(self, code, title, level, causes, repair):
+        name = dtc_knowledge.fault_name(code)
+        reason = f"The car's computer stored {code}: {title}"
+        self.declare(Fault(name=name, source="ECU trouble code", confidence=None, reason=reason))
+        self.declare(Severity(fault=name, level=level, kind="base", reason="OBDex flags (limp mode / check engine light)"))
+        for rank, cause in enumerate(causes, start=1):
+            self.declare(Action(fault=name, text=f"Check: {cause}", priority=rank, kind="base", feature=None))
+        if repair:
+            self.declare(Note(fault=name, text=repair))
+        self._log("D8 ECU trouble code", f"{code}: {title} -> {level}")
 
     @Rule(Sensors(rpm=MATCH.rpm, load=MATCH.load),
           TEST(lambda rpm, load: _num(rpm, load) and load >= LUGGING_LOAD_PCT and rpm < LUGGING_MAX_RPM),
@@ -235,6 +306,41 @@ class VehicleFaultExpert(KnowledgeEngine):
             "The AI score is high mainly because the engine is cold. "
             "Check again once it is warm.")))
         self._log("F4 Cold engine anomaly", "Anomaly flagged while warming up; not reported as a fault")
+
+    # ==================================================================
+    # 2b. XAI root cause (salience 70): name the sensor behind an AI fault.
+    #     For Hidden_Anomaly this turns "unusual pattern" into a named cause.
+    # ==================================================================
+    @Rule(Fault(name=MATCH.name, source=MATCH.source),
+          RootCause(model=MATCH.model, group=MATCH.group, label=MATCH.label, share=MATCH.share),
+          TEST(lambda source, model: SOURCE_MODEL.get(source) == model),
+          NOT(Cause(fault=MATCH.name)),
+          salience=70)
+    def xai_root_cause(self, name, model, group, label, share):
+        self.declare(Cause(fault=name, model=model, group=group, label=label, share=share))
+        self._log("X1 XAI root cause",
+                  f"{name}: SHAP ({model}) attributes {share:.0%} of the result to {label.lower()}")
+
+    @Rule(Cause(fault=MATCH.name, model="classifier", group=MATCH.group, label=MATCH.label),
+          TEST(lambda name, group: name in EXPECTED_CAUSES and group not in EXPECTED_CAUSES[name]),
+          salience=65)
+    def xai_reliability(self, name, group, label):
+        expected = " or ".join(GROUP_LABELS[g].lower() for g in sorted(EXPECTED_CAUSES[name]))
+        reason = (f"The AI decision is driven by {label.lower()}, not by {expected}, "
+                  "so the reading may be outside what the model learned.")
+        self.declare(Reliability(fault=name, level="Low", reason=reason))
+        self.declare(Note(fault=name, text=(
+            f"Low reliability: {reason} Confirm with another reading or a manual check.")))
+        self._log("X2 XAI reliability check", f"{name}: driven by {label.lower()}, expected {expected}")
+
+    @Rule(DTC(code=MATCH.code, title=MATCH.title, family=MATCH.family),
+          Fault(name=MATCH.name, source=MATCH.src),
+          TEST(lambda family, name, src: src != "ECU trouble code"
+               and name in dtc_knowledge.CONFIRMS.get(family, ())),
+          salience=65)
+    def ecu_confirms_fault(self, code, title, family, name, src):
+        self.declare(Note(fault=name, text=f"Confirmed by the car's own trouble code {code} ({title})."))
+        self._log("X3 ECU code confirms fault", f"{name} ({src}) matches {code} ({family})")
 
     # ==================================================================
     # 3. Severity rules (salience 60)
@@ -335,24 +441,34 @@ class VehicleFaultExpert(KnowledgeEngine):
             self.declare(Tip(fault=name, text=text))
         self._log("M1 Mitigation plan", f"{name}: knowledge base actions and longevity tips")
 
-    @Rule(Fault(name=MATCH.name, source=MATCH.source),
-          Factor(model=MATCH.model, feature=MATCH.feature, label=MATCH.label, value=MATCH.value, rank=1),
-          TEST(lambda source, model: SOURCE_MODEL.get(source) == model),
+    @Rule(Cause(fault=MATCH.name, group=MATCH.group, label=MATCH.label, share=MATCH.share),
           NOT(Action(fault=MATCH.name, kind="targeted")),
           salience=40)
-    def shap_targeted_action(self, name, feature, label, value):
-        group = FEATURE_GROUP.get(feature)
-        if group is None:
-            return
-        self.declare(Action(fault=name, text=FACTOR_ACTIONS[group], priority=1, kind="targeted", feature=feature))
+    def shap_targeted_action(self, name, group, label, share):
+        self.declare(Action(fault=name, text=FACTOR_ACTIONS[group], priority=1, kind="targeted", feature=group))
         self._log("M2 SHAP-targeted action",
-                  f"{name}: main cause by SHAP is {label} ({value:.2f}) -> {group} check")
+                  f"{name}: main cause by SHAP is {label} ({share:.0%} of the explanation) -> {group} check")
 
     @Rule(Sensors(dtc_codes=MATCH.codes), TEST(lambda codes: bool(codes)),
           salience=40)
     def stored_dtcs(self, codes):
         self.declare(Note(fault=None, text="Stored trouble codes reported by the vehicle: " + ", ".join(codes)))
         self._log("M3 Stored trouble codes", ", ".join(codes))
+
+
+def dtc_fact(code, entry):
+    """Fact for one stored code: the most likely causes become the checks of its plan."""
+    r = entry["repair"]
+    parts = []
+    if r.get("difficulty"):
+        parts.append(f"{r['difficulty']} repair")
+    if r.get("hours"):
+        parts.append(f"about {r['hours'][0]}-{r['hours'][1]} hours")
+    if r.get("diy_possible"):
+        parts.append("possible to do yourself")
+    repair = ("Typical repair: " + ", ".join(parts) + ".") if parts else ""
+    return DTC(code=code, title=entry["title"], family=entry["family"], severity=dtc_knowledge.severity(entry),
+               causes=tuple(c["text"] for c in entry["causes"][:dtc_knowledge.MAX_CAUSES]), repair=repair)
 
 
 def run_expert_system(sensors, prediction=None, anomaly=None, factors=()):
@@ -366,6 +482,12 @@ def run_expert_system(sensors, prediction=None, anomaly=None, factors=()):
         engine.declare(Anomaly(**anomaly))
     for factor in factors:
         engine.declare(Factor(**factor))
+    for cause in root_causes(factors):
+        engine.declare(RootCause(**cause))
+    for code in sensors.get("dtc_codes") or ():
+        entry = dtc_knowledge.lookup(code)
+        if entry:
+            engine.declare(dtc_fact(str(code).upper(), entry))
     engine.run()
 
     facts = list(engine.facts.values())
@@ -376,6 +498,8 @@ def run_expert_system(sensors, prediction=None, anomaly=None, factors=()):
         "actions": of_type(Action),
         "tips": of_type(Tip),
         "notes": of_type(Note),
+        "causes": of_type(Cause),
+        "reliability": of_type(Reliability),
         "trace": engine.trace,
     }
 

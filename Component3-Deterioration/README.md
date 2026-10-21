@@ -28,11 +28,15 @@ deterioration assessment in PostgreSQL (`deterioration_assessments` table).
 | Script | What it does | Output |
 |---|---|---|
 | `data_prep.py` | Shared cleaning: removes duplicate rows, normalises labels, parses numbers, joins inspections with odometer readings | – |
-| `train_deterioration_model.py` | Component 3 core: expected model (age, km, model) + observed model (inspection evidence) → deviation → status. Compared with age/mileage-only and current-condition-only baselines using vehicle-level 5-fold CV | `deterioration_model.joblib`, `reports/deterioration_results.csv` |
+| `train_deterioration_model.py` | Component 3 core: expected model (age, km, model) + observed model (inspection evidence) → deviation → status. Compared with age/mileage-only and current-condition-only baselines using vehicle-level 5-fold CV | `models/deterioration_model.joblib`, `reports/deterioration_results.csv` |
 | `predict_deterioration.py` | Assess one vehicle | – |
-| `train_condition_model.py` | Overall condition (Good/Fair/Poor/Critical) from component condition | `vehicle_condition_model.joblib` |
-| `train_model.py` / `predict.py` | Recommended solution from service history + problem | `solution_prediction_model.joblib` |
-| `train_obd_anomaly_model.py` | Unsupervised OBD-II anomaly detection (no labels available) | `obd_anomaly_model.joblib`, `reports/obd_vehicle_anomaly.csv` |
+| `train_condition_model.py` | Overall condition (Good/Fair/Poor/Critical) from component condition | `models/vehicle_condition_model.joblib` |
+| `train_model.py` / `predict.py` | Recommended solution from service history + problem | `models/solution_prediction_model.joblib` |
+| `train_obd_anomaly_model.py` | Unsupervised OBD-II anomaly detection (no labels available) | `models/obd_anomaly_model.joblib`, `reports/obd_vehicle_anomaly.csv` |
+| `external_data/build_mot_toyota.py` | Toyota Yaris / Vitz / Corolla tests from the UK MOT anonymised data (DVSA), with failure / minor / advisory counts per component | `external_data/mot_toyota_<year>.csv` / `.xlsx` (not in git) |
+| `mot_condition.py` + `train_expected_condition.py` | Condition grades from the official DVSA defect categories; probabilistic, monotonic expected-condition baseline (age, km, platform, fuel, engine) for the overall vehicle and per component, compared with marginal / platform-only / age-only baselines | `models/expected_condition_model.joblib`, `reports/expected_condition_results.md` |
+
+All trained models are in `models/`.
 
 ## Current results (unseen vehicles)
 

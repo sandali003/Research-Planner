@@ -1,0 +1,5 @@
+Model,MAE log ratio,R2 log ratio,Price MAE $,Toyota price MAE $
+No condition (baseline),0.1107,0.075,1027,872
+Linear,0.1068,0.149,1029,867
+Gradient Boosting,0.0977,0.257,905,748
+XGBoost,0.0976,0.253,901,748

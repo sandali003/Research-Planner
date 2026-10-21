@@ -1,7 +1,7 @@
 import type {
   AssessmentListItem, AssessmentResult, AssessmentRow, DeteriorationAssessment, DeteriorationContext,
   DeteriorationInput, DeteriorationListItem, FaultCheck, FaultCheckListItem, FaultCheckRow,
-  FaultInputs, LatestReadings, ManualAssessmentInputs, User, Vehicle,
+  FaultInputs, LatestReadings, ManualAssessmentInputs, User, ValueUplift, ValueUpliftInput, Vehicle,
 } from './types';
 
 const BASE = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:3000/api/v1';
@@ -87,4 +87,8 @@ export const api = {
     request<DeteriorationAssessment>(`/vehicles/${vehicleId}/deterioration/${id}`),
   deteriorationContext: (vehicleId: number, id: number) =>
     request<DeteriorationContext>(`/vehicles/${vehicleId}/deterioration/${id}/context`),
+
+  // Component 4: personalised value-uplift plan
+  valueUplift: (vehicleId: number, input: ValueUpliftInput) =>
+    post<ValueUplift>(`/vehicles/${vehicleId}/value-uplift`, input),
 };

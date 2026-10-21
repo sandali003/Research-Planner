@@ -15,6 +15,9 @@ const schema = z.object({
   DETERIORATION_SERVICE_URL: z.string().url().default('http://127.0.0.1:8003'),
   // A full component-wise assessment runs two models per component, so allow more time
   DETERIORATION_TIMEOUT_MS: z.coerce.number().default(5000),
+  // Component 4 value-uplift service (component4/real/api.py)
+  VALUATION_SERVICE_URL: z.string().url().default('http://127.0.0.1:8004'),
+  VALUATION_TIMEOUT_MS: z.coerce.number().default(5000),
   ACCEL_LSB_PER_G: z.coerce.number().default(16384),
   VOLTAGE_DIVIDER_RATIO: z.coerce.number().default(5),
   CORS_ORIGINS: z.string().default(''),

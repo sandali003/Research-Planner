@@ -20,12 +20,13 @@ from fastapi import FastAPI, HTTPException
 from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field
 
+from contextual_assessment import MODEL_FILE as CONTEXTUAL_MODEL_FILE, assess_contextual
 from data_prep import PROBLEM_SYNONYMS, CONDITION_ORDER, load_inspections, load_service_data
 from predict_deterioration import assess_vehicle, bundle as deterioration_bundle
 
-condition_model = joblib.load("vehicle_condition_model.joblib")
-solution_model = joblib.load("solution_prediction_model.joblib")
-obd_bundle = joblib.load("obd_anomaly_model.joblib")
+condition_model = joblib.load("models/vehicle_condition_model.joblib")
+solution_model = joblib.load("models/solution_prediction_model.joblib")
+obd_bundle = joblib.load("models/obd_anomaly_model.joblib")
 
 
 # --------------------------------------------------
@@ -110,6 +111,9 @@ class AssessmentInput(BaseModel):
     odometer_km: float = Field(ge=0, le=2_000_000)
     components: List[ComponentCheck] = Field(min_length=1)
     obd: Optional[ObdInput] = None
+    # Used by the real-data baseline; defaults: petrol, median engine size of the platform
+    fuel_type: Optional[str] = Field(None, max_length=20)
+    engine_cc: Optional[float] = Field(None, ge=600, le=5000)
 
 
 def _resolve_model(name: str):
@@ -139,8 +143,12 @@ def home():
 
 @app.get("/health")
 def health():
-    model_file = os.path.join(BASE_DIR, "deterioration_model.joblib")
-    return {"status": "ok", "model_version": f"deterioration-{int(os.path.getmtime(model_file))}"}
+    model_file = os.path.join(BASE_DIR, "models", "deterioration_model.joblib")
+    return {
+        "status": "ok",
+        "model_version": f"deterioration-{int(os.path.getmtime(model_file))}"
+                         f"+contextual-{int(os.path.getmtime(CONTEXTUAL_MODEL_FILE))}",
+    }
 
 
 @app.get("/api/options")
@@ -209,9 +217,20 @@ def assess(data: AssessmentInput):
     if obd and obd["anomaly"]:
         warnings.append("OBD-II reading is unusual compared with normal engine behaviour.")
 
+    # Step 3: real-data contextual assessment. When it covers at least one inspected
+    # component its statistical status is the result; the inspection-data model
+    # stays in the response (legacy fields) for the components it does not cover.
+    contextual = assess_contextual(vehicle_model, data.age_years, data.odometer_km,
+                                   [c.model_dump() for c in data.components], data.fuel_type, data.engine_cc)
+    legacy_status = status
+    if contextual and contextual["available"]:
+        status = contextual["status"]
+
     return {
         "vehicle_model_used": vehicle_model,
         "status": status,
+        "legacy_status": legacy_status,
+        "contextual": contextual,
         "expected_condition": worst["expected_condition"],
         "observed_condition": round(float(np.mean([c["observed_condition"] for c in components])), 1),
         "worst_component": worst["component"],

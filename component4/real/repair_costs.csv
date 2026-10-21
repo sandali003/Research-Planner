@@ -1,0 +1,11 @@
+action_id,component,action,min_lkr,typical_lkr,max_lkr,lead_days,source
+brakes,brakes,"Replace brake pads and skim or replace discs; check brake fluid",18000,35000,70000,1,PLACEHOLDER estimate - replace with garage quotes
+suspension,suspension,"Replace worn shock absorbers, bushes and ball joints",45000,90000,180000,2,PLACEHOLDER estimate - replace with garage quotes
+steering,steering,"Repair steering play: tie-rod ends, rack ends, alignment",25000,55000,120000,2,PLACEHOLDER estimate - replace with garage quotes
+tyres,tyres,"Replace worn tyres and do a wheel alignment",60000,100000,180000,1,PLACEHOLDER estimate - replace with garage quotes
+emissions_leaks,emissions_leaks,"Repair exhaust leaks and oil or fluid leaks",15000,40000,90000,1,PLACEHOLDER estimate - replace with garage quotes
+Charging_System_Warning,charging,"Test and repair the alternator, regulator and battery",30000,60000,150000,1,PLACEHOLDER estimate - replace with garage quotes
+Cooling_System_Warning,cooling,"Repair the cooling system: thermostat, radiator, fan, hoses",20000,45000,120000,1,PLACEHOLDER estimate - replace with garage quotes
+Engine_Abnormality_Suspected,engine,"Diagnose and repair the engine fault (ignition, sensors, compression)",20000,60000,150000,2,PLACEHOLDER estimate - replace with garage quotes
+Abnormal_Vibration,engine,"Replace engine mounts, spark plugs or ignition coils as found",20000,50000,120000,1,PLACEHOLDER estimate - replace with garage quotes
+Hidden_Anomaly,engine,"Full diagnostic scan to find the unusual pattern",5000,8000,15000,1,PLACEHOLDER estimate - replace with garage quotes
