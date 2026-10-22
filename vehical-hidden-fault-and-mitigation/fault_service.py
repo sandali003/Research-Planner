@@ -33,7 +33,7 @@ ANOMALY_METADATA_PATH = MODEL_DIR / "obd_anomaly_metadata.json"
 
 # Healthy readings each model was trained on: their medians are the
 # "normal" values the counterfactuals move towards
-CLASSIFIER_DATA_PATH = BASE_DIR / "cleaned_data" / "AutoSense_Toyota_Battery_Voltage_Deduplicated.csv"
+CLASSIFIER_DATA_PATH = BASE_DIR / "raw_data" / "AutoSense_Toyota_Battery_Voltage_Deduplicated.csv"
 ANOMALY_DATA_PATH = BASE_DIR / "raw_data" / "toyota_obd_original_labeled.csv"
 
 # Inputs each model needs (keys of the request)

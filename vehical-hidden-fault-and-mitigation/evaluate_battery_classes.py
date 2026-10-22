@@ -14,7 +14,7 @@ from sklearn.metrics import (
 )
 
 DATA_PATH = (
-    "cleaned_data/"
+    "raw_data/"
     "AutoSense_Toyota_Battery_Voltage_Deduplicated.csv"
 )
 MODEL_PATH = "models/autosense_fault_model.joblib"

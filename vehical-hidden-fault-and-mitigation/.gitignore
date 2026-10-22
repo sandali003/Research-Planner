@@ -7,7 +7,6 @@ venv/
 
 # Secrets and local settings
 .env
-.streamlit/secrets.toml
 
 # Editor and OS files
 .vscode/

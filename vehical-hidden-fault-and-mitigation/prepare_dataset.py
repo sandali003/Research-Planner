@@ -11,7 +11,7 @@ INPUT_FILE = (
     / "AutoSense_Toyota_Battery_Voltage.csv"
 )
 
-OUTPUT_DIR = BASE_DIR / "cleaned_data"
+OUTPUT_DIR = BASE_DIR / "raw_data"
 OUTPUT_FILE = (
     OUTPUT_DIR
     / "AutoSense_Toyota_Battery_Voltage_Deduplicated.csv"

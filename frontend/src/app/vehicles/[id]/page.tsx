@@ -22,6 +22,15 @@ const MANUAL_FIELDS: { key: ManualKey; label: string; step: string; placeholder:
   { key: 'engine_load_pct', label: 'Engine load % (OBD-II)', step: '0.1', placeholder: '40', required: false },
 ];
 
+// Names the fields the backend rejected (zod flatten: { fieldErrors: { field: [messages] } })
+function readingErrors(err: ApiError) {
+  const fields = (err.details as { fieldErrors?: Record<string, string[]> } | undefined)?.fieldErrors ?? {};
+  const label = (key: string) =>
+    key === 'dtc_codes' ? 'OBD-II fault codes (format P0301)' : MANUAL_FIELDS.find((f) => f.key === key)?.label ?? key;
+  const parts = Object.entries(fields).map(([key, msgs]) => `${label(key)}: ${msgs[0]}`);
+  return parts.length ? parts.join('; ') : err.message;
+}
+
 function VehicleView({ id }: { id: number }) {
   const [readings, setReadings] = useState<LatestReadings | null>(null);
   const [latest, setLatest] = useState<AssessmentRow | null>(null);
@@ -64,7 +73,7 @@ function VehicleView({ id }: { id: number }) {
       await fn();
     } catch (err) {
       if (err instanceof ApiError && (err.status === 400 || err.status === 422) && kind === 'manual') {
-        setError(`Please check the readings: ${err.message}`);
+        setError(`Please check the readings: ${readingErrors(err)}`);
       } else if (err instanceof ApiError && err.status === 422) {
         setError('Not enough recent sensor data. Make sure the ESP32 is streaming, or increase the window.');
       } else if (err instanceof ApiError && err.status === 503) {

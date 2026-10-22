@@ -19,7 +19,7 @@ import pandas as pd
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 OBD_FILE = BASE_DIR / "raw_data" / "toyota_obd_original_labeled.csv"
-BATTERY_FILE = BASE_DIR / "cleaned_data" / "AutoSense_Toyota_Battery_Voltage_Deduplicated.csv"
+BATTERY_FILE = BASE_DIR / "raw_data" / "AutoSense_Toyota_Battery_Voltage_Deduplicated.csv"
 
 FAULT_TYPES = ["Charging", "Cooling", "Vibration"]
 SEVERITY_LEVELS = [1, 2, 3, 4, 5]

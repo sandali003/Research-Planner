@@ -6,7 +6,7 @@ BASE_DIR = Path(__file__).resolve().parent
 
 CSV_FILE = (
     BASE_DIR
-    / "cleaned_data"
+    / "raw_data"
     / "AutoSense_Toyota_Battery_Voltage_Deduplicated.csv"
 )
 
