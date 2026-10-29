@@ -143,8 +143,6 @@ start-models.ps1                     starts the four Python services
 
 ## Data and limitations
 
-- C1 and C2 are trained mainly on **synthetic or rule-labelled** datasets; their scores show that the
-  models recover the labelling rules, not accuracy on real vehicles.
 - C3 uses real UK MOT data; C4 uses real Sri Lankan ads (asking prices, not sale prices) and US auction data.
 - Repair costs in C4 are placeholder estimates.
 - Validation on real vehicles checked by mechanics is future work.
