@@ -72,7 +72,8 @@ def read_csv_chunks(path, usecols=None, chunksize=CHUNK):
                                   on_bad_lines="skip")  # a few rows have unquoted commas
         return
     with zipfile.ZipFile(path) as z:
-        for name in sorted(n for n in z.namelist() if n.lower().endswith(".csv")):
+        # Newer zips also hold macOS metadata (__MACOSX/._*.csv), which is not data
+        for name in sorted(n for n in z.namelist() if n.lower().endswith(".csv") and not n.startswith("__MACOSX")):
             with z.open(name) as f:
                 sep = _sep(f.readline().decode("utf-8", "replace"))
             with z.open(name) as f:
